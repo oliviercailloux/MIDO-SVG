@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Rectangle;
 import java.awt.Dimension;
 import java.awt.BasicStroke;
 import java.awt.Stroke;
@@ -46,15 +47,31 @@ public class TestSVGGen {
 		SVGGraphics2D g = new SVGGraphics2D(ctx, false);
 
 		// Ask the test to render into the SVG Graphics2D implementation.
-                Stroke strk = new BasicStroke(20);
-		g.setPaint(Color.red);
-		g.drawString("Licence 1", 30, 50);
-		g.setSVGCanvasSize(new Dimension(180, 180));
-                g.drawLine(60, 60, 100, 100);
-                g.drawLine(100, 80, 100, 100);
-                g.drawLine(80, 100, 100, 100);
-                g.drawString("Licence 2", 110, 110);
-                g.setStroke(strk);
+		g.setPaint(Color.black);
+		g.setSVGCanvasSize(new Dimension(1000, 1000));
+		g.drawString("MIDO", 500, 20);
+		g.drawString("Licenses", 500, 50);
+		g.drawString("Sur dossier, bac S toutes spé", 100, 60);
+		
+		int nbMasters = 3;
+				
+		for(int i = 0; i<nbMasters; i++){
+			g.drawString("Master n°" + i, 300 + i * 100, 180);
+			
+		}
+		
+		
+		
+		for(int i = 0; i<nbMasters; i++){
+			g.drawString("Doctorat n°" + i, 300 + i * 100, 300);
+		}
+		
+		g.fill(new Rectangle(10, 10, 100, 100));
+//		
+//        g.drawLine(60, 60, 100, 100);
+//        g.drawLine(100, 80, 100, 100);
+//        g.drawLine(80, 100, 100, 100);
+//        g.drawString("Licence 2", 110, 110);
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes
