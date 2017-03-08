@@ -8,6 +8,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class ReadXML {
@@ -33,6 +36,26 @@ public class ReadXML {
 		
 		// MyFile is our XML file which contains data about Maude Manouvrier
 		final Document myDocument= db.parse(new File("myFile.xml"));
+
+		/*
+		 * Now we are going to create the Enseignant object and add set some attributes, thanks to the parser
+		 */
+		Element root = myDocument.getDocumentElement();
+		NodeList childNodesList = root.getChildNodes();
+		int nbRootNodesList = childNodesList.getLength();
+		
+		// We show node Root Name !
+		System.out.println(root.getNodeName());
+		
+		// We show 
+		for (int i = 0; i<nbRootNodesList; i++) {
+		    if(childNodesList.item(i).getNodeType() == Node.ELEMENT_NODE) {
+		         Node person = childNodesList.item(i);
+		        System.out.println(person.getNodeName());
+		    }				
+		}
+
+		
 		}
 		catch (final ParserConfigurationException e) {
 			System.out.println("Attention, error from DocumentBuilder : parser isn't configured");

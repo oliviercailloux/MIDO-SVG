@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<repertoire>
+<enseignant>
     <!-- Ceci est un test pour la creation d'un objet enseignant -->
-    <personne sexe="masculin">
+    <personne sexe="feminin">
         <nom>MANOUVRIER</nom>
         <prenom>Maude</prenom>
         <telephones>
@@ -10,4 +10,4 @@
         </telephones>
         <adresse> 123 rue de Paris - 92100 BOULBI</adresse>
     </personne>
-</repertoire>
+</enseignant>
