@@ -54,17 +54,27 @@ public class ReadXML {
 	        if(childNodesList.item(i).getNodeType() == Node.ELEMENT_NODE) {
 	            Element person = (Element) childNodesList.item(i);
 				
-		    	// We show the sex of the person ; using getAttributte Method
+		    	// We show the gender of the person ; using getAttribute Method
 			    System.out.println("\nThe PERSON");
-			    System.out.println("sex : " + person.getAttribute("sexe"));
+			    System.out.println("GENDER : " + person.getAttribute("sexe"));
 				
 		    	// We use getElementsByTagName in order to get the name and the surname of the person
 			    Element name = (Element) person.getElementsByTagName("nom").item(0);
 			    Element surname = (Element) person.getElementsByTagName("prenom").item(0);
 						
-			    //Affichage du nom et du prénom
-			    System.out.println("nom : " + name.getTextContent());
-			    System.out.println("prénom : " + surname.getTextContent());
+			    //We show the name and surname
+			    System.out.println("Name : " + name.getTextContent());
+			    System.out.println("Surname : " + surname.getTextContent());
+			    
+			    // We set attribute to the Enseignant object
+				Enseignant firstEnseignant = new Enseignant();
+				firstEnseignant.setNomEnseignant(name.getTextContent());
+				firstEnseignant.setPrenomEnseignant(surname.getTextContent());
+				
+				// Now we check whether it has been saved or not
+				System.out.println("\n READING FROM THE OBJECT "+firstEnseignant.toString());
+				System.out.println("Name obj : "+firstEnseignant.getNomEnseignant());
+				
 	        }
 	    }
 		
@@ -72,9 +82,6 @@ public class ReadXML {
 		
 
 		
-		// We set attribute to the Enseignant object
-		//Enseignant firstEnseignant = new Enseignant();
-		//firstEnseignant.setNomEnseignant(s);
 		
 		
 		}

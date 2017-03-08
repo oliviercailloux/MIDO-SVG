@@ -5,6 +5,7 @@ public class Enseignant {
 	private String prenomEnseignant;
 	private String phone;
 	private String address;
+	private String gender;
 	
 	/*
 	 * Getters And Setters
@@ -32,6 +33,12 @@ public class Enseignant {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 	
