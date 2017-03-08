@@ -48,22 +48,22 @@ public class TestSVGGen {
 
 		// Ask the test to render into the SVG Graphics2D implementation.
 		g.setPaint(Color.black);
-		g.setSVGCanvasSize(new Dimension(1000, 1000));
+		g.setSVGCanvasSize(new Dimension(780, 540));
 		g.drawString("MIDO", 500, 20);
 		g.drawString("Licenses", 500, 50);
-		g.drawString("Sur dossier, bac S toutes spé", 100, 60);
+		g.drawString("Sur dossier, bac S toutes spÃ©", 100, 60);
 		
 		int nbMasters = 3;
 				
 		for(int i = 0; i<nbMasters; i++){
-			g.drawString("Master n°" + i, 300 + i * 100, 180);
+			g.drawString("Master nÂ°" + i, 300 + i * 100, 180);
 			
 		}
 		
 		
 		
 		for(int i = 0; i<nbMasters; i++){
-			g.drawString("Doctorat n°" + i, 300 + i * 100, 300);
+			g.drawString("Doctorat nÂ°" + i, 300 + i * 100, 300);
 		}
 		
 		g.fill(new Rectangle(10, 10, 100, 100));
