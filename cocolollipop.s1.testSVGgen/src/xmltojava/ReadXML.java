@@ -23,6 +23,7 @@ public class ReadXML {
 		
 		// First we have to create an object DocumentBuilderFactory in order to use the DocumentBuilder
 		// then we create the DocumentBuilder
+		// And finally we create the document which opens "myFile.xml"
 		// the try catch block is mandatory is order to use DocumentBuilder
 		// I create 3 catch "blocks" : ParserConfigurationException, SAXException, IOException
 		try{
@@ -30,6 +31,7 @@ public class ReadXML {
 		final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		final DocumentBuilder db = dbf.newDocumentBuilder();
 		
+		// MyFile is our XML file which contains data about Maude Manouvrier
 		final Document myDocument= db.parse(new File("myFile.xml"));
 		}
 		catch (final ParserConfigurationException e) {
