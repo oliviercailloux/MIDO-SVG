@@ -1,4 +1,4 @@
-package univ;
+package com.github.cocolollipop.univ;
 
 public class Licence extends Formation{
 	public Licence(){
@@ -10,7 +10,7 @@ public class Licence extends Formation{
 	public Licence(int p, String s){
 		super();
 		this.nomFormation = 'M';
-		//if (p==2 || p==3)	// Peut etre inutile, à placer directement dans le code
+		//if (p==2 || p==3)	// Peut etre inutile, ï¿½ placer directement dans le code
 			this.niveau = p;
 		this.intitule = s;
 

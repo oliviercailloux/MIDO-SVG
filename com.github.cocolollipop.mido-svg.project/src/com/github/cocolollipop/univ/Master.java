@@ -1,10 +1,10 @@
-package univ;
+package com.github.cocolollipop.univ;
 
 public class Master extends Formation{
 	public Master(int p){
 		super();
 		this.nomFormation = 'M';
-		if (p==2 || p==1)	// Peut etre inutile, à placer directement dans le code
+		if (p==2 || p==1)	// Peut etre inutile, ï¿½ placer directement dans le code
 			this.niveau = p;
 
 	}
@@ -12,7 +12,7 @@ public class Master extends Formation{
 	public Master(int p, String s){
 		super();
 		this.nomFormation = 'M';
-		if (p==2 || p==1)	// Peut etre inutile, à placer directement dans le code
+		if (p==2 || p==1)	// Peut etre inutile, ï¿½ placer directement dans le code
 			this.niveau = p;
 		this.intitule = s;
 

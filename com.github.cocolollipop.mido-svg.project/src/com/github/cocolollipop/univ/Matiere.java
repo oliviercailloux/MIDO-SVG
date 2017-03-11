@@ -1,4 +1,4 @@
-package univ;
+package com.github.cocolollipop.univ;
 
 public class Matiere {
 	private String nomMatiere;

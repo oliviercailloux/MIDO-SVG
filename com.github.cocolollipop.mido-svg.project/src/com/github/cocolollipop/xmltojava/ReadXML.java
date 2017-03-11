@@ -1,4 +1,4 @@
-package xmltojava;
+package com.github.cocolollipop.xmltojava;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import univ.Enseignant;
+import com.github.cocolollipop.univ.Enseignant;
 
 public class ReadXML {
 	/**

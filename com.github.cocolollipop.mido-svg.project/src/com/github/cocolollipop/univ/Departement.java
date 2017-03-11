@@ -1,4 +1,4 @@
-package univ;
+package com.github.cocolollipop.univ;
 
 import java.util.ArrayList;
 
