@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<MASTER type ="M1" parcours="MIAGE">
+    <!-- Ceci est un test pour la creation de la liste des master -->
+        
+        <BlocFondamental>
+        	<Matieres>
+        		
+        	</Matieres>
+        </BlocFondamental>
+        <BlocComplementaire></BlocComplementaire>
+        <BlocCommunication></BlocCommunication>
+        
+</MASTER>
