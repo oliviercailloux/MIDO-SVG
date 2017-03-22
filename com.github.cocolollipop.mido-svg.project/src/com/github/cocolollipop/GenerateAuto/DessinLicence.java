@@ -69,6 +69,9 @@ public class DessinLicence {
 		// On fixe la couleur du pinceau à noir
 		g.setPaint(Color.black);
 		
+		
+		// On crée 3 objets : Licence 1, 2 et 3
+		
 		g.drawString("MIDO", 300, 20);
 		g.drawString("Masters", 300, 50);
 		return g;
