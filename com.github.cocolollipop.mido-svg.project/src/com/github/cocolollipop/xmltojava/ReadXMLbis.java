@@ -89,7 +89,7 @@ public class ReadXMLbis {
 				NodeList myNodeList = (NodeList) xPath.compile(expressionXpath).evaluate(myDocument, XPathConstants.NODESET);
 				System.out.println("D'après XPATH : ");
 				for (int k = 0; i < myNodeList.getLength(); i++) {
-				    System.out.println(myNodeList.item(i).getFirstChild().getNodeValue()); 
+				    System.out.println(myNodeList.item(i).getFirstChild().getNodeName()); 
 				}
 	        }
 	    }

@@ -24,14 +24,12 @@ public class ReadXML {
 	 * We will use a DOM parser
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException{
 		
 		// First we have to create an object DocumentBuilderFactory in order to use the DocumentBuilder
 		// then we create the DocumentBuilder
 		// And finally we create the document which opens "myFile.xml"
 		// the try catch block is mandatory is order to use DocumentBuilder
-		// I create 3 catch "blocks" : ParserConfigurationException, SAXException, IOException
-		try{
 			
 		final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		final DocumentBuilder db = dbf.newDocumentBuilder();
@@ -85,25 +83,6 @@ public class ReadXML {
 		
 		
 		}
-		
-		catch (final ParserConfigurationException e) {
-			System.out.println("Attention, error from DocumentBuilder : parser isn't configured");
-		    e.printStackTrace();
-
-		}
-
-		catch (final SAXException e) {
-			System.out.println("Attention, error from parser : SAXException");
-		    e.printStackTrace();
-
-		}
-
-		catch (final IOException e) {
-			System.out.println("Attention, error from parser : IOException");
-		    e.printStackTrace();
-
-		}
 
 	}
 
-}

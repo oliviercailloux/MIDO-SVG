@@ -26,21 +26,25 @@ import org.w3c.dom.Document;
  *
  */
 
-public class DessinL3 {
+public class DessinLicence {
 	int dimXCanvas = 1920;
 	int dimYCanvas = 1080;
 	int decalageX;
 	int decalageY;
 	
 	
-	
+	/**
+	 * getDecalage define decalageX and decalageY according to the number of row  and columns you want to "cut" you canvas
+	 * @param nbRow
+	 * @param nbCol
+	 */
 	public void getDecalage(int nbRow, int nbCol){
 		this.decalageX = 1920/nbCol;
 		this.decalageY = 1080/nbRow;
 	}
 	
 	
-	public void paint() throws IOException, ParserConfigurationException {
+	public SVGGraphics2D paint() throws IOException, ParserConfigurationException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 
@@ -67,11 +71,17 @@ public class DessinL3 {
 		
 		g.drawString("MIDO", 300, 20);
 		g.drawString("Masters", 300, 50);
+		return g;
 	}
 	
 	public static void main(String[] args) throws Exception {
-		DessinL3 test = new DessinL3();
-		test.paint();
+		DessinLicence test = new DessinLicence();
+		SVGGraphics2D myGraph;
+		myGraph = test.paint();
+		
+		try (Writer out = new OutputStreamWriter(new FileOutputStream("DessinLicenceTest.svg"), "UTF-8")) {
+			myGraph.stream(out, true);
+		}
 	}
 
 }
