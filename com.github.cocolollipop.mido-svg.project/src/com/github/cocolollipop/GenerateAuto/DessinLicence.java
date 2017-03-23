@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -38,7 +39,7 @@ public class DessinLicence {
 	 * @param nbRow
 	 * @param nbCol
 	 */
-	public void getDecalage(int nbRow, int nbCol){
+	public void getDecalage(int nbRow, int nbCol, int dimXCanvas, int dimYCanvas){
 		this.decalageX = 1920/nbCol;
 		this.decalageY = 1080/nbRow;
 	}
@@ -85,6 +86,35 @@ public class DessinLicence {
 		try (Writer out = new OutputStreamWriter(new FileOutputStream("DessinLicenceTest.svg"), "UTF-8")) {
 			myGraph.stream(out, true);
 		}
+		
+		// On va demaander à l'utilisateur combien de licence il veut placer, et sur combien d'années
+		int nbCol = test.askLicenceNb();
+		int nbRows= test.askYearNb();
+		
+		// on va chercher le decalage en X à créer par rapport au canvas
+		test.getDecalage(nbRows, nbCol, myGraph.);
+		
+	}
+
+
+	private int askLicenceNb() {
+		System.out.println("Combien de Licences souhaitez-vous afficher ? ");
+		Scanner sc = new Scanner ("System.in");
+		
+		// ici faire un test sur le parseInt
+		int nbCol = Integer.parseInt(sc.nextLine());
+		sc.close();
+		return nbCol;
+		
+	}
+	private int askYearNb() {
+		System.out.println("Combien d'années souhaitez-vous afficher ? ");
+		Scanner sc = new Scanner ("System.in");
+		
+		// ici faire un test sur le parseInt
+		int nbRow = Integer.parseInt(sc.nextLine());
+		sc.close();
+		return nbRow;
 	}
 
 }
