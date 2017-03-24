@@ -19,6 +19,8 @@ import org.apache.batik.svggen.SVGGraphics2D;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
+import com.github.cocolollipop.univ.Licence;
+
 /**
  * Idée de la classe DESSINL3 :
  * Dans cette classe, nous allons créer un CANVAS de taille 1920 x 1080
@@ -39,9 +41,9 @@ public class DessinLicence {
 	 * @param nbRow
 	 * @param nbCol
 	 */
-	public void getDecalage(int nbRow, int nbCol, int dimXCanvas, int dimYCanvas){
-		this.decalageX = 1920/nbCol;
-		this.decalageY = 1080/nbRow;
+	public void getDecalage(int nbRow, int nbCol){
+		this.decalageX = this.dimXCanvas/nbCol;
+		this.decalageY = this.dimYCanvas/nbRow;
 	}
 	
 	
@@ -92,7 +94,24 @@ public class DessinLicence {
 		int nbRows= test.askYearNb();
 		
 		// on va chercher le decalage en X à créer par rapport au canvas
-		test.getDecalage(nbRows, nbCol, myGraph.);
+		test.getDecalage(nbRows, nbCol);
+		
+		// On va créer une liste qui contient toutes nos licences
+		ArrayList listOfAllLicences = new ArrayList();
+		
+		// On crée nos nbRows*nbCol Licences
+		for (int i =0; i<nbCol;i++){
+			for (int j=0; j<nbRows; j++){
+				Licence myLicence = new Licence(j,"Licence TEST :"+i+" Annee : "+j);
+				listOfAllLicences.add(myLicence);
+			}
+			
+		}
+		
+		// On veut maintenant les placer correctement au bon endroit.
+		// Pour cela, on va compter le nombre de licences dont on dispose
+		int nbLicences = listOfAllLicences.size();
+		System.out.println("J'ai "+nbLicences+" Licences au total");
 		
 	}
 
@@ -109,6 +128,7 @@ public class DessinLicence {
 	}
 	private int askYearNb() {
 		System.out.println("Combien d'années souhaitez-vous afficher ? ");
+		 
 		Scanner sc = new Scanner ("System.in");
 		
 		// ici faire un test sur le parseInt

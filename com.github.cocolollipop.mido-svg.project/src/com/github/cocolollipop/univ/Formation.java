@@ -12,6 +12,7 @@ public abstract class Formation {
 	protected int posX;
 	protected int posY;
 	
+	protected Formation fils;
 	
 	
 	

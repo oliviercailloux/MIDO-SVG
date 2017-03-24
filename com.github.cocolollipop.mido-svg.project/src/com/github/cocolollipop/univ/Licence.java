@@ -11,8 +11,19 @@ public class Licence extends Formation{
 		super();
 		this.nomFormation = 'M';
 		//if (p==2 || p==3)	// Peut etre inutile, � placer directement dans le code
-			this.niveau = p;
+		this.niveau = p;
 		this.intitule = s;
+
+	}
+	
+	public Licence(int p, String s, Formation fils){
+		super();
+		this.nomFormation = 'M';
+		//if (p==2 || p==3)	// Peut etre inutile, � placer directement dans le code
+		this.niveau = p;
+		this.intitule = s;
+		
+		this.fils = fils;
 
 	}
 }
