@@ -69,7 +69,7 @@ public class ReadXMLbis {
 			    //We show the name and surname
 			    System.out.println("Name : " + name.getTextContent());
 			    System.out.println("Surname : " + surname.getTextContent());
-			    
+			    /**
 			    // We set attribute to the Enseignant object
 				Enseignant firstEnseignant = new Enseignant();
 				firstEnseignant.setNomEnseignant(name.getTextContent());
@@ -84,13 +84,15 @@ public class ReadXMLbis {
 				 * Ici on va essayer de faire intervenir XPATH pour recuperer le nom des personne
 				 *  ON DEVRA EN FAIRE UNE METHODE
 				 */
+			    /**
 				XPath xPath =  XPathFactory.newInstance().newXPath();
 				String expressionXpath = "/enseignant/personne/nom";
 				NodeList myNodeList = (NodeList) xPath.compile(expressionXpath).evaluate(myDocument, XPathConstants.NODESET);
-				System.out.println("D'après XPATH : ");
+				System.out.println("D'aprï¿½s XPATH : ");
 				for (int k = 0; i < myNodeList.getLength(); i++) {
 				    System.out.println(myNodeList.item(i).getFirstChild().getNodeName()); 
 				}
+				*/
 	        }
 	    }
 		

@@ -72,10 +72,10 @@ public class DessinLicence {
 		 * We creates the licences
 		 */
 		for (int i = 0; i < listOfAllLicences.size(); i++) {
-			g.drawString(listOfAllLicences.get(i).getIntitule(), listOfAllLicences.get(i).getPosX(),
+			g.drawString(listOfAllLicences.get(i).getFullName(), listOfAllLicences.get(i).getPosX(),
 					listOfAllLicences.get(i).getPosY());
 		}
-		
+
 		/**
 		 * Exports the SVG
 		 */
@@ -100,9 +100,10 @@ public class DessinLicence {
 		// On cr�e nos nbRows*nbCol Licences
 		for (int i = 0; i < nbCol; i++) {
 			for (int j = 0; j < nbRows; j++) {
-				Licence myLicence = new Licence(j, "Licence TEST :" + j + " Annee : " + (i + 1));
-				myLicence.setPosX(test.decalageX, i);
-				myLicence.setPosY(test.decalageY, j);
+				String name = "Licence TEST :" + j + " Annee: " + (i + 1);
+				Licence myLicence = new Licence(name, 0, 0);
+				myLicence.setPosX((test.decalageX * i));
+				myLicence.setPosY((test.decalageY * j));
 				listOfAllLicences.add(myLicence);
 			}
 

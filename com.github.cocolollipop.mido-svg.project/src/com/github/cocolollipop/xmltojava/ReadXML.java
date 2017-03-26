@@ -75,8 +75,8 @@ public class ReadXML {
 			    System.out.println("admission : " + admission.getTextContent());
 
 			    // We set attribute to the Enseignant object
-				Licence licence = new Licence();
-				licence.setNiveau(level.getTextContent());
+			//	Licence licence = new Licence();
+				//licence.setNiveau(level.getTextContent());
 	        	
 	        	
 //	            Element person = (Element) childNodesList.item(i);
@@ -108,34 +108,4 @@ public class ReadXML {
 		}
 
 	
-
-
-<<<<<<< HEAD
-		// Get a DOMImplementation.
-		DOMImplementation domImpl = db.getDOMImplementation();
-	
-		// Create an instance of org.w3c.dom.Document.
-		String svgNS = "http://www.w3.org/2000/svg";
-		Document document = domImpl.createDocument(svgNS, "svg", null);
-	
-		// Create an instance of the SVG Generator.
-		SVGGeneratorContext ctx = SVGGeneratorContext.createDefault(document);
-		ctx.setEmbeddedFontsOn(true);
-		SVGGraphics2D g = new SVGGraphics2D(ctx, false);
-	
-		// Ask the test to render into the SVG Graphics2D implementation.
-		g.setPaint(Color.black);
-		int dimX = 15000;
-		int dimY = 15000;
-		g.setSVGCanvasSize(new Dimension(dimX, dimY));
-		g.drawString("MIDO", 300, 20);
-		g.drawString("Licences", 300, 50);
-		g.drawString("L1", 300, 100);
-		g.drawString("L2", 300, 150);
-		g.drawString("L3", 300, 200);
-		g.drawString(formation.nomFormation(), 300, 200);
-	
-		}	
 }
-=======
->>>>>>> 6f434e3572f298bc0b16ddf04ab5c47699501336

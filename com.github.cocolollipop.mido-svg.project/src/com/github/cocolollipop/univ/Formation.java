@@ -9,7 +9,8 @@ public abstract class Formation {
 	protected char niveau; // Ann�e en gros L1 L2 L3 M1 M2
 	protected String admisssion; // Type d'admission : Sur dossier ou de droit gr�ce � validation ann�e n-1
 	protected ArrayList<Formation> listeFormationAccessibles; // Contient la liste des formations quel l'on peut faire apr�s la formation actuelle
-<<<<<<< HEAD
+	protected int posX;
+	protected int posY;
 	protected String fullName;
 	
 	protected int x;
@@ -22,7 +23,7 @@ public abstract class Formation {
 		this.nomFormation = nomFormation;
 	}
 	public String getIntitule() {
-		return intitule;
+		return this.intitule;
 	}
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
@@ -53,22 +54,7 @@ public abstract class Formation {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public void setX(int x) {
-		this.x = x;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	
-	public void setY(int y) {
-		this.y = y;
-	}
+
 	
 	
 	
@@ -78,27 +64,29 @@ public abstract class Formation {
 		this.y = y;
 
 	}
-=======
-	protected int posX;
-	protected int posY;
->>>>>>> 6f434e3572f298bc0b16ddf04ab5c47699501336
 	
+
 	protected Formation fils;
 	
-	public float getPosX() {
-		// TODO Auto-generated method stub
+	public int getPosX() {
+	
 		return this.posX;
 	}
-	public String getIntitule() {
-		// TODO Auto-generated method stub
-		return this.intitule;
-	}
-	public float getPosY() {
-		// TODO Auto-generated method stub
+
+	public int getPosY() {
+	
 		return this.posY;
 	}
 
-	
+	public void setPosX(int i) {
+		this.posX = i;
+		
+	}
+
+	public void setPosY(int j) {
+		this.posY = j;
+		
+	}
 	
 }	
 	

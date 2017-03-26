@@ -88,19 +88,19 @@ public class LicenceSVGGen {
 		
         // Drawing of the objects
 
-		g.drawString(L3MIAGE.getFullName(), L3MIAGE.getX(), L3MIAGE.getY());
-		g.drawString(L3MIAGEApp.getFullName(), L3MIAGEApp.getX(), L3MIAGEApp.getY());
+		g.drawString(L3MIAGE.getFullName(), L3MIAGE.getPosX(), L3MIAGE.getPosY());
+		g.drawString(L3MIAGEApp.getFullName(), L3MIAGEApp.getPosX(), L3MIAGEApp.getPosY());
 		
-		g.drawString(M1MIAGE.getFullName(), M1MIAGE.getX(), M1MIAGE.getY());
-		g.drawString(M1MIAGEApp.getFullName(), M1MIAGEApp.getX(), M1MIAGEApp.getY());
+		g.drawString(M1MIAGE.getFullName(), M1MIAGE.getPosX(), M1MIAGE.getPosY());
+		g.drawString(M1MIAGEApp.getFullName(), M1MIAGEApp.getPosX(), M1MIAGEApp.getPosY());
 		
-		g.drawString(M2MIAGEIF.getFullName(), M2MIAGEIF.getX(), M2MIAGEIF.getY());
-		g.drawString(M2MIAGEID.getFullName(), M2MIAGEID.getX(), M2MIAGEID.getY());
-		g.drawString(M2MIAGESTIN.getFullName(), M2MIAGESTIN.getX(), M2MIAGESTIN.getY());
+		g.drawString(M2MIAGEIF.getFullName(), M2MIAGEIF.getPosX(), M2MIAGEIF.getPosY());
+		g.drawString(M2MIAGEID.getFullName(), M2MIAGEID.getPosX(), M2MIAGEID.getPosY());
+		g.drawString(M2MIAGESTIN.getFullName(), M2MIAGESTIN.getPosX(), M2MIAGESTIN.getPosY());
 		
-		g.drawString(M2MIAGEIFApp.getFullName(), M2MIAGEIFApp.getX(), M2MIAGEIFApp.getY());
-		g.drawString(M2MIAGEIDApp.getFullName(), M2MIAGEIDApp.getX(), M2MIAGEIDApp.getY());
-		g.drawString(M2MIAGESTINApp.getFullName(), M2MIAGESTINApp.getX(), M2MIAGESTINApp.getY());
+		g.drawString(M2MIAGEIFApp.getFullName(), M2MIAGEIFApp.getPosX(), M2MIAGEIFApp.getPosY());
+		g.drawString(M2MIAGEIDApp.getFullName(), M2MIAGEIDApp.getPosX(), M2MIAGEIDApp.getPosY());
+		g.drawString(M2MIAGESTINApp.getFullName(), M2MIAGESTINApp.getPosX(), M2MIAGESTINApp.getPosY());
 		
 		g.setPaint(Color.green);
 		
@@ -110,14 +110,14 @@ public class LicenceSVGGen {
 		
 		// Drawing of the lines linking the objects
 
-		g.drawLine(L3MIAGE.getX() + 50, L3MIAGE.getY(), M1MIAGE.getX() + 50, M1MIAGE.getY());
-		g.drawLine(L3MIAGEApp.getX() + 50, L3MIAGEApp.getY(), M1MIAGEApp.getX() + 50, M1MIAGEApp.getY());
-		g.drawLine(M1MIAGE.getX() + 50, M1MIAGE.getY(), M2MIAGEIF.getX() + 50, M2MIAGEIF.getY());
-		g.drawLine(M1MIAGE.getX() + 50, M1MIAGE.getY(), M2MIAGEID.getX() + 50, M2MIAGEID.getY());
-		g.drawLine(M1MIAGE.getX() + 50, M1MIAGE.getY(), M2MIAGESTIN.getX() + 50, M2MIAGESTIN.getY());
-		g.drawLine(M1MIAGEApp.getX() + 50, M1MIAGEApp.getY(), M2MIAGEIFApp.getX() + 50, M2MIAGEIFApp.getY());
-		g.drawLine(M1MIAGEApp.getX() + 50, M1MIAGEApp.getY(), M2MIAGEIDApp.getX() + 50, M2MIAGEIDApp.getY());
-		g.drawLine(M1MIAGEApp.getX() + 50, M1MIAGEApp.getY(), M2MIAGESTINApp.getX() + 50, M2MIAGESTINApp.getY());
+		g.drawLine(L3MIAGE.getPosX() + 50, L3MIAGE.getPosY(), M1MIAGE.getPosX() + 50, M1MIAGE.getPosY());
+		g.drawLine(L3MIAGEApp.getPosX() + 50, L3MIAGEApp.getPosY(), M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY());
+		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY(), M2MIAGEIF.getPosX() + 50, M2MIAGEIF.getPosY());
+		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY(), M2MIAGEID.getPosX() + 50, M2MIAGEID.getPosY());
+		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY(), M2MIAGESTIN.getPosX() + 50, M2MIAGESTIN.getPosY());
+		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY(), M2MIAGEIFApp.getPosX() + 50, M2MIAGEIFApp.getPosY());
+		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY(), M2MIAGEIDApp.getPosX() + 50, M2MIAGEIDApp.getPosY());
+		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY(), M2MIAGESTINApp.getPosX() + 50, M2MIAGESTINApp.getPosY());
 
 
 
