@@ -17,6 +17,15 @@ import org.apache.batik.svggen.SVGGraphics2D;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
+import com.github.cocolollipop.univ.Departement;
+import com.github.cocolollipop.univ.Master;
+import com.github.cocolollipop.univ.Licence;
+import com.github.cocolollipop.univ.Formation;
+import com.github.cocolollipop.univ.Enseignant;
+
+
+
+
 /**
  * Based on https://xmlgraphics.apache.org/batik/using/svg-generator.html (with
  * minor modifications).
@@ -45,64 +54,72 @@ public class LicenceSVGGen {
 		SVGGeneratorContext ctx = SVGGeneratorContext.createDefault(document);
 		ctx.setEmbeddedFontsOn(true);
 		SVGGraphics2D g = new SVGGraphics2D(ctx, false);
+		
+        //Objects creation
+		
+		Departement MIDO = new Departement("MIDO", 500, 20);
+		MIDO.setNomDepartement("MIDO");
+		
+		Licence L3MIAGE = new Licence("L3 MIAGE", 250, 70);
+		Licence L3MIAGEApp = new Licence("L3 MIAGE App", 750, 70);
+
+		
+		Master M1MIAGE = new Master("M1 MIAGE", 250, 150);
+		Master M1MIAGEApp = new Master("M1 MIAGE App", 750, 150);
+		
+		Master M2MIAGEIF = new Master("M2 MIAGE IF", 100, 300);
+		Master M2MIAGEID = new Master("M2 MIAGE ID", 250, 300);
+		Master M2MIAGESTIN = new Master("M2 MIAGE STIN", 400, 300);
+		
+		Master M2MIAGEIFApp = new Master("M2 MIAGE IF App", 600, 300);
+		Master M2MIAGEIDApp = new Master("M2 MIAGE ID App", 750, 300);
+		Master M2MIAGESTINApp = new Master("M2 MIAGE STIN App", 900, 300);
+		
+		Enseignant Cailloux = new Enseignant("Cailloux Olivier", 350, 70);
+		
+		
 
 		// Ask the test to render into the SVG Graphics2D implementation.
 		g.setPaint(Color.black);
-		int dimX = 15000;
-		int dimY = 15000;
-		g.setSVGCanvasSize(new Dimension(dimX, dimY));
-		g.drawString("MIDO", 300, 20);
-		g.drawString("Masters", 300, 50);
-
-		/**
-		 * Part INFO- ORG
-		 */
-		g.drawString("INFO-ORG", 100, 75);
-
-		ArrayList<String> io_master = new ArrayList<String>();
-		io_master.add("M1");
-		io_master.add("M2");
-		ArrayList<String> io_m1_fil = new ArrayList<String>();
-		io_m1_fil.add("MIAGE classique");
-		io_m1_fil.add("MIAGE apprentissage");
-		io_m1_fil.add("Informatique de décision");
-
-		ArrayList<String> l3_fil = new ArrayList<String>();
-		l3_fil.add("Maths appliquées");
-		l3_fil.add("Informatique des Organisations");
-
-		ArrayList<String> l3_io_fil = new ArrayList<String>();
-		l3_io_fil.add("MIAGE-Apprentissage");
-		l3_io_fil.add("MIAGE-Décision");
+		int canevasX = 2480;
+		int canevasY = 3508; //A4 size
+		g.setSVGCanvasSize(new Dimension(canevasX, canevasY));
+		g.drawString(MIDO.getNomDepartement(), MIDO.getX(), MIDO.getY());
 		
-		ArrayList<String> l3_ma_fil = new ArrayList<String>();
-		l3_io_fil.add("Maths-éco");
-		l3_io_fil.add("Maths-info");
+        // Drawing of the objects
 
-		for (int i = 0; i < io_master.size(); i++) {
-			g.drawString(io_master.get(i), 30, 180 + i * 300);
-		}
-
-		for (int i = 0; i < io_m1_fil.size(); i++) {
-			g.drawString(io_m1_fil.get(i), 60, 150 + i * 30);
-			g.drawLine(50, 180, 60, 150 + i * 30);
-		}
-		for (int i = 0; i < l3_fil.size(); i++) {
-			g.drawString(l3_fil.get(i), 60, 450 + i * 60);
-			g.drawLine(50, 480, 60, 450 + i * 60);
-			
-		}
-
-		for (int i = 0; i < l3_io_fil.size(); i++) {
-			g.drawString(l3_io_fil.get(i), 175, 500 + i * 30);
-			g.drawLine(80,510, 175, 500 + i * 30);
-		}
+		g.drawString(L3MIAGE.getFullName(), L3MIAGE.getX(), L3MIAGE.getY());
+		g.drawString(L3MIAGEApp.getFullName(), L3MIAGEApp.getX(), L3MIAGEApp.getY());
 		
-		for (int i = 0; i < l3_ma_fil.size(); i++) {
-			g.drawString(l3_ma_fil.get(i), 175, 500 + i * 30);
-			g.drawLine(10,450, 175, 30 + i * 30);
-			
-		}
+		g.drawString(M1MIAGE.getFullName(), M1MIAGE.getX(), M1MIAGE.getY());
+		g.drawString(M1MIAGEApp.getFullName(), M1MIAGEApp.getX(), M1MIAGEApp.getY());
+		
+		g.drawString(M2MIAGEIF.getFullName(), M2MIAGEIF.getX(), M2MIAGEIF.getY());
+		g.drawString(M2MIAGEID.getFullName(), M2MIAGEID.getX(), M2MIAGEID.getY());
+		g.drawString(M2MIAGESTIN.getFullName(), M2MIAGESTIN.getX(), M2MIAGESTIN.getY());
+		
+		g.drawString(M2MIAGEIFApp.getFullName(), M2MIAGEIFApp.getX(), M2MIAGEIFApp.getY());
+		g.drawString(M2MIAGEIDApp.getFullName(), M2MIAGEIDApp.getX(), M2MIAGEIDApp.getY());
+		g.drawString(M2MIAGESTINApp.getFullName(), M2MIAGESTINApp.getX(), M2MIAGESTINApp.getY());
+		
+		g.setPaint(Color.green);
+		
+		g.drawString(Cailloux.getNomEnseignant(), Cailloux.getX(), Cailloux.getY());
+		
+		g.setPaint(Color.black);
+		
+		// Drawing of the lines linking the objects
+
+		g.drawLine(L3MIAGE.getX() + 50, L3MIAGE.getY(), M1MIAGE.getX() + 50, M1MIAGE.getY());
+		g.drawLine(L3MIAGEApp.getX() + 50, L3MIAGEApp.getY(), M1MIAGEApp.getX() + 50, M1MIAGEApp.getY());
+		g.drawLine(M1MIAGE.getX() + 50, M1MIAGE.getY(), M2MIAGEIF.getX() + 50, M2MIAGEIF.getY());
+		g.drawLine(M1MIAGE.getX() + 50, M1MIAGE.getY(), M2MIAGEID.getX() + 50, M2MIAGEID.getY());
+		g.drawLine(M1MIAGE.getX() + 50, M1MIAGE.getY(), M2MIAGESTIN.getX() + 50, M2MIAGESTIN.getY());
+		g.drawLine(M1MIAGEApp.getX() + 50, M1MIAGEApp.getY(), M2MIAGEIFApp.getX() + 50, M2MIAGEIFApp.getY());
+		g.drawLine(M1MIAGEApp.getX() + 50, M1MIAGEApp.getY(), M2MIAGEIDApp.getX() + 50, M2MIAGEIDApp.getY());
+		g.drawLine(M1MIAGEApp.getX() + 50, M1MIAGEApp.getY(), M2MIAGESTINApp.getX() + 50, M2MIAGESTINApp.getY());
+
+
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes

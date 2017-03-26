@@ -1,5 +1,7 @@
 package com.github.cocolollipop.xmltojava;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 
@@ -7,6 +9,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.batik.svggen.SVGGeneratorContext;
+import org.apache.batik.svggen.SVGGraphics2D;
+import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -14,6 +19,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.github.cocolollipop.univ.Enseignant;
+import com.github.cocolollipop.univ.Formation;
+import com.github.cocolollipop.univ.Licence;
+
 
 public class ReadXML {
 	/**
@@ -50,39 +58,54 @@ public class ReadXML {
 		System.out.println(root.getNodeName());
 		
 		// We show the nodeChild of the Root Node
-	    for (int i = 0; i<nbRootNodesList; i++) {
+	    for (int i = 0; i<nbRootNodesList; i++) {	    	
+	    	
 	        if(childNodesList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-	            Element person = (Element) childNodesList.item(i);
-				
-		    	// We show the gender of the person ; using getAttribute Method
-			    System.out.println("\nThe PERSON");
-			    System.out.println("GENDER : " + person.getAttribute("sexe"));
+	        	
+	        	Element formation = (Element) childNodesList.item(i);
 				
 		    	// We use getElementsByTagName in order to get the name and the surname of the person
-			    Element name = (Element) person.getElementsByTagName("nom").item(0);
-			    Element surname = (Element) person.getElementsByTagName("prenom").item(0);
-						
+			    Element nameF = (Element) formation.getElementsByTagName("nomFormation").item(0);
+			    Element level = (Element) formation.getElementsByTagName("niveau").item(0);
+			    Element intitule = (Element) formation.getElementsByTagName("intitule").item(0);
+			    Element admission = (Element) formation.getElementsByTagName("admission").item(0);
+		
 			    //We show the name and surname
-			    System.out.println("Name : " + name.getTextContent());
-			    System.out.println("Surname : " + surname.getTextContent());
-			    
+			    System.out.println("Name : " + nameF.getTextContent());
+			    System.out.println("Level : " + level.getTextContent());
+			    System.out.println("intitule : " + intitule.getTextContent());
+			    System.out.println("admission : " + admission.getTextContent());
+
 			    // We set attribute to the Enseignant object
-				Enseignant firstEnseignant = new Enseignant();
-				firstEnseignant.setNomEnseignant(name.getTextContent());
-				firstEnseignant.setPrenomEnseignant(surname.getTextContent());
-				
-				// Now we check whether it has been saved or not
-				System.out.println("\n READING FROM THE OBJECT "+firstEnseignant.toString());
-				System.out.println("Name obj : "+firstEnseignant.getNomEnseignant());
+				Licence licence = new Licence();
+				licence.setNiveau(level.getTextContent());
+	        	
+	        	
+//	            Element person = (Element) childNodesList.item(i);
+//				
+//		    	// We show the gender of the person ; using getAttribute Method
+//			    System.out.println("\nThe PERSON");
+//			    System.out.println("GENDER : " + person.getAttribute("sexe"));
+//				
+//		    	// We use getElementsByTagName in order to get the name and the surname of the person
+//			    Element name = (Element) person.getElementsByTagName("nom").item(0);
+//			    Element surname = (Element) person.getElementsByTagName("prenom").item(0);
+//						
+//			    //We show the name and surname
+//			    System.out.println("Name : " + name.getTextContent());
+//			    System.out.println("Surname : " + surname.getTextContent());
+//			    
+//			    // We set attribute to the Enseignant object
+//				Enseignant firstEnseignant = new Enseignant();
+//				firstEnseignant.setNomEnseignant(name.getTextContent());
+//				firstEnseignant.setPrenomEnseignant(surname.getTextContent());
+//				
+//				// Now we check whether it has been saved or not
+//				System.out.println("\n READING FROM THE OBJECT "+firstEnseignant.toString());
+//				System.out.println("Name obj : "+firstEnseignant.getNomEnseignant());
 				
 	        }
 	    }
-		
-		
-		
-
-		
-		
 		
 		}
 		
@@ -104,6 +127,32 @@ public class ReadXML {
 
 		}
 
-	}
+	
 
+
+		// Get a DOMImplementation.
+		DOMImplementation domImpl = db.getDOMImplementation();
+	
+		// Create an instance of org.w3c.dom.Document.
+		String svgNS = "http://www.w3.org/2000/svg";
+		Document document = domImpl.createDocument(svgNS, "svg", null);
+	
+		// Create an instance of the SVG Generator.
+		SVGGeneratorContext ctx = SVGGeneratorContext.createDefault(document);
+		ctx.setEmbeddedFontsOn(true);
+		SVGGraphics2D g = new SVGGraphics2D(ctx, false);
+	
+		// Ask the test to render into the SVG Graphics2D implementation.
+		g.setPaint(Color.black);
+		int dimX = 15000;
+		int dimY = 15000;
+		g.setSVGCanvasSize(new Dimension(dimX, dimY));
+		g.drawString("MIDO", 300, 20);
+		g.drawString("Licences", 300, 50);
+		g.drawString("L1", 300, 100);
+		g.drawString("L2", 300, 150);
+		g.drawString("L3", 300, 200);
+		g.drawString(formation.nomFormation(), 300, 200);
+	
+		}	
 }
