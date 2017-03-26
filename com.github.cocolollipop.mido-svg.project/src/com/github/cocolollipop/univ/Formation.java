@@ -9,6 +9,7 @@ public abstract class Formation {
 	protected char niveau; // Ann�e en gros L1 L2 L3 M1 M2
 	protected String admisssion; // Type d'admission : Sur dossier ou de droit gr�ce � validation ann�e n-1
 	protected ArrayList<Formation> listeFormationAccessibles; // Contient la liste des formations quel l'on peut faire apr�s la formation actuelle
+<<<<<<< HEAD
 	protected String fullName;
 	
 	protected int x;
@@ -77,8 +78,26 @@ public abstract class Formation {
 		this.y = y;
 
 	}
+=======
+	protected int posX;
+	protected int posY;
+>>>>>>> 6f434e3572f298bc0b16ddf04ab5c47699501336
 	
+	protected Formation fils;
 	
+	public float getPosX() {
+		// TODO Auto-generated method stub
+		return this.posX;
+	}
+	public String getIntitule() {
+		// TODO Auto-generated method stub
+		return this.intitule;
+	}
+	public float getPosY() {
+		// TODO Auto-generated method stub
+		return this.posY;
+	}
+
 	
 	
 }	
