@@ -1,6 +1,5 @@
 package com.github.cocolollipop.GenerateAuto;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.io.FileOutputStream;
@@ -22,10 +21,11 @@ import org.w3c.dom.Document;
 import com.github.cocolollipop.univ.Licence;
 
 /**
- * Idée de la classe DESSINL3 :
- * Dans cette classe, nous allons créer un CANVAS de taille 1920 x 1080
- * Le but est de trouver à quel endroit nous pouvons écrirer du texte
- * Comme objet nous utiliserons une formation à laquelle nous avons greffé un pere et un fils. Le fils peut contenir une Arraylist d'objets Formation
+ * Idï¿½e de la classe DESSINL3 : Dans cette classe, nous allons crï¿½er un CANVAS
+ * de taille 1920 x 1080 Le but est de trouver ï¿½ quel endroit nous pouvons
+ * ï¿½crirer du texte Comme objet nous utiliserons une formation ï¿½ laquelle nous
+ * avons greffï¿½ un pere et un fils. Le fils peut contenir une Arraylist d'objets
+ * Formation
  *
  */
 
@@ -34,19 +34,19 @@ public class DessinLicence {
 	int dimYCanvas = 1080;
 	int decalageX;
 	int decalageY;
-	
-	
+
 	/**
-	 * getDecalage define decalageX and decalageY according to the number of row  and columns you want to "cut" you canvas
+	 * getDecalage define decalageX and decalageY according to the number of row
+	 * and columns you want to "cut" you canvas
+	 * 
 	 * @param nbRow
 	 * @param nbCol
 	 */
-	public void getDecalage(int nbRow, int nbCol){
-		this.decalageX = this.dimXCanvas/nbCol;
-		this.decalageY = this.dimYCanvas/nbRow;
+	public void getDecalage(int nbRow, int nbCol) {
+		this.decalageX = this.dimXCanvas / nbCol;
+		this.decalageY = this.dimYCanvas / nbRow;
 	}
-	
-	
+
 	public SVGGraphics2D paint() throws IOException, ParserConfigurationException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
@@ -64,77 +64,89 @@ public class DessinLicence {
 		SVGGraphics2D g = new SVGGraphics2D(ctx, false);
 
 		// Ask the test to render into the SVG Graphics2D implementation.
-		
+
 		// On va d'abord fixer la dimension du plan de travails
 		g.setSVGCanvasSize(new Dimension(this.dimXCanvas, this.dimYCanvas));
 
-		
-		// On fixe la couleur du pinceau à noir
+		// On fixe la couleur du pinceau ï¿½ noir
 		g.setPaint(Color.black);
-		
-		
-		// On crée 3 objets : Licence 1, 2 et 3
-		
+
+		// On crï¿½e 3 objets : Licence 1, 2 et 3
+
 		g.drawString("MIDO", 300, 20);
 		g.drawString("Masters", 300, 50);
 		return g;
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		DessinLicence test = new DessinLicence();
 		SVGGraphics2D myGraph;
 		myGraph = test.paint();
-		
+
 		try (Writer out = new OutputStreamWriter(new FileOutputStream("DessinLicenceTest.svg"), "UTF-8")) {
 			myGraph.stream(out, true);
 		}
-		
-		// On va demaander à l'utilisateur combien de licence il veut placer, et sur combien d'années
+
+		// On va demaander ï¿½ l'utilisateur combien de licence il veut placer, et
+		// sur combien d'annï¿½es
 		int nbCol = test.askLicenceNb();
-		int nbRows= test.askYearNb();
-		
-		// on va chercher le decalage en X à créer par rapport au canvas
+		int nbRows = test.askYearNb();
+
+		// on va chercher le decalage en X ï¿½ crï¿½er par rapport au canvas
 		test.getDecalage(nbRows, nbCol);
-		
-		// On va créer une liste qui contient toutes nos licences
-		ArrayList listOfAllLicences = new ArrayList();
-		
-		// On crée nos nbRows*nbCol Licences
-		for (int i =0; i<nbCol;i++){
-			for (int j=0; j<nbRows; j++){
-				Licence myLicence = new Licence(j,"Licence TEST :"+i+" Annee : "+j);
+
+		// On va crï¿½er une liste qui contient toutes nos licences
+		ArrayList<Licence> listOfAllLicences = new ArrayList<Licence>();
+
+		// On crï¿½e nos nbRows*nbCol Licences
+		for (int i = 0; i <= nbCol; i++) {
+			for (int j = 0; j < nbRows; j++) {
+				Licence myLicence = new Licence(j, "Licence TEST :" + i + " Annee : " + j);
 				listOfAllLicences.add(myLicence);
 			}
-			
+
 		}
-		
+
 		// On veut maintenant les placer correctement au bon endroit.
 		// Pour cela, on va compter le nombre de licences dont on dispose
 		int nbLicences = listOfAllLicences.size();
-		System.out.println("J'ai "+nbLicences+" Licences au total");
+		System.out.println("J'ai " + nbLicences + " Licences au total");
 		
-	}
+		return;
 
+	}
 
 	private int askLicenceNb() {
 		System.out.println("Combien de Licences souhaitez-vous afficher ? ");
-		Scanner sc = new Scanner ("System.in");
-		
+		Scanner sc = new Scanner(System.in);
+		try {
 		// ici faire un test sur le parseInt
-		int nbCol = Integer.parseInt(sc.nextLine());
-		sc.close();
+		String entry = sc.nextLine();
+		int nbCol = Integer.parseInt(entry);
 		return nbCol;
-		
+		} finally {
+			if (sc != null) {
+				//sc.close();
+			}
+		}
+
 	}
+
 	private int askYearNb() {
-		System.out.println("Combien d'années souhaitez-vous afficher ? ");
-		 
-		Scanner sc = new Scanner ("System.in");
 		
-		// ici faire un test sur le parseInt
-		int nbRow = Integer.parseInt(sc.nextLine());
-		sc.close();
-		return nbRow;
+		System.out.println("Combien d'annï¿½es souhaitez-vous afficher ? ");
+		Scanner sc = new Scanner(System.in);
+		try {
+			// ici faire un test sur le parseInt
+			String entry = sc.nextLine();
+			int nbRow = Integer.parseInt(entry);
+			return nbRow;
+		} finally {
+			if (sc != null) {
+			//sc.close();
+			}
+		}
+
 	}
 
 }
