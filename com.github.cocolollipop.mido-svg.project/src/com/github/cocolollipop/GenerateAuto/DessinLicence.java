@@ -43,11 +43,11 @@ public class DessinLicence {
 	 * @param nbCol
 	 */
 	public void getDecalage(int nbRow, int nbCol) {
-		this.decalageX = this.dimXCanvas / nbCol;
-		this.decalageY = this.dimYCanvas / nbRow;
+		this.decalageX = this.dimXCanvas / (nbCol+1);
+		this.decalageY = this.dimYCanvas / (nbRow+1);
 	}
 
-	public SVGGraphics2D paint() throws IOException, ParserConfigurationException {
+	public SVGGraphics2D paint(ArrayList<Licence> listOfAllLicences) throws IOException, ParserConfigurationException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 
@@ -75,7 +75,9 @@ public class DessinLicence {
 
 		g.drawString("MIDO", 300, 20);
 		g.drawString("Masters", 300, 50);
-		
+		for(int i=0;i<listOfAllLicences.size();i++){
+			g.drawString(listOfAllLicences.get(i).getIntitule(),listOfAllLicences.get(i).getPosX(), listOfAllLicences.get(i).getPosY());
+		}
 		try (Writer out = new OutputStreamWriter(new FileOutputStream("DessinLicenceTest.svg"), "UTF-8")) {
 			g.stream(out, true);
 		}
@@ -97,9 +99,11 @@ public class DessinLicence {
 		ArrayList<Licence> listOfAllLicences = new ArrayList<Licence>();
 
 		// On cr�e nos nbRows*nbCol Licences
-		for (int i = 1; i <= nbCol; i++) {
-			for (int j = 1; j <= nbRows; j++) {
-				Licence myLicence = new Licence(j, "Licence TEST :" + i + " Annee : " + j);
+		for (int i = 0; i < nbCol; i++) {
+			for (int j = 0; j < nbRows; j++) {
+				Licence myLicence = new Licence(j, "Licence TEST :" + j + " Annee : " + (i+1));
+				myLicence.setPosX(test.decalageX,i);
+				myLicence.setPosY(test.decalageY,j);
 				listOfAllLicences.add(myLicence);
 			}
 
@@ -109,7 +113,7 @@ public class DessinLicence {
 		// Pour cela, on va compter le nombre de licences dont on dispose
 		int nbLicences = listOfAllLicences.size();
 		System.out.println("J'ai " + nbLicences + " Licences au total");
-		test.paint();
+		test.paint(listOfAllLicences);
 
 
 	}

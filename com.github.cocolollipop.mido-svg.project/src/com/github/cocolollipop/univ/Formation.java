@@ -14,6 +14,19 @@ public abstract class Formation {
 	
 	protected Formation fils;
 	
+	public float getPosX() {
+		// TODO Auto-generated method stub
+		return this.posX;
+	}
+	public String getIntitule() {
+		// TODO Auto-generated method stub
+		return this.intitule;
+	}
+	public float getPosY() {
+		// TODO Auto-generated method stub
+		return this.posY;
+	}
+
 	
 	
 }	

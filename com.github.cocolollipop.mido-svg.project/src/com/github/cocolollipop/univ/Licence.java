@@ -26,4 +26,19 @@ public class Licence extends Formation{
 		this.fils = fils;
 
 	}
+
+	public void setPosX(int decalageX, int i) {
+		this.posX = i*decalageX;
+		
+	}
+
+	public void setPosY(int decalageY, int j) {
+		this.posY = j*decalageY;
+		
+	}
+
+	
+	
+
+
 }
