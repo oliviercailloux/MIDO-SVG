@@ -2,11 +2,16 @@ package com.github.cocolollipop.svgGenerator;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.List;
+import java.awt.Rectangle;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,6 +19,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.batik.svggen.SVGGeneratorContext;
 import org.apache.batik.svggen.SVGGraphics2D;
+import org.apache.batik.svggen.font.Font;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
@@ -55,9 +61,11 @@ public class LicenceSVGGen {
 		ctx.setEmbeddedFontsOn(true);
 		SVGGraphics2D g = new SVGGraphics2D(ctx, false);
 		
+		
         //Objects creation
 		
 		Departement MIDO = new Departement("MIDO", 500, 20);
+
 		MIDO.setNomDepartement("MIDO");
 		
 		Licence L3MIAGE = new Licence("L3 MIAGE", 250, 70);
@@ -77,7 +85,20 @@ public class LicenceSVGGen {
 		
 		Enseignant Cailloux = new Enseignant("Cailloux Olivier", 350, 70);
 		
+		// List of objets 
 		
+		/*LinkedList<Formation> list= new LinkedList<Formation>();
+		list.add(L3MIAGE);
+		list.add(L3MIAGEApp);
+		list.add(M1MIAGEApp);
+		list.add(M1MIAGE);
+		list.add(M2MIAGEIF);
+		
+		ListIterator li = list.listIterator();
+		while(li.hasNext()){
+			g.drawString( ((Formation) li.next()).getFullName(), ((Formation) li.next()).getPosX(), ((Formation) li.next()).getPosY());
+
+		}*/
 
 		// Ask the test to render into the SVG Graphics2D implementation.
 		g.setPaint(Color.black);
@@ -102,24 +123,76 @@ public class LicenceSVGGen {
 		g.drawString(M2MIAGEIDApp.getFullName(), M2MIAGEIDApp.getPosX(), M2MIAGEIDApp.getPosY());
 		g.drawString(M2MIAGESTINApp.getFullName(), M2MIAGESTINApp.getPosX(), M2MIAGESTINApp.getPosY());
 		
-		g.setPaint(Color.green);
 		
+		g.setPaint(Color.green);
+		//g.setSVGCanvasSize(new Dimension(2,2));
+		//Font myFont = new Font("Serif", Font.BOLD, 12);
+		
+		//g.fillRect(100, 50, 200, 100);
+
 		g.drawString(Cailloux.getNomEnseignant(), Cailloux.getX(), Cailloux.getY());
 		
+		
 		g.setPaint(Color.black);
+
 		
 		// Drawing of the lines linking the objects
+		g.drawLine(L3MIAGE.getPosX() + 50, L3MIAGE.getPosY()+7, M1MIAGE.getPosX() + 50, M1MIAGE.getPosY()-20);
+		g.drawLine(L3MIAGEApp.getPosX() + 50, L3MIAGEApp.getPosY()+7, M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY()-20);
+		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY()+7, M2MIAGEIF.getPosX() + 50, M2MIAGEIF.getPosY()-20);
+		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY()+7, M2MIAGEID.getPosX() + 50, M2MIAGEID.getPosY()-20);
+		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY()+7, M2MIAGESTIN.getPosX() + 50, M2MIAGESTIN.getPosY()-20);
+		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY()+7, M2MIAGEIFApp.getPosX() + 50, M2MIAGEIFApp.getPosY()-20);
+		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY()+7, M2MIAGEIDApp.getPosX() + 50, M2MIAGEIDApp.getPosY()-20);
+		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY()+7, M2MIAGESTINApp.getPosX() + 50, M2MIAGESTINApp.getPosY()-20);
 
-		g.drawLine(L3MIAGE.getPosX() + 50, L3MIAGE.getPosY(), M1MIAGE.getPosX() + 50, M1MIAGE.getPosY());
-		g.drawLine(L3MIAGEApp.getPosX() + 50, L3MIAGEApp.getPosY(), M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY());
-		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY(), M2MIAGEIF.getPosX() + 50, M2MIAGEIF.getPosY());
-		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY(), M2MIAGEID.getPosX() + 50, M2MIAGEID.getPosY());
-		g.drawLine(M1MIAGE.getPosX() + 50, M1MIAGE.getPosY(), M2MIAGESTIN.getPosX() + 50, M2MIAGESTIN.getPosY());
-		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY(), M2MIAGEIFApp.getPosX() + 50, M2MIAGEIFApp.getPosY());
-		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY(), M2MIAGEIDApp.getPosX() + 50, M2MIAGEIDApp.getPosY());
-		g.drawLine(M1MIAGEApp.getPosX() + 50, M1MIAGEApp.getPosY(), M2MIAGESTINApp.getPosX() + 50, M2MIAGESTINApp.getPosY());
+		/* Dessiner des rectangles autour des formations initiales */
+		
+		Rectangle t = new Rectangle(L3MIAGE.getPosX()-10,L3MIAGE.getPosY()-20,L3MIAGE.getFullName().length()*10,25);
+		t.getCenterX();
+		g.draw(t);
+		
+		Rectangle t1 = new Rectangle(L3MIAGEApp.getPosX()-10,L3MIAGEApp.getPosY()-20,L3MIAGEApp.getFullName().length()*10,25);
+		t1.getCenterX();
+		g.draw(t1);
+		
+		Rectangle t2 = new Rectangle(M1MIAGE.getPosX()-10,M1MIAGE.getPosY()-20,M1MIAGE.getFullName().length()*10,25);
+		t2.getCenterX();
+		g.draw(t2);
+		
+		Rectangle t4 = new Rectangle(M2MIAGEID.getPosX()-10,M2MIAGEID.getPosY()-20,M2MIAGEID.getFullName().length()*10,25);
+		t4.getCenterX();
+		g.draw(t4);
+		
+		Rectangle t5 = new Rectangle(M2MIAGEIF.getPosX()-10,M2MIAGEIF.getPosY()-20,M2MIAGEIF.getFullName().length()*10,25);
+		t5.getCenterX();
+		g.draw(t5);
+		
+		Rectangle t6 = new Rectangle(M2MIAGESTIN.getPosX()-10,M2MIAGESTIN.getPosY()-20,M2MIAGESTIN.getFullName().length()*10,25);
+		t6.getCenterX();
+		g.draw(t6);
+		
+		
+		/* Dessiner des rectangles autour des formations en apprentissage */
 
-
+		Rectangle t3 = new Rectangle(M1MIAGEApp.getPosX()-10,M1MIAGEApp.getPosY()-20,M1MIAGEApp.getFullName().length()*10,25);
+		t3.getCenterX();
+		g.draw(t3);
+		
+		Rectangle t7 = new Rectangle(M2MIAGESTINApp.getPosX()-10,M2MIAGESTINApp.getPosY()-20,M2MIAGESTINApp.getFullName().length()*10,25);
+		t7.getCenterX();
+		g.draw(t7);
+		
+		Rectangle t8 = new Rectangle(M2MIAGEIFApp.getPosX()-10,M2MIAGEIFApp.getPosY()-20,M2MIAGEIFApp.getFullName().length()*10,25);
+		t8.getCenterX();
+		g.draw(t8);
+		
+		
+		Rectangle t9 = new Rectangle(M2MIAGEIDApp.getPosX()-10,M2MIAGEIDApp.getPosY()-20,M2MIAGEIDApp.getFullName().length()*10,25);
+		t9.getCenterX();
+		g.draw(t9);
+		
+		
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes
