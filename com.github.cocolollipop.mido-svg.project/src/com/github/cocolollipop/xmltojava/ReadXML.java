@@ -18,7 +18,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.github.cocolollipop.univ.Enseignant;
+import com.github.cocolollipop.univ.Teacher;
 import com.github.cocolollipop.univ.Formation;
 import com.github.cocolollipop.univ.Licence;
 

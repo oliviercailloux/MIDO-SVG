@@ -18,7 +18,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import com.github.cocolollipop.univ.Enseignant;
+import com.github.cocolollipop.univ.Teacher;
 
 public class ReadXMLbis {
 	/**

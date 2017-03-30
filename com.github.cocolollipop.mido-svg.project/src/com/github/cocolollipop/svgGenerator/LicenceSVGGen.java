@@ -23,11 +23,11 @@ import org.apache.batik.svggen.font.Font;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
-import com.github.cocolollipop.univ.Departement;
+import com.github.cocolollipop.univ.Department;
 import com.github.cocolollipop.univ.Master;
 import com.github.cocolollipop.univ.Licence;
 import com.github.cocolollipop.univ.Formation;
-import com.github.cocolollipop.univ.Enseignant;
+import com.github.cocolollipop.univ.Teacher;
 
 
 
@@ -64,9 +64,9 @@ public class LicenceSVGGen {
 		
         //Objects creation
 		
-		Departement MIDO = new Departement("MIDO", 500, 20);
+		Department MIDO = new Department("MIDO", 500, 20);
 
-		MIDO.setNomDepartement("MIDO");
+		MIDO.setTitle("MIDO");
 		
 		Licence L3MIAGE = new Licence("L3 MIAGE", 250, 70);
 		Licence L3MIAGEApp = new Licence("L3 MIAGE App", 750, 70);
@@ -83,7 +83,7 @@ public class LicenceSVGGen {
 		Master M2MIAGEIDApp = new Master("M2 MIAGE ID App", 750, 300);
 		Master M2MIAGESTINApp = new Master("M2 MIAGE STIN App", 900, 300);
 		
-		Enseignant Cailloux = new Enseignant("Cailloux Olivier", 350, 70);
+		Teacher Cailloux = new Teacher("Cailloux Olivier", 350, 70);
 		
 		// List of objets 
 		
@@ -130,7 +130,7 @@ public class LicenceSVGGen {
 		
 		//g.fillRect(100, 50, 200, 100);
 
-		g.drawString(Cailloux.getNomEnseignant(), Cailloux.getX(), Cailloux.getY());
+		g.drawString(Cailloux.getLastName(), Cailloux.getPosX(), Cailloux.getY());
 		
 		
 		g.setPaint(Color.black);
