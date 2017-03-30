@@ -29,11 +29,12 @@ import com.github.cocolollipop.univ.Licence;
  *
  */
 
-public class DessinLicence {
+public class DrawFormation {
+
 	int dimXCanvas = 1920;
 	int dimYCanvas = 1080;
-	int decalageX;
-	int decalageY;
+	int shiftX;
+	int shiftY;
 
 	/**
 	 * getDecalage define decalageX and decalageY according to the number of row
@@ -43,10 +44,17 @@ public class DessinLicence {
 	 * @param nbCol
 	 */
 	public void getDecalage(int nbRow, int nbCol) {
-		this.decalageX = this.dimXCanvas / (nbCol + 1);
-		this.decalageY = this.dimYCanvas / (nbRow + 1);
+		this.shiftX = this.dimXCanvas / (nbCol + 1);
+		this.shiftY = this.dimYCanvas / (nbRow + 1);
 	}
 
+	/**
+	 * Paints the drawing
+	 * 
+	 * @param listOfAllLicences
+	 * @throws IOException
+	 * @throws ParserConfigurationException
+	 */
 	public void paint(ArrayList<Licence> listOfAllLicences) throws IOException, ParserConfigurationException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
@@ -84,39 +92,6 @@ public class DessinLicence {
 		}
 	}
 
-	public static void main(String[] args) throws Exception {
-		DessinLicence test = new DessinLicence();
-
-		/** We are asking how many rows and how many columns we need **/
-		int nbCol = test.askLicenceNb();
-		int nbRows = test.askYearNb();
-
-		// on va chercher le decalage en X � cr�er par rapport au canvas
-		test.getDecalage(nbRows, nbCol);
-
-		// On va cr�er une liste qui contient toutes nos licences
-		ArrayList<Licence> listOfAllLicences = new ArrayList<Licence>();
-
-		// On cr�e nos nbRows*nbCol Licences
-		for (int i = 0; i < nbCol; i++) {
-			for (int j = 0; j < nbRows; j++) {
-				String name = "Licence TEST :" + j + " Annee: " + (i + 1);
-				Licence myLicence = new Licence(name, 0, 0);
-				myLicence.setPosX((test.decalageX * i));
-				myLicence.setPosY((test.decalageY * j));
-				listOfAllLicences.add(myLicence);
-			}
-
-		}
-
-		// On veut maintenant les placer correctement au bon endroit.
-		// Pour cela, on va compter le nombre de licences dont on dispose
-		int nbLicences = listOfAllLicences.size();
-		System.out.println("J'ai " + nbLicences + " Licences au total");
-		test.paint(listOfAllLicences);
-
-	}
-
 	private int askLicenceNb() {
 		System.out.println("Combien de Licences souhaitez-vous afficher ? ");
 		Scanner sc = new Scanner(System.in);
@@ -147,7 +122,37 @@ public class DessinLicence {
 				// sc.close();
 			}
 		}
-
 	}
 
+	public static void main(String[] args) throws Exception {
+		DrawFormation test = new DrawFormation();
+
+		/** We are asking how many rows and how many columns we need **/
+		int nbCol = test.askLicenceNb();
+		int nbRows = test.askYearNb();
+
+		// on va chercher le decalage en X � cr�er par rapport au canvas
+		test.getDecalage(nbRows, nbCol);
+
+		// On va cr�er une liste qui contient toutes nos licences
+		ArrayList<Licence> listOfAllLicences = new ArrayList<Licence>();
+
+		// On cr�e nos nbRows*nbCol Licences
+		for (int i = 0; i < nbCol; i++) {
+			for (int j = 0; j < nbRows; j++) {
+				String name = "Licence TEST :" + j + " Annee: " + (i + 1);
+				Licence myLicence = new Licence(name, 0, 0);
+				myLicence.setPosX((test.shiftX * i));
+				myLicence.setPosY((test.shiftY * j));
+				listOfAllLicences.add(myLicence);
+			}
+
+		}
+		// On veut maintenant les placer correctement au bon endroit.
+		// Pour cela, on va compter le nombre de licences dont on dispose
+		int nbLicences = listOfAllLicences.size();
+		System.out.println("J'ai " + nbLicences + " Licences au total");
+		test.paint(listOfAllLicences);
+	
+	}
 }
