@@ -104,14 +104,14 @@ public class LicenceSVGGen {
 		list.add(M2MIAGEIDApp);
 		list.add(M2MIAGESTINApp);
 		
-		L3MIAGE.addFormationAccessible(M1MIAGE);
-		L3MIAGEApp.addFormationAccessible(M1MIAGEApp);
-		M1MIAGE.addFormationAccessible(M2MIAGESTIN);
-		M1MIAGE.addFormationAccessible(M2MIAGEIF);
-		M1MIAGE.addFormationAccessible(M2MIAGEID);
-		M1MIAGEApp.addFormationAccessible(M2MIAGESTINApp);
-		M1MIAGEApp.addFormationAccessible(M2MIAGEIDApp);
-		M1MIAGEApp.addFormationAccessible(M2MIAGEIFApp);
+		L3MIAGE.addAvailableFormation(M1MIAGE);
+		L3MIAGEApp.addAvailableFormation(M1MIAGEApp);
+		M1MIAGE.addAvailableFormation(M2MIAGESTIN);
+		M1MIAGE.addAvailableFormation(M2MIAGEIF);
+		M1MIAGE.addAvailableFormation(M2MIAGEID);
+		M1MIAGEApp.addAvailableFormation(M2MIAGESTINApp);
+		M1MIAGEApp.addAvailableFormation(M2MIAGEIDApp);
+		M1MIAGEApp.addAvailableFormation(M2MIAGEIFApp);
 
 
 

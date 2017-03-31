@@ -66,7 +66,7 @@ public abstract class Formation {
 		this.listOfAvailableFormations = listOfAvailableFormations;
 	}
 
-	public void addFormationAccessible(Formation formation) {
+	public void addAvailableFormation(Formation formation) {
 		this.listOfAvailableFormations.add(formation);
 	}
 
