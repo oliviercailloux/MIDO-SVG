@@ -19,7 +19,7 @@ public abstract class Formation {
 	// Application type (for example: selection based on student records )
 	protected String admisssion;
 	// List of formations you could apply for after the current year
-	protected ArrayList<Formation> listOfFormationsAvailable;
+	protected ArrayList<Formation> listOfAvailableFormations;
 
 	protected int posX;
 	protected int posY;
@@ -30,7 +30,7 @@ public abstract class Formation {
 		return title;
 	}
 
-	public void setNomFormation(char nomFormation) {
+	public void setTitle(char nomFormation) {
 		this.title = nomFormation;
 	}
 
@@ -42,12 +42,12 @@ public abstract class Formation {
 		this.intitule = intitule;
 	}
 
-	public char getNiveau() {
+	public char getGrade() {
 		return grade;
 	}
 
-	public void setNiveau(char niveau) {
-		this.grade = niveau;
+	public void setGrade(char grade) {
+		this.grade = grade;
 	}
 
 	public String getAdmisssion() {
@@ -58,12 +58,16 @@ public abstract class Formation {
 		this.admisssion = admisssion;
 	}
 
-	public ArrayList<Formation> getListeFormationAccessibles() {
-		return listOfFormationsAvailable;
+	public ArrayList<Formation> getListOfAvailableFormations() {
+		return listOfAvailableFormations;
 	}
 
-	public void setListOfFormationAvailable(ArrayList<Formation> listOfFormationAvailable) {
-		this.listOfFormationsAvailable = listOfFormationAvailable;
+	public void setListOfAvailableFormations(ArrayList<Formation> listOfAvailableFormations) {
+		this.listOfAvailableFormations = listOfAvailableFormations;
+	}
+
+	public void addFormationAccessible(Formation formation) {
+		this.listOfAvailableFormations.add(formation);
 	}
 
 	public String getFullName() {
@@ -75,9 +79,14 @@ public abstract class Formation {
 	}
 
 	public Formation(String name, int x, int y) {
+		this.title = ' ';
+		this.intitule = " ";
+		this.grade = 0;
+		this.listOfAvailableFormations = new ArrayList<Formation>();
 		this.fullName = name;
 		this.posX = x;
 		this.posY = y;
+		
 
 	}
 

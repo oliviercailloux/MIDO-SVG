@@ -2,6 +2,7 @@ package com.github.cocolollipop.GenerateAuto;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -47,7 +48,7 @@ public class DrawFormation {
 		this.shiftX = this.dimXCanvas / (nbCol + 1);
 		this.shiftY = this.dimYCanvas / (nbRow + 1);
 	}
-
+	
 	/**
 	 * Paints the drawing
 	 * 
