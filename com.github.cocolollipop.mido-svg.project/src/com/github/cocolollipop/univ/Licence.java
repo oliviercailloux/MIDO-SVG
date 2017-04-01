@@ -4,7 +4,7 @@ public class Licence extends Formation {
 
 	// public Licence(){ super(); this.nomFormation = 'L';}
 
-	public Licence(char p, String s) {
+	/*public Licence(char p, String s) {
 		super(s, p, p);
 		this.title = 'M';
 		// if (p==2 || p==3) // Peut etre inutile, � placer directement dans le
@@ -12,10 +12,10 @@ public class Licence extends Formation {
 		this.grade = p;
 		this.intitule = s;
 
-	}
+	}*/
 
-	public Licence(String string, int i, int j) {
-		super(string, j, j);
+	public Licence(String string,int k, int i, int j) {
+		super(string, k,i, j);
 		this.posX = i;
 		this.posY = j;
 	}

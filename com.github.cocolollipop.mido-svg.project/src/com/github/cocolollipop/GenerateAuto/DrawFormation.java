@@ -142,7 +142,7 @@ public class DrawFormation {
 		for (int i = 0; i < nbCol; i++) {
 			for (int j = 0; j < nbRows; j++) {
 				String name = "Licence TEST :" + j + " Annee: " + (i + 1);
-				Licence myLicence = new Licence(name, 0, 0);
+				Licence myLicence = new Licence(name,3, 0, 0);
 				myLicence.setPosX((test.shiftX * i));
 				myLicence.setPosY((test.shiftY * j));
 				listOfAllLicences.add(myLicence);

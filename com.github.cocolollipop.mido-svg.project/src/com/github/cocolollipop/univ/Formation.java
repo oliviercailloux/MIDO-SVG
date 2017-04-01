@@ -14,7 +14,7 @@ public abstract class Formation {
 	protected String intitule;
 
 	// grade is corresponding to the year
-	protected char grade;
+	protected int grade;
 
 	// Application type (for example: selection based on student records )
 	protected String admisssion;
@@ -26,10 +26,10 @@ public abstract class Formation {
 
 	protected Formation child;
 	
-	public Formation(String name, int x, int y) {
+	public Formation(String name, int grade, int x, int y) {
 		this.title = ' ';
 		this.intitule = " ";
-		this.grade = 0;
+		this.grade = grade;
 		this.listOfAvailableFormations = new ArrayList<Formation>();
 		this.fullName = name;
 		this.posX = x;
@@ -54,7 +54,7 @@ public abstract class Formation {
 		this.intitule = intitule;
 	}
 
-	public char getGrade() {
+	public int getGrade() {
 		return grade;
 	}
 

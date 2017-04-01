@@ -65,19 +65,19 @@ public class LicenceSVGGen {
 
 		MIDO.setTitle("MIDO");
 
-		Licence L3MIAGE = new Licence("L3 MIAGE", 250, 70);
-		Licence L3MIAGEApp = new Licence("L3 MIAGE App", 750, 70);
+		Licence L3MIAGE = new Licence("L3 MIAGE",3, 250, 70);
+		Licence L3MIAGEApp = new Licence("L3 MIAGE App",3, 750, 70);
 
-		Master M1MIAGE = new Master("M1 MIAGE", 250, 150);
-		Master M1MIAGEApp = new Master("M1 MIAGE App", 750, 150);
+		Master M1MIAGE = new Master("M1 MIAGE",4, 250, 150);
+		Master M1MIAGEApp = new Master("M1 MIAGE App",4, 750, 150);
 
-		Master M2MIAGEIF = new Master("M2 MIAGE IF", 100, 300);
-		Master M2MIAGEID = new Master("M2 MIAGE ID", 250, 300);
-		Master M2MIAGESTIN = new Master("M2 MIAGE STIN", 400, 300);
+		Master M2MIAGEIF = new Master("M2 MIAGE IF",5, 100, 300);
+		Master M2MIAGEID = new Master("M2 MIAGE ID",5, 250, 300);
+		Master M2MIAGESTIN = new Master("M2 MIAGE STIN",5, 400, 300);
 
-		Master M2MIAGEIFApp = new Master("M2 MIAGE IF App", 600, 300);
-		Master M2MIAGEIDApp = new Master("M2 MIAGE ID App", 750, 300);
-		Master M2MIAGESTINApp = new Master("M2 MIAGE STIN App", 900, 300);
+		Master M2MIAGEIFApp = new Master("M2 MIAGE IF App",5, 600, 300);
+		Master M2MIAGEIDApp = new Master("M2 MIAGE ID App",5, 750, 300);
+		Master M2MIAGESTINApp = new Master("M2 MIAGE STIN App",5, 900, 300);
 
 		Teacher Cailloux = new Teacher("Cailloux Olivier", 350, 70);
 
@@ -107,11 +107,8 @@ public class LicenceSVGGen {
 		/**
 		 * To have the number of child of each formation
 		 */
-		// Comment Cocolollipop: si besoin du niveau (de l'année on peut
-		// l'ajouter au constructeur
-		//
 		for (int i = 0; i < this.list.size(); i++) {
-			System.out.println("Pour l\'annee" + " " + list.get(i).getFullName() + " a "
+			System.out.println("Pour l\'annee" + list.get(i).getGrade() + list.get(i).getFullName() + " a "
 					+ list.get(i).getListOfAvailableFormations().size() + " formations accessibles");
 
 		}
