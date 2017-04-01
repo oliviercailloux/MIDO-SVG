@@ -25,6 +25,18 @@ public abstract class Formation {
 	protected int posY;
 
 	protected Formation child;
+	
+	public Formation(String name, int x, int y) {
+		this.title = ' ';
+		this.intitule = " ";
+		this.grade = 0;
+		this.listOfAvailableFormations = new ArrayList<Formation>();
+		this.fullName = name;
+		this.posX = x;
+		this.posY = y;
+		
+
+	}
 
 	public char getNomFormation() {
 		return title;
@@ -76,18 +88,6 @@ public abstract class Formation {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
-	}
-
-	public Formation(String name, int x, int y) {
-		this.title = ' ';
-		this.intitule = " ";
-		this.grade = 0;
-		this.listOfAvailableFormations = new ArrayList<Formation>();
-		this.fullName = name;
-		this.posX = x;
-		this.posY = y;
-		
-
 	}
 
 	public int getPosX() {
