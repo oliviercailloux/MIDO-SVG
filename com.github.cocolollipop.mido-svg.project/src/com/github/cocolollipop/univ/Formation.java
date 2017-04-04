@@ -74,7 +74,7 @@ public abstract class Formation {
 	}
 
 	public int getGrade() {
-		return grade;
+		return this.grade;
 	}
 
 	public void setGrade(char grade) {

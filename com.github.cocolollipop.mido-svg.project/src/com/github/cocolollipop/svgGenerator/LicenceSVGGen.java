@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -31,7 +32,6 @@ import com.github.cocolollipop.univ.Teacher;
  * minor modifications).
  *
  */
-
 public class LicenceSVGGen {
 
 	private LinkedList<Formation> list;
@@ -132,10 +132,39 @@ public class LicenceSVGGen {
 		 */
 		for (int i = 0; i < this.list.size(); i++) {
 			System.out.println("Pour l\'annee" + list.get(i).getGrade() + list.get(i).getFullName() + " a "
-					+ list.get(i).getListOfAvailableFormations().size() + " formations accessibles");
+					+ list.get(i).getListOfAvailableFormations().size());
 
+			if (list.get(i).getListOfAvailableFormations().size() == 0) {
+				System.out.println("Pas de formation accessible");
+			}
+			for (int j = 0; j < list.get(i).getListOfAvailableFormations().size(); j++) {
+				System.out.println("Les formations accessibles sont:"
+						+ list.get(i).getListOfAvailableFormations().get(j).getFullName());
+			}
 		}
 
+		/**
+		 * Number of licences by grade
+		 */
+		ArrayList<Integer> keyGrade = new ArrayList<Integer>();
+		ArrayList<Integer> nbLicenceByGrade = new ArrayList<Integer>();
+
+		for (Formation str : this.list) {
+			if (!keyGrade.contains(str.getGrade())) {
+				keyGrade.add(str.getGrade());
+				nbLicenceByGrade.add(0);
+			}
+			int loc = keyGrade.indexOf(str.getGrade());
+			int newVal = nbLicenceByGrade.get(loc);
+			newVal++;
+			nbLicenceByGrade.set(loc, newVal);
+
+		}
+		System.out.println("AFFICHAGE DU NOMBRE DE LICENCE PAR GRADE :");
+		for (int k = 0; k < keyGrade.size(); k++) {
+			System.out.println(
+					"Pour l\'annee " + keyGrade.get(k) + " On aura en tout " + nbLicenceByGrade.get(k) + " licences");
+		}
 		// Ask the test to render into the SVG Graphics2D implementation.
 		g.setPaint(Color.black);
 		int canevasX = 2480;
