@@ -12,7 +12,8 @@ public abstract class Formation {
 	protected char title;
 	protected String fullName;
 	protected String intitule;
-
+	// this name corresponds to the name with a link ref to the program
+	private String fullNameWithLink;
 	// grade is corresponding to the year
 	protected int grade;
 
@@ -25,7 +26,7 @@ public abstract class Formation {
 	protected int posY;
 
 	protected Formation child;
-	
+
 	public Formation(String name, int grade, int x, int y) {
 		this.title = ' ';
 		this.intitule = " ";
@@ -34,11 +35,29 @@ public abstract class Formation {
 		this.fullName = name;
 		this.posX = x;
 		this.posY = y;
-		
 
 	}
 
-	public char getNomFormation() {
+	public String getFullNameWithLink() {
+		if (this.fullNameWithLink == null) {
+			return this.fullName;
+		}
+		return this.fullNameWithLink;
+	}
+
+	/**
+	 * This is to create a link for a formation. It has to be used with the
+	 * method drawString() from Graphics2D
+	 * 
+	 * @param link
+	 */
+	public void setFullNameWithLink(String link) {
+
+		this.fullNameWithLink = "<a xlink:href=\"" + link + "\" target=\"_blank\">" + this.getFullName() + "</a>";
+
+	}
+
+	public char getTitle() {
 		return title;
 	}
 
