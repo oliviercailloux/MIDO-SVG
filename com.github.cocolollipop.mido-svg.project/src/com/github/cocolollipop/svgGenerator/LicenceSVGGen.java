@@ -6,9 +6,13 @@ import java.awt.Rectangle;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -27,6 +31,10 @@ import com.github.cocolollipop.univ.Licence;
 import com.github.cocolollipop.univ.Master;
 import com.github.cocolollipop.univ.Teacher;
 
+import java.io.BufferedReader;
+import java.io.File;
+
+
 /**
  * Based on https://xmlgraphics.apache.org/batik/using/svg-generator.html (with
  * minor modifications).
@@ -34,11 +42,43 @@ import com.github.cocolollipop.univ.Teacher;
  */
 public class LicenceSVGGen {
 
-	private LinkedList<Formation> list;
+	private LinkedList<Formation> formationList;
 	int dimXCanvas = 1920;
 	int dimYCanvas = 1080;
 	int shiftX;
 	int shiftY;
+
+	/**
+	 * readTagListL3MIAGE read a file entered as a paramater and
+	 * return a table of String which contains each worlds of the file  
+	 * 
+	 * @param fileName
+	 * @return tagsList
+	 */
+	
+	public String[] readTagsList(String fileName){
+		String chaine = "";
+		
+		try
+		{
+			InputStream ips= new FileInputStream(new File(fileName)); 
+			InputStreamReader ipsr= new InputStreamReader(ips);
+			BufferedReader br= new BufferedReader(ipsr);
+			String ligne;
+			while ((ligne=br.readLine())!=null){
+				//System.out.println(ligne);
+				chaine+=ligne+" ";
+			}
+			br.close(); 
+		}		
+		catch (Exception e){
+			System.out.println(e.toString());
+		}
+
+		String[] tagsList = chaine.split(",");		
+		return tagsList;
+		
+		}
 
 	/**
 	 * getDecalage define decalageX and decalageY according to the number of row
@@ -47,6 +87,8 @@ public class LicenceSVGGen {
 	 * @param nbRow
 	 * @param nbCol
 	 */
+		
+	
 	public void getDecalage(int nbRow, int nbCol) {
 		this.shiftX = this.dimXCanvas / (nbCol + 1);
 		this.shiftY = this.dimYCanvas / (nbRow + 1);
@@ -104,19 +146,23 @@ public class LicenceSVGGen {
 
 		Teacher Cailloux = new Teacher("Cailloux Olivier", 350, 70);
 
-		// List of objets
-		this.list = new LinkedList<Formation>();
+		
 
-		this.list.add(L3MIAGE);
-		this.list.add(L3MIAGEApp);
-		this.list.add(M1MIAGE);
-		this.list.add(M1MIAGEApp);
-		this.list.add(M2MIAGEIF);
-		this.list.add(M2MIAGEID);
-		this.list.add(M2MIAGESTIN);
-		this.list.add(M2MIAGEIFApp);
-		this.list.add(M2MIAGEIDApp);
-		this.list.add(M2MIAGESTINApp);
+		
+		
+		// List of objets
+		this.formationList = new LinkedList<Formation>();
+
+		this.formationList.add(L3MIAGE);
+		this.formationList.add(L3MIAGEApp);
+		this.formationList.add(M1MIAGE);
+		this.formationList.add(M1MIAGEApp);
+		this.formationList.add(M2MIAGEIF);
+		this.formationList.add(M2MIAGEID);
+		this.formationList.add(M2MIAGESTIN);
+		this.formationList.add(M2MIAGEIFApp);
+		this.formationList.add(M2MIAGEIDApp);
+		this.formationList.add(M2MIAGESTINApp);
 
 		L3MIAGE.addAvailableFormation(M1MIAGE);
 		L3MIAGEApp.addAvailableFormation(M1MIAGEApp);
@@ -130,16 +176,16 @@ public class LicenceSVGGen {
 		/**
 		 * To have the number of child of each formation
 		 */
-		for (int i = 0; i < this.list.size(); i++) {
-			System.out.println("Pour l\'annee" + list.get(i).getGrade() + list.get(i).getFullName() + " a "
-					+ list.get(i).getListOfAvailableFormations().size());
+		for (int i = 0; i < this.formationList.size(); i++) {
+			System.out.println("Pour l\'annee" + formationList.get(i).getGrade() + formationList.get(i).getFullName() + " a "
+					+ formationList.get(i).getListOfAvailableFormations().size());
 
-			if (list.get(i).getListOfAvailableFormations().size() == 0) {
+			if (formationList.get(i).getListOfAvailableFormations().size() == 0) {
 				System.out.println("Pas de formation accessible");
 			}
-			for (int j = 0; j < list.get(i).getListOfAvailableFormations().size(); j++) {
+			for (int j = 0; j < formationList.get(i).getListOfAvailableFormations().size(); j++) {
 				System.out.println("Les formations accessibles sont:"
-						+ list.get(i).getListOfAvailableFormations().get(j).getFullName());
+						+ formationList.get(i).getListOfAvailableFormations().get(j).getFullName());
 			}
 		}
 
@@ -149,7 +195,7 @@ public class LicenceSVGGen {
 		ArrayList<Integer> keyGrade = new ArrayList<Integer>();
 		ArrayList<Integer> nbLicenceByGrade = new ArrayList<Integer>();
 
-		for (Formation str : this.list) {
+		for (Formation str : this.formationList) {
 			if (!keyGrade.contains(str.getGrade())) {
 				keyGrade.add(str.getGrade());
 				nbLicenceByGrade.add(0);
@@ -165,6 +211,15 @@ public class LicenceSVGGen {
 			System.out.println(
 					"Pour l\'annee " + keyGrade.get(k) + " On aura en tout " + nbLicenceByGrade.get(k) + " licences");
 		}
+		
+        // Fill the M2MIAGEID list of tags		
+
+	    M2MIAGEID.setTagsList(this.readTagsList("M2MIAGEID.txt"));
+	    
+	    
+	    // The tag that the user selected (he wants to see what are the formation that teaches this course)
+	    String userSelectedTag = "Socio";
+	    
 		// Ask the test to render into the SVG Graphics2D implementation.
 		g.setPaint(Color.black);
 		int canevasX = 2480;
@@ -174,10 +229,10 @@ public class LicenceSVGGen {
 
 		// Drawing of the objects
 
-		for (Formation str : this.list)
+		for (Formation f : this.formationList)
 			// g.drawString(str.getFullName(), str.getPosX(), str.getPosY());
 
-			g.drawString(str.getFullNameWithLink(), str.getPosX(), str.getPosY());
+			g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());
 
 		g.setPaint(Color.green);
 		// g.setSVGCanvasSize(new Dimension(2,2));
@@ -192,21 +247,44 @@ public class LicenceSVGGen {
 
 		// Drawing of the lines linking the objects
 
-		for (Formation str : this.list) {
-			for (Formation str2 : str.getListOfAvailableFormations()) {
-				g.drawLine(str.getPosX() + lineCENTER, str.getPosY() + lineYDOWN, str2.getPosX() + lineCENTER,
-						str2.getPosY() + lineYUP);
+		for (Formation f : this.formationList) {
+			for (Formation f2 : f.getListOfAvailableFormations()) {
+				g.drawLine(f.getPosX() + lineCENTER, f.getPosY() + lineYDOWN, f2.getPosX() + lineCENTER,
+						f2.getPosY() + lineYUP);
 
 			}
 		}
 
 		/* Dessiner des rectangles autour des formations initiales */
 
-		for (Formation str : this.list) {
-			Rectangle t = new Rectangle(str.getPosX() - 10, str.getPosY() - 20, str.getFullName().length() * 10, 25);
+		for (Formation f : this.formationList) {
+			Rectangle t = new Rectangle(f.getPosX() - 10, f.getPosY() - 20, f.getFullName().length() * 10, 25);
 			g.draw(t);
 
 		}
+		
+		// Tag checking
+		if (userSelectedTag != null){
+			for (Formation f : this.formationList) {
+				if(Arrays.asList(f.getTagslist()).contains(userSelectedTag)){
+						g.setPaint(Color.red);
+						g.drawString("(X)", f.getPosX() + 50, f.getPosY() + 20);
+						System.out.println("trofort");
+						
+					}
+				}
+			}
+
+				
+		
+		
+		// Printing the tag selected by the user
+		g.drawString("Tags selected : " + userSelectedTag + " (X)", 20, 900);
+		
+		
+		g.setPaint(Color.black);
+		
+			
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes
@@ -232,5 +310,6 @@ public class LicenceSVGGen {
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();
 		test.paint();
+		
 	}
 }

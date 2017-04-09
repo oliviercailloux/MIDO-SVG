@@ -21,6 +21,8 @@ public abstract class Formation {
 	protected String admisssion;
 	// List of formations you could apply for after the current year
 	protected ArrayList<Formation> listOfAvailableFormations;
+	
+	protected String tagsList[];
 
 	protected int posX;
 	protected int posY;
@@ -33,6 +35,7 @@ public abstract class Formation {
 		this.grade = grade;
 		this.listOfAvailableFormations = new ArrayList<Formation>();
 		this.fullName = name;
+		this.tagsList = new String[]{"", "", "", "", ""};
 		this.posX = x;
 		this.posY = y;
 
@@ -100,6 +103,15 @@ public abstract class Formation {
 	public void addAvailableFormation(Formation formation) {
 		this.listOfAvailableFormations.add(formation);
 	}
+	
+	public String[] getTagslist() {
+		return tagsList;
+	}
+
+	public void setTagsList(String[] tagsList) {
+		this.tagsList = tagsList;
+	}
+	
 
 	public String getFullName() {
 		return fullName;
