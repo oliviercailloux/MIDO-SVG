@@ -42,12 +42,22 @@ import java.io.File;
  */
 public class LicenceSVGGen {
 
+	
 	private LinkedList<Formation> formationList;
+	private LinkedList<Licence> licenceList;
+	private LinkedList<Master> masterList;
+
+	String format="";
 	int dimXCanvas = 1920;
 	int dimYCanvas = 1080;
+	int canevasX = 0;
+	int canevasY = 0;
 	int shiftX;
 	int shiftY;
 
+	
+	
+	
 	/**
 	 * readTagListL3MIAGE read a file entered as a paramater and
 	 * return a table of String which contains each worlds of the file  
@@ -79,6 +89,82 @@ public class LicenceSVGGen {
 		return tagsList;
 		
 		}
+	
+	
+	/** 
+	 * fillLicenceList method fills the licenceList with objects from FormationList that are of type Licence
+	 * 
+	 */
+	
+	public void fillLicenceList(){
+		this.licenceList = new LinkedList<Licence>();
+
+		for (Formation formation: formationList){
+			if(formation.getClass().getSimpleName().equals("Licence"))
+				licenceList.add((Licence) formation);				
+		}		
+	}
+	
+	/** 
+	 * fillMasterList method fills the MasterList with objects from FormationList that are of type Master
+	 * 
+	 */
+	
+	public void fillMasterList(){
+		this.masterList = new LinkedList<Master>();
+
+		for (Formation formation: formationList){
+			if(formation.getClass().getSimpleName().equals("Master"))
+				masterList.add((Master) formation);
+		}		
+	}
+	
+	
+	
+	// GETTERS
+
+	public int getCanevasX() {
+		return canevasX;
+	}
+
+	public int getCanevasY() {
+		return canevasY;
+	}
+
+	// SETTERS
+
+	public void setCanevasX(int canevasX) {
+		this.canevasX = canevasX;
+	}
+
+
+	public void setCanevasY(int canevasY) {
+		this.canevasY = canevasY;
+	}
+
+
+	
+	/** 
+	 * changeFormat method change the format of the canevas to A3 or A4 and throws an exception if it's neither A4 nor A3
+	 * @param format would be equal to A3/a3 or A4/a4
+	 * @throws Exception
+	 */
+	
+	void changeFormat(String format) throws Exception{
+		
+		 if(format=="A4"|| format=="a4"){
+			 setCanevasX(2480);
+			 setCanevasY(3508);
+		 }
+		 
+		 else if (format=="A3" || format=="a3"){
+			 setCanevasX(3508); //3508
+			 setCanevasY(4961); //4961
+		 }
+		 else throw new Exception("This size isn't availaible, please choose between A3 or A4");
+	}
+	
+	
 
 	/**
 	 * getDecalage define decalageX and decalageY according to the number of row
@@ -86,15 +172,15 @@ public class LicenceSVGGen {
 	 * 
 	 * @param nbRow
 	 * @param nbCol
-	 */
-		
+	 */	
 	
 	public void getDecalage(int nbRow, int nbCol) {
 		this.shiftX = this.dimXCanvas / (nbCol + 1);
 		this.shiftY = this.dimYCanvas / (nbRow + 1);
 	}
 
-	public void paint() throws IOException, ParserConfigurationException {
+	public void paint() throws Exception {
+		
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 
@@ -145,9 +231,6 @@ public class LicenceSVGGen {
 		Master M2MIAGESTINApp = new Master("M2 MIAGE STIN App", 5, 900, 300);
 
 		Teacher Cailloux = new Teacher("Cailloux Olivier", 350, 70);
-
-		
-
 		
 		
 		// List of objets
@@ -172,6 +255,12 @@ public class LicenceSVGGen {
 		M1MIAGEApp.addAvailableFormation(M2MIAGESTINApp);
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIDApp);
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIFApp);
+		
+		
+		
+		fillLicenceList();
+		fillMasterList();
+
 
 		/**
 		 * To have the number of child of each formation
@@ -192,6 +281,7 @@ public class LicenceSVGGen {
 		/**
 		 * Number of licences by grade
 		 */
+		
 		ArrayList<Integer> keyGrade = new ArrayList<Integer>();
 		ArrayList<Integer> nbLicenceByGrade = new ArrayList<Integer>();
 
@@ -218,50 +308,86 @@ public class LicenceSVGGen {
 	    
 	    
 	    // The tag that the user selected (he wants to see what are the formation that teaches this course)
+	    
 	    String userSelectedTag = "Socio";
 	    
 		// Ask the test to render into the SVG Graphics2D implementation.
+	    
 		g.setPaint(Color.black);
-		int canevasX = 2480;
-		int canevasY = 3508; // A4 size
+		changeFormat("A4"); // size A4 
 		g.setSVGCanvasSize(new Dimension(canevasX, canevasY));
 		g.drawString(MIDO.getNomDepartement(), MIDO.getX(), MIDO.getY());
 
-		// Drawing of the objects
+		
+		/**
+		 * Drawing of the objects
+		 *the user has the choice between showing all "formations" or only "licence" or master 
+		 *for that he has to change the @param showOnly to (licenceOnly, masterOnly, both)
+		 *then the rectangles arround the "formations" are drawn, lines also 
+		*/
+		
+		String showOnly="licenceOnly";
+		
+		// showing only licence formations
+		
+		if(showOnly=="licenceOnly"){		
+			for (Formation l : this.licenceList){
+				g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY()); // write the name of formation
+				Rectangle t = new Rectangle(l.getPosX() - 10, l.getPosY() - 20, l.getFullName().length() * 10, 25); // draw rectangle
+				g.draw(t);
+				
+				for (Formation l2 : l.getListOfAvailableFormations()) { // draw the lines between the formation and the avalaible formations
+				g.drawLine(l.getPosX() + lineCENTER, l.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
+						l2.getPosY() + lineYUP);
 
-		for (Formation f : this.formationList)
-			// g.drawString(str.getFullName(), str.getPosX(), str.getPosY());
+			}
+				
+			}
+			
+		}
+		
+		// showing only master formations 
+		
+		else if(showOnly=="masterOnly"){			
+			for (Formation  m : this.masterList){
+				g.drawString(m.getFullNameWithLink(), m.getPosX(), m.getPosY());
+				Rectangle t = new Rectangle(m.getPosX() - 10, m.getPosY() - 20, m.getFullName().length() * 10, 25);
+				g.draw(t);
+				
+				for (Formation l2 : m.getListOfAvailableFormations()) {
+					g.drawLine(m.getPosX() + lineCENTER, m.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
+							l2.getPosY() + lineYUP);
 
-			g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());
+				}
+			}
+			
+		}
+			
+		// showing both master and licence formations
+		
+		else if(showOnly=="both"){	
+			for (Formation f : this.formationList){
+				g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());	
+				Rectangle t = new Rectangle(f.getPosX() - 10, f.getPosY() - 20, f.getFullName().length() * 10, 25);
+				g.draw(t);
+				
+				for (Formation l2 : f.getListOfAvailableFormations()) {
+					g.drawLine(f.getPosX() + lineCENTER, f.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
+							l2.getPosY() + lineYUP);
 
+				}
+			}
+			
+		}
+		
+		
 		g.setPaint(Color.green);
-		// g.setSVGCanvasSize(new Dimension(2,2));
-		// Font myFont = new Font("Serif", Font.BOLD, 12);
-
-		// g.fillRect(100, 50, 200, 100);
 
 		String fullname = Cailloux.getLastName() + " " + Cailloux.getFirstName();
 		g.drawString(fullname, Cailloux.getPosX(), Cailloux.getPosX());
 
 		g.setPaint(Color.black);
 
-		// Drawing of the lines linking the objects
-
-		for (Formation f : this.formationList) {
-			for (Formation f2 : f.getListOfAvailableFormations()) {
-				g.drawLine(f.getPosX() + lineCENTER, f.getPosY() + lineYDOWN, f2.getPosX() + lineCENTER,
-						f2.getPosY() + lineYUP);
-
-			}
-		}
-
-		/* Dessiner des rectangles autour des formations initiales */
-
-		for (Formation f : this.formationList) {
-			Rectangle t = new Rectangle(f.getPosX() - 10, f.getPosY() - 20, f.getFullName().length() * 10, 25);
-			g.draw(t);
-
-		}
 		
 		// Tag checking
 		if (userSelectedTag != null){
@@ -275,16 +401,13 @@ public class LicenceSVGGen {
 				}
 			}
 
-				
-		
-		
+					
 		// Printing the tag selected by the user
 		g.drawString("Tags selected : " + userSelectedTag + " (X)", 20, 900);
 		
 		
 		g.setPaint(Color.black);
-		
-			
+				
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes
@@ -299,14 +422,20 @@ public class LicenceSVGGen {
 		String content = IOUtils.toString(new FileInputStream("outLicence.svg"), "UTF-8");
 		content = content.replaceAll("&lt;", "<");
 		content = content.replaceAll("&gt;", ">");
+		
+		
 		// the line below was done because the unicode="&lt;" generated by the
 		// g.stream() was first replaced by unicode="<" so we had to remove this
 		// because we (hopefully) don't need it
+		
 		content = content.replaceAll("unicode=\"<\"", "unicode=\"\"");
 		IOUtils.write(content, new FileOutputStream("outLicence.svg"), "UTF-8");
 
 	}
 
+	
+	// main function 
+	
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();
 		test.paint();
