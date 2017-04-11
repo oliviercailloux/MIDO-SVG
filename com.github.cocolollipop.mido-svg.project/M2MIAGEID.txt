@@ -1,1 +1,1 @@
-DM,Probas,Socio,BDR,Expression,ADD,Finance,ISI,Anglais,
+DM,Probas,Socio,BDR,Rugby,ADD,Finance,ISI,Anglais,

@@ -352,7 +352,7 @@ public class LicenceSVGGen {
 	    // The tag that the user selected (he wants to see what are the formation that teaches this course)
 	    
 	    //String userSelectedTag = "Probas";
-	    String userSelectedTags[] = {"Logique"};
+	    String userSelectedTags[] = {"Rugby","ADD","Espagnol"};
 	    
 		// Ask the test to render into the SVG Graphics2D implementation.
 	    
@@ -518,12 +518,18 @@ public class LicenceSVGGen {
 		
 		
 		// Tag checking
-		
-		for (String str : userSelectedTags){
-			for (Formation f : this.formationList) {
+		int cptTags = 0;
+		for (Formation f : this.formationList) {	
+			cptTags = 0;
+			for (String str : userSelectedTags){
+			
 				if(Arrays.asList(f.getTagslist()).contains(str)){
+					cptTags++;
+					
+					if (cptTags == userSelectedTags.length){
 						g.setPaint(Color.red);
-						g.drawString("(X)", f.getPosX() + 50, f.getPosY() + 20);						
+						g.drawString("(X)", f.getPosX() + 50, f.getPosY() + 20);
+						}
 					}
 				}
 			}

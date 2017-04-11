@@ -1,1 +1,1 @@
-Compta,Probas,Graphes,BDR,Expression,Trading,Finance,ISI,Anglais,
+Compta,Probas,Graphes,BDR,Expression,Logique,Finance,ISI,Anglais,
