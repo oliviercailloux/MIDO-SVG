@@ -1,1 +1,1 @@
-Maths,Eco,JavaScript,Stat,Socio
+DM,Probas,Socio,BDR,Expression,ADD,Finance,ISI,Anglais,

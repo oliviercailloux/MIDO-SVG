@@ -343,13 +343,16 @@ public class LicenceSVGGen {
 		}
 		
         // Fill the M2MIAGEID list of tags		
-
-	    M2MIAGEID.setTagsList(this.readTagsList("M2MIAGEID.txt"));
+		L3MIAGE.setTagsList(this.readTagsList("L3MIAGE.txt"));
+		M2MIAGEIF.setTagsList(this.readTagsList("M2MIAGEIF.txt"));
+		M2MIAGEID.setTagsList(this.readTagsList("M2MIAGEID.txt"));
+	    M2MIAGESTIN.setTagsList(this.readTagsList("M2MIAGESTIN.txt"));
 	    
 	    
 	    // The tag that the user selected (he wants to see what are the formation that teaches this course)
 	    
-	    String userSelectedTag = "Socio";
+	    //String userSelectedTag = "Probas";
+	    String userSelectedTags[] = {"Logique"};
 	    
 		// Ask the test to render into the SVG Graphics2D implementation.
 	    
@@ -515,21 +518,15 @@ public class LicenceSVGGen {
 		
 		
 		// Tag checking
-		if (userSelectedTag != null){
+		
+		for (String str : userSelectedTags){
 			for (Formation f : this.formationList) {
-				if(Arrays.asList(f.getTagslist()).contains(userSelectedTag)){
+				if(Arrays.asList(f.getTagslist()).contains(str)){
 						g.setPaint(Color.red);
-						g.drawString("(X)", f.getPosX() + 50, f.getPosY() + 20);
-						System.out.println("trofort");
-						
+						g.drawString("(X)", f.getPosX() + 50, f.getPosY() + 20);						
 					}
 				}
 			}
-
-					
-		// Printing the tag selected by the user
-		g.drawString("Tags selected : " + userSelectedTag + " (X)", 20, 900);
-		
 		
 		g.setPaint(Color.black);
 				
