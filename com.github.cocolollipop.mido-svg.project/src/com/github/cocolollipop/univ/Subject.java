@@ -11,6 +11,16 @@ public class Subject {
 	private int credit;
 	private int posX;
 	private int posY;
+	
+
+	public Subject(String title, Teacher responsible, int credit, int posX, int posY) {
+		this.title = title;
+		this.responsible = responsible;
+		this.credit = credit;
+		this.posX = posX;
+		this.posY = posY;
+	}
+	
 
 	public int getPosX() {
 		return posX;
@@ -27,4 +37,30 @@ public class Subject {
 	public void setPosY(int y) {
 		this.posY = y;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Teacher getResponsible() {
+		return responsible;
+	}
+
+	public void setResponsible(Teacher responsible) {
+		this.responsible = responsible;
+	}
+
+	public int getCredit() {
+		return credit;
+	}
+
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+	
+	
 }

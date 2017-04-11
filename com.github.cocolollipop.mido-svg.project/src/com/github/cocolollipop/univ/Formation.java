@@ -21,6 +21,10 @@ public abstract class Formation {
 	protected String admisssion;
 	// List of formations you could apply for after the current year
 	protected ArrayList<Formation> listOfAvailableFormations;
+	// list of subjects that contain each formation
+	protected ArrayList<Subject> listOfsubjects;
+	// the main responsible of the formation
+	protected Teacher teacher;
 	
 	protected String tagsList[];
 
@@ -38,6 +42,9 @@ public abstract class Formation {
 		this.tagsList = new String[]{"", "", "", "", ""};
 		this.posX = x;
 		this.posY = y;
+		this.teacher=new Teacher();
+		this.listOfsubjects=new ArrayList<Subject>();
+		this.admisssion ="";
 
 	}
 
@@ -140,5 +147,26 @@ public abstract class Formation {
 		this.posY = j;
 
 	}
+
+	public ArrayList<Subject> getListOfsubjects() {
+		return listOfsubjects;
+	}
+	
+	public void addSubjectsOfFormation(Subject s){
+		this.listOfsubjects.add(s);
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public String getnameTeacher(){
+		return teacher.getFullNameTeacher();
+	}
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+	
+	
 
 }

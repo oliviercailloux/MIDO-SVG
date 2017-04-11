@@ -63,19 +63,30 @@ public class Teacher {
 		this.posX = posX;
 	}
 
-	public int getY() {
+	public int getPosY() {
 		return posY;
 	}
 
-	public void setY(int posY) {
+	public void setPosY(int posY) {
 		this.posY = posY;
 	}
 
-	public Teacher(String name, int x, int y) {
-		this.lastName = name;
+	public Teacher(String lname, String fname, int x, int y) {
+		this.lastName = lname;
+		this.firstName = fname;
 		this.posX = x;
 		this.posY = y;
 
+	}
+	public Teacher(){
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.posX = posX;
+		this.posY = posY;
+		
+	}
+	public String getFullNameTeacher(){
+		return lastName +" "+ firstName ;
 	}
 
 }

@@ -21,6 +21,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.batik.svggen.SVGGeneratorContext;
 import org.apache.batik.svggen.SVGGraphics2D;
+import org.apache.batik.svggen.font.Font;
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -29,6 +30,7 @@ import com.github.cocolollipop.univ.Department;
 import com.github.cocolollipop.univ.Formation;
 import com.github.cocolollipop.univ.Licence;
 import com.github.cocolollipop.univ.Master;
+import com.github.cocolollipop.univ.Subject;
 import com.github.cocolollipop.univ.Teacher;
 
 import java.io.BufferedReader;
@@ -46,6 +48,8 @@ public class LicenceSVGGen {
 	private LinkedList<Formation> formationList;
 	private LinkedList<Licence> licenceList;
 	private LinkedList<Master> masterList;
+	private LinkedList<Subject> subjectList;
+
 
 	String format="";
 	int dimXCanvas = 1920;
@@ -205,21 +209,50 @@ public class LicenceSVGGen {
 		int lineYUP = -20; // Makes the line go UP a little so the line is not
 							// on the text
 
-		// Objects creation
+		/*************** OBJECTS CREATION ***************/
 
 		Department MIDO = new Department("MIDO", 500, 20);
 
 		MIDO.setTitle("MIDO");
+		
+		//Teachers
+		Teacher Mayag = new Teacher("Mayag","Brice ",150,70);
+		Teacher Pigozzi = new Teacher("Pigozzi","Gabriella ",650, 70);
+		Teacher Cailloux = new Teacher("Cailloux","Ollivier ",150, 150);
+
+		
+		// Subjects
+
+		Subject proba = new Subject("Probabilités et Statistiques", Mayag, 3, 350, 70);
+		Subject java = new Subject("POO Java", Cailloux, 3, 350, 85);
+		Subject logique = new Subject("Logique", Pigozzi, 3, 350, 100);
+
+		
+		//L3MIAGE
 
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);
+		L3MIAGE.setTeacher(Mayag);
 		L3MIAGE.setFullNameWithLink(
 				"http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme//#FRUAI0750736TPRPRA3INF");
+		L3MIAGE.setAdmisssion("selection sur dossier");
+		
+		
+		// L3MIAGEApp
+		
 		Licence L3MIAGEApp = new Licence("L3 MIAGE App", 3, 750, 70);
+		L3MIAGEApp.setTeacher(Pigozzi);
 		L3MIAGEApp.setFullNameWithLink(
 				"http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme//#FRUAI0750736TPRPRA3INFAPP");
+		L3MIAGEApp.setAdmisssion("selection sur entretien");
+		
+		//M1MIAGE
+		
 		Master M1MIAGE = new Master("M1 MIAGE", 4, 250, 150);
+		M1MIAGE.setTeacher(Cailloux);
 		M1MIAGE.setFullNameWithLink(
 				"http://formations.dauphine.fr/offre/fr-FR/fiche/A5STI/programme//#FRUAI0750736TPRPRA4MIAI");
+		
+		
 		Master M1MIAGEApp = new Master("M1 MIAGE App", 4, 750, 150);
 
 		Master M2MIAGEIF = new Master("M2 MIAGE IF", 5, 100, 300);
@@ -230,10 +263,10 @@ public class LicenceSVGGen {
 		Master M2MIAGEIDApp = new Master("M2 MIAGE ID App", 5, 750, 300);
 		Master M2MIAGESTINApp = new Master("M2 MIAGE STIN App", 5, 900, 300);
 
-		Teacher Cailloux = new Teacher("Cailloux Olivier", 350, 70);
 		
 		
-		// List of objets
+		
+		// List of formations
 		this.formationList = new LinkedList<Formation>();
 
 		this.formationList.add(L3MIAGE);
@@ -256,10 +289,17 @@ public class LicenceSVGGen {
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIDApp);
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIFApp);
 		
-		
-		
+		// List of formations licence and master
 		fillLicenceList();
 		fillMasterList();
+		
+		
+		
+		// List of Subjects
+		
+		L3MIAGE.addSubjectsOfFormation(java);
+		L3MIAGE.addSubjectsOfFormation(logique);
+		L3MIAGE.addSubjectsOfFormation(proba);
 
 
 		/**
@@ -326,15 +366,23 @@ public class LicenceSVGGen {
 		 *then the rectangles arround the "formations" are drawn, lines also 
 		*/
 		
-		String showOnly="licenceOnly";
+		String showOnly="both";
 		
 		// showing only licence formations
 		
-		if(showOnly=="licenceOnly"){		
-			for (Formation l : this.licenceList){
+		if(showOnly=="licenceOnly"){
+
+			for (Formation l : this.licenceList){			
+				
+				g.setPaint(Color.black);
+
 				g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY()); // write the name of formation
 				Rectangle t = new Rectangle(l.getPosX() - 10, l.getPosY() - 20, l.getFullName().length() * 10, 25); // draw rectangle
 				g.draw(t);
+				
+				g.setPaint(Color.blue);
+				g.drawString(l.getAdmisssion(), l.getPosX()-30, l.getPosY()-30);
+				g.setPaint(Color.black);
 				
 				for (Formation l2 : l.getListOfAvailableFormations()) { // draw the lines between the formation and the avalaible formations
 				g.drawLine(l.getPosX() + lineCENTER, l.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
@@ -342,7 +390,30 @@ public class LicenceSVGGen {
 
 			}
 				
+			for (Subject s : l.getListOfsubjects()) {
+					g.drawString(s.getTitle(),s.getPosX(),s.getPosY());
+								
 			}
+			
+			g.setPaint(Color.red);
+
+			for (Subject s : l.getListOfsubjects()) {	
+				java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
+				g.setFont(font);
+				g.drawString(s.getResponsible().getLastName(), s.getPosX()+(s.getTitle().length()*7), s.getPosY());
+				java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
+				g.setFont(font1);
+			
+		}
+				
+			}
+			
+			g.setPaint(Color.green);
+				for(Formation f:this.licenceList)
+				g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
+				
+				g.setPaint(Color.black);
+
 			
 		}
 		
@@ -350,16 +421,45 @@ public class LicenceSVGGen {
 		
 		else if(showOnly=="masterOnly"){			
 			for (Formation  m : this.masterList){
+				g.setPaint(Color.black);
+
 				g.drawString(m.getFullNameWithLink(), m.getPosX(), m.getPosY());
 				Rectangle t = new Rectangle(m.getPosX() - 10, m.getPosY() - 20, m.getFullName().length() * 10, 25);
 				g.draw(t);
+				
+				g.setPaint(Color.blue);
+				g.drawString(m.getAdmisssion(), m.getPosX()-30, m.getPosY()-30);
+				g.setPaint(Color.black);
 				
 				for (Formation l2 : m.getListOfAvailableFormations()) {
 					g.drawLine(m.getPosX() + lineCENTER, m.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
 							l2.getPosY() + lineYUP);
 
 				}
+				
+				for (Subject s : m.getListOfsubjects()) {
+					g.drawString(s.getTitle(),s.getPosX(),s.getPosY());
+								
 			}
+				
+				g.setPaint(Color.red);
+
+				for (Subject s : m.getListOfsubjects()) {	
+					java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
+					g.setFont(font);
+					g.drawString(s.getResponsible().getLastName(), s.getPosX()+(s.getTitle().length()*7), s.getPosY());
+					java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
+					g.setFont(font1);
+				
+			}
+			}
+			
+			g.setPaint(Color.green);
+			for(Formation f:this.masterList)
+			g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
+			
+			g.setPaint(Color.black);
+
 			
 		}
 			
@@ -367,27 +467,52 @@ public class LicenceSVGGen {
 		
 		else if(showOnly=="both"){	
 			for (Formation f : this.formationList){
+				g.setPaint(Color.black);
+
 				g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());	
 				Rectangle t = new Rectangle(f.getPosX() - 10, f.getPosY() - 20, f.getFullName().length() * 10, 25);
 				g.draw(t);
-				
+				g.setPaint(Color.blue);
+
+				g.drawString(f.getAdmisssion(), f.getPosX()-30, f.getPosY()-30);
+				g.setPaint(Color.black);
+
 				for (Formation l2 : f.getListOfAvailableFormations()) {
 					g.drawLine(f.getPosX() + lineCENTER, f.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
 							l2.getPosY() + lineYUP);
 
 				}
+				
+				for (Subject s : f.getListOfsubjects()) {
+					g.drawString(s.getTitle(),s.getPosX(),s.getPosY());
+								
+			}
+				
+				g.setPaint(Color.red);
+
+				for (Subject s : f.getListOfsubjects()) {	
+					java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
+					g.setFont(font);
+					g.drawString(s.getResponsible().getLastName(), s.getPosX()+(s.getTitle().length()*7), s.getPosY());
+					java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
+					g.setFont(font1);
+
+				
+			}
+				
 			}
 			
+			g.setPaint(Color.green);
+			for(Formation f:this.formationList)
+			g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
+			
+			g.setPaint(Color.black);
+
 		}
+	
 		
 		
-		g.setPaint(Color.green);
-
-		String fullname = Cailloux.getLastName() + " " + Cailloux.getFirstName();
-		g.drawString(fullname, Cailloux.getPosX(), Cailloux.getPosX());
-
-		g.setPaint(Color.black);
-
+		
 		
 		// Tag checking
 		if (userSelectedTag != null){
