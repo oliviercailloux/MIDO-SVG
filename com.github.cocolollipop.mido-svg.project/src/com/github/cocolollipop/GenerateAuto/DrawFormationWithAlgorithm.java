@@ -82,7 +82,7 @@ public class DrawFormationWithAlgorithm {
 	 * M1Miage + App
 	 * M2 IF ID SITN + 3 app
 	 */
-	public LinkedList definemesFormations(){
+	public LinkedList<Formation> definemesFormations(){
 		LinkedList<Formation> mesFormations = new LinkedList<Formation>();
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);
 		L3MIAGE.setFullNameWithLink(
@@ -123,83 +123,83 @@ public class DrawFormationWithAlgorithm {
 
 		return mesFormations;
 	}
-	@deprecated
-	public void definirPositions(LinkedList<Formation> lesFormations, int canvasX, int canvasY){
-
-		/* On definit d'abord le decalage initial
-		Pour cela, on va analyser le contenu de lesFormations
-		On va compter le nombre de L1, L2,...
-
-		 */
-		int decalage=0;
-		int nbL1=0;
-		int nbL2=0;
-		int nbL3=0;
-		int nbM1=0;
-		int nbM2=0;
-
-		for(Formation uneFormation : lesFormations){
-			switch(uneFormation.getFullName()){
-			case "L1" :
-				nbL1++;
-				break;
-			case "L2" :
-				nbL2++;
-				break;
-			case "L3" :
-				nbL3++;
-				break;
-			case "M1" :
-				nbM1++;
-				break;
-			case "M2" :
-				nbM2++;
-				break;
-			default: System.out.println("Attention la formation nsuivante n'a pas été reconnue : "+uneFormation.getFullName());
-			}
-		}
-
-		/*
-		 *  Maintenant, on calcule le 1er decalage et on va affecter la position des L1
-		 */
-		decalage = canvasX/(nbL1+1);
-		int k=1; //correspond à un iterator, qui vaut à la fin exactement le nombre de L1
-		for(Formation uneFormation : lesFormations){
-			if (uneFormation.getFullName() == "L1"){
-				uneFormation.setPosX(decalage*k);
-				k++;
-			}
-		}
-		int decalagepred = decalage;
-		/*
-		 * On recalcule le decalage pour les L2
-		 */
-		decalage = decalage/nbL2;
-		k=1; //correspond à un iterator, qui vaut à la fin exactement le nombre de L1
-		for(Formation uneFormation : lesFormations){
-			if (uneFormation.getFullName() == "L2"){
-				uneFormation.setPosX((decalage*k)+((k-1)*decalagepred)); // Ici risque de soucis parce que c'est pas k-1 ; il faudra lire le nombre d'enfants de la 1e licence precedente
-				// il faudra faire un getPosX sur l'objet precedent parent
-				uneFormation.setPosX(uneFormation.getParent().getPosX);
-				k++;
-			}
-		}
-
-		/*
-		 * On recalcule le decalage pour les L2
-		 */
-		decalage = decalage/nbL3;
-		k=1; //correspond à un iterator, qui vaut à la fin exactement le nombre de L1
-		for(Formation uneFormation : lesFormations){
-			if (uneFormation.getFullName() == "L3"){
-				uneFormation.setPosX((decalage*k)+((k-1)*decalagepred)); // Ici risque de soucis parce que c'est pas k-1 ; il faudra lire le nombre d'enfants de la 1e licence precedente
-				// il faudra faire un getPosX sur l'objet precedent parent
-				uneFormation.setPosX(uneFormation.getParent().getPosX);
-				k++;
-			}
-		}
-
-	}
+//	@deprecated
+//	public void definirPositions(LinkedList<Formation> lesFormations, int canvasX, int canvasY){
+//
+//		/* On definit d'abord le decalage initial
+//		Pour cela, on va analyser le contenu de lesFormations
+//		On va compter le nombre de L1, L2,...
+//
+//		 */
+//		int decalage=0;
+//		int nbL1=0;
+//		int nbL2=0;
+//		int nbL3=0;
+//		int nbM1=0;
+//		int nbM2=0;
+//
+//		for(Formation uneFormation : lesFormations){
+//			switch(uneFormation.getFullName()){
+//			case "L1" :
+//				nbL1++;
+//				break;
+//			case "L2" :
+//				nbL2++;
+//				break;
+//			case "L3" :
+//				nbL3++;
+//				break;
+//			case "M1" :
+//				nbM1++;
+//				break;
+//			case "M2" :
+//				nbM2++;
+//				break;
+//			default: System.out.println("Attention la formation nsuivante n'a pas été reconnue : "+uneFormation.getFullName());
+//			}
+//		}
+//
+//		/*
+//		 *  Maintenant, on calcule le 1er decalage et on va affecter la position des L1
+//		 */
+//		decalage = canvasX/(nbL1+1);
+//		int k=1; //correspond à un iterator, qui vaut à la fin exactement le nombre de L1
+//		for(Formation uneFormation : lesFormations){
+//			if (uneFormation.getFullName() == "L1"){
+//				uneFormation.setPosX(decalage*k);
+//				k++;
+//			}
+//		}
+//		int decalagepred = decalage;
+//		/*
+//		 * On recalcule le decalage pour les L2
+//		 */
+//		decalage = decalage/nbL2;
+//		k=1; //correspond à un iterator, qui vaut à la fin exactement le nombre de L1
+//		for(Formation uneFormation : lesFormations){
+//			if (uneFormation.getFullName() == "L2"){
+//				uneFormation.setPosX((decalage*k)+((k-1)*decalagepred)); // Ici risque de soucis parce que c'est pas k-1 ; il faudra lire le nombre d'enfants de la 1e licence precedente
+//				// il faudra faire un getPosX sur l'objet precedent parent
+//				uneFormation.setPosX(uneFormation.getParent().getPosX);
+//				k++;
+//			}
+//		}
+//
+//		/*
+//		 * On recalcule le decalage pour les L2
+//		 */
+//		decalage = decalage/nbL3;
+//		k=1; //correspond à un iterator, qui vaut à la fin exactement le nombre de L1
+//		for(Formation uneFormation : lesFormations){
+//			if (uneFormation.getFullName() == "L3"){
+//				uneFormation.setPosX((decalage*k)+((k-1)*decalagepred)); // Ici risque de soucis parce que c'est pas k-1 ; il faudra lire le nombre d'enfants de la 1e licence precedente
+//				// il faudra faire un getPosX sur l'objet precedent parent
+//				uneFormation.setPosX(uneFormation.getParent().getPosX);
+//				k++;
+//			}
+//		}
+//
+//	}
 
 	public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canvasX){
 
@@ -277,12 +277,10 @@ public class DrawFormationWithAlgorithm {
 	private int compterFormation(LinkedList<Formation> lesFormations, String myYear) {
 		int nb = 0;
 		for(Formation uneFormation : lesFormations){
-			if(uneFormation.getFullName() == myYear){
+			if(uneFormation.getFullName().indexOf(myYear) != -1){
 				nb++;
 			}
-			else{
-				nb=-15000;
-			}
+			
 		}
 		return nb;
 	}
@@ -296,10 +294,11 @@ public class DrawFormationWithAlgorithm {
 	private void associerPositionX(LinkedList<Formation> lesFormations, String myYear, int decalageX, int decalageY){
 		int i = 1;
 		for(Formation uneFormation : lesFormations){
-			if(uneFormation.getFullName() == myYear){
+			if(uneFormation.getFullName().indexOf(myYear) != -1){
 				uneFormation.setPosX(decalageX*i);
 				uneFormation.setPosY(decalageY);
 				i++;
+				System.out.println("associerOK : "+uneFormation.getFullName());
 			}
 		}
 
