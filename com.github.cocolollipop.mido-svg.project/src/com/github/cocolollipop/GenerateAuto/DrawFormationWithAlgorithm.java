@@ -27,10 +27,10 @@ public class DrawFormationWithAlgorithm {
 	int dimYCanvas = 1080;
 	int shiftX;
 	int shiftY;
-	
-	
-	
-	
+
+
+
+
 	/**
 	 * Paints the drawing
 	 * 
@@ -74,9 +74,13 @@ public class DrawFormationWithAlgorithm {
 			g.stream(out, true);
 		}
 	}
-	
-	/*
-	 * defineMasters definit la liste des formations et retourne un objet mesFormations
+
+	/**
+	 * definemesFormations definit la liste des formations et retourne une Liste chainee mesFormations
+	 * detail : 
+	 * L3Miage + App
+	 * M1Miage + App
+	 * M2 IF ID SITN + 3 app
 	 */
 	public LinkedList definemesFormations(){
 		LinkedList<Formation> mesFormations = new LinkedList<Formation>();
@@ -96,7 +100,7 @@ public class DrawFormationWithAlgorithm {
 		Master M2MIAGEIFApp = new Master("M2 MIAGE IF App", 5, 600, 300);
 		Master M2MIAGEIDApp = new Master("M2 MIAGE ID App", 5, 750, 300);
 		Master M2MIAGESTINApp = new Master("M2 MIAGE STIN App", 5, 900, 300);
-		
+
 		mesFormations.add(L3MIAGE);
 		mesFormations.add(L3MIAGEApp);
 		mesFormations.add(M1MIAGE);
@@ -107,7 +111,7 @@ public class DrawFormationWithAlgorithm {
 		mesFormations.add(M2MIAGEIFApp);
 		mesFormations.add(M2MIAGEIDApp);
 		mesFormations.add(M2MIAGESTINApp);
-		
+
 		L3MIAGE.addAvailableFormation(M1MIAGE);
 		L3MIAGEApp.addAvailableFormation(M1MIAGEApp);
 		M1MIAGE.addAvailableFormation(M2MIAGESTIN);
@@ -116,45 +120,45 @@ public class DrawFormationWithAlgorithm {
 		M1MIAGEApp.addAvailableFormation(M2MIAGESTINApp);
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIDApp);
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIFApp);
-		
+
 		return mesFormations;
 	}
-
+	@deprecated
 	public void definirPositions(LinkedList<Formation> lesFormations, int canvasX, int canvasY){
-		
+
 		/* On definit d'abord le decalage initial
 		Pour cela, on va analyser le contenu de lesFormations
 		On va compter le nombre de L1, L2,...
-		
-		*/
+
+		 */
 		int decalage=0;
 		int nbL1=0;
 		int nbL2=0;
 		int nbL3=0;
 		int nbM1=0;
 		int nbM2=0;
-		
+
 		for(Formation uneFormation : lesFormations){
 			switch(uneFormation.getFullName()){
-				case "L1" :
+			case "L1" :
 				nbL1++;
 				break;
-				case "L2" :
+			case "L2" :
 				nbL2++;
 				break;
-				case "L3" :
+			case "L3" :
 				nbL3++;
 				break;
-				case "M1" :
+			case "M1" :
 				nbM1++;
 				break;
-				case "M2" :
+			case "M2" :
 				nbM2++;
 				break;
-				default: System.out.println("Attention la formation nsuivante n'a pas été reconnue : "+uneFormation.getFullName());
+			default: System.out.println("Attention la formation nsuivante n'a pas été reconnue : "+uneFormation.getFullName());
 			}
 		}
-		
+
 		/*
 		 *  Maintenant, on calcule le 1er decalage et on va affecter la position des L1
 		 */
@@ -180,7 +184,7 @@ public class DrawFormationWithAlgorithm {
 				k++;
 			}
 		}
-		
+
 		/*
 		 * On recalcule le decalage pour les L2
 		 */
@@ -194,16 +198,16 @@ public class DrawFormationWithAlgorithm {
 				k++;
 			}
 		}
-		
+
 	}
 
-public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canvasX, int canvasY){
-		
+	public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canvasX){
+
 		/* On definit d'abord le decalage initial
 		Pour cela, on va analyser le contenu de lesFormations
 		On va compter le nombre de L1, L2,...
-		
-		*/
+
+		 */
 		int decalageX=0;
 		int decalageY = 0;
 		int decalageL2=0;
@@ -213,54 +217,63 @@ public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canv
 		int nbL3=0;
 		int nbM1=0;
 		int nbM2=0;
-		
-		
+
+
 		// on va d'abord compter le nombre de formation parmi la liste envoyée
 		nbL1 = compterFormation(lesFormations,"L1");
 		nbL2 = compterFormation(lesFormations,"L2");
 		nbL3 = compterFormation(lesFormations,"L3");
 		nbM1 = compterFormation(lesFormations,"M1");
 		nbM2 = compterFormation(lesFormations,"M2");
-		
-		
+
+
 		/*
 		 * On calcule le decalage en Y ; pour cela il suffit de compter le nombre de nbL1/nbL2 != 0
 		 * POUR l'INSTANT, JAI FIXE A LARRACHE 
 		 */
-		
-		
+
+
 		/*
 		 * Maintenant on calcule le decalage en X
 		 */
 		decalageX = canvasX/(nbL1+1);
 		decalageY = 100; // A changer
 		associerPositionX(lesFormations, "L1", decalageX,decalageY);
-		
+
 		decalageX = canvasX/(nbL2+1);
 		decalageY = decalageY+200;
 		associerPositionX(lesFormations, "L2", decalageX,decalageY);
-		
+
 		decalageX = canvasX/(nbL3+1);
 		decalageY = decalageY+200;
 		associerPositionX(lesFormations, "L3", decalageX,decalageY);
-		
+
 		decalageX = canvasX/(nbM1+1);
 		decalageY = decalageY+200;
 		associerPositionX(lesFormations, "M1", decalageX,decalageY);
-		
+
 		decalageX = canvasX/(nbM2+1);
 		decalageY = decalageY+200;
 		associerPositionX(lesFormations, "M2", decalageX,decalageY);
+
+	}
+	
+	private void getPlacement(LinkedList<Formation> lesFormations) {
+		for(Formation uneFormation : lesFormations){
+			System.out.println("Pour la formation "+uneFormation.getFullName());
+			System.out.println("PosX = "+uneFormation.getPosX());
+			System.out.println("PosY = "+uneFormation.getPosY());
+			System.out.println("_________________");
+		}
 		
 	}
-
-/**
- * compterFormation count the number of "myYear" in lesFormations.getFullName()
- * 
- * @param lesFormations is a LinkedList of Formation
- * @param myYear is a year such as "L3" or "M1"
- * @return an integer or a negative if myYear isn't in the List
- */
+	/**
+	 * compterFormation count the number of "myYear" in lesFormations.getFullName()
+	 * 
+	 * @param lesFormations is a LinkedList of Formation
+	 * @param myYear is a year such as "L3" or "M1"
+	 * @return an integer or a negative if myYear isn't in the List
+	 */
 	private int compterFormation(LinkedList<Formation> lesFormations, String myYear) {
 		int nb = 0;
 		for(Formation uneFormation : lesFormations){
@@ -273,13 +286,13 @@ public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canv
 		}
 		return nb;
 	}
-/**
- * associerPositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
- * 
- * @param lesFormations is a LinkedList of Formation
- * @param myYear is a year such as "L3" or "M1"
- * @param decalage
- */
+	/**
+	 * associerPositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
+	 * 
+	 * @param lesFormations is a LinkedList of Formation
+	 * @param myYear is a year such as "L3" or "M1"
+	 * @param decalage
+	 */
 	private void associerPositionX(LinkedList<Formation> lesFormations, String myYear, int decalageX, int decalageY){
 		int i = 1;
 		for(Formation uneFormation : lesFormations){
@@ -289,8 +302,21 @@ public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canv
 				i++;
 			}
 		}
-		
+
 	}
-	
+
+	public static void main(String args[]){
+		DrawFormationWithAlgorithm test = new DrawFormationWithAlgorithm();
+		LinkedList<Formation> myFormations;
+		
+		// First we declare each formation
+		myFormations = test.definemesFormations();
+		System.out.println("AVANT :");
+		test.getPlacement(myFormations);
+		test.definirPositionsSimple(myFormations, test.dimXCanvas);
+		System.out.println("APRES :");
+		test.getPlacement(myFormations);
+	}
+
 	
 }
