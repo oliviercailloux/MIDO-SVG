@@ -1,6 +1,21 @@
 package com.github.cocolollipop.univ;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import org.apache.commons.io.IOUtils;
+
+import com.github.cocolollipop.svgGenerator.LicenceSVGGen;
 
 /**
  * This class correspond to a formation of any kind
@@ -115,7 +130,8 @@ public abstract class Formation {
 		return tagsList;
 	}
 
-	public void setTagsList(String[] tagsList) {
+	public void setTagsList(String fileName) {
+		String[] tagsList = this.readTagsList(fileName);
 		this.tagsList = tagsList;
 	}
 	
@@ -166,7 +182,64 @@ public abstract class Formation {
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
+	/**
+	 * readTagList read a file entered as a paramater and return a table
+	 * of String which contains each worlds of the file
+	 * 
+	 * @param fileName
+	 * @return tagsList
+	 */
+	public String[] readTagsList(String fileName) {
+		String chaine = "";
+
+		try {
+			InputStream ips = new FileInputStream(new File(fileName));
+			InputStreamReader ipsr = new InputStreamReader(ips);
+			BufferedReader br = new BufferedReader(ipsr);
+			String ligne;
+			while ((ligne = br.readLine()) != null) {
+				// System.out.println(ligne);
+				chaine += ligne + " ";
+			}
+			br.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+
+		String[] tagsList = chaine.split(",");
+		return tagsList;
+	}
 	
+	/**
+	 * createTagList creates a file which contains each worlds of the list in parameters
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
+	 */
+
+	public void createTagList(ArrayList<String> list) throws FileNotFoundException, IOException{
 	
+			String name = this.getFullName()+ ".txt";
+			String text="";
+		    for(int i= 0; i<list.size();i++){
+		    	text += list.get(i)+ ",";
+		    }
+		    IOUtils.write(text, new FileOutputStream(name), "UTF-8");
+		    
+			try (BufferedWriter bw = new BufferedWriter(new FileWriter(name))) {
+
+				bw.write(text);
+
+				System.out.println("Done");
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+
+			}
+
+		  
+
+		
+	}
 
 }
