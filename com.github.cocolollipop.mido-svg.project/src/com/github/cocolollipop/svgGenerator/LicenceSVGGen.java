@@ -38,6 +38,111 @@ public class LicenceSVGGen {
 	private LinkedList<Subject> subjectList;
 	private Format format = new Format();
 
+	// ALGO
+	public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canvasX){
+
+		/* On definit d'abord le decalage initial
+		Pour cela, on va analyser le contenu de lesFormations
+		On va compter le nombre de L1, L2,...
+
+		 */
+		int decalageX=0;
+		int decalageY = 0;
+		int decalageL2=0;
+		int decalageL3=0;
+		int nbL1=0;
+		int nbL2=0;
+		int nbL3=0;
+		int nbM1=0;
+		int nbM2=0;
+
+
+		// on va d'abord compter le nombre de formation parmi la liste envoyée
+		nbL1 = compterFormation(lesFormations,"L1");
+		nbL2 = compterFormation(lesFormations,"L2");
+		nbL3 = compterFormation(lesFormations,"L3");
+		nbM1 = compterFormation(lesFormations,"M1");
+		nbM2 = compterFormation(lesFormations,"M2");
+
+
+		/*
+		 * On calcule le decalage en Y ; pour cela il suffit de compter le nombre de nbL1/nbL2 != 0
+		 * POUR l'INSTANT, JAI FIXE A LARRACHE 
+		 */
+
+
+		/*
+		 * Maintenant on calcule le decalage en X
+		 */
+		decalageX = canvasX/(nbL1+1);
+		decalageY = 100; // A changer
+		associerPositionX(lesFormations, "L1", decalageX,decalageY);
+
+		decalageX = canvasX/(nbL2+1);
+		decalageY = decalageY+200;
+		associerPositionX(lesFormations, "L2", decalageX,decalageY);
+
+		decalageX = canvasX/(nbL3+1);
+		decalageY = decalageY+200;
+		associerPositionX(lesFormations, "L3", decalageX,decalageY);
+
+		decalageX = canvasX/(nbM1+1);
+		decalageY = decalageY+200;
+		associerPositionX(lesFormations, "M1", decalageX,decalageY);
+
+		decalageX = canvasX/(nbM2+1);
+		decalageY = decalageY+200;
+		associerPositionX(lesFormations, "M2", decalageX,decalageY);
+
+	}
+	
+	private void getPlacement(LinkedList<Formation> lesFormations) {
+		for(Formation uneFormation : lesFormations){
+			System.out.println("Pour la formation "+uneFormation.getFullName());
+			System.out.println("PosX = "+uneFormation.getPosX());
+			System.out.println("PosY = "+uneFormation.getPosY());
+			System.out.println("_________________");
+		}
+		
+	}
+	/**
+	 * compterFormation count the number of "myYear" in lesFormations.getFullName()
+	 * 
+	 * @param lesFormations is a LinkedList of Formation
+	 * @param myYear is a year such as "L3" or "M1"
+	 * @return an integer or a negative if myYear isn't in the List
+	 */
+	private int compterFormation(LinkedList<Formation> lesFormations, String myYear) {
+		int nb = 0;
+		for(Formation uneFormation : lesFormations){
+			if(uneFormation.getFullName().indexOf(myYear) != -1){
+				nb++;
+			}
+			
+		}
+		return nb;
+	}
+	/**
+	 * associerPositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
+	 * 
+	 * @param lesFormations is a LinkedList of Formation
+	 * @param myYear is a year such as "L3" or "M1"
+	 * @param decalage
+	 */
+	private void associerPositionX(LinkedList<Formation> lesFormations, String myYear, int decalageX, int decalageY){
+		int i = 1;
+		for(Formation uneFormation : lesFormations){
+			if(uneFormation.getFullName().indexOf(myYear) != -1){
+				uneFormation.setPosX(decalageX*i);
+				uneFormation.setPosY(decalageY);
+				i++;
+				System.out.println("associerOK : "+uneFormation.getFullName());
+			}
+		}
+
+	}
+	// FIN ALGO
+	
 	/**
 	 * fillLicenceList method fills the licenceList with objects from
 	 * FormationList that are of type Licence
@@ -68,7 +173,6 @@ public class LicenceSVGGen {
 		}
 	}
 
-	
 	/**
 	 * To have the number of child of each formation
 	 */
@@ -114,8 +218,6 @@ public class LicenceSVGGen {
 		}
 	}
 
-	
-	
 	public void paint() throws Exception {
 		String output = "outLicence.svg";
 
@@ -202,7 +304,10 @@ public class LicenceSVGGen {
 		this.formationList.add(M2MIAGEIFApp);
 		this.formationList.add(M2MIAGEIDApp);
 		this.formationList.add(M2MIAGESTINApp);
+		
+		definirPositionsSimple(this.formationList, 1920);
 
+		
 		L3MIAGE.addAvailableFormation(M1MIAGE);
 		L3MIAGEApp.addAvailableFormation(M1MIAGEApp);
 		M1MIAGE.addAvailableFormation(M2MIAGESTIN);
@@ -247,7 +352,7 @@ public class LicenceSVGGen {
 		g.setSVGCanvasSize(new Dimension(format.getCanevasX(), format.getCanevasY()));
 		g.drawString(MIDO.getNomDepartement(), MIDO.getX(), MIDO.getY());
 
-		this.show("both",g, lineCENTER, lineYDOWN , lineYUP);
+		this.show("both",g, lineCENTER, lineYDOWN, lineYUP);
 
 			g.setPaint(Color.green);
 			for (Formation f : this.formationList)
@@ -285,7 +390,6 @@ public class LicenceSVGGen {
 
 	}
 	
-	
 	/**
 	 * This is to replace "&lt;" by "<" and "&gt;" by ">" because I did not
 	 * found how to avoid converting < into &lt; and > into &gt;
@@ -297,8 +401,6 @@ public class LicenceSVGGen {
 		return content = content.replaceAll("unicode=\"<\"", "unicode=\"\"");
 		
 	}
-	
-	
 	/**
 	 * Drawing of the objects the user has the choice between showing all
 	 * "formations" or only "licence" or master for that he has to change
@@ -445,7 +547,6 @@ public void show(String showOnly, SVGGraphics2D g, int lineCENTER, int lineYDOWN
 
 				}}
 			}
-
 
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();
