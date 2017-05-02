@@ -68,6 +68,7 @@ public class LicenceSVGGen {
 		}
 	}
 
+	
 	/**
 	 * To have the number of child of each formation
 	 */
@@ -113,6 +114,8 @@ public class LicenceSVGGen {
 		}
 	}
 
+	
+	
 	public void paint() throws Exception {
 		String output = "outLicence.svg";
 
@@ -244,7 +247,7 @@ public class LicenceSVGGen {
 		g.setSVGCanvasSize(new Dimension(format.getCanevasX(), format.getCanevasY()));
 		g.drawString(MIDO.getNomDepartement(), MIDO.getX(), MIDO.getY());
 
-		this.show("both",g, lineYUP, lineYUP, lineYUP);
+		this.show("both",g, lineCENTER, lineYDOWN , lineYUP);
 
 			g.setPaint(Color.green);
 			for (Formation f : this.formationList)
@@ -282,6 +285,7 @@ public class LicenceSVGGen {
 
 	}
 	
+	
 	/**
 	 * This is to replace "&lt;" by "<" and "&gt;" by ">" because I did not
 	 * found how to avoid converting < into &lt; and > into &gt;
@@ -293,6 +297,8 @@ public class LicenceSVGGen {
 		return content = content.replaceAll("unicode=\"<\"", "unicode=\"\"");
 		
 	}
+	
+	
 	/**
 	 * Drawing of the objects the user has the choice between showing all
 	 * "formations" or only "licence" or master for that he has to change
@@ -439,6 +445,7 @@ public void show(String showOnly, SVGGraphics2D g, int lineCENTER, int lineYDOWN
 
 				}}
 			}
+
 
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();
