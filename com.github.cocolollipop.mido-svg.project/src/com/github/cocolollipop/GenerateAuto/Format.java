@@ -35,7 +35,7 @@ public class Format {
 	 * @throws Exception
 	 */
 	
-	public void changeFormat(String format) throws Exception{
+	public void changeFormat(String format){
 		
 		 if(format=="A4"|| format=="a4"){
 			 setCanevasX(2480);
@@ -46,7 +46,7 @@ public class Format {
 			 setCanevasX(3508); //3508
 			 setCanevasY(4961); //4961
 		 }
-		 else throw new Exception("This size isn't availaible, please choose between A3 or A4");
+		// else throw new Exception("This size isn't availaible, please choose between A3 or A4");
 	}
 
 

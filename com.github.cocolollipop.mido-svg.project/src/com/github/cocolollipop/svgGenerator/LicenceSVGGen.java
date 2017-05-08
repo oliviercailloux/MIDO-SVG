@@ -37,6 +37,17 @@ public class LicenceSVGGen {
 	private LinkedList<Master> masterList;
 	private LinkedList<Subject> subjectList;
 	private Format format = new Format();
+	
+	private DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+	private DocumentBuilder db ;
+	private DOMImplementation domImpl;
+	private String svgNS;
+	private Document document;
+	private SVGGeneratorContext ctx;
+	private SVGGraphics2D g;
+	
+
+	
 
 	// ALGO
 	public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canvasX){
@@ -57,7 +68,7 @@ public class LicenceSVGGen {
 		int nbM2=0;
 
 
-		// on va d'abord compter le nombre de formation parmi la liste envoyée
+		// on va d'abord compter le nombre de formation parmi la liste envoyï¿½e
 		nbL1 = compterFormation(lesFormations,"L1");
 		nbL2 = compterFormation(lesFormations,"L2");
 		nbL3 = compterFormation(lesFormations,"L3");
@@ -105,6 +116,7 @@ public class LicenceSVGGen {
 		}
 		
 	}
+	
 	/**
 	 * compterFormation count the number of "myYear" in lesFormations.getFullName()
 	 * 
@@ -122,6 +134,7 @@ public class LicenceSVGGen {
 		}
 		return nb;
 	}
+	
 	/**
 	 * associerPositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
 	 * 
@@ -220,31 +233,24 @@ public class LicenceSVGGen {
 
 	public void paint() throws Exception {
 		String output = "outLicence.svg";
-
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = dbf.newDocumentBuilder();
-
+	
+		db= dbf.newDocumentBuilder();
+		
 		// Get a DOMImplementation.
-		DOMImplementation domImpl = db.getDOMImplementation();
-
+		 domImpl = db.getDOMImplementation();
+		 
 		// Create an instance of org.w3c.dom.Document.
-		String svgNS = "http://www.w3.org/2000/svg";
-		Document document = domImpl.createDocument(svgNS, "svg", null);
+		svgNS = "http://www.w3.org/2000/svg";
+		document = domImpl.createDocument(svgNS, "svg", null);
 
 		// Create an instance of the SVG Generator.
-		SVGGeneratorContext ctx = SVGGeneratorContext.createDefault(document);
+		ctx = SVGGeneratorContext.createDefault(document);
 		ctx.setEmbeddedFontsOn(true);
-		SVGGraphics2D g = new SVGGraphics2D(ctx, false);
+		g = new SVGGraphics2D(ctx, false);
 
 		// Create position variables
 
-		int lineCENTER = 50; 
-		// Makes the line arrive in the center of the rectangle
-		int lineYDOWN = 7; 
-		// Makes the line go DOWN a little so the line is not on the text
-		int lineYUP = -20; 
-		// Makes the line go UP a little so the line is not on the text
-
+	
 		/*************** OBJECTS CREATION ***************/
 
 		Department MIDO = new Department("MIDO", 500, 20);
@@ -352,7 +358,7 @@ public class LicenceSVGGen {
 		g.setSVGCanvasSize(new Dimension(format.getCanevasX(), format.getCanevasY()));
 		g.drawString(MIDO.getNomDepartement(), MIDO.getX(), MIDO.getY());
 
-		this.show("both",g, lineCENTER, lineYDOWN, lineYUP);
+		this.show("both");
 
 			g.setPaint(Color.green);
 			for (Formation f : this.formationList)
@@ -410,7 +416,13 @@ public class LicenceSVGGen {
 	 * @param lineYDOWN 
 	 * @param lineYUP 
 	 */	
-public void show(String showOnly, SVGGraphics2D g, int lineCENTER, int lineYDOWN, int lineYUP){
+public void show(String showOnly){
+	
+	int lineCENTER = 50; 	// Makes the line arrive in the center of the rectangle
+	int lineYDOWN = 7; 		// Makes the line go DOWN a little so the line is not on the text
+	int lineYUP = -20; 		// Makes the line go UP a little so the line is not on the text
+
+	
 	// showing only licence formations
 			if (showOnly == "licenceOnly") {
 
@@ -527,9 +539,13 @@ public void show(String showOnly, SVGGraphics2D g, int lineCENTER, int lineYDOWN
 								l2.getPosY() + lineYUP);
 
 					}
-
+					
+					int decY=0;
 					for (Subject s : f.getListOfsubjects()) {
-						g.drawString(s.getTitle(), s.getPosX(), s.getPosY());
+						g.drawString(s.getTitle(), f.getPosX()+100, f.getPosY()+decY);
+						s.setPosX(f.getPosX()+100);
+						s.setPosY(f.getPosY()+decY);
+						decY+=15;
 
 					}
 
@@ -538,8 +554,7 @@ public void show(String showOnly, SVGGraphics2D g, int lineCENTER, int lineYDOWN
 					for (Subject s : f.getListOfsubjects()) {
 						java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
 						g.setFont(font);
-						g.drawString(s.getResponsible().getLastName(), s.getPosX() + (s.getTitle().length() * 7),
-								s.getPosY());
+						g.drawString(s.getResponsible().getLastName(), s.getPosX() + (s.getTitle().length() * 7),s.getPosY());
 						java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
 						g.setFont(font1);
 
