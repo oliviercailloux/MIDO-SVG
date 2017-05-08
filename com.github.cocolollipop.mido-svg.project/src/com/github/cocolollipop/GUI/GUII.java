@@ -29,6 +29,7 @@ import javax.swing.border.TitledBorder;
 
 import com.github.cocolollipop.GenerateAuto.Format;
 import com.github.cocolollipop.svgGenerator.LicenceSVGGen;
+import com.github.cocolollipop.univ.Formation;
 
 import javax.swing.JTextField;
 
@@ -39,6 +40,7 @@ public class GUII {
 	private JButton btnAjouterMotCle;
 	private JButton btnAddList;
 	private JButton btnRemoveList;
+	private JButton btnFermer;
 	private JCheckBox chckbxA3;
 	private JCheckBox chckbxA4;
 	private JCheckBox chckbxLicence;
@@ -53,6 +55,7 @@ public class GUII {
 	
 	private LicenceSVGGen svg =new LicenceSVGGen();
 	private Format format = new Format();
+	private Formation formation; // A VOIR
 
 	/**
 	 * Launch the application.
@@ -193,13 +196,17 @@ public class GUII {
 		btnAjouterMotCle = new JButton("Ajouter ");
 		
 		btnAjouterMotCle.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		
+		btnFermer = new JButton("Fermer");
+		
+		btnFermer.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		GroupLayout groupLayout = new GroupLayout(frmMidosvg.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(152)
 					.addComponent(lblMidosvgApplication)
-					.addContainerGap(164, Short.MAX_VALUE))
+					.addContainerGap(129, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(55)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -228,14 +235,19 @@ public class GUII {
 									.addComponent(chckbxAdmission))))
 						.addComponent(lblElementsAfficher)
 						.addComponent(lblLesMotscls))
-					.addContainerGap(83, Short.MAX_VALUE))
+					.addContainerGap(48, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(383, Short.MAX_VALUE)
-					.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
-					.addGap(91))
-				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 601, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(35)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnFermer)
+							.addPreferredGap(ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+							.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 139, GroupLayout.PREFERRED_SIZE)
+							.addGap(91))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(textFieldMotCle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -260,10 +272,6 @@ public class GUII {
 								.addComponent(chckbxLesResponsables)
 								.addComponent(list1, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
 							.addContainerGap())))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 601, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -311,8 +319,10 @@ public class GUII {
 								.addComponent(list1, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(list2, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-									.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))))
+									.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnFermer, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(49)
 							.addComponent(btnAddList)
@@ -321,7 +331,7 @@ public class GUII {
 					.addContainerGap())
 		);
 		frmMidosvg.getContentPane().setLayout(groupLayout);
-		frmMidosvg.setBounds(100, 100, 563, 723);
+		frmMidosvg.setBounds(100, 100, 528, 723);
 		frmMidosvg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
@@ -336,8 +346,9 @@ public class GUII {
 		
 		//HERE GET TAGS FOR TAGLIST HEEEEELLLLPPPP and add it to LISTMODEL1 
 		
-		//for(int i=0;i<)
-		//listmodel1.addElement(element);
+		//for(int i=0;i<formation.readTagsList("L3 Test Create Tag App.txt");i++){
+		//listmodel1.addElement(i);
+		//}
 		
 		
 	}
@@ -350,6 +361,15 @@ public class GUII {
 	 * **/
 	
 	private void createEvents() {
+		
+		/* Exit button */
+		
+		btnFermer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
 		
 		/*  The button "Générer l'SVG" that gives the final result */ 
 		btnGnrerLsvg.addActionListener(new ActionListener() {
@@ -438,10 +458,8 @@ public class GUII {
 		        } 
 		      }
 		    });
-
-
 		
-		
+	
 		
 	}
 	

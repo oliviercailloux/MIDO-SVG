@@ -62,6 +62,20 @@ public abstract class Formation {
 		this.admisssion ="";
 
 	}
+	
+	public Formation(){
+		this.title = ' ';
+		this.intitule = " ";
+		this.grade = grade;
+		this.listOfAvailableFormations = new ArrayList<Formation>();
+		this.fullName = fullName;
+		this.tagsList = new String[]{"", "", "", "", ""};
+		this.posX = posX;
+		this.posY = posY;
+		this.teacher=new Teacher();
+		this.listOfsubjects=new ArrayList<Subject>();
+		this.admisssion ="";
+	}
 
 	public String getFullNameWithLink() {
 		if (this.fullNameWithLink == null) {
