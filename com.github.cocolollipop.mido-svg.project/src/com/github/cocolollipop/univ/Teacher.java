@@ -79,10 +79,10 @@ public class Teacher {
 
 	}
 	public Teacher(){
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.posX = posX;
-		this.posY = posY;
+		this.lastName = "";
+		this.firstName = "";
+		this.posX = 0;
+		this.posY = 0;
 		
 	}
 	public String getFullNameTeacher(){

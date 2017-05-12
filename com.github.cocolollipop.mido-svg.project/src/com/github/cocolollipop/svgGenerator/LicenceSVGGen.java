@@ -93,27 +93,27 @@ public class LicenceSVGGen {
 		 */
 		int tempCpt = 0;
 		if (nbL1!=0){
-			totalCptY=totalCptY++;
+			totalCptY=totalCptY+1;
 			cptY[0]=tempCpt+1;
 			tempCpt++;
 		}
 		if (nbL2!=0){
-			totalCptY=totalCptY++;
+			totalCptY=totalCptY+1;
 			cptY[1]=tempCpt+1;
 			tempCpt++;
 		}
 		if (nbL3!=0){
-			totalCptY=totalCptY++;
+			totalCptY=totalCptY+1;
 			cptY[2]=tempCpt+1;
 			tempCpt++;
 		}
 		if (nbM1!=0){
-			totalCptY=totalCptY++;
+			totalCptY=totalCptY+1;
 			cptY[3]=tempCpt+1;
 			tempCpt++;
 		}
 		if (nbM2!=0){
-			totalCptY=totalCptY++;
+			totalCptY=totalCptY+1;
 			cptY[4]=tempCpt+1;
 			tempCpt++;
 		}
