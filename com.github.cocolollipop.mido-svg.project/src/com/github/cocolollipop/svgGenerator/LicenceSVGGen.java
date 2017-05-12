@@ -45,17 +45,12 @@ public class LicenceSVGGen {
 	private Document document;
 	private SVGGeneratorContext ctx;
 	private SVGGraphics2D g;
-
-
+	
+	
 	
 
 	// ALGO
-	/**
-	 * defineObjectsPosition determine the position of each Formation in the someFormations List
-	 * @param someFormations : LinkedList of all the formations available in the University
-	 * @param canvasX : abscissa size of the actual Canval
-	 */
-	public void defineObjectsPosition(LinkedList<Formation> someFormations, int canvasX){
+	public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canvasX){
 
 		/* On definit d'abord le decalage initial
 		Pour cela, on va analyser le contenu de lesFormations
@@ -75,11 +70,11 @@ public class LicenceSVGGen {
 
 
 		// on va d'abord compter le nombre de formation parmi la liste envoy�e
-		nbL1 = countFormations(someFormations,"L1");
-		nbL2 = countFormations(someFormations,"L2");
-		nbL3 = countFormations(someFormations,"L3");
-		nbM1 = countFormations(someFormations,"M1");
-		nbM2 = countFormations(someFormations,"M2");
+		nbL1 = compterFormation(lesFormations,"L1");
+		nbL2 = compterFormation(lesFormations,"L2");
+		nbL3 = compterFormation(lesFormations,"L3");
+		nbM1 = compterFormation(lesFormations,"M1");
+		nbM2 = compterFormation(lesFormations,"M2");
 
 
 		/*
@@ -93,47 +88,47 @@ public class LicenceSVGGen {
 		 */
 		decalageX = canvasX/(nbL1+1);
 		decalageY = 100; // A changer
-		associatePositionX(someFormations, "L1", decalageX,decalageY);
+		associerPositionX(lesFormations, "L1", decalageX,decalageY);
 
 		decalageX = canvasX/(nbL2+1);
 		decalageY = decalageY+200;
-		associatePositionX(someFormations, "L2", decalageX,decalageY);
+		associerPositionX(lesFormations, "L2", decalageX,decalageY);
 
 		decalageX = canvasX/(nbL3+1);
 		decalageY = decalageY+200;
-		associatePositionX(someFormations, "L3", decalageX,decalageY);
+		associerPositionX(lesFormations, "L3", decalageX,decalageY);
 
 		decalageX = canvasX/(nbM1+1);
 		decalageY = decalageY+200;
-		associatePositionX(someFormations, "M1", decalageX,decalageY);
+		associerPositionX(lesFormations, "M1", decalageX,decalageY);
 
 		decalageX = canvasX/(nbM2+1);
 		decalageY = decalageY+200;
-		associatePositionX(someFormations, "M2", decalageX,decalageY);
+		associerPositionX(lesFormations, "M2", decalageX,decalageY);
 
 	}
 	
-	private void getPlacement(LinkedList<Formation> someFormations) {
-		for(Formation aFormation : someFormations){
-			System.out.println("Pour la formation "+aFormation.getFullName());
-			System.out.println("PosX = "+aFormation.getPosX());
-			System.out.println("PosY = "+aFormation.getPosY());
+	private void getPlacement(LinkedList<Formation> lesFormations) {
+		for(Formation uneFormation : lesFormations){
+			System.out.println("Pour la formation "+uneFormation.getFullName());
+			System.out.println("PosX = "+uneFormation.getPosX());
+			System.out.println("PosY = "+uneFormation.getPosY());
 			System.out.println("_________________");
 		}
 		
 	}
 	
 	/**
-	 * countFormations count the number of "myYear" in lesFormations.getFullName()
+	 * compterFormation count the number of "myYear" in lesFormations.getFullName()
 	 * 
-	 * @param someFormations is a LinkedList of Formation
+	 * @param lesFormations is a LinkedList of Formation
 	 * @param myYear is a year such as "L3" or "M1"
 	 * @return an integer or a negative if myYear isn't in the List
 	 */
-	private int countFormations(LinkedList<Formation> someFormations, String myYear) {
+	private int compterFormation(LinkedList<Formation> lesFormations, String myYear) {
 		int nb = 0;
-		for(Formation aFormation : someFormations){
-			if(aFormation.getFullName().indexOf(myYear) != -1){
+		for(Formation uneFormation : lesFormations){
+			if(uneFormation.getFullName().indexOf(myYear) != -1){
 				nb++;
 			}
 			
@@ -142,20 +137,20 @@ public class LicenceSVGGen {
 	}
 	
 	/**
-	 * associatePositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
+	 * associerPositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
 	 * 
-	 * @param someFormations is a LinkedList of Formation
+	 * @param lesFormations is a LinkedList of Formation
 	 * @param myYear is a year such as "L3" or "M1"
 	 * @param decalage
 	 */
-	private void associatePositionX(LinkedList<Formation> someFormations, String myYear, int decalageX, int decalageY){
+	private void associerPositionX(LinkedList<Formation> lesFormations, String myYear, int decalageX, int decalageY){
 		int i = 1;
-		for(Formation aFormation : someFormations){
-			if(aFormation.getFullName().indexOf(myYear) != -1){
-				aFormation.setPosX(decalageX*i);
-				aFormation.setPosY(decalageY);
+		for(Formation uneFormation : lesFormations){
+			if(uneFormation.getFullName().indexOf(myYear) != -1){
+				uneFormation.setPosX(decalageX*i);
+				uneFormation.setPosY(decalageY);
 				i++;
-				System.out.println("associerOK : "+aFormation.getFullName());
+				System.out.println("associerOK : "+uneFormation.getFullName());
 			}
 		}
 
@@ -321,7 +316,7 @@ public class LicenceSVGGen {
 		this.formationList.add(M2MIAGEIDApp);
 		this.formationList.add(M2MIAGESTINApp);
 		
-		defineObjectsPosition(this.formationList, 1920);
+		definirPositionsSimple(this.formationList, 1920);
 
 		
 		L3MIAGE.addAvailableFormation(M1MIAGE);
@@ -417,27 +412,28 @@ public class LicenceSVGGen {
 		
 	}
 	/**
-	 * Drawing of the objects the user has the choice between showing all
-	 * "formations" or only "licence" or master for that he has to change
-	 * the @param showOnly to (licenceOnly, masterOnly, both) then the
-	 * rectangles arround the "formations" are drawn, lines also
-	 * @param lineCENTER 
-	 * @param lineYDOWN 
-	 * @param lineYUP 
+	 * 	show Draws the "formations" , the user may choose to display all
+	 * "formations" or only "licence" or only "master"
+	 * 
+	 * for that he has to change @param showOnly to (licenceOnly, masterOnly, both) 
+	 * 
+	 * @param showOnly
+	 * 
 	 */	
 public void show(String showOnly){
 	
 	int lineCENTER = 50; 	// Makes the line arrive in the center of the rectangle
 	int lineYDOWN = 7; 		// Makes the line go DOWN a little so the line is not on the text
 	int lineYUP = -20; 		// Makes the line go UP a little so the line is not on the text
-	
+	//settings = new SVGSettings(showOnly);
 	
 	// showing only licence formations
 			if (showOnly == "licenceOnly") {
-		
+				
+				//settings.setShowOnlyLM("licenceOnly");
 				
 				for (Formation l : this.licenceList) {
-					
+					l.setShown(true);
 					g.setPaint(Color.black);
 
 					g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY()); 
@@ -460,7 +456,11 @@ public void show(String showOnly){
 			// showing only master formations
 
 			else if (showOnly == "masterOnly") {
+				
+				//settings.setShowOnlyLM("masterOnly");
+
 				for (Formation m : this.masterList) {
+					m.setShown(true);
 					g.setPaint(Color.black);
 
 					g.drawString(m.getFullNameWithLink(), m.getPosX(), m.getPosY());
@@ -483,7 +483,11 @@ public void show(String showOnly){
 			// showing both master and licence formations
 
 			else if (showOnly == "both") {
+				
+				//settings.setShowOnlyLM("both");
+
 				for (Formation f : this.formationList) {
+					f.setShown(true);
 					g.setPaint(Color.black);
 
 					g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());
@@ -503,9 +507,11 @@ public void show(String showOnly){
 
 
 /**
- * This function shows the Admission 
+ * This function shows the Admission of a "formation" (if this one is SHOWN in the SVG)
  * 
  * 		The admission is written in BLUE
+ * 
+ * @param admission
  * 
  * */
 
@@ -514,10 +520,10 @@ public void ShowAdmission(boolean admission){
 	if(admission==true){
 	
 	for (Formation f : this.formationList) {
-		
+		if(f.isShown()==true){
 	g.setPaint(Color.blue);
 	g.drawString(f.getAdmisssion(), f.getPosX() - 30, f.getPosY() - 30);
-	
+			}
 		}
 	}
 		
@@ -525,9 +531,11 @@ public void ShowAdmission(boolean admission){
 
 
 /**
- * This function shows the name of the responsable of a formation
+ * This function shows the name of the responsable of a formation (if this one is SHOWN in the SVG)
  * 
  * 		The responsable name is written in GREEN
+ * 
+ * @param responsable
  * 
  * */
 
@@ -538,9 +546,10 @@ public void ShowResponsable(boolean reponsable){
 			g.setPaint(Color.green); 
 			
 			for (Formation f : this.formationList){
+					if(f.isShown()==true){
 				if(f.hasGotATeacher(f)==true) 
 				g.drawString(f.getTeacher().getFullNameTeacher(), f.getPosX()-(g.getFontMetrics().stringWidth(f.getTeacher().getFullNameTeacher())+5), f.getPosY());
-					
+						}
 					}
 			
 				g.setPaint(Color.black);
@@ -552,13 +561,17 @@ public void ShowResponsable(boolean reponsable){
 
 
 /**
- * This function shows the name of the subjects or teachers of a formation
+ * This function shows the name of the subjects or teachers of a formation (if this one is SHOWN in the SVG)
  * 
  * 	If the subjects are not shown, teachers wont appear in the SVG also
  * 
  * 		Either we'll have both, or only subjects
  * 
  * 			The size of teachers is smaller and in RED
+ * 
+ * 
+ * @param subject
+ * @param teacher
  * 
  * */
 
@@ -569,6 +582,7 @@ public void ShowSubjectTeacher(boolean subject,boolean teacher){
 	if(subject==true){
 		int decY=0;
 		for (Formation f : this.formationList) {
+			if(f.isShown()==true){
 		for (Subject s : f.getListOfsubjects()) {
 			g.drawString(s.getTitle(), f.getPosX()+100, f.getPosY()+decY);
 			s.setPosX(f.getPosX()+100);
@@ -577,12 +591,15 @@ public void ShowSubjectTeacher(boolean subject,boolean teacher){
 
 			}
 		}
+			}
 		
 		
 		if(teacher==true){
 			g.setPaint(Color.red);
 		
 			for (Formation f : this.formationList) {
+				if(f.isShown()==true){
+
 			for (Subject s : f.getListOfsubjects()) {
 				
 				java.awt.Font font = new java.awt.Font("TimesRoman", 9, 9);
@@ -594,6 +611,7 @@ public void ShowSubjectTeacher(boolean subject,boolean teacher){
 				g.setFont(font1);
 
 				}
+			}
 			
 			}
 		}

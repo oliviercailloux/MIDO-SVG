@@ -47,6 +47,9 @@ public abstract class Formation {
 	protected int posY;
 
 	protected Formation child;
+	
+	// this variable allows to know if a "formation" is shown in the SVG or not
+	protected boolean shown; 
 
 	public Formation(String name, int grade, int x, int y) {
 		this.title = ' ';
@@ -75,6 +78,7 @@ public abstract class Formation {
 		this.teacher=new Teacher();
 		this.listOfsubjects=new ArrayList<Subject>();
 		this.admisssion ="";
+		this.shown=false;
 	}
 
 	public String getFullNameWithLink() {
@@ -224,6 +228,17 @@ public abstract class Formation {
 		return tagsList;
 	}
 	
+
+	public boolean isShown() {
+		return shown;
+	}
+
+	public void setShown(boolean shown) {
+		this.shown = shown;
+	}
+	
+	
+	
 	/**
 	 * createTagList creates a file which contains each worlds of the list in parameters
 	 * @throws IOException 
@@ -253,7 +268,12 @@ public abstract class Formation {
 
 	}
 	
-	
+	/**
+	 * hasGotATeachert see if a "formation" has got a teacher (the firstname/lastname aren't null) or not
+	 * 
+	 * @param f
+	 * @return true or false
+	 */
 	
 	public boolean hasGotATeacher(Formation f){
 		if(f.getTeacher().getFirstName()==null && f.getTeacher().getLastName()==null )
@@ -262,5 +282,10 @@ public abstract class Formation {
 		return true;
 		
 	}
+	
+	
+
+	
+	
 
 }
