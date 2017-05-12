@@ -126,14 +126,14 @@ public class LicenceSVGGen {
 	/**
 	 * countFormations count the number of "myYear" in lesFormations.getFullName()
 	 * 
-	 * @param lesFormations is a LinkedList of Formation
+	 * @param someFormations is a LinkedList of Formation
 	 * @param myYear is a year such as "L3" or "M1"
 	 * @return an integer or a negative if myYear isn't in the List
 	 */
-	private int countFormations(LinkedList<Formation> lesFormations, String myYear) {
+	private int countFormations(LinkedList<Formation> someFormations, String myYear) {
 		int nb = 0;
-		for(Formation uneFormation : lesFormations){
-			if(uneFormation.getFullName().indexOf(myYear) != -1){
+		for(Formation aFormation : someFormations){
+			if(aFormation.getFullName().indexOf(myYear) != -1){
 				nb++;
 			}
 			
@@ -144,18 +144,18 @@ public class LicenceSVGGen {
 	/**
 	 * associatePositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
 	 * 
-	 * @param lesFormations is a LinkedList of Formation
+	 * @param someFormations is a LinkedList of Formation
 	 * @param myYear is a year such as "L3" or "M1"
 	 * @param decalage
 	 */
-	private void associatePositionX(LinkedList<Formation> lesFormations, String myYear, int decalageX, int decalageY){
+	private void associatePositionX(LinkedList<Formation> someFormations, String myYear, int decalageX, int decalageY){
 		int i = 1;
-		for(Formation uneFormation : lesFormations){
-			if(uneFormation.getFullName().indexOf(myYear) != -1){
-				uneFormation.setPosX(decalageX*i);
-				uneFormation.setPosY(decalageY);
+		for(Formation aFormation : someFormations){
+			if(aFormation.getFullName().indexOf(myYear) != -1){
+				aFormation.setPosX(decalageX*i);
+				aFormation.setPosY(decalageY);
 				i++;
-				System.out.println("associerOK : "+uneFormation.getFullName());
+				System.out.println("associerOK : "+aFormation.getFullName());
 			}
 		}
 
