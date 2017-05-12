@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.JList;
@@ -407,7 +409,7 @@ public class GUII {
 		});
 		
 		
-		/*  The button "Générer l'SVG" that gives the final result 
+		/*  The button "Générer l'SVG" that gives the final result (generates and opens the SVG)
 		 * 
 		 * */ 
 		
@@ -416,6 +418,20 @@ public class GUII {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					svg.paint();
+					
+					File file=new File("outLicence.svg");
+					try
+					{
+						java.awt.Desktop.getDesktop().open(file);
+					}
+					catch (IOException exc)
+					{
+				    	System.out.println("Exception: " + exc.toString());
+					}
+					
+					
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
