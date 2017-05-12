@@ -157,6 +157,9 @@ public class LicenceSVGGen {
 	}
 	// FIN ALGO
 	
+	
+
+	
 	/**
 	 * fillLicenceList method fills the licenceList with objects from
 	 * FormationList that are of type Licence
@@ -171,6 +174,7 @@ public class LicenceSVGGen {
 				licenceList.add((Licence) formation);
 		}
 	}
+
 
 	/**
 	 * fillMasterList method fills the MasterList with objects from
@@ -359,10 +363,10 @@ public class LicenceSVGGen {
 		g.setSVGCanvasSize(new Dimension(format.getCanevasX(), format.getCanevasY()));
 		g.drawString(MIDO.getNomDepartement(), MIDO.getX(), MIDO.getY());
 
-		this.show("both");
+		this.show("masterOnly");
 		this.ShowAdmission(true);
 		this.ShowResponsable(true);
-		this.ShowSubjectTeacher(false,true);
+		this.ShowSubjectTeacher(true,true);
 
 	
 		// Tag checking
@@ -421,13 +425,14 @@ public void show(String showOnly){
 	int lineCENTER = 50; 	// Makes the line arrive in the center of the rectangle
 	int lineYDOWN = 7; 		// Makes the line go DOWN a little so the line is not on the text
 	int lineYUP = -20; 		// Makes the line go UP a little so the line is not on the text
-
+	
 	
 	// showing only licence formations
 			if (showOnly == "licenceOnly") {
-
+		
+				
 				for (Formation l : this.licenceList) {
-
+					
 					g.setPaint(Color.black);
 
 					g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY()); 
@@ -436,9 +441,6 @@ public void show(String showOnly){
 																														// rectangle
 					g.draw(t);
 
-					g.setPaint(Color.blue);
-					g.drawString(l.getAdmisssion(), l.getPosX() - 30, l.getPosY() - 30);
-					g.setPaint(Color.black);
 
 					for (Formation l2 : l.getListOfAvailableFormations()) { 
 						// draw the lines between the formation and the avalaible formations
@@ -447,31 +449,7 @@ public void show(String showOnly){
 
 					}
 
-					for (Subject s : l.getListOfsubjects()) {
-						g.drawString(s.getTitle(), s.getPosX(), s.getPosY());
-
-					}
-
-					g.setPaint(Color.red);
-
-					for (Subject s : l.getListOfsubjects()) {
-						java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
-						g.setFont(font);
-						g.drawString(s.getResponsible().getLastName(), s.getPosX() + (s.getTitle().length() * 7),
-								s.getPosY());
-						java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
-						g.setFont(font1);
-
-					}
-
 				}
-
-				g.setPaint(Color.green);
-				for (Formation f : this.licenceList)
-					g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
-
-				g.setPaint(Color.black);
-
 			}
 
 			// showing only master formations
@@ -484,9 +462,6 @@ public void show(String showOnly){
 					Rectangle t = new Rectangle(m.getPosX() - 10, m.getPosY() - 20, m.getFullName().length() * 10, 25);
 					g.draw(t);
 
-					g.setPaint(Color.blue);
-					g.drawString(m.getAdmisssion(), m.getPosX() - 30, m.getPosY() - 30);
-					g.setPaint(Color.black);
 
 					for (Formation l2 : m.getListOfAvailableFormations()) {
 						g.drawLine(m.getPosX() + lineCENTER, m.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
@@ -494,31 +469,11 @@ public void show(String showOnly){
 
 					}
 
-					for (Subject s : m.getListOfsubjects()) {
-						g.drawString(s.getTitle(), s.getPosX(), s.getPosY());
 
-					}
 
-					g.setPaint(Color.red);
-
-					for (Subject s : m.getListOfsubjects()) {
-						java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
-						g.setFont(font);
-						g.drawString(s.getResponsible().getLastName(), s.getPosX() + (s.getTitle().length() * 7),
-								s.getPosY());
-						java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
-						g.setFont(font1);
-
-					}
-				}
-
-				g.setPaint(Color.green);
-				for (Formation f : this.masterList)
-					g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
-
-				g.setPaint(Color.black);
-
+		
 			}
+				}
 
 			// showing both master and licence formations
 
@@ -529,43 +484,13 @@ public void show(String showOnly){
 					g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());
 					Rectangle t = new Rectangle(f.getPosX() - 10, f.getPosY() - 20, f.getFullName().length() * 10, 25);
 					g.draw(t);
-					//g.setPaint(Color.blue);
-
-					//g.drawString(f.getAdmisssion(), f.getPosX() - 30, f.getPosY() - 30);
-					//g.setPaint(Color.black);
-
+				
 					for (Formation l2 : f.getListOfAvailableFormations()) {
 						g.drawLine(f.getPosX() + lineCENTER, f.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
 								l2.getPosY() + lineYUP);
 
 					}
 					
-					/*int decY=0;
-					for (Subject s : f.getListOfsubjects()) {
-						g.drawString(s.getTitle(), f.getPosX()+100, f.getPosY()+decY);
-						s.setPosX(f.getPosX()+100);
-						s.setPosY(f.getPosY()+decY);
-						decY+=15;
-
-					}*/
-
-					/*g.setPaint(Color.red);
-
-					for (Subject s : f.getListOfsubjects()) {
-						java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
-						g.setFont(font);
-						g.drawString(s.getResponsible().getLastName(), s.getPosX() + (s.getTitle().length() * 7),s.getPosY());
-						java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
-						g.setFont(font1);
-
-					}*/
-					
-					/*g.setPaint(Color.green);   
-					for (Formation f : this.formationList)
-						g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
-
-					g.setPaint(Color.black);*/	
-
 
 				}}
 			}
