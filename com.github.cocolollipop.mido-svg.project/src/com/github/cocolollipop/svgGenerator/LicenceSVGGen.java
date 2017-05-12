@@ -72,12 +72,11 @@ public class LicenceSVGGen {
 		int nbM1=0;
 		int nbM2=0;
 		int totalCptY=0; // O<=totalCptY<=5 // tal number of potential "stairs" in Y
-		int cptYL1=0; // trigger ; if there is not L1 ; cptYL1 =0, else 1
-		int cptYL2=0;
-		int cptYL3=0;
-		int cptYM1=0;
-		int cptYM2=0;
-		int cptY[] = new int[5];
+
+		int cptY[] = new int[5];// trigger ; cpunt if there is an object in Formation ; cptYL1 =0, else the postion of first "seen" 0<=cptY[i]<=totalcptY
+		for (int i = 0;i<5;i++){
+			cptY[i]=0;
+		}
 
 
 
@@ -124,23 +123,23 @@ public class LicenceSVGGen {
 		 * Maintenant on calcule le decalage en X
 		 */
 		decalageX = canvasX/(nbL1+1);
-		decalageY = canvasY/(totalCptY+1); // A changer
+		decalageY = canvasY/(totalCptY+1)*cptY[0];
 		associatePositionX(someFormations, "L1", decalageX,decalageY);
 
 		decalageX = canvasX/(nbL2+1);
-		decalageY = decalageY+200;
+		decalageY = canvasY/(totalCptY+1)*cptY[1];
 		associatePositionX(someFormations, "L2", decalageX,decalageY);
 
 		decalageX = canvasX/(nbL3+1);
-		decalageY = decalageY+200;
+		decalageY = canvasY/(totalCptY+1)*cptY[2];
 		associatePositionX(someFormations, "L3", decalageX,decalageY);
 
 		decalageX = canvasX/(nbM1+1);
-		decalageY = decalageY+200;
+		decalageY = canvasY/(totalCptY+1)*cptY[3];
 		associatePositionX(someFormations, "M1", decalageX,decalageY);
 
 		decalageX = canvasX/(nbM2+1);
-		decalageY = decalageY+200;
+		decalageY = canvasY/(totalCptY+1)*cptY[4];
 		associatePositionX(someFormations, "M2", decalageX,decalageY);
 
 	}
@@ -353,7 +352,7 @@ public class LicenceSVGGen {
 		this.formationList.add(M2MIAGEIDApp);
 		this.formationList.add(M2MIAGESTINApp);
 		
-		defineObjectsPosition(this.formationList, 1920);
+		defineObjectsPosition(this.formationList, 1920,1080);
 
 		
 		L3MIAGE.addAvailableFormation(M1MIAGE);
