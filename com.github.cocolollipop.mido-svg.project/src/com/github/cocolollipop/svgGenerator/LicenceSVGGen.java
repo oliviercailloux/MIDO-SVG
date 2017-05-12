@@ -46,7 +46,7 @@ public class LicenceSVGGen {
 	private SVGGeneratorContext ctx;
 	private SVGGraphics2D g;
 	
-
+	
 	
 
 	// ALGO
@@ -412,27 +412,28 @@ public class LicenceSVGGen {
 		
 	}
 	/**
-	 * Drawing of the objects the user has the choice between showing all
-	 * "formations" or only "licence" or master for that he has to change
-	 * the @param showOnly to (licenceOnly, masterOnly, both) then the
-	 * rectangles arround the "formations" are drawn, lines also
-	 * @param lineCENTER 
-	 * @param lineYDOWN 
-	 * @param lineYUP 
+	 * 	show Draws the "formations" , the user may choose to display all
+	 * "formations" or only "licence" or only "master"
+	 * 
+	 * for that he has to change @param showOnly to (licenceOnly, masterOnly, both) 
+	 * 
+	 * @param showOnly
+	 * 
 	 */	
 public void show(String showOnly){
 	
 	int lineCENTER = 50; 	// Makes the line arrive in the center of the rectangle
 	int lineYDOWN = 7; 		// Makes the line go DOWN a little so the line is not on the text
 	int lineYUP = -20; 		// Makes the line go UP a little so the line is not on the text
-	
+	//settings = new SVGSettings(showOnly);
 	
 	// showing only licence formations
 			if (showOnly == "licenceOnly") {
-		
+				
+				//settings.setShowOnlyLM("licenceOnly");
 				
 				for (Formation l : this.licenceList) {
-					
+					l.setShown(true);
 					g.setPaint(Color.black);
 
 					g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY()); 
@@ -455,7 +456,11 @@ public void show(String showOnly){
 			// showing only master formations
 
 			else if (showOnly == "masterOnly") {
+				
+				//settings.setShowOnlyLM("masterOnly");
+
 				for (Formation m : this.masterList) {
+					m.setShown(true);
 					g.setPaint(Color.black);
 
 					g.drawString(m.getFullNameWithLink(), m.getPosX(), m.getPosY());
@@ -478,7 +483,11 @@ public void show(String showOnly){
 			// showing both master and licence formations
 
 			else if (showOnly == "both") {
+				
+				//settings.setShowOnlyLM("both");
+
 				for (Formation f : this.formationList) {
+					f.setShown(true);
 					g.setPaint(Color.black);
 
 					g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());
@@ -498,9 +507,11 @@ public void show(String showOnly){
 
 
 /**
- * This function shows the Admission 
+ * This function shows the Admission of a "formation" (if this one is SHOWN in the SVG)
  * 
  * 		The admission is written in BLUE
+ * 
+ * @param admission
  * 
  * */
 
@@ -509,10 +520,10 @@ public void ShowAdmission(boolean admission){
 	if(admission==true){
 	
 	for (Formation f : this.formationList) {
-		
+		if(f.isShown()==true){
 	g.setPaint(Color.blue);
 	g.drawString(f.getAdmisssion(), f.getPosX() - 30, f.getPosY() - 30);
-	
+			}
 		}
 	}
 		
@@ -520,9 +531,11 @@ public void ShowAdmission(boolean admission){
 
 
 /**
- * This function shows the name of the responsable of a formation
+ * This function shows the name of the responsable of a formation (if this one is SHOWN in the SVG)
  * 
  * 		The responsable name is written in GREEN
+ * 
+ * @param responsable
  * 
  * */
 
@@ -533,9 +546,10 @@ public void ShowResponsable(boolean reponsable){
 			g.setPaint(Color.green); 
 			
 			for (Formation f : this.formationList){
+					if(f.isShown()==true){
 				if(f.hasGotATeacher(f)==true) 
 				g.drawString(f.getTeacher().getFullNameTeacher(), f.getPosX()-(g.getFontMetrics().stringWidth(f.getTeacher().getFullNameTeacher())+5), f.getPosY());
-					
+						}
 					}
 			
 				g.setPaint(Color.black);
@@ -547,13 +561,17 @@ public void ShowResponsable(boolean reponsable){
 
 
 /**
- * This function shows the name of the subjects or teachers of a formation
+ * This function shows the name of the subjects or teachers of a formation (if this one is SHOWN in the SVG)
  * 
  * 	If the subjects are not shown, teachers wont appear in the SVG also
  * 
  * 		Either we'll have both, or only subjects
  * 
  * 			The size of teachers is smaller and in RED
+ * 
+ * 
+ * @param subject
+ * @param teacher
  * 
  * */
 
@@ -564,6 +582,7 @@ public void ShowSubjectTeacher(boolean subject,boolean teacher){
 	if(subject==true){
 		int decY=0;
 		for (Formation f : this.formationList) {
+			if(f.isShown()==true){
 		for (Subject s : f.getListOfsubjects()) {
 			g.drawString(s.getTitle(), f.getPosX()+100, f.getPosY()+decY);
 			s.setPosX(f.getPosX()+100);
@@ -572,12 +591,15 @@ public void ShowSubjectTeacher(boolean subject,boolean teacher){
 
 			}
 		}
+			}
 		
 		
 		if(teacher==true){
 			g.setPaint(Color.red);
 		
 			for (Formation f : this.formationList) {
+				if(f.isShown()==true){
+
 			for (Subject s : f.getListOfsubjects()) {
 				
 				java.awt.Font font = new java.awt.Font("TimesRoman", 9, 9);
@@ -589,6 +611,7 @@ public void ShowSubjectTeacher(boolean subject,boolean teacher){
 				g.setFont(font1);
 
 				}
+			}
 			
 			}
 		}
