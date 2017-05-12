@@ -1,9 +1,7 @@
 package com.github.cocolollipop.GUI;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
@@ -156,7 +154,7 @@ public class GUII {
 		JCheckBox chckbxAdmission = new JCheckBox("Admission");
 		chckbxAdmission.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		
-		btnGnrerLsvg = new JButton("Générer l'SVG");
+		btnGnrerLsvg = new JButton("Générer le SVG");
 	
 		btnGnrerLsvg.setForeground(Color.BLACK);
 		btnGnrerLsvg.setBackground(new Color(255, 255, 255));
