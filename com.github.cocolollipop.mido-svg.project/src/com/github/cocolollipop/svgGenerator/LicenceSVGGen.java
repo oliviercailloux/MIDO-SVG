@@ -49,8 +49,12 @@ public class LicenceSVGGen {
 	
 	
 
-	// ALGO
-	public void definirPositionsSimple(LinkedList<Formation> lesFormations, int canvasX){
+	/**
+	 * defineObjectsPosition determine the position of each Formation in the someFormations List
+	 * @param someFormations : LinkedList of all the formations available in the University
+	 * @param canvasX : abscissa size of the actual Canval
+	 */
+	public void defineObjectsPosition(LinkedList<Formation> someFormations, int canvasX, int canvasY){
 
 		/* On definit d'abord le decalage initial
 		Pour cela, on va analyser le contenu de lesFormations
@@ -58,7 +62,7 @@ public class LicenceSVGGen {
 
 		 */
 		
-		int decalageX=0;
+		int decalageX = 0;
 		int decalageY = 0;
 		int decalageL2=0;
 		int decalageL3=0;
@@ -67,68 +71,101 @@ public class LicenceSVGGen {
 		int nbL3=0;
 		int nbM1=0;
 		int nbM2=0;
+		int totalCptY=0; // O<=totalCptY<=5 // tal number of potential "stairs" in Y
+		int cptYL1=0; // trigger ; if there is not L1 ; cptYL1 =0, else 1
+		int cptYL2=0;
+		int cptYL3=0;
+		int cptYM1=0;
+		int cptYM2=0;
+		int cptY[] = new int[5];
+
 
 
 		// on va d'abord compter le nombre de formation parmi la liste envoy�e
-		nbL1 = compterFormation(lesFormations,"L1");
-		nbL2 = compterFormation(lesFormations,"L2");
-		nbL3 = compterFormation(lesFormations,"L3");
-		nbM1 = compterFormation(lesFormations,"M1");
-		nbM2 = compterFormation(lesFormations,"M2");
+		nbL1 = countFormations(someFormations,"L1");
+		nbL2 = countFormations(someFormations,"L2");
+		nbL3 = countFormations(someFormations,"L3");
+		nbM1 = countFormations(someFormations,"M1");
+		nbM2 = countFormations(someFormations,"M2");
 
 
 		/*
 		 * On calcule le decalage en Y ; pour cela il suffit de compter le nombre de nbL1/nbL2 != 0
-		 * POUR l'INSTANT, JAI FIXE A LARRACHE 
 		 */
-
-
+		int tempCpt = 0;
+		if (nbL1!=0){
+			totalCptY=totalCptY++;
+			cptY[0]=tempCpt+1;
+			tempCpt++;
+		}
+		if (nbL2!=0){
+			totalCptY=totalCptY++;
+			cptY[1]=tempCpt+1;
+			tempCpt++;
+		}
+		if (nbL3!=0){
+			totalCptY=totalCptY++;
+			cptY[2]=tempCpt+1;
+			tempCpt++;
+		}
+		if (nbM1!=0){
+			totalCptY=totalCptY++;
+			cptY[3]=tempCpt+1;
+			tempCpt++;
+		}
+		if (nbM2!=0){
+			totalCptY=totalCptY++;
+			cptY[4]=tempCpt+1;
+			tempCpt++;
+		}
+		
+		
 		/*
 		 * Maintenant on calcule le decalage en X
 		 */
 		decalageX = canvasX/(nbL1+1);
-		decalageY = 100; // A changer
-		associerPositionX(lesFormations, "L1", decalageX,decalageY);
+		decalageY = canvasY/(totalCptY+1); // A changer
+		associatePositionX(someFormations, "L1", decalageX,decalageY);
 
 		decalageX = canvasX/(nbL2+1);
 		decalageY = decalageY+200;
-		associerPositionX(lesFormations, "L2", decalageX,decalageY);
+		associatePositionX(someFormations, "L2", decalageX,decalageY);
 
 		decalageX = canvasX/(nbL3+1);
 		decalageY = decalageY+200;
-		associerPositionX(lesFormations, "L3", decalageX,decalageY);
+		associatePositionX(someFormations, "L3", decalageX,decalageY);
 
 		decalageX = canvasX/(nbM1+1);
 		decalageY = decalageY+200;
-		associerPositionX(lesFormations, "M1", decalageX,decalageY);
+		associatePositionX(someFormations, "M1", decalageX,decalageY);
 
 		decalageX = canvasX/(nbM2+1);
 		decalageY = decalageY+200;
-		associerPositionX(lesFormations, "M2", decalageX,decalageY);
+		associatePositionX(someFormations, "M2", decalageX,decalageY);
 
 	}
 	
-	private void getPlacement(LinkedList<Formation> lesFormations) {
-		for(Formation uneFormation : lesFormations){
-			System.out.println("Pour la formation "+uneFormation.getFullName());
-			System.out.println("PosX = "+uneFormation.getPosX());
-			System.out.println("PosY = "+uneFormation.getPosY());
+	private void getPlacement(LinkedList<Formation> someFormations) {
+		for(Formation aFormation : someFormations){
+			System.out.println("Pour la formation "+aFormation.getFullName());
+			System.out.println("PosX = "+aFormation.getPosX());
+			System.out.println("PosY = "+aFormation.getPosY());
 			System.out.println("_________________");
 		}
 		
 	}
 	
 	/**
-	 * compterFormation count the number of "myYear" in lesFormations.getFullName()
+	 * countFormations count the number of "myYear" in lesFormations.getFullName()
 	 * 
-	 * @param lesFormations is a LinkedList of Formation
+	 * @param someFormations is a LinkedList of Formation
 	 * @param myYear is a year such as "L3" or "M1"
 	 * @return an integer or a negative if myYear isn't in the List
 	 */
-	private int compterFormation(LinkedList<Formation> lesFormations, String myYear) {
+	private int countFormations(LinkedList<Formation> someFormations, String myYear) {
 		int nb = 0;
-		for(Formation uneFormation : lesFormations){
-			if(uneFormation.getFullName().indexOf(myYear) != -1){
+		for(Formation aFormation : someFormations){
+			if(aFormation.getFullName().indexOf(myYear) != -1){
 				nb++;
 			}
 			
@@ -137,20 +174,20 @@ public class LicenceSVGGen {
 	}
 	
 	/**
-	 * associerPositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
+	 * associatePositionX set the posX of each Formation which satisfy uneFormation.getFullName() == myYear
 	 * 
-	 * @param lesFormations is a LinkedList of Formation
+	 * @param someFormations is a LinkedList of Formation
 	 * @param myYear is a year such as "L3" or "M1"
 	 * @param decalage
 	 */
-	private void associerPositionX(LinkedList<Formation> lesFormations, String myYear, int decalageX, int decalageY){
+	private void associatePositionX(LinkedList<Formation> someFormations, String myYear, int decalageX, int decalageY){
 		int i = 1;
-		for(Formation uneFormation : lesFormations){
-			if(uneFormation.getFullName().indexOf(myYear) != -1){
-				uneFormation.setPosX(decalageX*i);
-				uneFormation.setPosY(decalageY);
+		for(Formation aFormation : someFormations){
+			if(aFormation.getFullName().indexOf(myYear) != -1){
+				aFormation.setPosX(decalageX*i);
+				aFormation.setPosY(decalageY);
 				i++;
-				System.out.println("associerOK : "+uneFormation.getFullName());
+				System.out.println("associerOK : "+aFormation.getFullName());
 			}
 		}
 
@@ -316,7 +353,7 @@ public class LicenceSVGGen {
 		this.formationList.add(M2MIAGEIDApp);
 		this.formationList.add(M2MIAGESTINApp);
 		
-		definirPositionsSimple(this.formationList, 1920);
+		defineObjectsPosition(this.formationList, 1920);
 
 		
 		L3MIAGE.addAvailableFormation(M1MIAGE);
