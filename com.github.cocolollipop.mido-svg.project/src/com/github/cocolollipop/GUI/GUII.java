@@ -43,6 +43,12 @@ public class GUII {
 	private JCheckBox chckbxA4;
 	private JCheckBox chckbxLicence;
 	private JCheckBox chckbxMaster;
+	private JCheckBox chckbxLesResponsables ;
+	private JCheckBox chckbxAdmission;
+	private JCheckBox chckbxLesMatieres;
+	private JCheckBox chckbxLesEnseignants;
+	
+	
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textFieldMotCle;
 	private DefaultListModel listmodel1 = new DefaultListModel();
@@ -54,6 +60,8 @@ public class GUII {
 	private LicenceSVGGen svg =new LicenceSVGGen();
 	private Format format = new Format();
 	private Formation formation; // A VOIR
+	private JLabel lblEnseignWarning;
+
 
 	/**
 	 * Launch the application.
@@ -148,10 +156,10 @@ public class GUII {
 		lblElementsAfficher.setForeground(new Color(0, 0, 128));
 		lblElementsAfficher.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		
-		JCheckBox chckbxLesResponsables = new JCheckBox("Les responsables");
+		chckbxLesResponsables = new JCheckBox("Les responsables");
 		chckbxLesResponsables.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		
-		JCheckBox chckbxAdmission = new JCheckBox("Admission");
+		chckbxAdmission = new JCheckBox("Admission");
 		chckbxAdmission.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
 		
 		btnGnrerLsvg = new JButton("Générer le SVG");
@@ -198,9 +206,29 @@ public class GUII {
 		btnFermer = new JButton("Fermer");
 		
 		btnFermer.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		
+		chckbxLesMatieres = new JCheckBox("Les matières");
+		chckbxLesMatieres.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		chckbxLesEnseignants = new JCheckBox("Les enseignants");
+		chckbxLesEnseignants.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		
+		lblEnseignWarning = new JLabel("");
+		lblEnseignWarning.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
+		lblEnseignWarning.setForeground(new Color(255, 0, 0));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		GroupLayout groupLayout = new GroupLayout(frmMidosvg.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(152)
 					.addComponent(lblMidosvgApplication)
@@ -224,21 +252,21 @@ public class GUII {
 										.addComponent(btnRemoveList, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
 										.addComponent(btnAddList, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
 									.addPreferredGap(ComponentPlacement.RELATED)))
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(49)
-									.addComponent(list2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(1)
-									.addComponent(chckbxAdmission))))
-						.addComponent(lblElementsAfficher)
-						.addComponent(lblLesMotscls))
+							.addGap(49)
+							.addComponent(list2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblLesMotscls)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(chckbxLesResponsables)
+								.addComponent(lblElementsAfficher))
+							.addGap(42)
+							.addComponent(chckbxAdmission)))
 					.addContainerGap(48, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 601, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(35)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -248,28 +276,30 @@ public class GUII {
 							.addGap(91))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(textFieldMotCle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addPreferredGap(ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnAjouterMotCle)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblOu)
 										.addComponent(lblEtou))
-									.addGap(18)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(chckbxA4)
-										.addComponent(chckbxMaster))
-									.addGap(33))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(46)
-									.addComponent(btnAjouterMotCle)
-									.addPreferredGap(ComponentPlacement.RELATED)))
+									.addGap(24)))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(chckbxA4)
+								.addComponent(chckbxMaster)
+								.addComponent(chckbxLesMatieres))
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 1, GroupLayout.PREFERRED_SIZE)
-							.addGap(177))
+							.addGap(153))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(chckbxLesResponsables)
-								.addComponent(list1, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE))
+							.addComponent(list1, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap())))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(111)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblEnseignWarning)
+						.addComponent(chckbxLesEnseignants))
+					.addContainerGap(384, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -300,9 +330,15 @@ public class GUII {
 								.addComponent(chckbxMaster))))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(chckbxAdmission)
-						.addComponent(chckbxLesResponsables))
-					.addGap(52)
+						.addComponent(chckbxLesMatieres)
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(chckbxLesResponsables)
+							.addComponent(chckbxAdmission)))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(chckbxLesEnseignants)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblEnseignWarning)
+					.addGap(14)
 					.addComponent(lblLesMotscls)
 					.addGap(23)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -317,7 +353,7 @@ public class GUII {
 								.addComponent(list1, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(list2, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
 									.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 										.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnFermer, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))))
@@ -360,7 +396,9 @@ public class GUII {
 	
 	private void createEvents() {
 		
-		/* Exit button */
+		/* Exit button 
+		 * 
+		 * */
 		
 		btnFermer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -369,7 +407,11 @@ public class GUII {
 		});
 		
 		
-		/*  The button "Générer l'SVG" that gives the final result */ 
+		/*  The button "Générer l'SVG" that gives the final result 
+		 * 
+		 * */ 
+		
+		
 		btnGnrerLsvg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -381,7 +423,12 @@ public class GUII {
 			}
 		});
 		
-		/* The button "Ajouter" that add to the list of keywords */
+		
+		/* The button "Ajouter" that add to the list of keywords
+		 * 
+		 *  */
+		
+			
 		btnAjouterMotCle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				motCle = textFieldMotCle.getText();
@@ -393,7 +440,10 @@ public class GUII {
 		});
 		
 		
-		/* The button ">>" that adds the selected element from list1 to the list2 */ 
+		/* The button ">>" that adds the selected element from list1 to the list2 
+		 * 
+		 * */ 
+		
 		btnAddList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				motCle = list1.getSelectedValue().toString();
@@ -405,7 +455,10 @@ public class GUII {
 		});
 		
 		
-		/* The button ">>" that adds the selected element from list2 to the list1 */ 
+		/* The button ">>" that adds the selected element from list2 to the list1 
+		 * 
+		 * */ 
+		
 		btnRemoveList.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				motCle = list2.getSelectedValue().toString();
@@ -415,7 +468,10 @@ public class GUII {
 		});
 		
 		
-		/*   Check box to choose A3 format */
+		/*   Check box to choose A3 format
+		 * 
+		 *  */
+		
 		chckbxA3.addItemListener(new ItemListener() {
 		      public void itemStateChanged(ItemEvent e) {
 		        if(chckbxA3.isSelected()){
@@ -425,7 +481,10 @@ public class GUII {
 		    });
 		
 		
-		/*   Check box to choose A4 format  */
+		/*   Check box to choose A4 format 
+		 * 
+		 *  */
+		
 		chckbxA4.addItemListener(new ItemListener() {
 		      public void itemStateChanged(ItemEvent e) {
 		        if(chckbxA4.isSelected()){
@@ -436,7 +495,10 @@ public class GUII {
 		
 		
 		
-		/*   Check box to choose Licence */
+		/*   Check box to choose Licence 
+		 * 
+		 * */
+		
 		chckbxLicence.addItemListener(new ItemListener() {
 		      public void itemStateChanged(ItemEvent e) {
 		        if(chckbxLicence.isSelected()){
@@ -447,7 +509,10 @@ public class GUII {
 		    });
 	
 		
-		/*   Check box to choose Master */
+		/*   Check box to choose Master
+		 * 
+		 *  */
+		
 		chckbxMaster.addItemListener(new ItemListener() {
 		      public void itemStateChanged(ItemEvent e) {
 		        if(chckbxMaster.isSelected()){
@@ -457,7 +522,68 @@ public class GUII {
 		      }
 		    });
 		
-	
+		
+		
+		/*   Check box to choose display "Responsables" or not
+		 * 
+		 *  */
+		
+		chckbxLesResponsables.addItemListener(new ItemListener() {
+		      public void itemStateChanged(ItemEvent e) {
+		        if(chckbxLesResponsables.isSelected()){
+		        	svg.ShowResponsable(true);
+		        	
+		        } 
+		      }
+		    });
+
+		
+		/*   Check box to choose display "Admission" or not
+		 * 
+		 *  */
+		
+		chckbxAdmission.addItemListener(new ItemListener() {
+		      public void itemStateChanged(ItemEvent e) {
+		        if(chckbxAdmission.isSelected()){
+		        	svg.ShowAdmission(true);
+		        	
+		        } 
+		      }
+		    });
+		
+		
+		/*   Check box to choose display "Subjects" or not
+		 * 
+		 *  */
+		
+		chckbxLesMatieres.addItemListener(new ItemListener() {
+		      public void itemStateChanged(ItemEvent e) {
+		        if(chckbxLesMatieres.isSelected()){
+		        	svg.ShowSubjectTeacher(true, false);
+		        	
+		        } 
+		      }
+		    });
+		
+		/*   Check box to choose display "Teachers" of each subject or not
+		 * 
+		 *  */
+		
+		chckbxLesEnseignants.addItemListener(new ItemListener() {
+		      public void itemStateChanged(ItemEvent e) {
+		        if(chckbxLesEnseignants.isSelected()){
+		        	lblEnseignWarning.setText(" Rappel:Les enseignants sont affichés avec les matières associées !!");
+		        	svg.ShowSubjectTeacher(true, true);
+		        	
+		        } 
+		      }
+		    });
+		
+		
+		
+		
+		
+		
 		
 	}
 	

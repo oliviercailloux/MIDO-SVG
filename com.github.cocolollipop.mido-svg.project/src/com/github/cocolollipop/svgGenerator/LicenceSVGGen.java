@@ -57,6 +57,7 @@ public class LicenceSVGGen {
 		On va compter le nombre de L1, L2,...
 
 		 */
+		
 		int decalageX=0;
 		int decalageY = 0;
 		int decalageL2=0;
@@ -359,13 +360,11 @@ public class LicenceSVGGen {
 		g.drawString(MIDO.getNomDepartement(), MIDO.getX(), MIDO.getY());
 
 		this.show("both");
+		this.ShowAdmission(true);
+		this.ShowResponsable(true);
+		this.ShowSubjectTeacher(false,true);
 
-			g.setPaint(Color.green);
-			for (Formation f : this.formationList)
-				g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
-
-			g.setPaint(Color.black);	
-
+	
 		// Tag checking
 		int cptTags = 0;
 		for (Formation f : this.formationList) {
@@ -384,6 +383,7 @@ public class LicenceSVGGen {
 		}
 
 		g.setPaint(Color.black);
+		
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes
@@ -529,10 +529,10 @@ public void show(String showOnly){
 					g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());
 					Rectangle t = new Rectangle(f.getPosX() - 10, f.getPosY() - 20, f.getFullName().length() * 10, 25);
 					g.draw(t);
-					g.setPaint(Color.blue);
+					//g.setPaint(Color.blue);
 
-					g.drawString(f.getAdmisssion(), f.getPosX() - 30, f.getPosY() - 30);
-					g.setPaint(Color.black);
+					//g.drawString(f.getAdmisssion(), f.getPosX() - 30, f.getPosY() - 30);
+					//g.setPaint(Color.black);
 
 					for (Formation l2 : f.getListOfAvailableFormations()) {
 						g.drawLine(f.getPosX() + lineCENTER, f.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
@@ -540,16 +540,16 @@ public void show(String showOnly){
 
 					}
 					
-					int decY=0;
+					/*int decY=0;
 					for (Subject s : f.getListOfsubjects()) {
 						g.drawString(s.getTitle(), f.getPosX()+100, f.getPosY()+decY);
 						s.setPosX(f.getPosX()+100);
 						s.setPosY(f.getPosY()+decY);
 						decY+=15;
 
-					}
+					}*/
 
-					g.setPaint(Color.red);
+					/*g.setPaint(Color.red);
 
 					for (Subject s : f.getListOfsubjects()) {
 						java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
@@ -558,10 +558,121 @@ public void show(String showOnly){
 						java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
 						g.setFont(font1);
 
-					}
+					}*/
+					
+					/*g.setPaint(Color.green);   
+					for (Formation f : this.formationList)
+						g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
+
+					g.setPaint(Color.black);*/	
+
 
 				}}
 			}
+
+
+
+/**
+ * This function shows the Admission 
+ * 
+ * 		The admission is written in BLUE
+ * 
+ * */
+
+public void ShowAdmission(boolean admission){ 
+	
+	if(admission==true){
+	
+	for (Formation f : this.formationList) {
+		
+	g.setPaint(Color.blue);
+	g.drawString(f.getAdmisssion(), f.getPosX() - 30, f.getPosY() - 30);
+	
+		}
+	}
+		
+}
+
+
+/**
+ * This function shows the name of the responsable of a formation
+ * 
+ * 		The responsable name is written in GREEN
+ * 
+ * */
+
+public void ShowResponsable(boolean reponsable){
+	
+		if(reponsable==true){
+			
+			g.setPaint(Color.green); 
+			
+			for (Formation f : this.formationList){
+				if(f.hasGotATeacher(f)==true) 
+				g.drawString(f.getTeacher().getFullNameTeacher(), f.getPosX()-(g.getFontMetrics().stringWidth(f.getTeacher().getFullNameTeacher())+5), f.getPosY());
+					
+					}
+			
+				g.setPaint(Color.black);
+				
+			}
+				
+	}
+	
+
+
+/**
+ * This function shows the name of the subjects or teachers of a formation
+ * 
+ * 	If the subjects are not shown, teachers wont appear in the SVG also
+ * 
+ * 		Either we'll have both, or only subjects
+ * 
+ * 			The size of teachers is smaller and in RED
+ * 
+ * */
+
+public void ShowSubjectTeacher(boolean subject,boolean teacher){
+	
+	
+	
+	if(subject==true){
+		int decY=0;
+		for (Formation f : this.formationList) {
+		for (Subject s : f.getListOfsubjects()) {
+			g.drawString(s.getTitle(), f.getPosX()+100, f.getPosY()+decY);
+			s.setPosX(f.getPosX()+100);
+			s.setPosY(f.getPosY()+decY);
+			decY+=15;
+
+			}
+		}
+		
+		
+		if(teacher==true){
+			g.setPaint(Color.red);
+		
+			for (Formation f : this.formationList) {
+			for (Subject s : f.getListOfsubjects()) {
+				
+				java.awt.Font font = new java.awt.Font("TimesRoman", 9, 9);
+				g.setFont(font);
+				g.drawString(s.getResponsible().getLastName(), s.getPosX()+(g.getFontMetrics().stringWidth(s.getTitle())+30),s.getPosY());
+				decY+=15;
+				
+				java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
+				g.setFont(font1);
+
+				}
+			
+			}
+		}
+	
+	}
+	
+}
+
+
 
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();

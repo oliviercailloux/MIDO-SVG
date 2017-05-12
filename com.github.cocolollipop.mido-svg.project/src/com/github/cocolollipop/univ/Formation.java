@@ -251,8 +251,15 @@ public abstract class Formation {
 
 			}
 
-		  
-
+	}
+	
+	
+	
+	public boolean hasGotATeacher(Formation f){
+		if(f.getTeacher().getFirstName()==null && f.getTeacher().getLastName()==null )
+		return false;
+		else
+		return true;
 		
 	}
 
