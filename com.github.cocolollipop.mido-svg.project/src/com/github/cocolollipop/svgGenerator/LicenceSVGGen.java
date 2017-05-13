@@ -292,6 +292,11 @@ public class LicenceSVGGen {
 		// Create position variables
 
 	
+		// FONT OF THE SVG
+		java.awt.Font font = new java.awt.Font("TimesRoman", 20, 20);
+		g.setFont(font);
+		
+		
 		/*************** OBJECTS CREATION ***************/
 
 		Department MIDO = new Department("MIDO", 500, 20);
@@ -474,7 +479,7 @@ public void show(String showOnly){
 
 					g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY()); 
 					// write the name of formation
-					Rectangle t = new Rectangle(l.getPosX() - 10, l.getPosY() - 20, l.getFullName().length() * 10, 25); // draw
+					Rectangle t = new Rectangle(l.getPosX() - 10, l.getPosY() - 20, g.getFontMetrics().stringWidth(l.getFullName())+25, 25); // draw
 																														// rectangle
 					g.draw(t);
 
@@ -500,7 +505,7 @@ public void show(String showOnly){
 					g.setPaint(Color.black);
 
 					g.drawString(m.getFullNameWithLink(), m.getPosX(), m.getPosY());
-					Rectangle t = new Rectangle(m.getPosX() - 10, m.getPosY() - 20, m.getFullName().length() * 10, 25);
+					Rectangle t = new Rectangle(m.getPosX() - 10, m.getPosY() - 20, g.getFontMetrics().stringWidth(m.getFullName())+25, 25);
 					g.draw(t);
 
 
@@ -527,7 +532,7 @@ public void show(String showOnly){
 					g.setPaint(Color.black);
 
 					g.drawString(f.getFullNameWithLink(), f.getPosX(), f.getPosY());
-					Rectangle t = new Rectangle(f.getPosX() - 10, f.getPosY() - 20, f.getFullName().length() * 10, 25);
+					Rectangle t = new Rectangle(f.getPosX() - 10, f.getPosY() - 20, g.getFontMetrics().stringWidth(f.getFullName())+25, 25);
 					g.draw(t);
 				
 					for (Formation l2 : f.getListOfAvailableFormations()) {
@@ -643,8 +648,7 @@ public void ShowSubjectTeacher(boolean subject,boolean teacher){
 				g.drawString(s.getResponsible().getLastName(), s.getPosX()+(g.getFontMetrics().stringWidth(s.getTitle())+30),s.getPosY());
 				decY+=15;
 				
-				java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
-				g.setFont(font1);
+				
 
 				}
 			}
