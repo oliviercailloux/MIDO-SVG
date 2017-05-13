@@ -56,16 +56,14 @@ public class LicenceSVGGen {
 	 */
 	public void defineObjectsPosition(LinkedList<Formation> someFormations, int canvasX, int canvasY){
 
-		/* On definit d'abord le decalage initial
-		Pour cela, on va analyser le contenu de lesFormations
-		On va compter le nombre de L1, L2,...
-
+		/* We define initial offset
+		In order to it, we must count number of each Formation in someFormations
+		Then calculate Y offset depending on which formation exists (Only L1 or all ?)
+		Finally we calculate X offset
 		 */
 		
-		int decalageX = 0;
-		int decalageY = 0;
-		int decalageL2=0;
-		int decalageL3=0;
+		int offsetX = 0;
+		int offsetY = 0;
 		int nbL1=0;
 		int nbL2=0;
 		int nbL3=0;
@@ -80,7 +78,7 @@ public class LicenceSVGGen {
 
 
 
-		// on va d'abord compter le nombre de formation parmi la liste envoy�e
+		// First we count number of each formation
 		nbL1 = countFormations(someFormations,"L1");
 		nbL2 = countFormations(someFormations,"L2");
 		nbL3 = countFormations(someFormations,"L3");
@@ -89,7 +87,7 @@ public class LicenceSVGGen {
 
 
 		/*
-		 * On calcule le decalage en Y ; pour cela il suffit de compter le nombre de nbL1/nbL2 != 0
+		 * We calculate Y offset
 		 */
 		int tempCpt = 0;
 		if (nbL1!=0){
@@ -120,27 +118,27 @@ public class LicenceSVGGen {
 		
 		
 		/*
-		 * Maintenant on calcule le decalage en X
+		 * Now we calculate X and Y offset
 		 */
-		decalageX = canvasX/(nbL1+1);
-		decalageY = canvasY/(totalCptY+1)*cptY[0];
-		associatePositionX(someFormations, "L1", decalageX,decalageY);
+		offsetX = canvasX/(nbL1+1);
+		offsetY = canvasY/(totalCptY+1)*cptY[0];
+		associatePositionX(someFormations, "L1", offsetX,offsetY);
 
-		decalageX = canvasX/(nbL2+1);
-		decalageY = canvasY/(totalCptY+1)*cptY[1];
-		associatePositionX(someFormations, "L2", decalageX,decalageY);
+		offsetX = canvasX/(nbL2+1);
+		offsetY = canvasY/(totalCptY+1)*cptY[1];
+		associatePositionX(someFormations, "L2", offsetX,offsetY);
 
-		decalageX = canvasX/(nbL3+1);
-		decalageY = canvasY/(totalCptY+1)*cptY[2];
-		associatePositionX(someFormations, "L3", decalageX,decalageY);
+		offsetX = canvasX/(nbL3+1);
+		offsetY = canvasY/(totalCptY+1)*cptY[2];
+		associatePositionX(someFormations, "L3", offsetX,offsetY);
 
-		decalageX = canvasX/(nbM1+1);
-		decalageY = canvasY/(totalCptY+1)*cptY[3];
-		associatePositionX(someFormations, "M1", decalageX,decalageY);
+		offsetX = canvasX/(nbM1+1);
+		offsetY = canvasY/(totalCptY+1)*cptY[3];
+		associatePositionX(someFormations, "M1", offsetX,offsetY);
 
-		decalageX = canvasX/(nbM2+1);
-		decalageY = canvasY/(totalCptY+1)*cptY[4];
-		associatePositionX(someFormations, "M2", decalageX,decalageY);
+		offsetX = canvasX/(nbM2+1);
+		offsetY = canvasY/(totalCptY+1)*cptY[4];
+		associatePositionX(someFormations, "M2", offsetX,offsetY);
 
 	}
 	
