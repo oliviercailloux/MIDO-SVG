@@ -53,9 +53,9 @@ public class GUII {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textFieldMotCle;
 	private DefaultListModel<String> listmodel1 = new DefaultListModel<String>();
-	private DefaultListModel listmodel2 = new DefaultListModel();
-	private JList list1;
-	private JList list2;
+	private DefaultListModel<String> listmodel2 = new DefaultListModel<String>();
+	private JList<String> list1;
+	private JList<String> list2;
 	private String motCle;
 	/**
 	 * choices
@@ -196,16 +196,10 @@ public class GUII {
 		 * @Override public Object getElementAt(int index) { return
 		 * values[index]; } });
 		 */
-		ArrayList<String> list = new ArrayList<>();
-		list = svg.getData().getListOfTags();
-		for (int i = 0; i < list.size(); i++) {
-			listmodel1.addElement(list.get(i));
-		}
-		list1.setModel(listmodel1);
-
+		initTagsList();
 		list1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
-		list2 = new JList();
+		list2 = new JList<String>();
 		list2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		btnAddList = new JButton(">>");
@@ -351,17 +345,17 @@ public class GUII {
 	}
 
 	/**
-	 * Initialise tagList (list1)
+	 * Initialise tagsList (list1)
 	 * 
 	 */
-	private void initTagList() {
+	private void initTagsList() {
 
-		// HERE GET TAGS FOR TAGLIST HEEEEELLLLPPPP and add it to LISTMODEL1
-
-		// for(int i=0;i<formation.readTagsList("L3 Test Create Tag
-		// App.txt");i++){
-		// listmodel1.addElement(i);
-		// }
+		ArrayList<String> list = new ArrayList<>();
+		list = svg.getData().getListOfTags();
+		for (int i = 0; i < list.size(); i++) {
+			listmodel1.addElement(list.get(i));
+		}
+		list1.setModel(listmodel1);
 
 	}
 
@@ -395,7 +389,7 @@ public class GUII {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affMatieres, affAdmission,
-							affSubject, affTeacher,form);
+							affSubject, affTeacher, form);
 
 					File file = new File("outLicence.svg");
 
@@ -468,7 +462,7 @@ public class GUII {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxA3.isSelected()) {
-					form="A3";
+					form = "A3";
 				}
 			}
 		});
@@ -482,7 +476,7 @@ public class GUII {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxA4.isSelected()) {
-					form="A4";
+					form = "A4";
 				}
 			}
 		});
@@ -571,7 +565,7 @@ public class GUII {
 		chckbxLesEnseignants.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxLesEnseignants.isSelected() && chckbxLesMatieres.isSelected() ) {
+				if (chckbxLesEnseignants.isSelected() && chckbxLesMatieres.isSelected()) {
 					lblEnseignWarning.setText(" Rappel:Les enseignants sont affichés avec les matières associées !!");
 					affSubject = true;
 					affTeacher = true;
