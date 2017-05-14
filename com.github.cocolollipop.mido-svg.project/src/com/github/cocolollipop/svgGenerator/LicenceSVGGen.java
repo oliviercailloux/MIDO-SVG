@@ -23,6 +23,7 @@ import com.github.cocolollipop.dataBase.DataBase;
 import com.github.cocolollipop.univ.Formation;
 import com.github.cocolollipop.univ.Subject;
 
+
 public class LicenceSVGGen {
 
 	private DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -207,7 +208,7 @@ public class LicenceSVGGen {
 		g = new SVGGraphics2D(ctx, false);
 		// Create position variables
 
-		this.defineObjectsPosition(this.data.getListOfFormations(), 1920, 1080);
+		//this.defineObjectsPosition(this.data.getListOfFormations(), 1920, 1080);
 
 		this.showAdmission(affAdmission);
 
@@ -294,6 +295,7 @@ public class LicenceSVGGen {
 		}
 
 		for (Formation l : listToShow) {
+			l.setShown(true);
 			g.setPaint(Color.black);
 			g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY());
 			// write the name of formation
@@ -421,6 +423,13 @@ public class LicenceSVGGen {
 			}
 
 		}
+
+	}
+	
+	
+	public static void main(String[] args) throws Exception {
+		LicenceSVGGen test = new LicenceSVGGen();
+		test.paint(false, true,  true, true, true, true, true);
 
 	}
 

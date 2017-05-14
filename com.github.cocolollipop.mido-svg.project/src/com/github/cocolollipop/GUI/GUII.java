@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.AbstractListModel;
 import javax.swing.ButtonGroup;
@@ -392,12 +394,12 @@ public class GUII {
 					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affMatieres, affAdmission,
 							affSubject, affTeacher);
 
-					// File file = new File("outLicence.svg");
-					/*
-					 * try { java.awt.Desktop.getDesktop().open(file); } catch
-					 * (IOException exc) { System.out.println("Exception: " +
-					 * exc.toString()); }
-					 */
+					 File file = new File("outLicence.svg");
+					
+					 try { java.awt.Desktop.getDesktop().open(file); } catch
+					 (IOException exc) { System.out.println("Exception: " +
+					 exc.toString()); }
+					
 
 				} catch (Exception e) {
 					e.printStackTrace();
