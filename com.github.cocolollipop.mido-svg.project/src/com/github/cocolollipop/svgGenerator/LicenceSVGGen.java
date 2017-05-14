@@ -1,7 +1,6 @@
 package com.github.cocolollipop.svgGenerator;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -81,11 +79,11 @@ public class LicenceSVGGen {
 		}
 
 		// First we count number of each formation
-		nbL1 = this.getData().countFormations(this.getData().getListOfFormations(), "L1");
-		nbL2 = this.getData().countFormations(this.getData().getListOfFormations(), "L2");
-		nbL3 = this.getData().countFormations(this.getData().getListOfFormations(), "L3");
-		nbM1 = this.getData().countFormations(this.getData().getListOfFormations(), "M1");
-		nbM2 = this.getData().countFormations(this.getData().getListOfFormations(), "M2");
+		nbL1 = this.getData().countFormations(someFormations, "L1");
+		nbL2 = this.getData().countFormations(someFormations, "L2");
+		nbL3 = this.getData().countFormations(someFormations, "L3");
+		nbM1 = this.getData().countFormations(someFormations, "M1");
+		nbM2 = this.getData().countFormations(someFormations, "M2");
 
 		/*
 		 * We calculate Y offset
@@ -142,16 +140,6 @@ public class LicenceSVGGen {
 
 	}
 
-	private void getPlacement(LinkedList<Formation> someFormations) {
-		for (Formation aFormation : someFormations) {
-			System.out.println("Pour la formation " + aFormation.getFullName());
-			System.out.println("PosX = " + aFormation.getPosX());
-			System.out.println("PosY = " + aFormation.getPosY());
-			System.out.println("_________________");
-		}
-
-	}
-
 	/**
 	 * associatePositionX set the posX of each Formation which satisfy
 	 * uneFormation.getFullName() == myYear
@@ -172,10 +160,18 @@ public class LicenceSVGGen {
 				System.out.println("associerOK : " + aFormation.getFullName());
 			}
 		}
+	}
+
+	private void getPlacement(LinkedList<Formation> someFormations) {
+		for (Formation aFormation : someFormations) {
+			System.out.println("Pour la formation " + aFormation.getFullName());
+			System.out.println("PosX = " + aFormation.getPosX());
+			System.out.println("PosY = " + aFormation.getPosY());
+			System.out.println("_________________");
+		}
 
 	}
 
-	// FIN ALGO
 	/**
 	 * fillListOfFormationToShow method fills the listOfFormationToShow with
 	 * objects from FormationList that are of type typeOfFormation
@@ -194,7 +190,8 @@ public class LicenceSVGGen {
 		return listOfFormationToShow;
 	}
 
-	public void paint(String choiceOfShow) throws Exception {
+	public void paint(boolean affFormationLicence, boolean affFormationMaster, boolean affResponsable,
+			boolean affMatieres, boolean affAdmission, boolean affSubject, boolean affTeacher) throws Exception {
 		String output = "outLicence.svg";
 
 		db = dbf.newDocumentBuilder();
@@ -209,49 +206,34 @@ public class LicenceSVGGen {
 		ctx.setEmbeddedFontsOn(true);
 		g = new SVGGraphics2D(ctx, false);
 		// Create position variables
+
 		this.defineObjectsPosition(this.data.getListOfFormations(), 1920, 1080);
 
+		this.showAdmission(affAdmission);
+
+		this.showFormation(affFormationLicence, affFormationMaster);
+
+		this.showResponsable(affResponsable);
+		this.showSubjectTeacher(affSubject, affTeacher);
 		// The tag that the user selected (he wants to see what are the
 		// formation that teaches this course)
 		// String userSelectedTag = "Probas";
-		String userSelectedTags[] = { "Rugby", "ADD", "Espagnol" };
+		// String userSelectedTags[] = { "Rugby", "ADD", "Espagnol" };
 
 		// Ask the test to render into the SVG Graphics2D implementation.
 
-		g.setPaint(Color.black);
-
-		g.setSVGCanvasSize(
-				new Dimension(this.getData().getFormat().getCanevasX(), this.getData().getFormat().getCanevasY()));
-
-		g.drawString(this.data.getDepartment().getNomDepartement(), this.data.getDepartment().getX(),
-				this.data.getDepartment().getY());
-
-		this.show(choiceOfShow);
-
-		g.setPaint(Color.green);
-		for (Formation f : this.data.getListOfFormations())
-			g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
-
-		g.setPaint(Color.black);
-
 		// Tag checking
-		int cptTags = 0;
-		for (Formation f : this.data.getListOfFormations()) {
-			cptTags = 0;
-			for (String str : userSelectedTags) {
+		/*
+		 * int cptTags = 0; for (Formation f : this.data.getListOfFormations())
+		 * { cptTags = 0; for (String str : userSelectedTags) {
+		 * 
+		 * if (Arrays.asList(f.getTagslist()).contains(str)) { cptTags++;
+		 * 
+		 * if (cptTags == userSelectedTags.length) { g.setPaint(Color.red);
+		 * g.drawString("(X)", f.getPosX() + 50, f.getPosY() + 20); } } } }
+		 */
 
-				if (Arrays.asList(f.getTagslist()).contains(str)) {
-					cptTags++;
-
-					if (cptTags == userSelectedTags.length) {
-						g.setPaint(Color.red);
-						g.drawString("(X)", f.getPosX() + 50, f.getPosY() + 20);
-					}
-				}
-			}
-		}
-
-		g.setPaint(Color.black);
+		// g.setPaint(Color.black);
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes
@@ -287,7 +269,15 @@ public class LicenceSVGGen {
 	 * @param lineYUP
 	 * @throws ClassNotFoundException
 	 */
-	public void show(String showOnly) throws ClassNotFoundException {
+	public void showFormation(boolean affFormationLicence, boolean affFormationMaster) throws ClassNotFoundException {
+		String showOnly = "";
+		if (affFormationLicence == true && affFormationMaster == true) {
+			showOnly = "both";
+		} else if (affFormationLicence == true && affFormationMaster == false) {
+			showOnly = "Licence";
+		} else if (affFormationLicence == false && affFormationMaster == true) {
+			showOnly = "Master";
+		}
 		// Makes the line arrive in the center of the rectangle
 		int lineCENTER = 50;
 		// Makes the line go DOWN a little so the line is not on the text
@@ -308,37 +298,18 @@ public class LicenceSVGGen {
 			g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY());
 			// write the name of formation
 			Rectangle t = new Rectangle(l.getPosX() - 10, l.getPosY() - 20, l.getFullName().length() * 10, 25); // draw
-																												// //
-																												// rectangle
+			// rectangle
 			g.draw(t);
 			g.setPaint(Color.blue);
-			g.drawString(l.getAdmisssion(), l.getPosX() - 30, l.getPosY() - 30);
-			g.setPaint(Color.black);
 			for (Formation l2 : l.getListOfAvailableFormations()) {
 				// draw the lines between the formation and the avalaible
 				// formations
 				g.drawLine(l.getPosX() + lineCENTER, l.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
 						l2.getPosY() + lineYUP);
-			}
-			for (Subject s : l.getListOfSubjects()) {
-				g.drawString(s.getTitle(), s.getPosX(), s.getPosY());
-			}
-			g.setPaint(Color.red);
-			for (Subject s : l.getListOfSubjects()) {
-				java.awt.Font font = new java.awt.Font("TimesRoman", 10, 10);
-				g.setFont(font);
-				g.drawString(s.getResponsible().getLastName(), s.getPosX() + (s.getTitle().length() * 7), s.getPosY());
-				java.awt.Font font1 = new java.awt.Font("TimesRoman", 12, 12);
-				g.setFont(font1);
 
 			}
+
 		}
-
-		g.setPaint(Color.green);
-		for (Formation f : listToShow)
-			g.drawString(f.getTeacher().getFullNameTeacher(), f.getTeacher().getPosX(), f.getTeacher().getPosY());
-
-		g.setPaint(Color.black);
 
 	}
 
@@ -352,7 +323,7 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void ShowAdmission(boolean admission) {
+	public void showAdmission(boolean admission) {
 
 		if (admission == true) {
 
@@ -376,7 +347,7 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void ShowResponsable(boolean reponsable) {
+	public void showResponsable(boolean reponsable) {
 
 		if (reponsable == true) {
 
@@ -413,7 +384,7 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void ShowSubjectTeacher(boolean subject, boolean teacher) {
+	public void showSubjectTeacher(boolean subject, boolean teacher) {
 
 		if (subject == true) {
 			int decY = 0;
@@ -453,10 +424,4 @@ public class LicenceSVGGen {
 
 	}
 
-	public static void main(String[] args) throws Exception {
-		LicenceSVGGen test = new LicenceSVGGen();
-		// On choisit ce qu'on veut afficher + format
-		test.paint("both");
-
-	}
 }

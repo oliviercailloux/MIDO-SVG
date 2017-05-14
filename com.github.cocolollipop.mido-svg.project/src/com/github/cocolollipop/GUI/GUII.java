@@ -8,8 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.File;
-import java.io.IOException;
 
 import javax.swing.AbstractListModel;
 import javax.swing.ButtonGroup;
@@ -57,6 +55,16 @@ public class GUII {
 	private JList list1;
 	private JList list2;
 	private String motCle;
+	/**
+	 * choices
+	 */
+	private boolean affFormationLicence;
+	private boolean affFormationMaster;
+	private boolean affResponsable;
+	private boolean affMatieres;
+	private boolean affAdmission;
+	private boolean affSubject;
+	private boolean affTeacher;
 
 	private LicenceSVGGen svg = new LicenceSVGGen();
 	private Format format = new Format();
@@ -381,14 +389,15 @@ public class GUII {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					svg.paint("Licence");
+					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affMatieres, affAdmission,
+							affSubject, affTeacher);
 
-					File file = new File("outLicence.svg");
-					try {
-						java.awt.Desktop.getDesktop().open(file);
-					} catch (IOException exc) {
-						System.out.println("Exception: " + exc.toString());
-					}
+					// File file = new File("outLicence.svg");
+					/*
+					 * try { java.awt.Desktop.getDesktop().open(file); } catch
+					 * (IOException exc) { System.out.println("Exception: " +
+					 * exc.toString()); }
+					 */
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -481,93 +490,85 @@ public class GUII {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxLicence.isSelected()) {
-					try {
-						svg.show("Licence");
-					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-
+					affFormationLicence = true;
+				} else {
+					affFormationLicence = false;
 				}
 			}
 		});
 
-		/*
+		/**
 		 * Check box to choose Master
 		 * 
 		 */
-
 		chckbxMaster.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxMaster.isSelected()) {
-					try {
-						svg.show("Master");
-					} catch (ClassNotFoundException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-
+					affFormationMaster = true;
+				} else {
+					affFormationMaster = false;
 				}
 			}
 		});
 
-		/*
+		/**
 		 * Check box to choose display "Responsables" or not
 		 * 
 		 */
-
 		chckbxLesResponsables.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxLesResponsables.isSelected()) {
-					// svg.ShowResponsable(true);
+					affResponsable = true;
+				} else {
+					affResponsable = false;
 
 				}
 			}
 		});
 
-		/*
+		/**
 		 * Check box to choose display "Admission" or not
 		 * 
 		 */
-
 		chckbxAdmission.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxAdmission.isSelected()) {
-					svg.ShowAdmission(true);
-
-				}
+					affAdmission = true;
+					System.out.println(affAdmission);
+				} else
+					affAdmission = false;
+				System.out.println(affAdmission);
 			}
 		});
 
-		/*
+		/**
 		 * Check box to choose display "Subjects" or not
 		 * 
 		 */
-
 		chckbxLesMatieres.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxLesMatieres.isSelected()) {
-					svg.ShowSubjectTeacher(true, false);
-
+					affSubject = true;
+					affTeacher = false;
 				}
 			}
 		});
 
-		/*
+		/**
 		 * Check box to choose display "Teachers" of each subject or not
 		 * 
 		 */
-
 		chckbxLesEnseignants.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxLesEnseignants.isSelected()) {
 					lblEnseignWarning.setText(" Rappel:Les enseignants sont affichés avec les matières associées !!");
-					svg.ShowSubjectTeacher(true, true);
+					affSubject = true;
+					affTeacher = true;
 
 				}
 			}

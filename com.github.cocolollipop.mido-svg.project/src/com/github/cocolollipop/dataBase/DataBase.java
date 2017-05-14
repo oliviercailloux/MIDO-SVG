@@ -1,5 +1,6 @@
 package com.github.cocolollipop.dataBase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -16,6 +17,7 @@ public class DataBase {
 	private HashMap<String, Teacher> listOfTeachers;
 	private HashMap<String, Subject> listOfSubjects;
 	private LinkedList<Formation> listOfFormations;
+	private ArrayList<String> listOfTags;
 	private Department department;
 	private Format format;
 
@@ -78,6 +80,7 @@ public class DataBase {
 	/**
 	 * Initialize formations
 	 */
+	@SuppressWarnings("unchecked")
 	public void initFormations() {
 		// L3MIAGE
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);
@@ -140,7 +143,11 @@ public class DataBase {
 		M2MIAGEIF.setTagsList("M2MIAGEIF.txt");
 		M2MIAGEID.setTagsList("M2MIAGEID.txt");
 		M2MIAGESTIN.setTagsList("M2MIAGESTIN.txt");
+
+		// for (Formation formation : this.listOfFormations)
+		// this.listOfTags.addAll(formation.getTagslist());
 	}
+
 	//////////////// GETTERS AND SETTERS /////////////
 
 	public LinkedList<Formation> getListOfFormations() {
@@ -215,10 +222,10 @@ public class DataBase {
 	 *            is a year such as "L3" or "M1"
 	 * @return an integer or a negative if myYear isn't in the List
 	 */
-	public int countFormations(LinkedList<Formation> lesFormations, String myYear) {
+	public int countFormations(LinkedList<Formation> someFormations, String myYear) {
 		int nb = 0;
-		for (Formation uneFormation : lesFormations) {
-			if (uneFormation.getFullName().indexOf(myYear) != -1) {
+		for (Formation aFormation : someFormations) {
+			if (aFormation.getFullName().indexOf(myYear) != -1) {
 				nb++;
 			}
 
