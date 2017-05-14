@@ -11,7 +11,6 @@ public class Subject {
 	private int credit;
 	private int posX;
 	private int posY;
-	
 
 	public Subject(String title, Teacher responsible, int credit, int posX, int posY) {
 		this.title = title;
@@ -20,7 +19,6 @@ public class Subject {
 		this.posX = posX;
 		this.posY = posY;
 	}
-	
 
 	public int getPosX() {
 		return posX;
@@ -61,6 +59,5 @@ public class Subject {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
-	
-	
+
 }
