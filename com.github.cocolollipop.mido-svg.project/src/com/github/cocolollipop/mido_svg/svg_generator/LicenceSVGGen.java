@@ -196,7 +196,7 @@ public class LicenceSVGGen {
 	public void paint(boolean affFormationLicence, boolean affFormationMaster, boolean affResponsable,
 			boolean affMatieres, boolean affAdmission, boolean affSubject, boolean affTeacher, String form)
 			throws Exception {
-		String output = "outLicence.svg";
+		String output = "./svg/outLicence.svg";
 
 		db = dbf.newDocumentBuilder();
 		// Get a DOMImplementation.

@@ -116,16 +116,16 @@ public class GUISVGGenerator {
 
 	private void initComponents() {
 		frmMidosvg = new JFrame();
-		frmMidosvg.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(GUISVGGenerator.class.getResource("/com/github/cocolollipop/WindowBuilderResources/dauphine.png")));
+		frmMidosvg.setIconImage(Toolkit.getDefaultToolkit().getImage(GUISVGGenerator.class
+				.getResource("/com/github/cocolollipop/mido_svg/resources/window_builder/dauphine.png")));
 		frmMidosvg.setTitle("MIDO-SVG");
 		frmMidosvg.getContentPane().setBackground(new Color(240, 248, 255));
 
 		JLabel label = new JLabel("");
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setVerticalAlignment(SwingConstants.TOP);
-		label.setIcon(
-				new ImageIcon(GUISVGGenerator.class.getResource("/com/github/cocolollipop/WindowBuilderResources/dauphine.png")));
+		label.setIcon(new ImageIcon(GUISVGGenerator.class
+				.getResource("/com/github/cocolollipop/mido_svg/resources/window_builder/dauphine.png")));
 
 		JLabel lblMidosvgApplication = new JLabel("MIDO-SVG APPLICATION");
 		lblMidosvgApplication.setFont(new Font("Lucida Bright", Font.BOLD, 19));
@@ -391,7 +391,7 @@ public class GUISVGGenerator {
 					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affMatieres, affAdmission,
 							affSubject, affTeacher, form);
 
-					File file = new File("outLicence.svg");
+					File file = new File("./svg/outLicence.svg");
 
 					try {
 						java.awt.Desktop.getDesktop().open(file);
