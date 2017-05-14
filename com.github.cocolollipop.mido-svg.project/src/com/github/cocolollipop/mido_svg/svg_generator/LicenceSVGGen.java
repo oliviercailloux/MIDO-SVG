@@ -1,4 +1,4 @@
-package com.github.cocolollipop.svgGenerator;
+package com.github.cocolollipop.mido_svg.svg_generator;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,10 +20,10 @@ import org.apache.commons.io.IOUtils;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
-import com.github.cocolollipop.GenerateAuto.Format;
-import com.github.cocolollipop.dataBase.DataBase;
-import com.github.cocolollipop.univ.Formation;
-import com.github.cocolollipop.univ.Subject;
+import com.github.cocolollipop.mido_svg.model.DataBase;
+import com.github.cocolollipop.mido_svg.paper.Format;
+import com.github.cocolollipop.mido_svg.university.components.Formation;
+import com.github.cocolollipop.mido_svg.university.components.Subject;
 
 public class LicenceSVGGen {
 

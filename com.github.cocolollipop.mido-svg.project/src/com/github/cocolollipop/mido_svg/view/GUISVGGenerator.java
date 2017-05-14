@@ -1,4 +1,4 @@
-package com.github.cocolollipop.GUI;
+package com.github.cocolollipop.mido_svg.view;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -29,11 +29,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
-import com.github.cocolollipop.GenerateAuto.Format;
-import com.github.cocolollipop.svgGenerator.LicenceSVGGen;
-import com.github.cocolollipop.univ.Formation;
+import com.github.cocolollipop.mido_svg.paper.Format;
+import com.github.cocolollipop.mido_svg.svg_generator.LicenceSVGGen;
+import com.github.cocolollipop.mido_svg.university.components.Formation;
 
-public class GUII {
+public class GUISVGGenerator {
 
 	private JFrame frmMidosvg;
 	private JButton btnGnrerLsvg;
@@ -82,7 +82,7 @@ public class GUII {
 			@Override
 			public void run() {
 				try {
-					GUII window = new GUII();
+					GUISVGGenerator window = new GUISVGGenerator();
 					window.frmMidosvg.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -94,7 +94,7 @@ public class GUII {
 	/**
 	 * Create the application.
 	 */
-	public GUII() {
+	public GUISVGGenerator() {
 		initialize();
 	}
 
@@ -117,7 +117,7 @@ public class GUII {
 	private void initComponents() {
 		frmMidosvg = new JFrame();
 		frmMidosvg.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(GUII.class.getResource("/com/github/cocolollipop/WindowBuilderResources/dauphine.png")));
+				.getImage(GUISVGGenerator.class.getResource("/com/github/cocolollipop/WindowBuilderResources/dauphine.png")));
 		frmMidosvg.setTitle("MIDO-SVG");
 		frmMidosvg.getContentPane().setBackground(new Color(240, 248, 255));
 
@@ -125,7 +125,7 @@ public class GUII {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setVerticalAlignment(SwingConstants.TOP);
 		label.setIcon(
-				new ImageIcon(GUII.class.getResource("/com/github/cocolollipop/WindowBuilderResources/dauphine.png")));
+				new ImageIcon(GUISVGGenerator.class.getResource("/com/github/cocolollipop/WindowBuilderResources/dauphine.png")));
 
 		JLabel lblMidosvgApplication = new JLabel("MIDO-SVG APPLICATION");
 		lblMidosvgApplication.setFont(new Font("Lucida Bright", Font.BOLD, 19));

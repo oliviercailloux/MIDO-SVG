@@ -1,4 +1,4 @@
-package com.github.cocolollipop.dataBase;
+package com.github.cocolollipop.mido_svg.model;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,13 +6,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import com.github.cocolollipop.GenerateAuto.Format;
-import com.github.cocolollipop.univ.Department;
-import com.github.cocolollipop.univ.Formation;
-import com.github.cocolollipop.univ.Licence;
-import com.github.cocolollipop.univ.Master;
-import com.github.cocolollipop.univ.Subject;
-import com.github.cocolollipop.univ.Teacher;
+import com.github.cocolollipop.mido_svg.paper.Format;
+import com.github.cocolollipop.mido_svg.university.components.Department;
+import com.github.cocolollipop.mido_svg.university.components.Formation;
+import com.github.cocolollipop.mido_svg.university.components.Licence;
+import com.github.cocolollipop.mido_svg.university.components.Master;
+import com.github.cocolollipop.mido_svg.university.components.Subject;
+import com.github.cocolollipop.mido_svg.university.components.Teacher;
 
 public class DataBase {
 

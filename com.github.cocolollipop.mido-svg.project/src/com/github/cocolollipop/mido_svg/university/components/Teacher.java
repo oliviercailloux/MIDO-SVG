@@ -1,4 +1,4 @@
-package com.github.cocolollipop.univ;
+package com.github.cocolollipop.mido_svg.university.components;
 
 /**
  * This class corresponds to the teacher's details

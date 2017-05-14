@@ -1,4 +1,4 @@
-package com.github.cocolollipop.univ;
+package com.github.cocolollipop.mido_svg.university.components;
 
 import java.util.ArrayList;
 /**

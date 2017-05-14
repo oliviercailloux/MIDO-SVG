@@ -1,4 +1,4 @@
-package com.github.cocolollipop.GenerateAuto;
+package com.github.cocolollipop.mido_svg.paper;
 
 public class Format {
 	

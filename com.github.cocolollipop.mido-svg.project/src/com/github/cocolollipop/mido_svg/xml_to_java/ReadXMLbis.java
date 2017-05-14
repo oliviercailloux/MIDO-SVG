@@ -1,4 +1,4 @@
-package com.github.cocolollipop.xmltojava;
+package com.github.cocolollipop.mido_svg.xml_to_java;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,12 +13,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.github.cocolollipop.mido_svg.university.components.Teacher;
+
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-
-import com.github.cocolollipop.univ.Teacher;
 
 public class ReadXMLbis {
 	/**

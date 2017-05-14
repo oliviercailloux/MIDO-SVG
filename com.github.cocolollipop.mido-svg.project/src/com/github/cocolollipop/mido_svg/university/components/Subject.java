@@ -1,4 +1,4 @@
-package com.github.cocolollipop.univ;
+package com.github.cocolollipop.mido_svg.university.components;
 
 /**
  * This class is corresponding to the subject students could attend

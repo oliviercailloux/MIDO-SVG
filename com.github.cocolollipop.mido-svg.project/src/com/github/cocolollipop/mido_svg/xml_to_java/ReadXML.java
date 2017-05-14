@@ -1,4 +1,4 @@
-package com.github.cocolollipop.xmltojava;
+package com.github.cocolollipop.mido_svg.xml_to_java;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,9 +18,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.github.cocolollipop.univ.Teacher;
-import com.github.cocolollipop.univ.Formation;
-import com.github.cocolollipop.univ.Licence;
+import com.github.cocolollipop.mido_svg.university.components.Formation;
+import com.github.cocolollipop.mido_svg.university.components.Licence;
+import com.github.cocolollipop.mido_svg.university.components.Teacher;
 
 
 public class ReadXML {
