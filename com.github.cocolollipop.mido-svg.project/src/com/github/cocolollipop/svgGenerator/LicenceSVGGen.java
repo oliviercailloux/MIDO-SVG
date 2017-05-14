@@ -1,6 +1,7 @@
 package com.github.cocolollipop.svgGenerator;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,9 +20,11 @@ import org.apache.commons.io.IOUtils;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
+import com.github.cocolollipop.GenerateAuto.Format;
 import com.github.cocolollipop.dataBase.DataBase;
 import com.github.cocolollipop.univ.Formation;
 import com.github.cocolollipop.univ.Subject;
+
 
 
 public class LicenceSVGGen {
@@ -34,6 +37,8 @@ public class LicenceSVGGen {
 	private SVGGeneratorContext ctx;
 	private SVGGraphics2D g;
 	private DataBase data;
+	private Format format = new Format();
+
 
 	public LicenceSVGGen() {
 		this.data = new DataBase();
@@ -192,7 +197,7 @@ public class LicenceSVGGen {
 	}
 
 	public void paint(boolean affFormationLicence, boolean affFormationMaster, boolean affResponsable,
-			boolean affMatieres, boolean affAdmission, boolean affSubject, boolean affTeacher) throws Exception {
+			boolean affMatieres, boolean affAdmission, boolean affSubject, boolean affTeacher,String form) throws Exception {
 		String output = "outLicence.svg";
 
 		db = dbf.newDocumentBuilder();
@@ -208,7 +213,7 @@ public class LicenceSVGGen {
 		g = new SVGGraphics2D(ctx, false);
 		// Create position variables
 
-		//this.defineObjectsPosition(this.data.getListOfFormations(), 1920, 1080);
+		this.defineObjectsPosition(this.data.getListOfFormations(), 1920, 1080);
 
 		this.showAdmission(affAdmission);
 
@@ -216,6 +221,12 @@ public class LicenceSVGGen {
 
 		this.showResponsable(affResponsable);
 		this.showSubjectTeacher(affSubject, affTeacher);
+		
+		format.changeFormat(form);
+		
+		g.setSVGCanvasSize(new Dimension(format.getCanevasX(), format.getCanevasY()));
+		g.drawString(this.getData().getDepartment().getNomDepartement(), this.getData().getDepartment().getX(), this.getData().getDepartment().getY());
+		
 		// The tag that the user selected (he wants to see what are the
 		// formation that teaches this course)
 		// String userSelectedTag = "Probas";
@@ -429,7 +440,7 @@ public class LicenceSVGGen {
 	
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();
-		test.paint(false, true,  true, true, true, true, true);
+		test.paint(false, true,  true, true, true, true, true,"A3");
 
 	}
 

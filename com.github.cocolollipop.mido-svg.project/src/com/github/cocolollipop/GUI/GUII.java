@@ -67,6 +67,7 @@ public class GUII {
 	private boolean affAdmission;
 	private boolean affSubject;
 	private boolean affTeacher;
+	private String form;
 
 	private LicenceSVGGen svg = new LicenceSVGGen();
 	private Format format = new Format();
@@ -392,7 +393,7 @@ public class GUII {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affMatieres, affAdmission,
-							affSubject, affTeacher);
+							affSubject, affTeacher,form);
 
 					 File file = new File("outLicence.svg");
 					
@@ -464,7 +465,7 @@ public class GUII {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxA3.isSelected()) {
-					format.changeFormat("A3");
+					form="A3";
 				}
 			}
 		});
@@ -478,7 +479,7 @@ public class GUII {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxA4.isSelected()) {
-					format.changeFormat("A4");
+					form="A4";
 				}
 			}
 		});
@@ -567,7 +568,7 @@ public class GUII {
 		chckbxLesEnseignants.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxLesEnseignants.isSelected()) {
+				if (chckbxLesEnseignants.isSelected() && chckbxLesMatieres.isSelected() ) {
 					lblEnseignWarning.setText(" Rappel:Les enseignants sont affichés avec les matières associées !!");
 					affSubject = true;
 					affTeacher = true;
