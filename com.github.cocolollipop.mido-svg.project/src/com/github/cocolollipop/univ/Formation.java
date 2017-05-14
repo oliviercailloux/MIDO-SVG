@@ -38,7 +38,7 @@ public abstract class Formation {
 	// the main responsible of the formation
 	protected Teacher teacher;
 
-	protected ArrayList tagsList;
+	protected String tagsList[];
 
 	protected int posX;
 	protected int posY;
@@ -56,11 +56,11 @@ public abstract class Formation {
 		this.posX = x;
 		this.posY = y;
 		this.listOfSubjects = new ArrayList<Subject>();
-		this.tagsList = new ArrayList<String>();
 		this.listOfAvailableFormations = new ArrayList<Formation>();
 		this.admisssion = "";
 		this.teacher = new Teacher();
 		this.shown = false;
+		this.tagsList = new String[] { "", "", "", "", "" };
 	}
 
 	public String getFullNameWithLink() {
@@ -126,15 +126,6 @@ public abstract class Formation {
 		this.listOfAvailableFormations.add(formation);
 	}
 
-	public ArrayList getTagslist() {
-		return tagsList;
-	}
-
-	public void setTagsList(String fileName) {
-		ArrayList tagsList = new ArrayList();
-		this.tagsList = this.readTagsList(fileName);
-	}
-
 	public String getFullName() {
 		return fullName;
 	}
@@ -187,6 +178,15 @@ public abstract class Formation {
 		this.shown = shown;
 	}
 
+	public String[] getTagslist() {
+		return tagsList;
+	}
+
+	public void setTagsList(String fileName) {
+		String[] tagsList = this.readTagsList(fileName);
+		this.tagsList = tagsList;
+	}
+
 	/**
 	 * readTagList read a file entered as a paramater and return a table of
 	 * String which contains each worlds of the file
@@ -194,7 +194,7 @@ public abstract class Formation {
 	 * @param fileName
 	 * @return tagsList
 	 */
-	public ArrayList readTagsList(String fileName) {
+	public String[] readTagsList(String fileName) {
 		String chaine = "";
 
 		try {
@@ -211,12 +211,7 @@ public abstract class Formation {
 			System.out.println(e.toString());
 		}
 
-		String[] firstTagsList = chaine.split(",");
-		ArrayList tagsList = new ArrayList();
-		for (int i = 0; i < firstTagsList.length; i++) {
-			tagsList.add(firstTagsList[i]);
-		}
-
+		String[] tagsList = chaine.split(",");
 		return tagsList;
 	}
 

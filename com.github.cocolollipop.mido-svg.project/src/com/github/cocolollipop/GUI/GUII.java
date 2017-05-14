@@ -10,8 +10,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.swing.AbstractListModel;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -52,7 +52,7 @@ public class GUII {
 
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textFieldMotCle;
-	private DefaultListModel listmodel1 = new DefaultListModel();
+	private DefaultListModel<String> listmodel1 = new DefaultListModel<String>();
 	private DefaultListModel listmodel2 = new DefaultListModel();
 	private JList list1;
 	private JList list2;
@@ -186,19 +186,21 @@ public class GUII {
 
 		list1 = new JList();
 
-		list1.setModel(new AbstractListModel() {
-			String[] values = new String[] { "math" };
-
-			@Override
-			public int getSize() {
-				return values.length;
-			}
-
-			@Override
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		/*
+		 * list1.setModel(new AbstractListModel() { String[] values = new
+		 * String[] { "math" };
+		 * 
+		 * @Override public int getSize() { return values.length; }
+		 * 
+		 * @Override public Object getElementAt(int index) { return
+		 * values[index]; } });
+		 */
+		ArrayList<String> list = new ArrayList<>();
+		list = svg.getData().getListOfTags();
+		for (int i = 0; i < list.size(); i++) {
+			listmodel1.addElement(list.get(i));
+		}
+		list1.setModel(listmodel1);
 
 		list1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
@@ -394,12 +396,13 @@ public class GUII {
 					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affMatieres, affAdmission,
 							affSubject, affTeacher);
 
-					 File file = new File("outLicence.svg");
-					
-					 try { java.awt.Desktop.getDesktop().open(file); } catch
-					 (IOException exc) { System.out.println("Exception: " +
-					 exc.toString()); }
-					
+					File file = new File("outLicence.svg");
+
+					try {
+						java.awt.Desktop.getDesktop().open(file);
+					} catch (IOException exc) {
+						System.out.println("Exception: " + exc.toString());
+					}
 
 				} catch (Exception e) {
 					e.printStackTrace();

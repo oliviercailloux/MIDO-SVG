@@ -23,7 +23,6 @@ import com.github.cocolollipop.dataBase.DataBase;
 import com.github.cocolollipop.univ.Formation;
 import com.github.cocolollipop.univ.Subject;
 
-
 public class LicenceSVGGen {
 
 	private DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -39,7 +38,7 @@ public class LicenceSVGGen {
 		this.data = new DataBase();
 	}
 
-	private DataBase getData() {
+	public DataBase getData() {
 		// TODO Auto-generated method stub
 		return this.data;
 	}
@@ -208,7 +207,8 @@ public class LicenceSVGGen {
 		g = new SVGGraphics2D(ctx, false);
 		// Create position variables
 
-		//this.defineObjectsPosition(this.data.getListOfFormations(), 1920, 1080);
+		// this.defineObjectsPosition(this.data.getListOfFormations(), 1920,
+		// 1080);
 
 		this.showAdmission(affAdmission);
 
@@ -425,11 +425,10 @@ public class LicenceSVGGen {
 		}
 
 	}
-	
-	
+
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();
-		test.paint(false, true,  true, true, true, true, true);
+		test.paint(false, true, true, true, true, true, true);
 
 	}
 

@@ -1,6 +1,8 @@
 package com.github.cocolollipop.dataBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -27,7 +29,13 @@ public class DataBase {
 		this.listOfSubjects = new HashMap<String, Subject>();
 		initSubjects();
 		this.listOfFormations = new LinkedList<Formation>();
-		initFormations();
+		this.listOfTags = new ArrayList<>();
+		try {
+			initFormations();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.format = new Format();
 		initFormat();
 		initDepartment();
@@ -79,9 +87,11 @@ public class DataBase {
 
 	/**
 	 * Initialize formations
+	 * 
+	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public void initFormations() {
+	public void initFormations() throws IOException {
 		// L3MIAGE
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);
 		L3MIAGE.setTeacher(listOfTeachers.get("Mayag"));
@@ -143,9 +153,10 @@ public class DataBase {
 		M2MIAGEIF.setTagsList("M2MIAGEIF.txt");
 		M2MIAGEID.setTagsList("M2MIAGEID.txt");
 		M2MIAGESTIN.setTagsList("M2MIAGESTIN.txt");
-
-		// for (Formation formation : this.listOfFormations)
-		// this.listOfTags.addAll(formation.getTagslist());
+		this.listOfTags.addAll(Arrays.asList(L3MIAGE.getTagslist()));
+		this.listOfTags.addAll(Arrays.asList(M2MIAGEIF.getTagslist()));
+		this.listOfTags.addAll(Arrays.asList(M2MIAGEID.getTagslist()));
+		this.listOfTags.addAll(Arrays.asList(M2MIAGESTIN.getTagslist()));
 	}
 
 	//////////////// GETTERS AND SETTERS /////////////
@@ -231,5 +242,10 @@ public class DataBase {
 
 		}
 		return nb;
+	}
+
+	public ArrayList<String> getListOfTags() {
+		return this.listOfTags;
+
 	}
 }
