@@ -137,19 +137,19 @@
       /><text style="fill:blue; stroke:none;" x="610" xml:space="preserve" y="470"
       >selection sur dossier</text
       ><line style="fill:none;" x1="690" x2="690" y1="507" y2="680"
-      /><text style="stroke:none;" x="740" xml:space="preserve" y="500"
+      /><text style="stroke:none;" x="350" xml:space="preserve" y="85"
       >POO Java</text
-      ><text style="stroke:none;" x="740" xml:space="preserve" y="515"
+      ><text style="stroke:none;" x="350" xml:space="preserve" y="100"
       >Logique</text
-      ><text style="stroke:none;" x="740" xml:space="preserve" y="530"
+      ><text style="stroke:none;" x="350" xml:space="preserve" y="70"
       >Probabilités et Statistiques</text
     ></g
     ><g style="fill:red; font-family:&apos;Serif&apos;; font-size:10; stroke:red;"
-    ><text style="stroke:none;" x="796" xml:space="preserve" y="500"
+    ><text style="stroke:none;" x="406" xml:space="preserve" y="85"
       >Cailloux</text
-      ><text style="stroke:none;" x="789" xml:space="preserve" y="515"
+      ><text style="stroke:none;" x="399" xml:space="preserve" y="100"
       >Pigozzi</text
-      ><text style="stroke:none;" x="936" xml:space="preserve" y="530"
+      ><text style="stroke:none;" x="546" xml:space="preserve" y="70"
       >Mayag</text
       ><text style="fill:black; font-size:12; stroke:none;" x="1280" xml:space="preserve" y="500"
       ><a xlink:href="http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme//#FRUAI0750736TPRPRA3INFAPP" target="_blank">L3 MIAGE App</a></text
@@ -210,19 +210,39 @@
       ><text style="fill:lime; font-size:12; stroke:none;" x="150" xml:space="preserve" y="150"
       >Cailloux Ollivier </text
       ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
-      >null null</text
+      > </text
       ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
-      >null null</text
+      > </text
       ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
-      >null null</text
+      > </text
       ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
-      >null null</text
+      > </text
       ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
-      >null null</text
+      > </text
       ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
-      >null null</text
+      > </text
       ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
-      >null null</text
+      > </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="150" xml:space="preserve" y="70"
+      >Mayag Brice </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="650" xml:space="preserve" y="70"
+      >Pigozzi Gabriella </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="150" xml:space="preserve" y="150"
+      >Cailloux Ollivier </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
+      > </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
+      > </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
+      > </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
+      > </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
+      > </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
+      > </text
+      ><text style="fill:lime; font-size:12; stroke:none;" x="0" xml:space="preserve" y="0"
+      > </text
     ></g
   ></g
 ></svg

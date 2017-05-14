@@ -10,12 +10,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import org.apache.commons.io.IOUtils;
-
-import com.github.cocolollipop.svgGenerator.LicenceSVGGen;
 
 /**
  * This class correspond to a formation of any kind
@@ -37,44 +34,32 @@ public abstract class Formation {
 	// List of formations you could apply for after the current year
 	protected ArrayList<Formation> listOfAvailableFormations;
 	// list of subjects that contain each formation
-	protected ArrayList<Subject> listOfsubjects;
+	protected ArrayList<Subject> listOfSubjects;
 	// the main responsible of the formation
 	protected Teacher teacher;
-	
-	protected String tagsList[];
+
+	protected ArrayList tagsList;
 
 	protected int posX;
 	protected int posY;
 
 	protected Formation child;
 
+	protected String category;
+
 	public Formation(String name, int grade, int x, int y) {
 		this.title = ' ';
 		this.intitule = " ";
-		this.grade = grade;
-		this.listOfAvailableFormations = new ArrayList<Formation>();
 		this.fullName = name;
-		this.tagsList = new String[]{"", "", "", "", ""};
+		this.grade = grade;
 		this.posX = x;
 		this.posY = y;
-		this.teacher=new Teacher();
-		this.listOfsubjects=new ArrayList<Subject>();
-		this.admisssion ="";
-
-	}
-	
-	public Formation(){
-		this.title = ' ';
-		this.intitule = " ";
-		this.grade = grade;
+		this.listOfSubjects = new ArrayList<Subject>();
+		this.tagsList = new ArrayList<String>();
 		this.listOfAvailableFormations = new ArrayList<Formation>();
-		this.fullName = fullName;
-		this.tagsList = new String[]{"", "", "", "", ""};
-		this.posX = posX;
-		this.posY = posY;
-		this.teacher=new Teacher();
-		this.listOfsubjects=new ArrayList<Subject>();
-		this.admisssion ="";
+		this.admisssion = "";
+		this.teacher = new Teacher();
+
 	}
 
 	public String getFullNameWithLink() {
@@ -139,16 +124,15 @@ public abstract class Formation {
 	public void addAvailableFormation(Formation formation) {
 		this.listOfAvailableFormations.add(formation);
 	}
-	
-	public String[] getTagslist() {
+
+	public ArrayList getTagslist() {
 		return tagsList;
 	}
 
 	public void setTagsList(String fileName) {
-		String[] tagsList = this.readTagsList(fileName);
-		this.tagsList = tagsList;
+		ArrayList tagsList = new ArrayList();
+		this.tagsList = this.readTagsList(fileName);
 	}
-	
 
 	public String getFullName() {
 		return fullName;
@@ -178,32 +162,30 @@ public abstract class Formation {
 
 	}
 
-	public ArrayList<Subject> getListOfsubjects() {
-		return listOfsubjects;
+	public ArrayList<Subject> getListOfSubjects() {
+		return listOfSubjects;
 	}
-	
-	public void addSubjectsOfFormation(Subject s){
-		this.listOfsubjects.add(s);
+
+	public void addSubjectsOfFormation(Subject s) {
+		this.listOfSubjects.add(s);
 	}
 
 	public Teacher getTeacher() {
 		return teacher;
 	}
 
-	public String getnameTeacher(){
-		return teacher.getFullNameTeacher();
-	}
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
+
 	/**
-	 * readTagList read a file entered as a paramater and return a table
-	 * of String which contains each worlds of the file
+	 * readTagList read a file entered as a paramater and return a table of
+	 * String which contains each worlds of the file
 	 * 
 	 * @param fileName
 	 * @return tagsList
 	 */
-	public String[] readTagsList(String fileName) {
+	public ArrayList readTagsList(String fileName) {
 		String chaine = "";
 
 		try {
@@ -220,40 +202,48 @@ public abstract class Formation {
 			System.out.println(e.toString());
 		}
 
-		String[] tagsList = chaine.split(",");
+		String[] firstTagsList = chaine.split(",");
+		ArrayList tagsList = new ArrayList();
+		for (int i = 0; i < firstTagsList.length; i++) {
+			tagsList.add(firstTagsList[i]);
+		}
+
 		return tagsList;
 	}
-	
+
 	/**
-	 * createTagList creates a file which contains each worlds of the list in parameters
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * createTagList creates a file which contains each worlds of the list in
+	 * parameters
+	 * 
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
+	public void createTagList(ArrayList<String> list) throws FileNotFoundException, IOException {
 
-	public void createTagList(ArrayList<String> list) throws FileNotFoundException, IOException{
-	
-			String name = this.getFullName()+ ".txt";
-			String text="";
-		    for(int i= 0; i<list.size();i++){
-		    	text += list.get(i)+ ",";
-		    }
-		    IOUtils.write(text, new FileOutputStream(name), "UTF-8");
-		    
-			try (BufferedWriter bw = new BufferedWriter(new FileWriter(name))) {
+		String name = this.getFullName() + ".txt";
+		String text = "";
+		for (int i = 0; i < list.size(); i++) {
+			text += list.get(i) + ",";
+		}
+		IOUtils.write(text, new FileOutputStream(name), "UTF-8");
 
-				bw.write(text);
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(name))) {
 
-				System.out.println("Done");
+			bw.write(text);
 
-			} catch (IOException e) {
+			System.out.println("Done");
 
-				e.printStackTrace();
+		} catch (IOException e) {
 
-			}
+			e.printStackTrace();
 
-		  
+		}
 
-		
+	}
+
+	public String getCategory() {
+		// TODO Auto-generated method stub
+		return category;
 	}
 
 }

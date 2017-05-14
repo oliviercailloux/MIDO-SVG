@@ -1,4 +1,5 @@
 package com.github.cocolollipop.univ;
+
 /**
  * This class corresponds to the teacher's details
  */
@@ -78,15 +79,17 @@ public class Teacher {
 		this.posY = y;
 
 	}
-	public Teacher(){
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.posX = posX;
-		this.posY = posY;
-		
+
+	public Teacher() {
+		this.lastName = "";
+		this.firstName = "";
+		this.posX = 0;
+		this.posY = 0;
+
 	}
-	public String getFullNameTeacher(){
-		return lastName +" "+ firstName ;
+
+	public String getFullNameTeacher() {
+		return lastName + " " + firstName;
 	}
 
 }
