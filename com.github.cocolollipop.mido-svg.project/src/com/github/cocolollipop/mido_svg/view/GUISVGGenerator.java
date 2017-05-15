@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -49,6 +50,7 @@ public class GUISVGGenerator {
 	private JCheckBox chckbxAdmission;
 	private JCheckBox chckbxLesMatieres;
 	private JCheckBox chckbxLesEnseignants;
+	private JScrollPane scrollPane;
 
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textFieldMotCle;
@@ -57,6 +59,8 @@ public class GUISVGGenerator {
 	private JList<String> list1;
 	private JList<String> list2;
 	private String motCle;
+	ArrayList<String> list;
+
 	/**
 	 * choices
 	 */
@@ -73,6 +77,8 @@ public class GUISVGGenerator {
 	private Format format = new Format();
 	private Formation formation; // A VOIR
 	private JLabel lblEnseignWarning;
+	private JScrollPane scrollPane_1;
+	private JScrollPane scrollPane_2;
 
 	/**
 	 * Launch the application.
@@ -107,6 +113,7 @@ public class GUISVGGenerator {
 		createEvents();
 		list1.setModel(listmodel1);
 		list2.setModel(listmodel2);
+
 	}
 
 	/**
@@ -185,8 +192,6 @@ public class GUISVGGenerator {
 
 		JTextPane textPane = new JTextPane();
 
-		list1 = new JList();
-
 		/*
 		 * list1.setModel(new AbstractListModel() { String[] values = new
 		 * String[] { "math" };
@@ -197,10 +202,6 @@ public class GUISVGGenerator {
 		 * values[index]; } });
 		 */
 		initTagsList();
-		list1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-
-		list2 = new JList<String>();
-		list2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		btnAddList = new JButton(">>");
 
@@ -227,6 +228,10 @@ public class GUISVGGenerator {
 		lblEnseignWarning.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
 		lblEnseignWarning.setForeground(new Color(255, 0, 0));
 
+		scrollPane_1 = new JScrollPane();
+
+		scrollPane_2 = new JScrollPane();
+
 		GroupLayout groupLayout = new GroupLayout(frmMidosvg.getContentPane());
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup().addGap(152).addComponent(lblMidosvgApplication)
@@ -251,14 +256,14 @@ public class GUISVGGenerator {
 																Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 35,
 																GroupLayout.PREFERRED_SIZE))
 														.addPreferredGap(ComponentPlacement.RELATED)))
-								.addGap(49)
-								.addComponent(list2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+								.addGap(49).addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 170,
+										GroupLayout.PREFERRED_SIZE))
 						.addComponent(lblLesMotscls)
 						.addGroup(groupLayout.createSequentialGroup()
 								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 										.addComponent(chckbxLesResponsables).addComponent(lblElementsAfficher))
 								.addGap(42).addComponent(chckbxAdmission)))
-						.addContainerGap(48, Short.MAX_VALUE))
+						.addContainerGap(49, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup().addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(label, GroupLayout.PREFERRED_SIZE, 601, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap())
@@ -289,10 +294,8 @@ public class GUISVGGenerator {
 										.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 1,
 												GroupLayout.PREFERRED_SIZE)
 										.addGap(153))
-								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(list1, GroupLayout.PREFERRED_SIZE, 163,
-												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap())))
+								.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 161,
+										GroupLayout.PREFERRED_SIZE)))
 				.addGroup(groupLayout.createSequentialGroup()
 						.addGap(111).addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addComponent(lblEnseignWarning).addComponent(chckbxLesEnseignants))
@@ -322,22 +325,30 @@ public class GUISVGGenerator {
 								.addComponent(btnAjouterMotCle))
 						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 								GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-						.createSequentialGroup().addGap(18)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(list1, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(list2, GroupLayout.PREFERRED_SIZE, 144,
+				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup().addGap(18)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE,
+												143, GroupLayout.PREFERRED_SIZE)
+										.addComponent(scrollPane_2, GroupLayout.PREFERRED_SIZE, 146,
+												GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+										.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 39,
 												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-										.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-												.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 39,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(btnFermer, GroupLayout.PREFERRED_SIZE, 34,
-														GroupLayout.PREFERRED_SIZE)))))
+										.addComponent(btnFermer, GroupLayout.PREFERRED_SIZE, 34,
+												GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup().addGap(49).addComponent(btnAddList).addGap(27)
 								.addComponent(btnRemoveList)))
 				.addContainerGap()));
+
+		list1 = new JList();
+		scrollPane_2.setViewportView(list1);
+		list1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+
+		list2 = new JList<String>();
+		scrollPane_1.setViewportView(list2);
+		list2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		frmMidosvg.getContentPane().setLayout(groupLayout);
 		frmMidosvg.setBounds(100, 100, 528, 723);
 		frmMidosvg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -350,12 +361,12 @@ public class GUISVGGenerator {
 	 */
 	private void initTagsList() {
 
-		ArrayList<String> list = new ArrayList<>();
+		list = new ArrayList<>();
 		list = svg.getData().getListOfTags();
 		for (int i = 0; i < list.size(); i++) {
 			listmodel1.addElement(list.get(i));
 		}
-		list1.setModel(listmodel1);
+		// list1.setModel(listmodel1);
 
 	}
 
@@ -417,6 +428,7 @@ public class GUISVGGenerator {
 				motCle = textFieldMotCle.getText();
 				if (motCle.length() >= 0) {
 					listmodel1.addElement(motCle);
+					list.add(motCle);
 				}
 
 			}
@@ -481,7 +493,7 @@ public class GUISVGGenerator {
 			}
 		});
 
-		/*
+		/**
 		 * Check box to choose Licence
 		 * 
 		 */
