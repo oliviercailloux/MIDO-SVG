@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
@@ -32,9 +33,9 @@ public abstract class Formation {
 	// Application type (for example: selection based on student records )
 	protected String admisssion;
 	// List of formations you could apply for after the current year
-	protected ArrayList<Formation> listOfAvailableFormations;
+	protected List<Formation> availableFormations;
 	// list of subjects that contain each formation
-	protected ArrayList<Subject> listOfSubjects;
+	protected List<Subject> subjects;
 	// the main responsible of the formation
 	protected Teacher teacher;
 
@@ -55,8 +56,8 @@ public abstract class Formation {
 		this.grade = grade;
 		this.posX = x;
 		this.posY = y;
-		this.listOfSubjects = new ArrayList<Subject>();
-		this.listOfAvailableFormations = new ArrayList<Formation>();
+		this.subjects = new ArrayList<Subject>();
+		this.availableFormations = new ArrayList<Formation>();
 		this.admisssion = "";
 		this.teacher = new Teacher();
 		this.shown = false;
@@ -87,6 +88,7 @@ public abstract class Formation {
 	}
 
 	public void setTitle(char nomFormation) {
+
 		this.title = nomFormation;
 	}
 
@@ -114,16 +116,16 @@ public abstract class Formation {
 		this.admisssion = admisssion;
 	}
 
-	public ArrayList<Formation> getListOfAvailableFormations() {
-		return listOfAvailableFormations;
+	public List<Formation> getAvailableFormations() {
+		return availableFormations;
 	}
 
-	public void setListOfAvailableFormations(ArrayList<Formation> listOfAvailableFormations) {
-		this.listOfAvailableFormations = listOfAvailableFormations;
+	public void setAvailableFormations(List<Formation> listOfAvailableFormations) {
+		this.availableFormations = availableFormations;
 	}
 
 	public void addAvailableFormation(Formation formation) {
-		this.listOfAvailableFormations.add(formation);
+		this.availableFormations.add(formation);
 	}
 
 	public String getFullName() {
@@ -154,12 +156,12 @@ public abstract class Formation {
 
 	}
 
-	public ArrayList<Subject> getListOfSubjects() {
-		return listOfSubjects;
+	public List<Subject> getSubjects() {
+		return subjects;
 	}
 
 	public void addSubjectsOfFormation(Subject s) {
-		this.listOfSubjects.add(s);
+		this.subjects.add(s);
 	}
 
 	public Teacher getTeacher() {
@@ -222,7 +224,7 @@ public abstract class Formation {
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 */
-	public void createTagList(ArrayList<String> list) throws FileNotFoundException, IOException {
+	public void createTagList(List<String> list) throws FileNotFoundException, IOException {
 
 		String name = this.getFullName() + ".txt";
 		String text = "";

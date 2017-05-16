@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -50,12 +51,12 @@ public class LicenceSVGGen {
 	 * defineObjectsPosition determine the position of each Formation in the
 	 * someFormations List
 	 * 
-	 * @param someFormations
+	 * @param list
 	 *            : LinkedList of all the formations available in the University
 	 * @param canvasX
 	 *            : abscissa size of the actual Canval
 	 */
-	public void defineObjectsPosition(LinkedList<Formation> someFormations, int canvasX, int canvasY) {
+	public void defineObjectsPosition(List<Formation> list, int canvasX, int canvasY) {
 
 		/*
 		 * We define initial offset In order to it, we must count number of each
@@ -82,11 +83,11 @@ public class LicenceSVGGen {
 		}
 
 		// First we count number of each formation
-		nbL1 = this.getData().countFormations(someFormations, "L1");
-		nbL2 = this.getData().countFormations(someFormations, "L2");
-		nbL3 = this.getData().countFormations(someFormations, "L3");
-		nbM1 = this.getData().countFormations(someFormations, "M1");
-		nbM2 = this.getData().countFormations(someFormations, "M2");
+		nbL1 = this.getData().countFormations(list, "L1");
+		nbL2 = this.getData().countFormations(list, "L2");
+		nbL3 = this.getData().countFormations(list, "L3");
+		nbM1 = this.getData().countFormations(list, "M1");
+		nbM2 = this.getData().countFormations(list, "M2");
 
 		/*
 		 * We calculate Y offset
@@ -123,23 +124,23 @@ public class LicenceSVGGen {
 		 */
 		offsetX = canvasX / (nbL1 + 1);
 		offsetY = canvasY / (totalCptY + 1) * cptY[0];
-		associatePositionX(someFormations, "L1", offsetX, offsetY);
+		associatePositionX(list, "L1", offsetX, offsetY);
 
 		offsetX = canvasX / (nbL2 + 1);
 		offsetY = canvasY / (totalCptY + 1) * cptY[1];
-		associatePositionX(someFormations, "L2", offsetX, offsetY);
+		associatePositionX(list, "L2", offsetX, offsetY);
 
 		offsetX = canvasX / (nbL3 + 1);
 		offsetY = canvasY / (totalCptY + 1) * cptY[2];
-		associatePositionX(someFormations, "L3", offsetX, offsetY);
+		associatePositionX(list, "L3", offsetX, offsetY);
 
 		offsetX = canvasX / (nbM1 + 1);
 		offsetY = canvasY / (totalCptY + 1) * cptY[3];
-		associatePositionX(someFormations, "M1", offsetX, offsetY);
+		associatePositionX(list, "M1", offsetX, offsetY);
 
 		offsetX = canvasX / (nbM2 + 1);
 		offsetY = canvasY / (totalCptY + 1) * cptY[4];
-		associatePositionX(someFormations, "M2", offsetX, offsetY);
+		associatePositionX(list, "M2", offsetX, offsetY);
 
 	}
 
@@ -147,15 +148,15 @@ public class LicenceSVGGen {
 	 * associatePositionX set the posX of each Formation which satisfy
 	 * uneFormation.getFullName() == myYear
 	 * 
-	 * @param someFormations
+	 * @param list
 	 *            is a LinkedList of Formation
 	 * @param myYear
 	 *            is a year such as "L3" or "M1"
 	 * @param decalage
 	 */
-	private void associatePositionX(LinkedList<Formation> someFormations, String myYear, int decalageX, int decalageY) {
+	private void associatePositionX(List<Formation> list, String myYear, int decalageX, int decalageY) {
 		int i = 1;
-		for (Formation aFormation : someFormations) {
+		for (Formation aFormation : list) {
 			if (aFormation.getFullName().indexOf(myYear) != -1) {
 				aFormation.setPosX(decalageX * i);
 				aFormation.setPosY(decalageY);
@@ -165,7 +166,7 @@ public class LicenceSVGGen {
 		}
 	}
 
-	private void getPlacement(LinkedList<Formation> someFormations) {
+	private void getPlacement(List<Formation> someFormations) {
 		for (Formation aFormation : someFormations) {
 			System.out.println("Pour la formation " + aFormation.getFullName());
 			System.out.println("PosX = " + aFormation.getPosX());
@@ -183,10 +184,10 @@ public class LicenceSVGGen {
 	 * @return
 	 * @throws ClassNotFoundException
 	 */
-	public LinkedList<Formation> fillListOfFormationToShow(String typeOfFormation) throws ClassNotFoundException {
-		LinkedList<Formation> listOfFormationToShow = new LinkedList<Formation>();
+	public List<Formation> fillListOfFormationToShow(String typeOfFormation) throws ClassNotFoundException {
+		List<Formation> listOfFormationToShow = new LinkedList<Formation>();
 
-		for (Formation formation : this.getData().getListOfFormations()) {
+		for (Formation formation : this.getData().getFormations()) {
 			if (formation.getCategory() == typeOfFormation)
 				listOfFormationToShow.add(formation);
 		}
@@ -194,8 +195,7 @@ public class LicenceSVGGen {
 	}
 
 	public void paint(boolean affFormationLicence, boolean affFormationMaster, boolean affResponsable,
-			boolean affMatieres, boolean affAdmission, boolean affSubject, boolean affTeacher, String form)
-			throws Exception {
+			boolean affAdmission, boolean affSubject, boolean affTeacher, String form) throws Exception {
 		String output = "./svg/outLicence.svg";
 
 		db = dbf.newDocumentBuilder();
@@ -211,7 +211,7 @@ public class LicenceSVGGen {
 		g = new SVGGraphics2D(ctx, false);
 		// Create position variables
 
-		this.defineObjectsPosition(this.data.getListOfFormations(), 1920, 1080);
+		this.defineObjectsPosition(this.data.getFormations(), 1920, 1080);
 
 		this.showAdmission(affAdmission);
 
@@ -295,13 +295,13 @@ public class LicenceSVGGen {
 		int lineYDOWN = 7;
 		// Makes the line go UP a little so the line is noton the text
 		int lineYUP = -20;
-		LinkedList<Formation> listToShow = new LinkedList();
+		List<Formation> listToShow = new LinkedList();
 		// showing only licence formations
 		if (showOnly == "Licence" || showOnly == "Master") {
 			listToShow.addAll(this.fillListOfFormationToShow(showOnly));
 		}
 		if (showOnly == "both") {
-			listToShow = this.getData().getListOfFormations();
+			listToShow = this.getData().getFormations();
 		}
 
 		for (Formation l : listToShow) {
@@ -313,7 +313,7 @@ public class LicenceSVGGen {
 			// rectangle
 			g.draw(t);
 			g.setPaint(Color.blue);
-			for (Formation l2 : l.getListOfAvailableFormations()) {
+			for (Formation l2 : l.getAvailableFormations()) {
 				// draw the lines between the formation and the avalaible
 				// formations
 				g.drawLine(l.getPosX() + lineCENTER, l.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
@@ -339,7 +339,7 @@ public class LicenceSVGGen {
 
 		if (admission == true) {
 
-			for (Formation f : this.getData().getListOfFormations()) {
+			for (Formation f : this.getData().getFormations()) {
 				if (f.isShown() == true) {
 					g.setPaint(Color.blue);
 					g.drawString(f.getAdmisssion(), f.getPosX() - 30, f.getPosY() - 30);
@@ -365,7 +365,7 @@ public class LicenceSVGGen {
 
 			g.setPaint(Color.green);
 
-			for (Formation f : this.getData().getListOfFormations()) {
+			for (Formation f : this.getData().getFormations()) {
 				if (f.isShown() == true) {
 					if (f.hasGotATeacher(f) == true)
 						g.drawString(f.getTeacher().getFullNameTeacher(),
@@ -400,9 +400,9 @@ public class LicenceSVGGen {
 
 		if (subject == true) {
 			int decY = 0;
-			for (Formation f : this.getData().getListOfFormations()) {
+			for (Formation f : this.getData().getFormations()) {
 				if (f.isShown() == true) {
-					for (Subject s : f.getListOfSubjects()) {
+					for (Subject s : f.getSubjects()) {
 						g.drawString(s.getTitle(), f.getPosX() + 100, f.getPosY() + decY);
 						s.setPosX(f.getPosX() + 100);
 						s.setPosY(f.getPosY() + decY);
@@ -415,10 +415,10 @@ public class LicenceSVGGen {
 			if (teacher == true) {
 				g.setPaint(Color.red);
 
-				for (Formation f : this.getData().getListOfFormations()) {
+				for (Formation f : this.getData().getFormations()) {
 					if (f.isShown() == true) {
 
-						for (Subject s : f.getListOfSubjects()) {
+						for (Subject s : f.getSubjects()) {
 
 							java.awt.Font font = new java.awt.Font("TimesRoman", 9, 9);
 							g.setFont(font);
@@ -438,7 +438,7 @@ public class LicenceSVGGen {
 
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();
-		test.paint(false, true, true, true, true, true, true, "A3");
+		test.paint(false, true, true, true, true, true, "A3");
 
 	}
 }

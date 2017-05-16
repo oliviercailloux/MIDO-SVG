@@ -11,6 +11,7 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
@@ -63,7 +64,6 @@ public class GUISVGGenerator {
 	private boolean affFormationLicence;
 	private boolean affFormationMaster;
 	private boolean affResponsable;
-	private boolean affMatieres;
 	private boolean affAdmission;
 	private boolean affSubject;
 	private boolean affTeacher;
@@ -350,8 +350,8 @@ public class GUISVGGenerator {
 	 */
 	private void initTagsList() {
 
-		ArrayList<String> list = new ArrayList<>();
-		list = svg.getData().getListOfTags();
+		List<String> list = new ArrayList<>();
+		list = svg.getData().getTags();
 		for (int i = 0; i < list.size(); i++) {
 			listmodel1.addElement(list.get(i));
 		}
@@ -388,8 +388,8 @@ public class GUISVGGenerator {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affMatieres, affAdmission,
-							affSubject, affTeacher, form);
+					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affAdmission, affSubject,
+							affTeacher, form);
 
 					File file = new File("./svg/outLicence.svg");
 
