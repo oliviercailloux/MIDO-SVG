@@ -64,6 +64,7 @@ public class GUISVGGenerator {
 	private boolean affFormationLicence;
 	private boolean affFormationMaster;
 	private boolean affResponsable;
+	private boolean affMatieres;
 	private boolean affAdmission;
 	private boolean affSubject;
 	private boolean affTeacher;
