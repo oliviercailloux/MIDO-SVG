@@ -46,7 +46,7 @@ public abstract class Formation {
 
 	protected enum Category {
 		LICENCE, MASTER
-	};
+	}
 
 	public Formation(String name, int grade, int x, int y) {
 		this.title = ' ';
