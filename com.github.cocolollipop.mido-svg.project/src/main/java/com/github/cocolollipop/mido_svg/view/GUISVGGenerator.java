@@ -1,4 +1,4 @@
-package com.github.cocolollipop.mido_svg.view.com.github.cocolollipop.mido_svg.view;
+package com.github.cocolollipop.mido_svg.view;
 
 import java.awt.Color;
 import java.awt.EventQueue;

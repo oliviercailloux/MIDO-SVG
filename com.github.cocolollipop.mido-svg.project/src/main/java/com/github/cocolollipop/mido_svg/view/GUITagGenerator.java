@@ -1,10 +1,10 @@
-package com.github.cocolollipop.mido_svg.view.com.github.cocolollipop.mido_svg.view;
+package com.github.cocolollipop.mido_svg.view;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
 
 public class GUITagGenerator {
 
@@ -12,6 +12,7 @@ public class GUITagGenerator {
 
 	/**
 	 * Launch the application.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -44,12 +45,12 @@ public class GUITagGenerator {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(450, 300);
-		shell.setText("Générateur de tags pour MIDO-SVG");
+		shell.setText("Gï¿½nï¿½rateur de tags pour MIDO-SVG");
 		shell.setLayout(new GridLayout(2, false));
 		new Label(shell, SWT.NONE);
 		new Label(shell, SWT.NONE);
 		new Label(shell, SWT.NONE);
-		
+
 		Label lblRentrezCidessousUne = new Label(shell, SWT.NONE);
 		lblRentrezCidessousUne.setText("Rentrez ci-dessous une liste de tags");
 
