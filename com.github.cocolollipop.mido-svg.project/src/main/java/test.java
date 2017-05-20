@@ -1,4 +1,4 @@
-package com.github.cocolollipop.mido_svg.view.com.github.cocolollipop.mido_svg.view;
+
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Label;
 
-public class GUITagGenerator {
+public class test {
 
 	protected Shell shell;
 
@@ -16,7 +16,7 @@ public class GUITagGenerator {
 	 */
 	public static void main(String[] args) {
 		try {
-			GUITagGenerator window = new GUITagGenerator();
+			test window = new test();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class GUITagGenerator {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(450, 300);
-		shell.setText("GÃ©nÃ©rateur de tags pour MIDO-SVG");
+		shell.setText("Générateur de tags pour MIDO-SVG");
 		shell.setLayout(new GridLayout(2, false));
 		new Label(shell, SWT.NONE);
 		new Label(shell, SWT.NONE);
