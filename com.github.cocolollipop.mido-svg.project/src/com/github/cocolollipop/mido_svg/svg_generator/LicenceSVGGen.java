@@ -41,7 +41,7 @@ public class LicenceSVGGen {
 
 	private enum DrawOnly {
 		LICENCE, MASTER, BOTH
-	};
+	}
 
 	public LicenceSVGGen() {
 		this.data = new DataBase();
