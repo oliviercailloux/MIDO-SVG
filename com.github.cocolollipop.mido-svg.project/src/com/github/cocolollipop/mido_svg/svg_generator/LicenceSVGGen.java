@@ -37,6 +37,11 @@ public class LicenceSVGGen {
 	private SVGGraphics2D g;
 	private DataBase data;
 	private Format format = new Format();
+	private Enum drawOnly;
+
+	private enum DrawOnly {
+		LICENCE, MASTER, BOTH
+	};
 
 	public LicenceSVGGen() {
 		this.data = new DataBase();
@@ -64,7 +69,6 @@ public class LicenceSVGGen {
 		 * which formation exists (Only L1 or all ?) Finally we calculate X
 		 * offset
 		 */
-
 		int offsetX = 0;
 		int offsetY = 0;
 		int nbL1 = 0;
@@ -169,8 +173,8 @@ public class LicenceSVGGen {
 	private void getPlacement(List<Formation> someFormations) {
 		for (Formation aFormation : someFormations) {
 			System.out.println("Pour la formation " + aFormation.getFullName());
-			System.out.println("PosX = " + aFormation.getPosX());
-			System.out.println("PosY = " + aFormation.getPosY());
+			System.out.println("PosX = " + aFormation.getPoint().x);
+			System.out.println("PosY = " + aFormation.getPoint().y);
 			System.out.println("_________________");
 		}
 
@@ -184,11 +188,11 @@ public class LicenceSVGGen {
 	 * @return
 	 * @throws ClassNotFoundException
 	 */
-	public List<Formation> fillListOfFormationToShow(String typeOfFormation) throws ClassNotFoundException {
+	public List<Formation> fillListOfFormationToShow(String type) throws ClassNotFoundException {
 		List<Formation> listOfFormationToShow = new LinkedList<Formation>();
 
 		for (Formation formation : this.getData().getFormations()) {
-			if (formation.getCategory() == typeOfFormation)
+			if (formation.getCategory().toString() == type)
 				listOfFormationToShow.add(formation);
 		}
 		return listOfFormationToShow;
@@ -213,12 +217,12 @@ public class LicenceSVGGen {
 
 		this.defineObjectsPosition(this.data.getFormations(), 1920, 1080);
 
-		this.showAdmission(affAdmission);
+		this.drawAdmission(affAdmission);
 
-		this.showFormation(affFormationLicence, affFormationMaster);
+		this.drawFormation(affFormationLicence, affFormationMaster);
 
-		this.showResponsable(affResponsable);
-		this.showSubjectTeacher(affSubject, affTeacher);
+		this.drawResponsable(affResponsable);
+		this.drawSubjectTeacher(affSubject, affTeacher);
 
 		format.changeFormat(form);
 
@@ -241,7 +245,8 @@ public class LicenceSVGGen {
 		 * if (Arrays.asList(f.getTagslist()).contains(str)) { cptTags++;
 		 * 
 		 * if (cptTags == userSelectedTags.length) { g.setPaint(Color.red);
-		 * g.drawString("(X)", f.getPosX() + 50, f.getPosY() + 20); } } } }
+		 * g.drawString("(X)", f.getPoint().x + 50, f.getPoint().y + 20); } } }
+		 * }
 		 */
 
 		// g.setPaint(Color.black);
@@ -280,14 +285,13 @@ public class LicenceSVGGen {
 	 * @param lineYUP
 	 * @throws ClassNotFoundException
 	 */
-	public void showFormation(boolean affFormationLicence, boolean affFormationMaster) throws ClassNotFoundException {
-		String showOnly = "";
+	public void drawFormation(boolean affFormationLicence, boolean affFormationMaster) throws ClassNotFoundException {
 		if (affFormationLicence == true && affFormationMaster == true) {
-			showOnly = "both";
+			this.drawOnly = DrawOnly.BOTH;
 		} else if (affFormationLicence == true && affFormationMaster == false) {
-			showOnly = "Licence";
+			this.drawOnly = DrawOnly.LICENCE;
 		} else if (affFormationLicence == false && affFormationMaster == true) {
-			showOnly = "Master";
+			this.drawOnly = DrawOnly.MASTER;
 		}
 		// Makes the line arrive in the center of the rectangle
 		int lineCENTER = 50;
@@ -295,29 +299,29 @@ public class LicenceSVGGen {
 		int lineYDOWN = 7;
 		// Makes the line go UP a little so the line is noton the text
 		int lineYUP = -20;
-		List<Formation> listToShow = new LinkedList();
+		List<Formation> listToDraw = new LinkedList();
 		// showing only licence formations
-		if (showOnly == "Licence" || showOnly == "Master") {
-			listToShow.addAll(this.fillListOfFormationToShow(showOnly));
+		if (this.drawOnly == DrawOnly.LICENCE || this.drawOnly == DrawOnly.MASTER) {
+			listToDraw.addAll(this.fillListOfFormationToShow(drawOnly.toString()));
 		}
-		if (showOnly == "both") {
-			listToShow = this.getData().getFormations();
+		if (this.drawOnly == DrawOnly.BOTH) {
+			listToDraw = this.getData().getFormations();
 		}
 
-		for (Formation l : listToShow) {
+		for (Formation l : listToDraw) {
 			l.setShown(true);
 			g.setPaint(Color.black);
-			g.drawString(l.getFullNameWithLink(), l.getPosX(), l.getPosY());
+			g.drawString(l.getFullNameWithLink(), l.getPoint().x, l.getPoint().y);
 			// write the name of formation
-			Rectangle t = new Rectangle(l.getPosX() - 10, l.getPosY() - 20, l.getFullName().length() * 10, 25); // draw
+			Rectangle t = new Rectangle(l.getPoint().x - 10, l.getPoint().y - 20, l.getFullName().length() * 10, 25); // draw
 			// rectangle
 			g.draw(t);
 			g.setPaint(Color.blue);
 			for (Formation l2 : l.getAvailableFormations()) {
 				// draw the lines between the formation and the avalaible
 				// formations
-				g.drawLine(l.getPosX() + lineCENTER, l.getPosY() + lineYDOWN, l2.getPosX() + lineCENTER,
-						l2.getPosY() + lineYUP);
+				g.drawLine(l.getPoint().x + lineCENTER, l.getPoint().y + lineYDOWN, l2.getPoint().x + lineCENTER,
+						l2.getPoint().y + lineYUP);
 
 			}
 
@@ -335,14 +339,14 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void showAdmission(boolean admission) {
+	public void drawAdmission(boolean admission) {
 
 		if (admission == true) {
 
 			for (Formation f : this.getData().getFormations()) {
 				if (f.isShown() == true) {
 					g.setPaint(Color.blue);
-					g.drawString(f.getAdmisssion(), f.getPosX() - 30, f.getPosY() - 30);
+					g.drawString(f.getAdmisssion(), f.getPoint().x - 30, f.getPoint().y - 30);
 				}
 			}
 		}
@@ -359,7 +363,7 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void showResponsable(boolean reponsable) {
+	public void drawResponsable(boolean reponsable) {
 
 		if (reponsable == true) {
 
@@ -369,8 +373,9 @@ public class LicenceSVGGen {
 				if (f.isShown() == true) {
 					if (f.hasGotATeacher(f) == true)
 						g.drawString(f.getTeacher().getFullNameTeacher(),
-								f.getPosX() - (g.getFontMetrics().stringWidth(f.getTeacher().getFullNameTeacher()) + 5),
-								f.getPosY());
+								f.getPoint().x
+										- (g.getFontMetrics().stringWidth(f.getTeacher().getFullNameTeacher()) + 5),
+								f.getPoint().y);
 				}
 			}
 
@@ -396,16 +401,16 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void showSubjectTeacher(boolean subject, boolean teacher) {
+	public void drawSubjectTeacher(boolean subject, boolean teacher) {
 
 		if (subject == true) {
 			int decY = 0;
 			for (Formation f : this.getData().getFormations()) {
 				if (f.isShown() == true) {
 					for (Subject s : f.getSubjects()) {
-						g.drawString(s.getTitle(), f.getPosX() + 100, f.getPosY() + decY);
-						s.setPosX(f.getPosX() + 100);
-						s.setPosY(f.getPosY() + decY);
+						g.drawString(s.getTitle(), f.getPoint().x + 100, f.getPoint().y + decY);
+						s.setPosX(f.getPoint().x + 100);
+						s.setPosY(f.getPoint().y + decY);
 						decY += 15;
 
 					}
@@ -423,7 +428,8 @@ public class LicenceSVGGen {
 							java.awt.Font font = new java.awt.Font("TimesRoman", 9, 9);
 							g.setFont(font);
 							g.drawString(s.getResponsible().getLastName(),
-									s.getPosX() + (g.getFontMetrics().stringWidth(s.getTitle()) + 30), s.getPosY());
+									s.getPoint().x + (g.getFontMetrics().stringWidth(s.getTitle()) + 30),
+									s.getPoint().y);
 							decY += 15;
 
 						}

@@ -169,18 +169,18 @@ public class DataBase {
 
 	public void setFormations(List<Formation> formations) {
 		if (this.formations == null) {
-			this.formations = new LinkedList();
+			this.formations = new LinkedList<Formation>();
 		}
 		this.formations = formations;
 	}
 
-	public Map<String, Teacher> getTeachers() {
+	public Map<String, Teacher> getTeachersByName() {
 		return teachers;
 	}
 
 	public void setTeachers(Map<String, Teacher> teachers) {
 		if (this.teachers == null) {
-			this.teachers = new HashMap();
+			this.teachers = new HashMap<String, Teacher>();
 		}
 		this.teachers = teachers;
 	}
@@ -191,7 +191,7 @@ public class DataBase {
 
 	public void setSubjects(Map<String, Subject> subjects) {
 		if (this.subjects == null) {
-			this.subjects = new HashMap();
+			this.subjects = new HashMap<String, Subject>();
 		}
 		this.subjects = subjects;
 	}

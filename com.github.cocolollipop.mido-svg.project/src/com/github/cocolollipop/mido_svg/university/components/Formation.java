@@ -1,5 +1,6 @@
 package com.github.cocolollipop.mido_svg.university.components;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -29,7 +30,6 @@ public abstract class Formation {
 	private String fullNameWithLink;
 	// grade is corresponding to the year
 	protected int grade;
-
 	// Application type (for example: selection based on student records )
 	protected String admisssion;
 	// List of formations you could apply for after the current year
@@ -38,30 +38,30 @@ public abstract class Formation {
 	protected List<Subject> subjects;
 	// the main responsible of the formation
 	protected Teacher teacher;
-
 	protected String tagsList[];
-
-	protected int posX;
-	protected int posY;
-
+	protected Point point;
 	protected Formation child;
-
-	protected String category;
+	protected Category category;
 	protected boolean shown;
+
+	protected enum Category {
+		LICENCE, MASTER
+	};
 
 	public Formation(String name, int grade, int x, int y) {
 		this.title = ' ';
 		this.intitule = " ";
 		this.fullName = name;
 		this.grade = grade;
-		this.posX = x;
-		this.posY = y;
+		this.point = new Point();
+		this.point.setLocation(x, y);
 		this.subjects = new ArrayList<Subject>();
 		this.availableFormations = new ArrayList<Formation>();
 		this.admisssion = "";
 		this.teacher = new Teacher();
 		this.shown = false;
 		this.tagsList = new String[] { "", "", "", "", "" };
+
 	}
 
 	public String getFullNameWithLink() {
@@ -88,7 +88,6 @@ public abstract class Formation {
 	}
 
 	public void setTitle(char nomFormation) {
-
 		this.title = nomFormation;
 	}
 
@@ -120,7 +119,7 @@ public abstract class Formation {
 		return availableFormations;
 	}
 
-	public void setAvailableFormations(List<Formation> listOfAvailableFormations) {
+	public void setAvailableFormations(List<Formation> availableFormations) {
 		this.availableFormations = availableFormations;
 	}
 
@@ -134,26 +133,6 @@ public abstract class Formation {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
-	}
-
-	public int getPosX() {
-
-		return this.posX;
-	}
-
-	public int getPosY() {
-
-		return this.posY;
-	}
-
-	public void setPosX(int i) {
-		this.posX = i;
-
-	}
-
-	public void setPosY(int j) {
-		this.posY = j;
-
 	}
 
 	public List<Subject> getSubjects() {
@@ -247,11 +226,6 @@ public abstract class Formation {
 
 	}
 
-	public String getCategory() {
-		// TODO Auto-generated method stub
-		return category;
-	}
-
 	/**
 	 * hasGotATeachert see if a "formation" has got a teacher (the
 	 * firstname/lastname aren't null) or not
@@ -266,6 +240,28 @@ public abstract class Formation {
 		else
 			return true;
 
+	}
+
+	public Point getPoint() {
+		if (this.point == null) {
+			this.point.setLocation(0, 0);
+		}
+		return point;
+	}
+
+	public void setPosX(int i) {
+		this.point.setLocation(i, this.getPoint().y);
+
+	}
+
+	public void setPosY(int i) {
+		this.point.setLocation(this.getPoint().x, i);
+
+	}
+
+	public Enum getCategory() {
+		// TODO Auto-generated method stub
+		return this.category;
 	}
 
 }
