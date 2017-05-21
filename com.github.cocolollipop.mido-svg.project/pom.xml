@@ -4,9 +4,12 @@
 	<groupId>com.github.cocolollipop.mido-svg.project</groupId>
 	<artifactId>mido-svg</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<build>
 		<plugins>
-			<!--  ICI c'est le compilateur  -->
+			<!-- ICI c'est le compilateur -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -24,7 +27,7 @@
 			<groupId>org.apache.xmlgraphics</groupId>
 			<artifactId>batik-svggen</artifactId>
 		</dependency>
-		
+
 		<!-- SWT -->
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
@@ -48,8 +51,8 @@
 			<artifactId>commons-io</artifactId>
 		</dependency>
 	</dependencies>
-	
-	
+
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
