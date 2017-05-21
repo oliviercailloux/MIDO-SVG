@@ -43,6 +43,8 @@ public abstract class Formation {
 	protected Formation child;
 	protected Category category;
 	protected boolean shown;
+	private InputStream ips;
+	private BufferedReader br;
 
 	protected enum Category {
 		LICENCE, MASTER
@@ -179,9 +181,9 @@ public abstract class Formation {
 		String chaine = "";
 
 		try {
-			InputStream ips = new FileInputStream(new File(fileName));
+			ips = new FileInputStream(new File(fileName));
 			InputStreamReader ipsr = new InputStreamReader(ips);
-			BufferedReader br = new BufferedReader(ipsr);
+			br = new BufferedReader(ipsr);
 			String ligne;
 			while ((ligne = br.readLine()) != null) {
 				// System.out.println(ligne);
