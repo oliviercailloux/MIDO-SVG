@@ -1,6 +1,7 @@
 package com.github.cocolollipop.mido_svg.university.components;
 
 import java.awt.Point;
+import java.util.List;
 
 /**
  * This class is corresponding to the subject students could attend
@@ -12,6 +13,7 @@ public class Subject {
 	private Teacher responsible;
 	private int credit;
 	private Point point;
+	private List<Tag> listOfTags;
 
 	public Subject(String title, Teacher responsible, int credit, int x, int y) {
 		this.title = title;
