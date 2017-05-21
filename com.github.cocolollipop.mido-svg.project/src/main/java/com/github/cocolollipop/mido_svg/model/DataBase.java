@@ -151,10 +151,10 @@ public class DataBase {
 		L3MIAGE.addSubjectsOfFormation(subjects.get("proba"));
 
 		// Fill the M2MIAGEID list of tags
-		L3MIAGE.setTagsList("./tags/L3MIAGE.txt");
-		M2MIAGEIF.setTagsList("./tags/M2MIAGEIF.txt");
-		M2MIAGEID.setTagsList("./tags/M2MIAGEID.txt");
-		M2MIAGESTIN.setTagsList("./tags/M2MIAGESTIN.txt");
+		L3MIAGE.setTagsList("src/main/resources/tags/L3MIAGE.txt");
+		M2MIAGEIF.setTagsList("src/main/resources/tags/M2MIAGEIF.txt");
+		M2MIAGEID.setTagsList("src/main/resources/tags/M2MIAGEID.txt");
+		M2MIAGESTIN.setTagsList("src/main/resources/tags/M2MIAGESTIN.txt");
 		this.tags.addAll(Arrays.asList(L3MIAGE.getTagslist()));
 		this.tags.addAll(Arrays.asList(M2MIAGEIF.getTagslist()));
 		this.tags.addAll(Arrays.asList(M2MIAGEID.getTagslist()));
