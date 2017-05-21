@@ -1,12 +1,18 @@
 package com.github.cocolollipop.mido_svg.university.components;
 import java.util.List;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement
 public class Tag {
+	@XmlAttribute
 	private String name; // Name of the tag
-	private List<Subject> listOfSubjects;
-	public Tag(String name, List<Subject> listOfSubjects) {
+	@XmlElement(name="subject")
+	private List<Subject> subjects;
+	
+	
+	public Tag(String name, List<Subject> subjects) {
 		this.name = name;
-		this.listOfSubjects = listOfSubjects;
+		this.subjects = subjects;
 	} 
 	
 	
