@@ -12,7 +12,7 @@ public class Demojaxb {
 		DataBase data = new DataBase(); 
 		
 		
-        Tag monTag = new Tag("Algo",data.getSubjects());
+        Tag monTag = new Tag("Algo",data.getSubjects()); // ICI ca renvoie une MAP MAIS POURQUOI C'EST SI COMPLIQUE ?
  
         Marshaller marshaller = jc.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
