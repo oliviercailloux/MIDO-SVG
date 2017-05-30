@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.cocolollipop.mido_svg.paper.Format;
+import com.github.cocolollipop.mido_svg.svg_generator.Settings;
 import com.github.cocolollipop.mido_svg.university.components.Department;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 import com.github.cocolollipop.mido_svg.university.components.Licence;
@@ -24,6 +25,7 @@ public class DataBase {
 	private List<String> tags;
 	private Department department;
 	private Format format;
+	private Settings settings;
 
 	public DataBase() {
 		this.teachers = new HashMap<String, Teacher>();
@@ -49,7 +51,7 @@ public class DataBase {
 	 * Initialize Canvas
 	 */
 	public void initFormat() {
-		this.getFormat().changeFormat("A4");
+		this.getFormat().changeFormat(settings.getFormat());
 	}
 
 	/**
@@ -265,4 +267,5 @@ public class DataBase {
 		return this.tags;
 
 	}
+
 }

@@ -22,7 +22,6 @@ import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
 import com.github.cocolollipop.mido_svg.model.DataBase;
-import com.github.cocolollipop.mido_svg.paper.Format;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 
@@ -36,7 +35,6 @@ public class LicenceSVGGen {
 	private SVGGeneratorContext ctx;
 	private SVGGraphics2D g;
 	private DataBase data;
-	private Format format = new Format();
 	private Enum drawOnly;
 
 	private enum DrawOnly {
@@ -45,11 +43,6 @@ public class LicenceSVGGen {
 
 	public LicenceSVGGen() {
 		this.data = new DataBase();
-	}
-
-	public DataBase getData() {
-		// TODO Auto-generated method stub
-		return this.data;
 	}
 
 	/**
@@ -87,11 +80,11 @@ public class LicenceSVGGen {
 		}
 
 		// First we count number of each formation
-		nbL1 = this.getData().countFormations(list, "L1");
-		nbL2 = this.getData().countFormations(list, "L2");
-		nbL3 = this.getData().countFormations(list, "L3");
-		nbM1 = this.getData().countFormations(list, "M1");
-		nbM2 = this.getData().countFormations(list, "M2");
+		nbL1 = this.data.countFormations(list, "L1");
+		nbL2 = this.data.countFormations(list, "L2");
+		nbL3 = this.data.countFormations(list, "L3");
+		nbM1 = this.data.countFormations(list, "M1");
+		nbM2 = this.data.countFormations(list, "M2");
 
 		/*
 		 * We calculate Y offset
@@ -191,15 +184,14 @@ public class LicenceSVGGen {
 	public List<Formation> fillListOfFormationToShow(String type) throws ClassNotFoundException {
 		List<Formation> listOfFormationToShow = new LinkedList<Formation>();
 
-		for (Formation formation : this.getData().getFormations()) {
+		for (Formation formation : this.data.getFormations()) {
 			if (formation.getCategory().toString() == type)
 				listOfFormationToShow.add(formation);
 		}
 		return listOfFormationToShow;
 	}
 
-	public void paint(boolean affFormationLicence, boolean affFormationMaster, boolean affResponsable,
-			boolean affAdmission, boolean affSubject, boolean affTeacher, String form) throws Exception {
+	public void paint(Settings settings) throws Exception {
 		String output = "./svg/outLicence.svg";
 
 		db = dbf.newDocumentBuilder();
@@ -217,18 +209,18 @@ public class LicenceSVGGen {
 
 		this.defineObjectsPosition(this.data.getFormations(), 1920, 1080);
 
-		this.drawAdmission(affAdmission);
+		this.drawAdmission(settings);
 
-		this.drawFormation(affFormationLicence, affFormationMaster);
+		this.drawFormation(settings);
 
-		this.drawResponsable(affResponsable);
-		this.drawSubjectTeacher(affSubject, affTeacher);
+		this.drawResponsable(settings);
+		this.drawSubjectTeacher(settings);
 
-		format.changeFormat(form);
+		data.getFormat().changeFormat(settings.getFormat());
 
-		g.setSVGCanvasSize(new Dimension(format.getCanevasX(), format.getCanevasY()));
-		g.drawString(this.getData().getDepartment().getNomDepartement(), this.getData().getDepartment().getX(),
-				this.getData().getDepartment().getY());
+		g.setSVGCanvasSize(new Dimension(data.getFormat().getCanevasX(), data.getFormat().getCanevasY()));
+		g.drawString(this.data.getDepartment().getNomDepartement(), this.data.getDepartment().getX(),
+				this.data.getDepartment().getY());
 
 		// The tag that the user selected (he wants to see what are the
 		// formation that teaches this course)
@@ -285,12 +277,12 @@ public class LicenceSVGGen {
 	 * @param lineYUP
 	 * @throws ClassNotFoundException
 	 */
-	public void drawFormation(boolean affFormationLicence, boolean affFormationMaster) throws ClassNotFoundException {
-		if (affFormationLicence == true && affFormationMaster == true) {
+	public void drawFormation(Settings settings) throws ClassNotFoundException {
+		if (settings.isHiddenLicence() == false && settings.isHiddenMaster() == false) {
 			this.drawOnly = DrawOnly.BOTH;
-		} else if (affFormationLicence == true && affFormationMaster == false) {
+		} else if (settings.isHiddenLicence() == false && settings.isHiddenMaster() == true) {
 			this.drawOnly = DrawOnly.LICENCE;
-		} else if (affFormationLicence == false && affFormationMaster == true) {
+		} else if (settings.isHiddenLicence() == true && settings.isHiddenMaster() == false) {
 			this.drawOnly = DrawOnly.MASTER;
 		}
 		// Makes the line arrive in the center of the rectangle
@@ -305,7 +297,7 @@ public class LicenceSVGGen {
 			listToDraw.addAll(this.fillListOfFormationToShow(drawOnly.toString()));
 		}
 		if (this.drawOnly == DrawOnly.BOTH) {
-			listToDraw = this.getData().getFormations();
+			listToDraw = this.data.getFormations();
 		}
 
 		for (Formation l : listToDraw) {
@@ -339,11 +331,11 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void drawAdmission(boolean admission) {
+	public void drawAdmission(Settings settings) {
 
-		if (admission == true) {
+		if (settings.isHiddenAdmission() == false) {
 
-			for (Formation f : this.getData().getFormations()) {
+			for (Formation f : this.data.getFormations()) {
 				if (f.isShown() == true) {
 					g.setPaint(Color.blue);
 					g.drawString(f.getAdmisssion(), f.getPoint().x - 30, f.getPoint().y - 30);
@@ -363,13 +355,13 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void drawResponsable(boolean reponsable) {
+	public void drawResponsable(Settings settings) {
 
-		if (reponsable == true) {
+		if (settings.isHiddenResponsable() == false) {
 
 			g.setPaint(Color.green);
 
-			for (Formation f : this.getData().getFormations()) {
+			for (Formation f : this.data.getFormations()) {
 				if (f.isShown() == true) {
 					if (f.hasGotATeacher(f) == true)
 						g.drawString(f.getTeacher().getFullNameTeacher(),
@@ -401,11 +393,11 @@ public class LicenceSVGGen {
 	 * 
 	 */
 
-	public void drawSubjectTeacher(boolean subject, boolean teacher) {
+	public void drawSubjectTeacher(Settings settings) {
 
-		if (subject == true) {
+		if (settings.isHiddenSubject() == false) {
 			int decY = 0;
-			for (Formation f : this.getData().getFormations()) {
+			for (Formation f : this.data.getFormations()) {
 				if (f.isShown() == true) {
 					for (Subject s : f.getSubjects()) {
 						g.drawString(s.getTitle(), f.getPoint().x + 100, f.getPoint().y + decY);
@@ -417,10 +409,10 @@ public class LicenceSVGGen {
 				}
 			}
 
-			if (teacher == true) {
+			if (settings.isHiddenTeacher() == false) {
 				g.setPaint(Color.red);
 
-				for (Formation f : this.getData().getFormations()) {
+				for (Formation f : this.data.getFormations()) {
 					if (f.isShown() == true) {
 
 						for (Subject s : f.getSubjects()) {
@@ -444,7 +436,13 @@ public class LicenceSVGGen {
 
 	public static void main(String[] args) throws Exception {
 		LicenceSVGGen test = new LicenceSVGGen();
-		test.paint(false, true, true, true, true, true, "A3");
+		Settings settings = new Settings(false, true, true, true, true, true, "A3");
+		test.paint(settings);
 
+	}
+
+	public DataBase getData() {
+		// TODO Auto-generated method stub
+		return this.data;
 	}
 }

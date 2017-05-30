@@ -1,8 +1,10 @@
 package com.github.cocolollipop.mido_svg.paper;
 
+import com.github.cocolollipop.mido_svg.svg_generator.TypeFormat;
+
 public class Format {
 
-	String format = "";
+	Format type;
 	private int dimXCanvas = 1920;
 	private int dimYCanvas = 1080;
 	private int canevasX = 0;
@@ -32,19 +34,19 @@ public class Format {
 	 * changeFormat method change the format of the canevas to A3 or A4 and
 	 * throws an exception if it's neither A4 nor A3
 	 * 
-	 * @param format
+	 * @param settings.
 	 *            would be equal to A3/a3 or A4/a4
 	 * @throws Exception
 	 */
 
-	public void changeFormat(String format) {
+	public void changeFormat(Enum settings) {
 
-		if (format == "A4" || format == "a4") {
+		if (settings == TypeFormat.A3 || settings == TypeFormat.A4) {
 			setCanevasX(2480);
 			setCanevasY(3508);
 		}
 
-		else if (format == "A3" || format == "a3") {
+		else if (settings == TypeFormat.A4 || settings == TypeFormat.A3) {
 			setCanevasX(3508); // 3508
 			setCanevasY(4961); // 4961
 		}

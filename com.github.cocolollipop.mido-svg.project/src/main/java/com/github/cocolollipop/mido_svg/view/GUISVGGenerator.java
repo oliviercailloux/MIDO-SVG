@@ -32,6 +32,7 @@ import javax.swing.border.TitledBorder;
 
 import com.github.cocolollipop.mido_svg.paper.Format;
 import com.github.cocolollipop.mido_svg.svg_generator.LicenceSVGGen;
+import com.github.cocolollipop.mido_svg.svg_generator.Settings;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 
 public class GUISVGGenerator {
@@ -389,8 +390,9 @@ public class GUISVGGenerator {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					svg.paint(affFormationLicence, affFormationMaster, affResponsable, affAdmission, affSubject,
-							affTeacher, form);
+					Settings settings = new Settings(affFormationLicence, affFormationMaster, affResponsable,
+							affAdmission, affSubject, affTeacher, form);
+					svg.paint(settings);
 
 					File file = new File("./svg/outLicence.svg");
 
