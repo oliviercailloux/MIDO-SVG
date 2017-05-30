@@ -32,7 +32,7 @@ import javax.swing.border.TitledBorder;
 
 import com.github.cocolollipop.mido_svg.model.DataBase;
 import com.github.cocolollipop.mido_svg.paper.Format;
-import com.github.cocolollipop.mido_svg.svg_generator.LicenceSVGGen;
+import com.github.cocolollipop.mido_svg.svg_generator.DrawerSVGGen;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 
@@ -72,7 +72,7 @@ public class GUISVGGenerator {
 	private boolean affTeacher;
 	private String form;
 
-	private LicenceSVGGen svg = new LicenceSVGGen();
+	private DrawerSVGGen svg = new DrawerSVGGen();
 	private Format format = new Format();
 	private Formation formation; // A VOIR
 	private JLabel lblEnseignWarning;

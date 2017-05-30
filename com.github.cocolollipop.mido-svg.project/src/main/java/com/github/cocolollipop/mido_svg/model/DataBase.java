@@ -34,6 +34,8 @@ public class DataBase {
 		initSubjects();
 		this.formations = new LinkedList<Formation>();
 		this.tags = new ArrayList<>();
+		// Par defaut on va dire
+		this.settings = new Settings(false, true, true, true, true, true, "A3");
 		try {
 			initFormations();
 		} catch (IOException e) {
@@ -240,27 +242,6 @@ public class DataBase {
 						+ this.getFormations().get(i).getAvailableFormations().get(j).getFullName());
 			}
 		}
-	}
-
-	/**
-	 * countFormations count the number of "myYear" in
-	 * lesFormations.getFullName()
-	 * 
-	 * @param list
-	 *            is a LinkedList of Formation
-	 * @param myYear
-	 *            is a year such as "L3" or "M1"
-	 * @return an integer or a negative if myYear isn't in the List
-	 */
-	public int countFormations(List<Formation> list, String myYear) {
-		int nb = 0;
-		for (Formation aFormation : list) {
-			if (aFormation.getFullName().indexOf(myYear) != -1) {
-				nb++;
-			}
-
-		}
-		return nb;
 	}
 
 	public List<String> getTags() {
