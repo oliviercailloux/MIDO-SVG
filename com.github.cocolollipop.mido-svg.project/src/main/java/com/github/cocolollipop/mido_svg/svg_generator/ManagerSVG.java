@@ -10,7 +10,7 @@ public class ManagerSVG {
 		DataBase datas = new DataBase();
 		ResponsiveSVG responsive = new ResponsiveSVG();
 		responsive.defineObjectsPosition(datas.getFormations(), 1920, 1080);
-		test.paint(settings);
+		test.paint(settings, datas);
 	}
 
 }

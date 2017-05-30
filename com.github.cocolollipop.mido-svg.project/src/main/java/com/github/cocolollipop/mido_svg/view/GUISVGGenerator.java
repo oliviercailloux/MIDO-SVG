@@ -71,6 +71,7 @@ public class GUISVGGenerator {
 	private boolean affSubject;
 	private boolean affTeacher;
 	private String form;
+	DataBase datas;
 
 	private DrawerSVGGen svg = new DrawerSVGGen();
 	private Format format = new Format();
@@ -190,7 +191,7 @@ public class GUISVGGenerator {
 
 		list1 = new JList();
 
-		DataBase datas = new DataBase();
+		this.datas = new DataBase();
 		/*
 		 * list1.setModel(new AbstractListModel() { String[] values = new
 		 * String[] { "math" };
@@ -394,7 +395,7 @@ public class GUISVGGenerator {
 				try {
 					Settings settings = new Settings(affFormationLicence, affFormationMaster, affResponsable,
 							affAdmission, affSubject, affTeacher, form);
-					svg.paint(settings);
+					svg.paint(settings, datas);
 
 					File file = new File("./svg/outLicence.svg");
 

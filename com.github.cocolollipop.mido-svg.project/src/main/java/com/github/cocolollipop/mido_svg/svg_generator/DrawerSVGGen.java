@@ -34,8 +34,8 @@ public class DrawerSVGGen {
 	private Document document;
 	private SVGGeneratorContext ctx;
 	private SVGGraphics2D g;
-	private DataBase data;
 	private Enum drawOnly;
+	private DataBase datas;
 
 	private enum DrawOnly {
 		LICENCE, MASTER, BOTH
@@ -52,15 +52,16 @@ public class DrawerSVGGen {
 	public List<Formation> fillListOfFormationToShow(String type) throws ClassNotFoundException {
 		List<Formation> listOfFormationToShow = new LinkedList<Formation>();
 
-		for (Formation formation : this.data.getFormations()) {
+		for (Formation formation : this.datas.getFormations()) {
 			if (formation.getCategory().toString() == type)
 				listOfFormationToShow.add(formation);
 		}
 		return listOfFormationToShow;
 	}
 
-	public void paint(Settings settings) throws Exception {
-		String output = "./svg/outLicence.svg";
+	public void paint(Settings settings, DataBase datas) throws Exception {
+		this.datas = datas;
+		String output = "outLicence.svg";
 
 		db = dbf.newDocumentBuilder();
 		// Get a DOMImplementation.
@@ -81,11 +82,11 @@ public class DrawerSVGGen {
 		this.drawFormation(settings);
 		this.drawResponsable(settings);
 		this.drawSubjectTeacher(settings);
-		data.getFormat().changeFormat(settings.getFormat());
+		datas.getFormat().changeFormat(settings.getFormat());
 
-		g.setSVGCanvasSize(new Dimension(data.getFormat().getCanevasX(), data.getFormat().getCanevasY()));
-		g.drawString(this.data.getDepartment().getNomDepartement(), this.data.getDepartment().getX(),
-				this.data.getDepartment().getY());
+		g.setSVGCanvasSize(new Dimension(datas.getFormat().getCanevasX(), datas.getFormat().getCanevasY()));
+		g.drawString(this.datas.getDepartment().getNomDepartement(), this.datas.getDepartment().getX(),
+				this.datas.getDepartment().getY());
 
 		// The tag that the user selected (he wants to see what are the
 		// formation that teaches this course)
@@ -162,7 +163,7 @@ public class DrawerSVGGen {
 			listToDraw.addAll(this.fillListOfFormationToShow(drawOnly.toString()));
 		}
 		if (this.drawOnly == DrawOnly.BOTH) {
-			listToDraw = this.data.getFormations();
+			listToDraw = this.datas.getFormations();
 		}
 
 		for (Formation l : listToDraw) {
@@ -200,7 +201,7 @@ public class DrawerSVGGen {
 
 		if (settings.isHiddenAdmission() == false) {
 
-			for (Formation f : this.data.getFormations()) {
+			for (Formation f : this.datas.getFormations()) {
 				if (f.isShown() == true) {
 					g.setPaint(Color.blue);
 					g.drawString(f.getAdmisssion(), f.getPoint().x - 30, f.getPoint().y - 30);
@@ -226,7 +227,7 @@ public class DrawerSVGGen {
 
 			g.setPaint(Color.green);
 
-			for (Formation f : this.data.getFormations()) {
+			for (Formation f : this.datas.getFormations()) {
 				if (f.isShown() == true) {
 					if (f.hasGotATeacher(f) == true)
 						g.drawString(f.getTeacher().getFullNameTeacher(),
@@ -262,7 +263,7 @@ public class DrawerSVGGen {
 
 		if (settings.isHiddenSubject() == false) {
 			int decY = 0;
-			for (Formation f : this.data.getFormations()) {
+			for (Formation f : this.datas.getFormations()) {
 				if (f.isShown() == true) {
 					for (Subject s : f.getSubjects()) {
 						g.drawString(s.getTitle(), f.getPoint().x + 100, f.getPoint().y + decY);
@@ -277,7 +278,7 @@ public class DrawerSVGGen {
 			if (settings.isHiddenTeacher() == false) {
 				g.setPaint(Color.red);
 
-				for (Formation f : this.data.getFormations()) {
+				for (Formation f : this.datas.getFormations()) {
 					if (f.isShown() == true) {
 
 						for (Subject s : f.getSubjects()) {
