@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 
+/**
+ * This class adapts the position of objects to draw according to the user's
+ * settings
+ *
+ */
 public class ResponsiveSVG {
 
 	/**

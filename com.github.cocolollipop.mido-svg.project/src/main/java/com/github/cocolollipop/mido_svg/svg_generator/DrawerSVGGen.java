@@ -25,6 +25,10 @@ import com.github.cocolollipop.mido_svg.model.DataBase;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 
+/**
+ * This class draws and generates an SVG for specifics datas
+ * 
+ */
 public class DrawerSVGGen {
 
 	private DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

@@ -17,6 +17,10 @@ import com.github.cocolollipop.mido_svg.university.components.Master;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 import com.github.cocolollipop.mido_svg.university.components.Teacher;
 
+/**
+ * This class is the current database's application
+ *
+ */
 public class DataBase {
 
 	private Map<String, Teacher> teachers;
@@ -34,7 +38,7 @@ public class DataBase {
 		initSubjects();
 		this.formations = new LinkedList<Formation>();
 		this.tags = new ArrayList<>();
-		// Par defaut on va dire
+		// default settings
 		this.settings = new Settings(false, true, true, true, true, true, "A3");
 		try {
 			initFormations();

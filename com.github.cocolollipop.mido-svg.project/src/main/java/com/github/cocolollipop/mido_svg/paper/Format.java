@@ -1,7 +1,5 @@
 package com.github.cocolollipop.mido_svg.paper;
 
-import com.github.cocolollipop.mido_svg.svg_generator.TypeFormat;
-
 public class Format {
 
 	Format type;

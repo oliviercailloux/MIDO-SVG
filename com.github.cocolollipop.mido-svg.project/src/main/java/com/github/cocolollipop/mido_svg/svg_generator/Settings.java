@@ -1,9 +1,9 @@
 package com.github.cocolollipop.mido_svg.svg_generator;
 
+import com.github.cocolollipop.mido_svg.paper.TypeFormat;
+
 /**
- * This class is used to save the user settings
- * 
- * @author Cocolollipop
+ * This class saves the user settings
  *
  */
 public class Settings {
