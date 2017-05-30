@@ -1,6 +1,7 @@
 package com.github.cocolollipop.mido_svg.university.components;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class Subject {
 	private int credit;
 	private Point point;
 	private List<Tag> listOfTags;
+	private List<Subject> listOfPrerequisites;
 
 	public Subject(String title, Teacher responsible, int credit, int x, int y) {
 		this.title = title;
@@ -21,6 +23,7 @@ public class Subject {
 		this.credit = credit;
 		this.point = new Point();
 		this.point.setLocation(x, y);
+		this.listOfPrerequisites = new ArrayList<Subject>();
 	}
 
 	public String getTitle() {
@@ -62,6 +65,18 @@ public class Subject {
 	public void setPosY(int i) {
 		this.point.setLocation(this.getPoint().x, i);
 
+	}
+
+	public List<Subject> getListOfPrerequisites() {
+		return listOfPrerequisites;
+	}
+
+	public void setListOfPrerequisites(List<Subject> listOfPrerequisites) {
+		this.listOfPrerequisites = listOfPrerequisites;
+	}
+
+	public void addListOfPrerequisites(Subject s) {
+		this.listOfPrerequisites.add(s);
 	}
 
 }

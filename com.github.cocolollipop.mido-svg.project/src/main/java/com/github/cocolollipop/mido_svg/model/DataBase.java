@@ -84,6 +84,11 @@ public class DataBase {
 		subjects.put("proba", proba);
 		subjects.put("java", java);
 		subjects.put("logique", logique);
+
+		// Add prerequisites of each subject
+
+		proba.addListOfPrerequisites(logique);
+
 	}
 
 	/**
