@@ -438,11 +438,8 @@ public class LicenceSVGGen {
 		LicenceSVGGen test = new LicenceSVGGen();
 		Settings settings = new Settings(false, true, true, true, true, true, "A3");
 		test.paint(settings);
+		DataBase data = new DataBase();
 
 	}
 
-	public DataBase getData() {
-		// TODO Auto-generated method stub
-		return this.data;
-	}
 }

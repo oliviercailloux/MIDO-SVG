@@ -30,6 +30,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 
+import com.github.cocolollipop.mido_svg.model.DataBase;
 import com.github.cocolollipop.mido_svg.paper.Format;
 import com.github.cocolollipop.mido_svg.svg_generator.LicenceSVGGen;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
@@ -189,6 +190,7 @@ public class GUISVGGenerator {
 
 		list1 = new JList();
 
+		DataBase datas = new DataBase();
 		/*
 		 * list1.setModel(new AbstractListModel() { String[] values = new
 		 * String[] { "math" };
@@ -198,7 +200,7 @@ public class GUISVGGenerator {
 		 * @Override public Object getElementAt(int index) { return
 		 * values[index]; } });
 		 */
-		initTagsList();
+		initTagsList(datas.getTags());
 		list1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 
 		list2 = new JList<String>();
@@ -350,10 +352,10 @@ public class GUISVGGenerator {
 	 * Initialise tagsList (list1)
 	 * 
 	 */
-	private void initTagsList() {
+	private void initTagsList(List tags) {
 
 		List<String> list = new ArrayList<>();
-		list = svg.getData().getTags();
+		list = tags;
 		for (int i = 0; i < list.size(); i++) {
 			listmodel1.addElement(list.get(i));
 		}
