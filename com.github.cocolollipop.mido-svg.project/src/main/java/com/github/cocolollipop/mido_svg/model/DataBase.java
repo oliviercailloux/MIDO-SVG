@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import com.github.cocolollipop.mido_svg.paper.Format;
+import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
 import com.github.cocolollipop.mido_svg.university.components.Department;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
@@ -18,7 +18,7 @@ import com.github.cocolollipop.mido_svg.university.components.Subject;
 import com.github.cocolollipop.mido_svg.university.components.Teacher;
 
 /**
- * This class is the current database's application
+ * This class is the current database of the application
  *
  */
 public class DataBase {
@@ -29,7 +29,7 @@ public class DataBase {
 	private List<Formation> formations;
 	private List<String> tags;
 	private Department department;
-	private Format format;
+	private Paper format;
 	private Settings settings;
 	private Map<String, Formation> formationsMap;
 
@@ -57,7 +57,7 @@ public class DataBase {
 		this.settings = new Settings(true, false, true, true, true, true, "A3");
 
 		// initFormations();
-		this.format = new Format();
+		this.format = new Paper();
 		initFormat();
 		initDepartment();
 		FillSubjectListInFormation();
@@ -69,7 +69,7 @@ public class DataBase {
 	 * Initialize Canvas
 	 */
 	public void initFormat() {
-		this.getFormat().changeFormat(settings.getFormat());
+		this.format = Paper.Paper(settings.getFormat());
 	}
 
 	/**
@@ -283,13 +283,13 @@ public class DataBase {
 		this.department = department;
 	}
 
-	public Format getFormat() {
+	public Paper getFormat() {
 		return format;
 	}
 
-	public void setFormat(Format format) {
+	public void setFormat(Paper format) {
 		if (this.format == null) {
-			this.format = new Format();
+			this.format = new Paper();
 		}
 		this.format = format;
 	}
