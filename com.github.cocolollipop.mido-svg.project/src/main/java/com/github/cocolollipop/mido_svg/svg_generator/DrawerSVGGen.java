@@ -254,7 +254,7 @@ public class DrawerSVGGen {
 	}
 
 	/**
-	 * This methode draArrow, draws a line with an arrow
+	 * This methode drawArrow, draws a line with an arrow
 	 * 
 	 * @param g1
 	 * @param x1
@@ -262,7 +262,7 @@ public class DrawerSVGGen {
 	 * @param x2
 	 * @param y2
 	 */
-	void drawArrow(Graphics g1, int x1, int y1, int x2, int y2) {
+	public void drawArrow(Graphics g1, int x1, int y1, int x2, int y2) {
 		Graphics2D g = (Graphics2D) g1.create();
 		int ARR_SIZE = 5;
 
@@ -289,9 +289,10 @@ public class DrawerSVGGen {
 	 * 
 	 * The size of teachers is smaller and in RED
 	 * 
+	 * this function draws also lines between a subject and his prerequisites
 	 * 
-	 * @param subject
-	 * @param teacher
+	 * 
+	 * @param settings
 	 * 
 	 */
 

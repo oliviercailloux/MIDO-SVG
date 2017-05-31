@@ -280,6 +280,13 @@ public abstract class Formation {
 	 * return false; }
 	 */
 
+	/**
+	 * This function fills the subjects list of a formation with subjects
+	 *
+	 * 
+	 * @param AllSubjects
+	 */
+
 	public void fillsubjectList(List<Subject> AllSubjects) {
 		for (Subject s : AllSubjects) {
 			if (s.getLevel().getFullName() == this.getFullName()) {

@@ -188,17 +188,6 @@ public class DataBase {
 		this.formationsMap.put("L3MIAGEApp", L3MIAGEApp);
 		this.formationsMap.put("M1MIAGEApp", M1MIAGEApp);
 
-		// ListOfSubject
-		// L3MIAGE.addSubjectsOfFormation(subjects.get("java"));
-		// L3MIAGE.addSubjectsOfFormation(subjects.get("logique"));
-		// L3MIAGE.addSubjectsOfFormation(subjects.get("proba"));
-
-		// L3MIAGE.addSubjectsOfFormation(subjects);
-		// initSubjects();
-
-		// for (Subject s : subjects)
-		// System.out.println(s.getTitle());
-
 		// Fill the M2MIAGEID list of tags
 		L3MIAGE.setTagsList("src/main/resources/tags/L3MIAGE.txt");
 		M2MIAGEIF.setTagsList("src/main/resources/tags/M2MIAGEIF.txt");
@@ -217,27 +206,11 @@ public class DataBase {
 	 */
 	public void FillSubjectListInFormation() {
 
-		// System.out.println("test 1:" +
-		// subjects.get(0).getLevel().getFullName());
-
-		/*
-		 * for (Subject s : subjects) { System.out.println("levels " +
-		 * s.getLevel().getFullName());
-		 * 
-		 * }
-		 */
-
 		(formationsMap.get("M1MIAGE")).fillsubjectList(subjects);
 		(formationsMap.get("L3MIAGEApp")).fillsubjectList(subjects);
 		(formationsMap.get("M1MIAGEApp")).fillsubjectList(subjects);
 		(formationsMap.get("L3MIAGE")).fillsubjectList(subjects);
 
-		/*
-		 * for (Subject s : (formationsMap.get("L3MIAGE")).getSubjects()) {
-		 * System.out.println(s.getTitle()); } ;
-		 */
-
-		// System.out.println("sub" + L3MIAGE.getSubjects());
 	}
 
 	//////////////// GETTERS AND SETTERS /////////////
