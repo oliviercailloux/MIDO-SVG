@@ -141,9 +141,9 @@ public abstract class Formation {
 		return subjects;
 	}
 
-	public void addSubjectsOfFormation(Subject s) {
-		this.subjects.add(s);
-	}
+	/*
+	 * public void addSubjectsOfFormation(Subject s) { this.subjects.add(s); }
+	 */
 
 	public Teacher getTeacher() {
 		return teacher;
@@ -264,6 +264,28 @@ public abstract class Formation {
 	public Enum getCategory() {
 		// TODO Auto-generated method stub
 		return this.category;
+	}
+
+	public void addSubjectToList(Subject s) {
+		this.subjects.add(s);
+	}
+
+	/*
+	 * Compare two Formations
+	 * 
+	 * @Override public boolean equals(Object obj) { if (obj instanceof
+	 * Formation) { Formation f = (Formation) obj; if (this.getTitle() ==
+	 * f.getTitle()) { return true; } return false; }
+	 * 
+	 * return false; }
+	 */
+
+	public void fillsubjectList(List<Subject> AllSubjects) {
+		for (Subject s : AllSubjects) {
+			if (s.getLevel().getFullName() == this.getFullName()) {
+				this.addSubjectToList(s);
+			}
+		}
 	}
 
 }

@@ -16,6 +16,7 @@ public class Subject {
 	private Point point;
 	private List<Tag> listOfTags;
 	private List<Subject> listOfPrerequisites;
+	private Formation level;
 
 	public Subject(String title, Teacher responsible, int credit, int x, int y) {
 		this.title = title;
@@ -24,6 +25,9 @@ public class Subject {
 		this.point = new Point();
 		this.point.setLocation(x, y);
 		this.listOfPrerequisites = new ArrayList<Subject>();
+		this.level = level;
+		// this.level.addSubjectToList(this);
+
 	}
 
 	public String getTitle() {
@@ -77,6 +81,21 @@ public class Subject {
 
 	public void addListOfPrerequisites(Subject s) {
 		this.listOfPrerequisites.add(s);
+	}
+
+	public Formation getLevel() {
+		return level;
+	}
+
+	public void setLevel(Formation level) {
+		this.level = level;
+	}
+
+	public boolean hasPrerequisites() {
+		if (this.getListOfPrerequisites().size() > 0)
+			return true;
+		else
+			return false;
 	}
 
 }

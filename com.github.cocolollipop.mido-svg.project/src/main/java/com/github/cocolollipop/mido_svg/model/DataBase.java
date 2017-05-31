@@ -24,31 +24,43 @@ import com.github.cocolollipop.mido_svg.university.components.Teacher;
 public class DataBase {
 
 	private Map<String, Teacher> teachers;
-	private Map<String, Subject> subjects;
+	// private Map<String, Subject> subjects;
+	private List<Subject> subjects;
 	private List<Formation> formations;
 	private List<String> tags;
 	private Department department;
 	private Format format;
 	private Settings settings;
+	private Map<String, Formation> formationsMap;
 
-	public DataBase() {
+	public DataBase() throws IOException {
 		this.teachers = new HashMap<String, Teacher>();
 		initTeachers();
-		this.subjects = new HashMap<String, Subject>();
-		initSubjects();
+		this.formationsMap = new HashMap<String, Formation>();
 		this.formations = new LinkedList<Formation>();
+		this.subjects = new ArrayList<Subject>();
 		this.tags = new ArrayList<>();
-		// default settings
-		this.settings = new Settings(false, true, true, true, true, true, "A3");
+
+		// this.subjects = new HashMap<String, Subject>();
 		try {
 			initFormations();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		initSubjects();
+
+		// InitFormTOSub();
+
+		// default settings
+		this.settings = new Settings(true, false, true, true, true, true, "A3");
+
+		// initFormations();
 		this.format = new Format();
 		initFormat();
 		initDepartment();
+		FillSubjectListInFormation();
 
 	}
 
@@ -67,27 +79,10 @@ public class DataBase {
 
 		Teacher Mayag = new Teacher("Mayag", "Brice ", 150, 70);
 		Teacher Pigozzi = new Teacher("Pigozzi", "Gabriella ", 650, 70);
-		Teacher Cailloux = new Teacher("Cailloux", "Ollivier ", 150, 150);
+		Teacher Cailloux = new Teacher("Cailloux", "Olivier ", 150, 150);
 		this.teachers.put("Cailloux", Cailloux);
 		this.teachers.put("Pigozzi", Pigozzi);
 		this.teachers.put("Mayag", Mayag);
-
-	}
-
-	/**
-	 * Initialize subjects
-	 */
-	public void initSubjects() {
-		Subject proba = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
-		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
-		Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 100);
-		subjects.put("proba", proba);
-		subjects.put("java", java);
-		subjects.put("logique", logique);
-
-		// Add prerequisites of each subject
-
-		proba.addListOfPrerequisites(logique);
 
 	}
 
@@ -98,6 +93,36 @@ public class DataBase {
 		Department MIDO = new Department("MIDO", 500, 20);
 		MIDO.setTitle("MIDO");
 		this.setDepartment(MIDO);
+	}
+
+	/**
+	 * Initialize subjects
+	 */
+	public void initSubjects() {
+		Subject proba = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
+		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
+		Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
+		Subject math = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
+
+		// subjects.put("proba", proba);
+		// subjects.put("java", java);
+		// subjects.put("logique", logique);
+
+		logique.setLevel(formationsMap.get("M1MIAGE"));
+		math.setLevel(formationsMap.get("L3MIAGEApp"));
+		proba.setLevel(formationsMap.get("L3MIAGE"));
+		java.setLevel(formationsMap.get("L3MIAGE"));
+
+		subjects.add(proba);
+		subjects.add(java);
+		subjects.add(logique);
+		subjects.add(math);
+
+		// Add prerequisites of each subject
+
+		logique.addListOfPrerequisites(proba); // It means that logique has
+												// proba as prerequisites
+
 	}
 
 	/**
@@ -158,10 +183,21 @@ public class DataBase {
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIDApp);
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIFApp);
 
+		this.formationsMap.put("L3MIAGE", L3MIAGE);
+		this.formationsMap.put("M1MIAGE", M1MIAGE);
+		this.formationsMap.put("L3MIAGEApp", L3MIAGEApp);
+		this.formationsMap.put("M1MIAGEApp", M1MIAGEApp);
+
 		// ListOfSubject
-		L3MIAGE.addSubjectsOfFormation(subjects.get("java"));
-		L3MIAGE.addSubjectsOfFormation(subjects.get("logique"));
-		L3MIAGE.addSubjectsOfFormation(subjects.get("proba"));
+		// L3MIAGE.addSubjectsOfFormation(subjects.get("java"));
+		// L3MIAGE.addSubjectsOfFormation(subjects.get("logique"));
+		// L3MIAGE.addSubjectsOfFormation(subjects.get("proba"));
+
+		// L3MIAGE.addSubjectsOfFormation(subjects);
+		// initSubjects();
+
+		// for (Subject s : subjects)
+		// System.out.println(s.getTitle());
 
 		// Fill the M2MIAGEID list of tags
 		L3MIAGE.setTagsList("src/main/resources/tags/L3MIAGE.txt");
@@ -172,6 +208,36 @@ public class DataBase {
 		this.tags.addAll(Arrays.asList(M2MIAGEIF.getTagslist()));
 		this.tags.addAll(Arrays.asList(M2MIAGEID.getTagslist()));
 		this.tags.addAll(Arrays.asList(M2MIAGESTIN.getTagslist()));
+	}
+
+	/**
+	 * This function fills the subjects list of each formation with subjects
+	 * assigned to this formation
+	 * 
+	 */
+	public void FillSubjectListInFormation() {
+
+		// System.out.println("test 1:" +
+		// subjects.get(0).getLevel().getFullName());
+
+		/*
+		 * for (Subject s : subjects) { System.out.println("levels " +
+		 * s.getLevel().getFullName());
+		 * 
+		 * }
+		 */
+
+		(formationsMap.get("M1MIAGE")).fillsubjectList(subjects);
+		(formationsMap.get("L3MIAGEApp")).fillsubjectList(subjects);
+		(formationsMap.get("M1MIAGEApp")).fillsubjectList(subjects);
+		(formationsMap.get("L3MIAGE")).fillsubjectList(subjects);
+
+		/*
+		 * for (Subject s : (formationsMap.get("L3MIAGE")).getSubjects()) {
+		 * System.out.println(s.getTitle()); } ;
+		 */
+
+		// System.out.println("sub" + L3MIAGE.getSubjects());
 	}
 
 	//////////////// GETTERS AND SETTERS /////////////
@@ -198,16 +264,13 @@ public class DataBase {
 		this.teachers = teachers;
 	}
 
-	public Map<String, Subject> getSubjects() {
-		return subjects;
-	}
-
-	public void setSubjects(Map<String, Subject> subjects) {
-		if (this.subjects == null) {
-			this.subjects = new HashMap<String, Subject>();
-		}
-		this.subjects = subjects;
-	}
+	/*
+	 * public Map<String, Subject> getSubjects() { return subjects; }
+	 * 
+	 * /* public void setSubjects(Map<String, Subject> subjects) { if
+	 * (this.subjects == null) { this.subjects = new HashMap<String, Subject>();
+	 * } this.subjects = subjects; }
+	 */
 
 	public Department getDepartment() {
 		return department;

@@ -2,7 +2,10 @@ package com.github.cocolollipop.mido_svg.svg_generator;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -40,6 +43,13 @@ public class DrawerSVGGen {
 	private SVGGraphics2D g;
 	private Enum drawOnly;
 	private DataBase datas;
+
+	private int lineCENTER = 50; // Makes the line arrive in the center of the
+									// rectangle
+	private int lineYDOWN = 7; // Makes the line go DOWN a little so the line is
+								// not on the text
+	private int lineYUP = -20; // Makes the line go UP a little so the line is
+								// not on the text
 
 	private enum DrawOnly {
 		LICENCE, MASTER, BOTH
@@ -155,12 +165,7 @@ public class DrawerSVGGen {
 		} else if (settings.isHiddenLicence() == true && settings.isHiddenMaster() == false) {
 			this.drawOnly = DrawOnly.MASTER;
 		}
-		// Makes the line arrive in the center of the rectangle
-		int lineCENTER = 50;
-		// Makes the line go DOWN a little so the line is not on the text
-		int lineYDOWN = 7;
-		// Makes the line go UP a little so the line is noton the text
-		int lineYUP = -20;
+
 		List<Formation> listToDraw = new LinkedList();
 		// showing only licence formations
 		if (this.drawOnly == DrawOnly.LICENCE || this.drawOnly == DrawOnly.MASTER) {
@@ -175,7 +180,8 @@ public class DrawerSVGGen {
 			g.setPaint(Color.black);
 			g.drawString(l.getFullNameWithLink(), l.getPoint().x, l.getPoint().y);
 			// write the name of formation
-			Rectangle t = new Rectangle(l.getPoint().x - 10, l.getPoint().y - 20, l.getFullName().length() * 10, 25); // draw
+			Rectangle t = new Rectangle(l.getPoint().x - 10, l.getPoint().y - 20,
+					g.getFontMetrics().stringWidth(l.getFullName()) + 20, 25); // draw
 			// rectangle
 			g.draw(t);
 			g.setPaint(Color.blue);
@@ -248,6 +254,32 @@ public class DrawerSVGGen {
 	}
 
 	/**
+	 * This methode draArrow, draws a line with an arrow
+	 * 
+	 * @param g1
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 */
+	void drawArrow(Graphics g1, int x1, int y1, int x2, int y2) {
+		Graphics2D g = (Graphics2D) g1.create();
+		int ARR_SIZE = 5;
+
+		double dx = x2 - x1, dy = y2 - y1;
+		double angle = Math.atan2(dy, dx);
+		int len = (int) Math.sqrt(dx * dx + dy * dy);
+		AffineTransform at = AffineTransform.getTranslateInstance(x1, y1);
+		at.concatenate(AffineTransform.getRotateInstance(angle));
+		g.transform(at);
+
+		// Draw horizontal arrow starting in (0, 0)
+		g.drawLine(0, 0, len, 0);
+		g.fillPolygon(new int[] { len, len - ARR_SIZE, len - ARR_SIZE, len }, new int[] { 0, -ARR_SIZE, ARR_SIZE, 0 },
+				4);
+	}
+
+	/**
 	 * This function shows the name of the subjects or teachers of a formation
 	 * (if this one is SHOWN in the SVG)
 	 * 
@@ -264,17 +296,34 @@ public class DrawerSVGGen {
 	 */
 
 	public void drawSubjectTeacher(Settings settings) {
-
+		int decX = 0;
+		int decY = 0;
 		if (settings.isHiddenSubject() == false) {
-			int decY = 0;
+
 			for (Formation f : this.datas.getFormations()) {
+
+				decX = g.getFontMetrics().stringWidth(f.getFullName()) + 20;
+
 				if (f.isShown() == true) {
 					for (Subject s : f.getSubjects()) {
-						g.drawString(s.getTitle(), f.getPoint().x + 100, f.getPoint().y + decY);
-						s.setPosX(f.getPoint().x + 100);
-						s.setPosY(f.getPoint().y + decY);
-						decY += 15;
 
+						g.drawString(s.getTitle(), f.getPoint().x + decX, f.getPoint().y);
+						s.setPosX(f.getPoint().x + decX);
+						s.setPosY(f.getPoint().y);
+						decX += g.getFontMetrics().stringWidth(s.getTitle()) + 5;
+
+						// DRAW PREREQUISITES LINES
+						// for (Formation f2 : f.getAvailableFormations()) {
+						for (Subject s2 : f.getSubjects()) {
+							for (Subject p : s2.getListOfPrerequisites()) {
+								g.setPaint(Color.blue);
+								drawArrow(g, s.getPoint().x + 15, s.getPoint().y - 20, p.getPoint().x + 30,
+										p.getPoint().y + 3);
+							}
+
+							g.setPaint(Color.black);
+						}
+						// }
 					}
 				}
 			}
@@ -289,9 +338,7 @@ public class DrawerSVGGen {
 
 							java.awt.Font font = new java.awt.Font("TimesRoman", 9, 9);
 							g.setFont(font);
-							g.drawString(s.getResponsible().getLastName(),
-									s.getPoint().x + (g.getFontMetrics().stringWidth(s.getTitle()) + 30),
-									s.getPoint().y);
+							g.drawString(s.getResponsible().getLastName(), s.getPoint().x, s.getPoint().y - 15);
 							decY += 15;
 
 						}

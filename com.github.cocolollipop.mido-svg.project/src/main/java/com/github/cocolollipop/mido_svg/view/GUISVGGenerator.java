@@ -97,15 +97,19 @@ public class GUISVGGenerator {
 
 	/**
 	 * Create the application.
+	 * 
+	 * @throws IOException
 	 */
-	public GUISVGGenerator() {
+	public GUISVGGenerator() throws IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
+	 * @throws IOException
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 
 		initComponents();
 		createEvents();
@@ -116,9 +120,11 @@ public class GUISVGGenerator {
 	/**
 	 * This method containt all code for creating and initializing components
 	 * 
+	 * @throws IOException
+	 * 
 	 **/
 
-	private void initComponents() {
+	private void initComponents() throws IOException {
 		frmMidosvg = new JFrame();
 		frmMidosvg.setIconImage(Toolkit.getDefaultToolkit().getImage(GUISVGGenerator.class
 				.getResource("/com/github/cocolollipop/mido_svg/resources/window_builder/dauphine.png")));
