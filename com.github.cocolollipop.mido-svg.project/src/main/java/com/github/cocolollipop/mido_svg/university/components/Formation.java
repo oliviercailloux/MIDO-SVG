@@ -23,24 +23,24 @@ public abstract class Formation {
 
 	// cocolollipop: I dont know if we need all of these...I let you comment
 	// these ones
-	protected char title;
-	protected String fullName;
-	protected String intitule;
+	private char title;
+	private String fullName;
+	private String intitule;
 	// this name corresponds to the name with a link ref to the program
 	private String fullNameWithLink;
 	// grade is corresponding to the year
-	protected int grade;
+	private int grade;
 	// Application type (for example: selection based on student records )
-	protected String admisssion;
+	private String admisssion;
 	// List of formations you could apply for after the current year
-	protected List<Formation> availableFormations;
+	private List<Formation> availableFormations;
 	// list of subjects that contain each formation
-	protected List<Subject> subjects;
+	private List<Subject> subjects;
 	// the main responsible of the formation
-	protected Teacher teacher;
-	protected String tagsList[];
-	protected Point point;
-	protected Formation child;
+	private Teacher teacher;
+	private String tagsList[];
+	private Point point;
+	private Formation child;
 	protected Category category;
 	protected boolean shown;
 	private InputStream ips;
