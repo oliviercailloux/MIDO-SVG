@@ -96,7 +96,7 @@ public class DrawerSVGGen {
 		this.drawFormation(settings);
 		this.drawResponsable(settings);
 		this.drawSubjectTeacher(settings);
-		datas.getFormat().changeFormat(settings.getFormat());
+		datas.getFormat().setFormat(settings.getFormat());
 
 		g.setSVGCanvasSize(new Dimension(datas.getFormat().getCanevasX(), datas.getFormat().getCanevasY()));
 		g.drawString(this.datas.getDepartment().getNomDepartement(), this.datas.getDepartment().getX(),
