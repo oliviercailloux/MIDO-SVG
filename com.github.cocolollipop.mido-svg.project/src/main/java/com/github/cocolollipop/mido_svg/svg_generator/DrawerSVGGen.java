@@ -314,14 +314,15 @@ public class DrawerSVGGen {
 						decX += g.getFontMetrics().stringWidth(s.getTitle()) + 5;
 
 						// DRAW PREREQUISITES LINES
-						// for (Formation f2 : f.getAvailableFormations()) {
-						for (Subject s2 : f.getSubjects()) {
-							for (Subject p : s2.getListOfPrerequisites()) {
-								g.setPaint(Color.blue);
-								drawArrow(g, s.getPoint().x + 15, s.getPoint().y - 20, p.getPoint().x + 30,
-										p.getPoint().y + 3);
-							}
 
+						for (Subject s2 : f.getSubjects()) {
+							if (settings.isHiddenPrerequisites() == false) {
+								for (Subject p : s2.getListOfPrerequisites()) {
+									g.setPaint(Color.blue);
+									drawArrow(g, s.getPoint().x + 15, s.getPoint().y - 20, p.getPoint().x + 30,
+											p.getPoint().y + 3);
+								}
+							}
 							g.setPaint(Color.black);
 						}
 						// }

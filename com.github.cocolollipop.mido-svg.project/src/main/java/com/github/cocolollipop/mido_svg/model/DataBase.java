@@ -54,7 +54,7 @@ public class DataBase {
 		// InitFormTOSub();
 
 		// default settings
-		this.settings = new Settings(true, false, true, true, true, true, "A3");
+		this.settings = new Settings(true, false, true, true, true, true, true, "A3");
 
 		// initFormations();
 		this.format = new Paper();

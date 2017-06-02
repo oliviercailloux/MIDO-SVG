@@ -70,6 +70,7 @@ public class GUISVGGenerator {
 	private boolean affAdmission;
 	private boolean affSubject;
 	private boolean affTeacher;
+	private boolean affPrereq;
 	private String form;
 	DataBase datas;
 
@@ -399,8 +400,9 @@ public class GUISVGGenerator {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+
 					Settings settings = new Settings(affFormationLicence, affFormationMaster, affResponsable,
-							affAdmission, affSubject, affTeacher, form);
+							affAdmission, affSubject, affTeacher, affPrereq, form);
 					svg.paint(settings, datas);
 
 					File file = new File("./svg/outLicence.svg");

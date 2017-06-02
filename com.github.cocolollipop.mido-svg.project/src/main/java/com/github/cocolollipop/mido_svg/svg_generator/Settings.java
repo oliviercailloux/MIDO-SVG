@@ -15,17 +15,19 @@ public class Settings {
 	private boolean hiddenAdmission;
 	private boolean hiddenSubject;
 	private boolean hiddenTeacher;
+	private boolean hiddenPrerequisites;
 	private Enum format;
 	private Paper paper;
 
 	public Settings(boolean lic, boolean master, boolean resp, boolean admission, boolean subject, boolean teacher,
-			String format) {
+			boolean prereq, String format) {
 		this.hiddenLicence = lic;
 		this.hiddenMaster = master;
 		this.hiddenResponsable = resp;
 		this.hiddenAdmission = admission;
 		this.hiddenSubject = subject;
 		this.hiddenTeacher = teacher;
+		this.hiddenPrerequisites = prereq;
 		this.format = Enum.valueOf(Paper.TypeFormat.class, format);
 		this.paper = new Paper();
 		this.paper = Paper.Paper(Enum.valueOf(Paper.TypeFormat.class, format));
@@ -98,6 +100,14 @@ public class Settings {
 
 	public void setHiddenTeacher(boolean hiddenTeacher) {
 		this.hiddenTeacher = hiddenTeacher;
+	}
+
+	public boolean isHiddenPrerequisites() {
+		return hiddenPrerequisites;
+	}
+
+	public void setHiddenPrerequisites(boolean hiddenPrerequisites) {
+		this.hiddenPrerequisites = hiddenPrerequisites;
 	}
 
 	public Enum getFormat() {
