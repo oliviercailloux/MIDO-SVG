@@ -4,6 +4,7 @@ package com.github.cocolollipop.mido_svg.paper;
  * This class corresponds to the settings of a paper
  *
  */
+
 public class Paper {
 
 	private int dimXCanvas;

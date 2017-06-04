@@ -8,6 +8,7 @@ import com.github.cocolollipop.mido_svg.paper.PaperA4;
  * This class saves the user settings
  *
  */
+
 public class Settings {
 	private boolean hiddenLicence;
 	private boolean hiddenMaster;

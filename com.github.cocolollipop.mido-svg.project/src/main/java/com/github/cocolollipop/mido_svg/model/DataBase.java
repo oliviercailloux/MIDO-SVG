@@ -59,8 +59,7 @@ public class DataBase {
 		// false, false, 5000, 5000);
 
 		// initFormations();
-		// this.format = new Paper();
-		// this.format = new Paper(5000, 5000);
+
 		initFormat();
 		initDepartment();
 		FillSubjectListInFormation();
