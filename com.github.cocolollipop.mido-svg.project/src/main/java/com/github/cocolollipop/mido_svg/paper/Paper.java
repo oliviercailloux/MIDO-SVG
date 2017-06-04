@@ -16,7 +16,7 @@ public class Paper {
 	 * Current possibilities for format's settings
 	 */
 	public enum TypeFormat {
-		A4, A3
+		A4, A3, Other
 
 	}
 
@@ -32,14 +32,19 @@ public class Paper {
 	public Paper(int x, int y) {
 		this.setDimXCanvas(x);
 		this.setDimYCanvas(y);
+		this.setCanevasX(x);
+		this.setCanevasY(y);
 	}
 
-	public static Paper Paper(Enum settings) {
+	public static Paper Paper(Enum settings, int x, int y) {
 		Paper newPaper = null;
 		if (settings == Paper.TypeFormat.A3) {
 			newPaper = new PaperA3();
 		} else if (settings == Paper.TypeFormat.A4) {
 			newPaper = new PaperA4();
+		} else if (settings == Paper.TypeFormat.Other) {
+			newPaper = new PaperOther(x, y);
+
 		}
 		return newPaper;
 	}

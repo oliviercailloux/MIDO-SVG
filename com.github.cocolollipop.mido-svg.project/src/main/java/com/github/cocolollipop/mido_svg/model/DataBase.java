@@ -55,9 +55,12 @@ public class DataBase {
 
 		// default settings
 		this.settings = new Settings(true, false, true, true, true, true, true, "A3");
+		// this.settings = new Settings(false, false, false, false, false,
+		// false, false, 5000, 5000);
 
 		// initFormations();
-		this.format = new Paper();
+		// this.format = new Paper();
+		// this.format = new Paper(5000, 5000);
 		initFormat();
 		initDepartment();
 		FillSubjectListInFormation();
@@ -69,7 +72,7 @@ public class DataBase {
 	 * Initialize Canvas
 	 */
 	public void initFormat() {
-		this.format = Paper.Paper(settings.getFormat());
+		this.format = Paper.Paper(settings.getFormat(), this.settings.getWidth(), this.settings.getHeight());
 	}
 
 	/**

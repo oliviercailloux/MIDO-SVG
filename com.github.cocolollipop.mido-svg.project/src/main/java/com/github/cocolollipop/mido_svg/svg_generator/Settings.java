@@ -18,6 +18,9 @@ public class Settings {
 	private boolean hiddenPrerequisites;
 	private Enum format;
 	private Paper paper;
+	private int width, height;
+
+	/** The constructor to choose the size of the canevas (between A3 or A4) **/
 
 	public Settings(boolean lic, boolean master, boolean resp, boolean admission, boolean subject, boolean teacher,
 			boolean prereq, String format) {
@@ -30,7 +33,29 @@ public class Settings {
 		this.hiddenPrerequisites = prereq;
 		this.format = Enum.valueOf(Paper.TypeFormat.class, format);
 		this.paper = new Paper();
-		this.paper = Paper.Paper(Enum.valueOf(Paper.TypeFormat.class, format));
+		this.paper = Paper.Paper(Enum.valueOf(Paper.TypeFormat.class, format), 0, 0);
+
+	}
+
+	/**
+	 * The constructor to choose the size of the canevas (The user can choose
+	 * any values he want for height and width) -> format = other
+	 **/
+
+	public Settings(boolean lic, boolean master, boolean resp, boolean admission, boolean subject, boolean teacher,
+			boolean prereq, int width, int height) {
+		this.hiddenLicence = lic;
+		this.hiddenMaster = master;
+		this.hiddenResponsable = resp;
+		this.hiddenAdmission = admission;
+		this.hiddenSubject = subject;
+		this.hiddenTeacher = teacher;
+		this.hiddenPrerequisites = prereq;
+		this.width = width;
+		this.height = height;
+		this.format = Enum.valueOf(Paper.TypeFormat.class, "Other");
+		this.paper = new Paper(width, height);
+		this.paper = Paper.Paper(Enum.valueOf(Paper.TypeFormat.class, "Other"), width, height);
 
 	}
 
@@ -117,4 +142,21 @@ public class Settings {
 	public void setFormat(Enum format) {
 		this.format = format;
 	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
 }
