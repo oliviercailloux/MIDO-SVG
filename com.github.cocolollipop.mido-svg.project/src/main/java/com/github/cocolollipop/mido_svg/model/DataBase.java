@@ -59,7 +59,6 @@ public class DataBase {
 		// false, false, 5000, 5000);
 
 		// initFormations();
-
 		initFormat();
 		initDepartment();
 		FillSubjectListInFormation();

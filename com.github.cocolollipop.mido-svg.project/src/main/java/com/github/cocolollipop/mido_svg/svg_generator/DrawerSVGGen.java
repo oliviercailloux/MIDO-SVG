@@ -157,7 +157,6 @@ public class DrawerSVGGen {
 	 * @param lineYUP
 	 * @throws ClassNotFoundException
 	 */
-
 	public void drawFormation(Settings settings) throws ClassNotFoundException {
 		if (settings.isHiddenLicence() == false && settings.isHiddenMaster() == false) {
 			this.drawOnly = DrawOnly.BOTH;

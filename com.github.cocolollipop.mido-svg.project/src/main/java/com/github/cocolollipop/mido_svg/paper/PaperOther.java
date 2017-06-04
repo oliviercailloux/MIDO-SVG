@@ -8,7 +8,6 @@ public class PaperOther extends Paper {
 		this.setCanevasY(y);
 		this.setDimXCanvas(x);
 		this.setDimYCanvas(y);
-
 	}
 
 }
