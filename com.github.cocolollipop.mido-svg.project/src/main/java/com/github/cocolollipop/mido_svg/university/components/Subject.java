@@ -2,7 +2,11 @@ package com.github.cocolollipop.mido_svg.university.components;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
 
 /**
  * This class is corresponding to the subject students could attend
@@ -14,19 +18,37 @@ public class Subject {
 	private Teacher responsible;
 	private int credit;
 	private Point point;
-	private List<Tag> listOfTags;
+	private Set<Tag> tags; // we are using a set to avoid duplicate entry
 	private List<Subject> listOfPrerequisites;
 	private Formation level;
 
 	public Subject(String title, Teacher responsible, int credit, int x, int y) {
+		if (responsible == null) {
+			this.responsible = new Teacher();
+		}
+		this.tags = new HashSet<Tag>();
 		this.title = title;
 		this.responsible = responsible;
 		this.credit = credit;
 		this.point = new Point();
 		this.point.setLocation(x, y);
 		this.listOfPrerequisites = new ArrayList<Subject>();
-		this.level = level;
-		// this.level.addSubjectToList(this);
+	}
+
+	public boolean hasPrerequisites() {
+		if (this.getListOfPrerequisites().size() > 0)
+			return true;
+		else
+			return false;
+	}
+
+	/**
+	 * This subroutine is used to add a tag
+	 * 
+	 * @param tag
+	 */
+	public void addTag(Tag tag) {
+		this.tags.add(tag);
 
 	}
 
@@ -91,11 +113,12 @@ public class Subject {
 		this.level = level;
 	}
 
-	public boolean hasPrerequisites() {
-		if (this.getListOfPrerequisites().size() > 0)
-			return true;
-		else
-			return false;
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
 	}
 
 }

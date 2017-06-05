@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
@@ -16,6 +17,7 @@ import com.github.cocolollipop.mido_svg.university.components.Licence;
 import com.github.cocolollipop.mido_svg.university.components.Master;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 import com.github.cocolollipop.mido_svg.university.components.Teacher;
+import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
 
 /**
  * This class is the current database of the application
@@ -24,7 +26,7 @@ import com.github.cocolollipop.mido_svg.university.components.Teacher;
 public class DataBase {
 
 	private Map<String, Teacher> teachers;
-	// private Map<String, Subject> subjects;
+	private Map<String, Subject> mapSubjects; // used for tags
 	private List<Subject> subjects;
 	private List<Formation> formations;
 	private List<String> tags;
@@ -34,14 +36,13 @@ public class DataBase {
 	private Map<String, Formation> formationsMap;
 
 	public DataBase() throws IOException {
+		this.settings = new Settings(false, true, false, false, false, false, false, 2000, 2000);
 		this.teachers = new HashMap<String, Teacher>();
 		initTeachers();
 		this.formationsMap = new HashMap<String, Formation>();
 		this.formations = new LinkedList<Formation>();
 		this.subjects = new ArrayList<Subject>();
 		this.tags = new ArrayList<>();
-
-		// this.subjects = new HashMap<String, Subject>();
 		try {
 			initFormations();
 		} catch (Exception e) {
@@ -50,15 +51,29 @@ public class DataBase {
 		}
 
 		initSubjects();
+		this.settings = settings;
+		initFormat();
+		initDepartment();
+		FillSubjectListInFormation();
 
-		// InitFormTOSub();
+	}
 
-		// default settings
-		// this.settings = new Settings(true, false, true, true, true, true,
-		// true, "A3");
-		this.settings = new Settings(false, false, false, false, false, false, false, 2000, 2000);
+	public DataBase(Settings settings) throws IOException {
+		this.teachers = new HashMap<String, Teacher>();
+		initTeachers();
+		this.formationsMap = new HashMap<String, Formation>();
+		this.formations = new LinkedList<Formation>();
+		this.subjects = new ArrayList<Subject>();
+		this.tags = new ArrayList<>();
+		try {
+			initFormations();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		// initFormations();
+		initSubjects();
+		this.settings = settings;
 		initFormat();
 		initDepartment();
 		FillSubjectListInFormation();
@@ -100,14 +115,15 @@ public class DataBase {
 	 * Initialize subjects
 	 */
 	public void initSubjects() {
+		this.mapSubjects = new HashMap();
 		Subject proba = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
 		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
 		Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
 		Subject math = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
 
-		// subjects.put("proba", proba);
-		// subjects.put("java", java);
-		// subjects.put("logique", logique);
+		mapSubjects.put("proba", proba);
+		mapSubjects.put("java", java);
+		mapSubjects.put("logique", logique);
 
 		logique.setLevel(formationsMap.get("M1MIAGE"));
 		math.setLevel(formationsMap.get("L3MIAGEApp"));
@@ -238,13 +254,16 @@ public class DataBase {
 		this.teachers = teachers;
 	}
 
-	/*
-	 * public Map<String, Subject> getSubjects() { return subjects; }
-	 * 
-	 * /* public void setSubjects(Map<String, Subject> subjects) { if
-	 * (this.subjects == null) { this.subjects = new HashMap<String, Subject>();
-	 * } this.subjects = subjects; }
-	 */
+	public Map<String, Subject> getSubjects() {
+		return mapSubjects;
+	}
+
+	public void setSubjects(Map<String, Subject> subjects) {
+		if (this.mapSubjects == null) {
+			this.mapSubjects = new HashMap<String, Subject>();
+		}
+		this.mapSubjects = mapSubjects;
+	}
 
 	public Department getDepartment() {
 		return department;
@@ -292,6 +311,21 @@ public class DataBase {
 
 	public List<String> getTags() {
 		return this.tags;
+
+	}
+
+	/**
+	 * Store tags into the mapSubjects
+	 * 
+	 * @param listOfTags
+	 */
+	public void setTags(List<Tag> listOfTags) {
+		for (Tag tag : listOfTags) {
+			Set<String> sujets = tag.getSubjects();
+			for (String sujet : sujets) {
+				this.mapSubjects.get(sujet).addTag(tag);
+			}
+		}
 
 	}
 
