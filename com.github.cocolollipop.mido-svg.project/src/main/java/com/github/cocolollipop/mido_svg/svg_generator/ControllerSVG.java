@@ -11,9 +11,9 @@ public class ControllerSVG {
 	public static void main(String[] args) throws Exception {
 		/** We initialize the drawer, the settings and the datas */
 		DrawerSVGGen test = new DrawerSVGGen();
-		Settings settings = new Settings(false, false, false, false, false, false, false, "A3");
 		// Settings settings = new Settings(false, false, false, false, false,
-		// false, false, 1000, 1000);
+		// false, false, "A3");
+		Settings settings = new Settings(false, false, false, false, false, false, false, 2000, 2000);
 
 		DataBase datas = new DataBase();
 		/** We adapt the drawing according to the settings */

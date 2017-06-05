@@ -25,6 +25,7 @@ import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
 import com.github.cocolollipop.mido_svg.model.DataBase;
+import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 
@@ -43,6 +44,8 @@ public class DrawerSVGGen {
 	private SVGGraphics2D g;
 	private Enum drawOnly;
 	private DataBase datas;
+	private int police;
+	private Paper paper;
 
 	private int lineCENTER = 50; // Makes the line arrive in the center of the
 									// rectangle
@@ -178,6 +181,8 @@ public class DrawerSVGGen {
 		for (Formation l : listToDraw) {
 			l.setShown(true);
 			g.setPaint(Color.black);
+			java.awt.Font Basicfont = new java.awt.Font("TimesRoman", 12, 12);
+			g.setFont(Basicfont);
 			g.drawString(l.getFullNameWithLink(), l.getPoint().x, l.getPoint().y);
 			// write the name of formation
 			Rectangle t = new Rectangle(l.getPoint().x - 10, l.getPoint().y - 20,
@@ -241,8 +246,7 @@ public class DrawerSVGGen {
 				if (f.isShown() == true) {
 					if (f.hasGotATeacher(f) == true)
 						g.drawString(f.getTeacher().getFullNameTeacher(),
-								f.getPoint().x
-										- (g.getFontMetrics().stringWidth(f.getTeacher().getFullNameTeacher()) + 5),
+								f.getPoint().x - (g.getFontMetrics().stringWidth(f.getFullName()) + 30),
 								f.getPoint().y);
 				}
 			}
@@ -311,7 +315,7 @@ public class DrawerSVGGen {
 						g.drawString(s.getTitle(), f.getPoint().x + decX, f.getPoint().y);
 						s.setPosX(f.getPoint().x + decX);
 						s.setPosY(f.getPoint().y);
-						decX += g.getFontMetrics().stringWidth(s.getTitle()) + 5;
+						decX += g.getFontMetrics().stringWidth(s.getTitle()) + 7;
 
 						// DRAW PREREQUISITES LINES
 
