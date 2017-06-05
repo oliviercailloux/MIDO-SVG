@@ -4,6 +4,9 @@
 	<groupId>com.github.cocolollipop.mido-svg.project</groupId>
 	<artifactId>mido-svg</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>mido-svg</name>
+	<url>https://cocolollipop.github.io/mido-svg/</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -18,8 +21,6 @@
 		</dependency>
 
 		<!-- SWT -->
-
-		
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.swt.cocoa.macosx.x86_64</artifactId>
