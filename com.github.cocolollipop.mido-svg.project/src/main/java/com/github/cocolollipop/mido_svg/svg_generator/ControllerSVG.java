@@ -13,7 +13,7 @@ public class ControllerSVG {
 		DrawerSVGGen test = new DrawerSVGGen();
 		// Settings settings = new Settings(false, false, false, false, false,
 		// false, false, "A3");
-		Settings settings = new Settings(false, false, false, false, false, false, false, 2000, 2000);
+		Settings settings = new Settings(false, true, false, false, false, false, false, 2000, 2000);
 
 		DataBase datas = new DataBase();
 		/** We adapt the drawing according to the settings */

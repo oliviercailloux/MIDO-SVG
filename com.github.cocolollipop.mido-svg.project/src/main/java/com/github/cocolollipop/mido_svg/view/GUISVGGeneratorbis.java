@@ -16,6 +16,7 @@ import org.eclipse.swt.widgets.Text;
 import com.github.cocolollipop.mido_svg.model.DataBase;
 import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.DrawerSVGGen;
+import com.github.cocolollipop.mido_svg.svg_generator.ResponsiveSVG;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 
@@ -58,10 +59,14 @@ public class GUISVGGeneratorbis {
 	private int height;
 
 	private DrawerSVGGen svg = new DrawerSVGGen();
+	ResponsiveSVG responsive = new ResponsiveSVG();
 	private Paper format = new Paper();
 	private Formation formation; // A VOIR
 	private Spinner spinnerWidth;
 	private Spinner spinnerHeight;
+	private Spinner spinner;
+	private Spinner spinnerwidth;
+	private Spinner spinnerheight;
 
 	/**
 	 * Launch the application.
@@ -79,13 +84,17 @@ public class GUISVGGeneratorbis {
 
 	/**
 	 * Open the window.
+	 * 
+	 * @throws IOException
 	 */
-	public void open() {
+	public void open() throws IOException {
 		Display display = Display.getDefault();
 		createContents();
 		shell.open();
 		shell.layout();
 		createEvents();
+		this.datas = new DataBase();
+		responsive.defineObjectsPosition(datas.getFormations(), 1920, 1080);
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch()) {
 				display.sleep();
@@ -196,7 +205,7 @@ public class GUISVGGeneratorbis {
 		btnFermer.setText("Fermer");
 
 		labelEtat = new Label(shell, SWT.NONE);
-		labelEtat.setBounds(97, 467, 366, 14);
+		labelEtat.setBounds(185, 467, 183, 14);
 
 	}
 
@@ -211,14 +220,15 @@ public class GUISVGGeneratorbis {
 					lblLargeur.setText("Largeur");
 					lblLongueur.setText("Longueur");
 
-					spinnerWidth = new Spinner(shell, SWT.BORDER);
-					spinnerWidth.setBounds(472, 141, 52, 22);
+					spinnerwidth = new Spinner(shell, SWT.BORDER);
+					spinnerwidth.setMaximum(5000);
+					spinnerwidth.setMinimum(1000);
+					spinnerwidth.setBounds(469, 141, 71, 27);
 
-					spinnerHeight = new Spinner(shell, SWT.BORDER);
-					spinnerHeight.setBounds(472, 182, 52, 22);
-
-					height = spinnerHeight.getSelection();
-					width = spinnerWidth.getSelection();
+					spinnerheight = new Spinner(shell, SWT.BORDER);
+					spinnerheight.setMaximum(5000);
+					spinnerheight.setMinimum(1000);
+					spinnerheight.setBounds(469, 181, 71, 28);
 
 				}
 
@@ -228,8 +238,7 @@ public class GUISVGGeneratorbis {
 		btnCheckButtonA4.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
-				if (btnCheckButtonA3.getSelection()) {
+				if (btnCheckButtonA4.getSelection()) {
 					form = "A4";
 				}
 
@@ -239,7 +248,6 @@ public class GUISVGGeneratorbis {
 		btnCheckButtonA3.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
 				if (btnCheckButtonA3.getSelection()) {
 					form = "A3";
 				}
@@ -256,9 +264,9 @@ public class GUISVGGeneratorbis {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnLicence.getSelection()) {
-					affFormationLicence = false;
-				} else {
 					affFormationLicence = true;
+				} else {
+					affFormationLicence = false;
 				}
 
 			}
@@ -274,9 +282,9 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				if (btnMaster.getSelection()) {
-					affFormationMaster = false;
-				} else {
 					affFormationMaster = true;
+				} else {
+					affFormationMaster = false;
 				}
 			}
 		});
@@ -291,9 +299,9 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				if (btnLesResponsables.getSelection()) {
-					affResponsable = false;
-				} else {
 					affResponsable = true;
+				} else {
+					affResponsable = false;
 
 				}
 			}
@@ -308,9 +316,9 @@ public class GUISVGGeneratorbis {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnLesMatires.getSelection()) {
-					affSubject = false;
-				} else {
 					affSubject = true;
+				} else {
+					affSubject = false;
 
 				}
 
@@ -321,9 +329,9 @@ public class GUISVGGeneratorbis {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnLesEnseignants.getSelection()) {
-					affTeacher = false;
-				} else {
 					affTeacher = true;
+				} else {
+					affTeacher = false;
 
 				}
 			}
@@ -339,9 +347,9 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				if (btnLesprerequis.getSelection()) {
-					affPrereq = false;
-				} else {
 					affPrereq = true;
+				} else {
+					affPrereq = false;
 
 				}
 			}
@@ -357,9 +365,9 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				if (btnLeModeDadmission.getSelection()) {
-					affAdmission = false;
-				} else {
 					affAdmission = true;
+				} else {
+					affAdmission = false;
 
 				}
 			}
@@ -380,17 +388,23 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				try {
-					if (btnCheckButtonA3.getSelection() || btnCheckButtonA4.getSelection()) {
+					if (btnCheckButtonA3.getSelection()) {
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
-								affSubject, affTeacher, affPrereq, form);
+								affSubject, affTeacher, affPrereq, "A3");
+					} else if (btnCheckButtonA4.getSelection()) {
+						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
+								affSubject, affTeacher, affPrereq, "A4");
 					} else if (btnCheckButtonAutre.getSelection()) {
+
+						height = spinnerheight.getDigits();
+						width = spinnerwidth.getDigits();
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
 								affSubject, affTeacher, affPrereq, width, height);
 					}
 
 					svg.paint(settings, datas);
 
-					File file = new File("./svg/outLicence.svg");
+					File file = new File("./outLicence.svg");
 
 					try {
 						java.awt.Desktop.getDesktop().open(file);
