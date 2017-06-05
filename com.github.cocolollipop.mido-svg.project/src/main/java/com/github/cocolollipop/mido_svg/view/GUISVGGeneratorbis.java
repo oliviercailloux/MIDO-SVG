@@ -87,6 +87,7 @@ public class GUISVGGeneratorbis {
 	 * 
 	 * @throws IOException
 	 */
+
 	public void open() throws IOException {
 		Display display = Display.getDefault();
 		createContents();
