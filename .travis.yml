@@ -7,5 +7,4 @@ dist: trustyq
 before_install:
   - cd java
 script:
-  - mvn clean
-  - mvn install
+  - mvn clean install -q
