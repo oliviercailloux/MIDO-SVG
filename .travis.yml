@@ -4,4 +4,4 @@ git:
 jdk:
   - oraclejdk8
 dist: trustyq
-script: ant -version
+script: mvn install
