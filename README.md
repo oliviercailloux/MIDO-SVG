@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.org/Cocolollipop/mido-svg.svg?branch=master)](https://travis-ci.org/Cocolollipop/mido-svg)  
 
-Subject: https://github.com/oliviercailloux/projets/blob/master/mido_svg.adoc  
+Subject: [sujet](https://github.com/oliviercailloux/projets/blob/master/mido_svg.adoc)  
 
 = MIDO SVG
 Le département MIDO propose plusieurs parcours, contenant pour certains des cours à option, avec des passerelles entre certains parcours. Il est difficile pour un enseignant extérieur (ou débutant) de se repérer dans l’offre de cours et de voir comment son cours s’articule avec les cours existants. Une manière de pallier ce problème consiste à représenter graphiquement l’offre de cours et les relations entre les cours. Cependant, de tels dessins requièrent du temps pour être bien faits, et deviennent rapidement obsolète. Ce projet vise à génération automatique de diagrammes au format SVG représentant des organigramme des cours et autres informations liées.
@@ -19,8 +19,8 @@ Le département MIDO propose plusieurs parcours, contenant pour certains des cou
 - [x] Graphique équivalent pour la license.
 - [x] Paramètres : license seulement, master seulement, A3 ou A4.
 - [x] Mots clés sur cours. Utilisateur peut associer des mots-clés aux cours via interface graphique.
-- [in progress] Mots clés enregistrés dans un fichier.
-- [in progress] Lecture des mots clés depuis un fichier.
+- [x] Mots clés enregistrés dans un fichier.
+- [x] Lecture des mots clés depuis un fichier.
 - [in progress] Lecture des mots clés depuis plusieurs fichiers.
 - [in progress] Entrée et affichage de pré-requis entre cours.
 - [in progress] Bibliothèque générale permettant de générer des SVG (sans interface graphique).
@@ -28,9 +28,9 @@ Le département MIDO propose plusieurs parcours, contenant pour certains des cou
 - [in progress] Compromis taille police min / espacement / nb données affichées
 
 == Refs
-* Voir application link:Test-SVG-Gen[].
-* Voir link:MIDO-Svg/MIDO.svg[dessin] à la main.
+* Voir application link:[Test-SVG-Gen](https://github.com/oliviercailloux/projets/tree/master/Test-SVG-Gen).
+* Voir link:[dessin](https://github.com/oliviercailloux/projets/blob/master/MIDO-Svg/MIDO.svg) à la main.
 * CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/
-* link:Voeux/OF_MEA5STI.xml[]
+* link:[Voeux/OF_MEA5STI.xml](https://github.com/oliviercailloux/projets/blob/master/Voeux/OF_MEA5STI.xml)
 
  
