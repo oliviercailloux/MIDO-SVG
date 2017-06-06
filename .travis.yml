@@ -4,5 +4,6 @@ git:
 jdk:
   - oraclejdk8
 dist: trustyq
-install: true
-script: ./mvn clean install
+script: 
+mvn test -B
+mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
