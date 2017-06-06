@@ -5,4 +5,4 @@ jdk:
   - oraclejdk8
 dist: trustyq
 script: 
-  - mvn clean install
+  - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
