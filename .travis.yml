@@ -5,5 +5,4 @@ jdk:
   - oraclejdk8
 dist: trustyq
 script: 
-  - mvn test -B
-  - mvn install
+  - mvn clean install
