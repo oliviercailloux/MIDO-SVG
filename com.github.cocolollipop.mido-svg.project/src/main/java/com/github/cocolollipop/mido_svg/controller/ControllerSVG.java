@@ -22,7 +22,7 @@ public class ControllerSVG {
 
 		/** We initialize the drawer, the settings and the datas */
 		DrawerSVGGen test = new DrawerSVGGen();
-		Settings settings = new Settings(false, true, false, false, false, false, false, 2000, 2000);
+		Settings settings = new Settings(false, false, false, false, false, false, false, 2000, 2000);
 		/** Tags **/
 		jaxb.createTagsFileXML();
 		List<Tag> listOfTags = jaxb.readTagsFileXML();
