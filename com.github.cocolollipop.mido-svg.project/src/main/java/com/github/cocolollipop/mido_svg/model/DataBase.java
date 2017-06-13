@@ -1,7 +1,6 @@
 package com.github.cocolollipop.mido_svg.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -207,15 +206,6 @@ public class DataBase {
 		this.formationsMap.put("L3MIAGEApp", L3MIAGEApp);
 		this.formationsMap.put("M1MIAGEApp", M1MIAGEApp);
 
-		// Fill the M2MIAGEID list of tags
-		L3MIAGE.setTagsList("src/main/resources/tags/L3MIAGE.txt");
-		M2MIAGEIF.setTagsList("src/main/resources/tags/M2MIAGEIF.txt");
-		M2MIAGEID.setTagsList("src/main/resources/tags/M2MIAGEID.txt");
-		M2MIAGESTIN.setTagsList("src/main/resources/tags/M2MIAGESTIN.txt");
-		this.tags.addAll(Arrays.asList(L3MIAGE.getTagslist()));
-		this.tags.addAll(Arrays.asList(M2MIAGEIF.getTagslist()));
-		this.tags.addAll(Arrays.asList(M2MIAGEID.getTagslist()));
-		this.tags.addAll(Arrays.asList(M2MIAGESTIN.getTagslist()));
 	}
 
 	/**
