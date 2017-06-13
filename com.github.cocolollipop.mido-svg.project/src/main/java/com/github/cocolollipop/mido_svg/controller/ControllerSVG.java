@@ -34,7 +34,6 @@ public class ControllerSVG {
 		ResponsiveSVG responsive = new ResponsiveSVG();
 		responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
 
-		
 		/** Just to print results **/
 		Map<String, Subject> map = datas.getSubjects();
 		for (String name : map.keySet()) {

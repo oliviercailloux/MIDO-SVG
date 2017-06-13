@@ -1,6 +1,5 @@
 package com.github.cocolollipop.mido_svg.model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.github.cocolollipop.mido_svg.paper.FactoryPaper;
 import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
 import com.github.cocolollipop.mido_svg.university.components.Department;
@@ -31,17 +31,17 @@ public class DataBase {
 	private List<Formation> formations;
 	private List<String> tags;
 	private Department department;
-	private Paper format;
+	private Paper paper;
 	private Settings settings;
 	private Map<String, Formation> formationsMap;
 
-	public DataBase() throws IOException {
+	public DataBase() {
 		this.settings = new Settings(false, true, false, false, false, false, false, 2000, 2000);
-		this.teachers = new HashMap<String, Teacher>();
+		this.teachers = new HashMap<>();
 		initTeachers();
-		this.formationsMap = new HashMap<String, Formation>();
-		this.formations = new LinkedList<Formation>();
-		this.subjects = new ArrayList<Subject>();
+		this.formationsMap = new HashMap<>();
+		this.formations = new LinkedList<>();
+		this.subjects = new ArrayList<>();
 		this.tags = new ArrayList<>();
 		try {
 			initFormations();
@@ -51,19 +51,18 @@ public class DataBase {
 		}
 
 		initSubjects();
-		this.settings = settings;
-		initFormat();
+		setPaper(FactoryPaper.TypeFormat.A4, 2000, 2000);
 		initDepartment();
 		FillSubjectListInFormation();
 
 	}
 
-	public DataBase(Settings settings) throws IOException {
-		this.teachers = new HashMap<String, Teacher>();
+	public DataBase(Settings settings) {
+		this.teachers = new HashMap<>();
 		initTeachers();
-		this.formationsMap = new HashMap<String, Formation>();
-		this.formations = new LinkedList<Formation>();
-		this.subjects = new ArrayList<Subject>();
+		this.formationsMap = new HashMap<>();
+		this.formations = new LinkedList<>();
+		this.subjects = new ArrayList<>();
 		this.tags = new ArrayList<>();
 		try {
 			initFormations();
@@ -74,7 +73,7 @@ public class DataBase {
 
 		initSubjects();
 		this.settings = settings;
-		initFormat();
+		setPaper(this.settings.getFormat(), this.settings.getWidth(), this.settings.getHeight());
 		initDepartment();
 		FillSubjectListInFormation();
 
@@ -84,8 +83,13 @@ public class DataBase {
 	/**
 	 * Initialize Canvas
 	 */
-	public void initFormat() {
-		this.format = Paper.Paper(settings.getFormat(), this.settings.getWidth(), this.settings.getHeight());
+	public void setPaper(Enum<?> format, int x, int y) {
+		FactoryPaper facp = new FactoryPaper();
+		if (format == FactoryPaper.TypeFormat.A3 || format == FactoryPaper.TypeFormat.A4) {
+			this.paper = facp.getPaper(format);
+		} else {
+			this.paper = facp.getPaper(format, x, y);
+		}
 	}
 
 	/**
@@ -115,7 +119,7 @@ public class DataBase {
 	 * Initialize subjects
 	 */
 	public void initSubjects() {
-		this.mapSubjects = new HashMap();
+		this.mapSubjects = new HashMap<>();
 		Subject proba = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
 		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
 		Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
@@ -144,11 +148,9 @@ public class DataBase {
 
 	/**
 	 * Initialize formations
-	 * 
-	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public void initFormations() throws IOException {
+	public void initFormations() {
 		// L3MIAGE
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);
 		L3MIAGE.setTeacher(teachers.get("Mayag"));
@@ -178,7 +180,7 @@ public class DataBase {
 		Master M2MIAGESTINApp = new Master("M2 MIAGE STIN App", 5, 900, 300);
 
 		// List of formations
-		this.formations = new LinkedList<Formation>();
+		this.formations = new LinkedList<>();
 		this.formations.add(L3MIAGE);
 		this.formations.add(L3MIAGEApp);
 		this.formations.add(M1MIAGE);
@@ -238,7 +240,7 @@ public class DataBase {
 
 	public void setFormations(List<Formation> formations) {
 		if (this.formations == null) {
-			this.formations = new LinkedList<Formation>();
+			this.formations = new LinkedList<>();
 		}
 		this.formations = formations;
 	}
@@ -249,7 +251,7 @@ public class DataBase {
 
 	public void setTeachers(Map<String, Teacher> teachers) {
 		if (this.teachers == null) {
-			this.teachers = new HashMap<String, Teacher>();
+			this.teachers = new HashMap<>();
 		}
 		this.teachers = teachers;
 	}
@@ -260,9 +262,9 @@ public class DataBase {
 
 	public void setSubjects(Map<String, Subject> subjects) {
 		if (this.mapSubjects == null) {
-			this.mapSubjects = new HashMap<String, Subject>();
+			this.mapSubjects = new HashMap<>();
 		}
-		this.mapSubjects = mapSubjects;
+		this.mapSubjects = subjects;
 	}
 
 	public Department getDepartment() {
@@ -276,16 +278,10 @@ public class DataBase {
 		this.department = department;
 	}
 
-	public Paper getFormat() {
-		return format;
+	public Paper getPaper() {
+		return paper;
 	}
 
-	public void setFormat(Paper format) {
-		if (this.format == null) {
-			this.format = new Paper();
-		}
-		this.format = format;
-	}
 	///////// END GETTERS AND SETTERS //////
 
 	/////////// MANAGE////////////
@@ -326,6 +322,11 @@ public class DataBase {
 				this.mapSubjects.get(sujet).addTag(tag);
 			}
 		}
+
+	}
+
+	public void setPaper(Paper paper) {
+		this.paper = paper;
 
 	}
 

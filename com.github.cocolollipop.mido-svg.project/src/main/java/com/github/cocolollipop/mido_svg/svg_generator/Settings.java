@@ -1,8 +1,7 @@
 package com.github.cocolollipop.mido_svg.svg_generator;
 
+import com.github.cocolollipop.mido_svg.paper.FactoryPaper;
 import com.github.cocolollipop.mido_svg.paper.Paper;
-import com.github.cocolollipop.mido_svg.paper.PaperA3;
-import com.github.cocolollipop.mido_svg.paper.PaperA4;
 
 /**
  * This class saves the user settings
@@ -17,7 +16,6 @@ public class Settings {
 	private boolean hiddenTeacher;
 	private boolean hiddenPrerequisites;
 	private Enum format;
-	private Paper paper;
 	private int width, height;
 
 	/** The constructor to choose the size of the canevas (between A3 or A4) **/
@@ -31,12 +29,11 @@ public class Settings {
 		this.hiddenSubject = subject;
 		this.hiddenTeacher = teacher;
 		this.hiddenPrerequisites = prereq;
-		this.format = Enum.valueOf(Paper.TypeFormat.class, format);
-		this.paper = new Paper();
-		this.paper = Paper.Paper(Enum.valueOf(Paper.TypeFormat.class, format), paper.getDimXCanvas(), paper.getDimYCanvas());
+		this.format = Enum.valueOf(FactoryPaper.TypeFormat.class, format);
+		FactoryPaper factorypaper = new FactoryPaper();
+		Paper paper = factorypaper.getPaper(this.format);
 		this.width = paper.getDimXCanvas();
 		this.height = paper.getDimYCanvas();
-
 	}
 
 	/**
@@ -55,30 +52,7 @@ public class Settings {
 		this.hiddenPrerequisites = prereq;
 		this.width = width;
 		this.height = height;
-		this.format = Enum.valueOf(Paper.TypeFormat.class, "Other");
-		this.paper = new Paper(width, height);
-		this.paper = Paper.Paper(Enum.valueOf(Paper.TypeFormat.class, "Other"), width, height);
-
-	}
-
-	/**
-	 * changeFormat method change the format of the canevas to A3 or A4 and
-	 * throws an exception if it's neither A4 nor A3
-	 * 
-	 * @param settings.
-	 *            would be equal to A3/a3 or A4/a4
-	 * @throws Exception
-	 */
-
-	public void changeFormat(Enum settings) {
-
-		if (settings == Paper.TypeFormat.A4) {
-			this.paper = new PaperA4();
-
-		} else if (settings == Paper.TypeFormat.A3) {
-			this.paper = new PaperA3();
-
-		}
+		this.format = Enum.valueOf(FactoryPaper.TypeFormat.class, "Other");
 	}
 
 	public boolean isHiddenLicence() {
@@ -138,7 +112,7 @@ public class Settings {
 	}
 
 	public Enum getFormat() {
-		return format;
+		return this.format;
 	}
 
 	public void setFormat(Enum format) {
@@ -146,7 +120,7 @@ public class Settings {
 	}
 
 	public int getWidth() {
-		return width;
+		return this.width;
 	}
 
 	public void setWidth(int width) {
@@ -154,7 +128,7 @@ public class Settings {
 	}
 
 	public int getHeight() {
-		return height;
+		return this.height;
 	}
 
 	public void setHeight(int height) {
