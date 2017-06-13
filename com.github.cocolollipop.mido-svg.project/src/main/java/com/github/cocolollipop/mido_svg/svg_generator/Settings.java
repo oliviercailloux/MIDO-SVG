@@ -33,7 +33,9 @@ public class Settings {
 		this.hiddenPrerequisites = prereq;
 		this.format = Enum.valueOf(Paper.TypeFormat.class, format);
 		this.paper = new Paper();
-		this.paper = new Paper(Enum.valueOf(Paper.TypeFormat.class, format), 0, 0);
+		this.paper = Paper.Paper(Enum.valueOf(Paper.TypeFormat.class, format), paper.getDimXCanvas(), paper.getDimYCanvas());
+		this.width = paper.getDimXCanvas();
+		this.height = paper.getDimYCanvas();
 
 	}
 
@@ -55,7 +57,7 @@ public class Settings {
 		this.height = height;
 		this.format = Enum.valueOf(Paper.TypeFormat.class, "Other");
 		this.paper = new Paper(width, height);
-		this.paper = new Paper(Enum.valueOf(Paper.TypeFormat.class, "Other"), width, height);
+		this.paper = Paper.Paper(Enum.valueOf(Paper.TypeFormat.class, "Other"), width, height);
 
 	}
 

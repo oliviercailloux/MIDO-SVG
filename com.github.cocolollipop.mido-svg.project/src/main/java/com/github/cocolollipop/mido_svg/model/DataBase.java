@@ -51,6 +51,7 @@ public class DataBase {
 		}
 
 		initSubjects();
+		this.settings = settings;
 		initFormat();
 		initDepartment();
 		FillSubjectListInFormation();
@@ -84,7 +85,7 @@ public class DataBase {
 	 * Initialize Canvas
 	 */
 	public void initFormat() {
-		this.format = new Paper(settings.getFormat(), this.settings.getWidth(), this.settings.getHeight());
+		this.format = Paper.Paper(settings.getFormat(), this.settings.getWidth(), this.settings.getHeight());
 	}
 
 	/**
@@ -261,7 +262,7 @@ public class DataBase {
 		if (this.mapSubjects == null) {
 			this.mapSubjects = new HashMap<String, Subject>();
 		}
-		this.mapSubjects = subjects;
+		this.mapSubjects = mapSubjects;
 	}
 
 	public Department getDepartment() {

@@ -36,7 +36,7 @@ public class Paper {
 		this.setCanevasY(y);
 	}
 
-	public Paper(Enum settings, int x, int y) {
+	public static Paper Paper(Enum settings, int x, int y) {
 		Paper newPaper = null;
 		if (settings == Paper.TypeFormat.A3) {
 			newPaper = new PaperA3();
@@ -46,6 +46,7 @@ public class Paper {
 			newPaper = new PaperOther(x, y);
 
 		}
+		return newPaper;
 	}
 	// GETTERS
 

@@ -22,9 +22,7 @@ public class ControllerSVG {
 
 		/** We initialize the drawer, the settings and the datas */
 		DrawerSVGGen test = new DrawerSVGGen();
-
 		Settings settings = new Settings(false, false, false, false, false, false, false, "A4");
-
 		/** Tags **/
 		jaxb.createTagsFileXML();
 		List<Tag> listOfTags = jaxb.readTagsFileXML();
@@ -36,6 +34,7 @@ public class ControllerSVG {
 		ResponsiveSVG responsive = new ResponsiveSVG();
 		responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
 
+		
 		/** Just to print results **/
 		Map<String, Subject> map = datas.getSubjects();
 		for (String name : map.keySet()) {
