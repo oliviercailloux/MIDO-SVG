@@ -322,7 +322,7 @@ public class DrawerSVGGen {
 						for (Subject s2 : f.getSubjects()) {
 							if (settings.isHiddenPrerequisites() == false) {
 								for (Subject p : s2.getListOfPrerequisites()) {
-									g.setPaint(Color.blue);
+									g.setPaint(Color.orange);
 									drawArrow(g, s.getPoint().x + 15, s.getPoint().y - 20, p.getPoint().x + 30,
 											p.getPoint().y + 3);
 								}
