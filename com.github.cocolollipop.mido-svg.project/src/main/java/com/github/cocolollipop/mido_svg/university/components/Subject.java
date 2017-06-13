@@ -26,20 +26,20 @@ public class Subject {
 		if (responsible == null) {
 			this.responsible = new Teacher();
 		}
-		this.tags = new HashSet<Tag>();
+		this.tags = new HashSet<>();
 		this.title = title;
 		this.responsible = responsible;
 		this.credit = credit;
 		this.point = new Point();
 		this.point.setLocation(x, y);
-		this.listOfPrerequisites = new ArrayList<Subject>();
+		this.listOfPrerequisites = new ArrayList<>();
 	}
 
 	public boolean hasPrerequisites() {
-		if (this.getListOfPrerequisites().size() > 0)
+		if (this.getListOfPrerequisites().size() > 0) {
 			return true;
-		else
-			return false;
+		}
+		return false;
 	}
 
 	/**

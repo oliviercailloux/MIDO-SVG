@@ -12,7 +12,7 @@ public class FactoryPaper {
 	/**
 	 * Current possibilities for format's settings
 	 */
-	private Enum format;
+	private Enum<?> format;
 
 	public enum TypeFormat {
 		A4, A3, Other
@@ -23,7 +23,7 @@ public class FactoryPaper {
 
 	}
 
-	public Paper getPaper(Enum settings) {
+	public Paper getPaper(Enum<?> settings) {
 		if (settings == TypeFormat.A3) {
 			return new PaperA3();
 		} else if (settings == TypeFormat.A4) {
@@ -32,13 +32,21 @@ public class FactoryPaper {
 		return null;
 	}
 
-	public Paper getPaper(Enum settings, int x, int y) {
+	public Paper getPaper(Enum<?> settings, int x, int y) {
 		if (settings == TypeFormat.Other) {
 			return new PaperOther(x, y);
 		}
 
 		return null;
 
+	}
+
+	public Enum<?> getFormat() {
+		return format;
+	}
+
+	public void setFormat(Enum<?> format) {
+		this.format = format;
 	}
 
 }

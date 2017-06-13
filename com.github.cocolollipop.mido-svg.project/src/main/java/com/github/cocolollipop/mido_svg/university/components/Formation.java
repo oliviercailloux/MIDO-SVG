@@ -40,7 +40,6 @@ public abstract class Formation {
 	private Teacher teacher;
 	private String tagsList[];
 	private Point point;
-	private Formation child;
 	protected Category category;
 	protected boolean shown;
 	private InputStream ips;
@@ -57,8 +56,8 @@ public abstract class Formation {
 		this.grade = grade;
 		this.point = new Point();
 		this.point.setLocation(x, y);
-		this.subjects = new ArrayList<Subject>();
-		this.availableFormations = new ArrayList<Formation>();
+		this.subjects = new ArrayList<>();
+		this.availableFormations = new ArrayList<>();
 		this.admisssion = "";
 		this.teacher = new Teacher();
 		this.shown = false;
@@ -166,8 +165,8 @@ public abstract class Formation {
 	}
 
 	public void setTagsList(String fileName) {
-		String[] tagsList = this.readTagsList(fileName);
-		this.tagsList = tagsList;
+		String[] tagsList1 = this.readTagsList(fileName);
+		this.tagsList = tagsList1;
 	}
 
 	/**
@@ -194,8 +193,8 @@ public abstract class Formation {
 			System.out.println(e.toString());
 		}
 
-		String[] tagsList = chaine.split(",");
-		return tagsList;
+		String[] tagsList1 = chaine.split(",");
+		return tagsList1;
 	}
 
 	/**
@@ -212,7 +211,9 @@ public abstract class Formation {
 		for (int i = 0; i < list.size(); i++) {
 			text += list.get(i) + ",";
 		}
-		IOUtils.write(text, new FileOutputStream(name), "UTF-8");
+		@SuppressWarnings("resource")
+		FileOutputStream fileOutputStream = new FileOutputStream(name);
+		IOUtils.write(text, fileOutputStream, "UTF-8");
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(name))) {
 
@@ -237,10 +238,10 @@ public abstract class Formation {
 	 */
 
 	public boolean hasGotATeacher(Formation f) {
-		if (f.getTeacher().getFirstName() == null && f.getTeacher().getLastName() == null)
+		if (f.getTeacher().getFirstName() == null && f.getTeacher().getLastName() == null) {
 			return false;
-		else
-			return true;
+		}
+		return true;
 
 	}
 
@@ -261,7 +262,7 @@ public abstract class Formation {
 
 	}
 
-	public Enum getCategory() {
+	public Enum<?> getCategory() {
 		// TODO Auto-generated method stub
 		return this.category;
 	}
@@ -269,16 +270,6 @@ public abstract class Formation {
 	public void addSubjectToList(Subject s) {
 		this.subjects.add(s);
 	}
-
-	/*
-	 * Compare two Formations
-	 * 
-	 * @Override public boolean equals(Object obj) { if (obj instanceof
-	 * Formation) { Formation f = (Formation) obj; if (this.getTitle() ==
-	 * f.getTitle()) { return true; } return false; }
-	 * 
-	 * return false; }
-	 */
 
 	/**
 	 * This function fills the subjects list of a formation with subjects

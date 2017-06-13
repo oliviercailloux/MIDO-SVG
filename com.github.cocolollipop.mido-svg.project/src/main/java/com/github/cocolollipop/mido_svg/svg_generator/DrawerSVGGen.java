@@ -25,7 +25,6 @@ import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 
 import com.github.cocolollipop.mido_svg.model.DataBase;
-import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 
@@ -42,10 +41,9 @@ public class DrawerSVGGen {
 	private Document document;
 	private SVGGeneratorContext ctx;
 	private SVGGraphics2D g;
-	private Enum drawOnly;
+	private Enum<?> drawOnly;
 	private DataBase datas;
 	private int police;
-	private Paper paper;
 
 	private int lineCENTER = 50; // Makes the line arrive in the center of the
 									// rectangle
@@ -64,10 +62,9 @@ public class DrawerSVGGen {
 	 * 
 	 * @param typeOfFormation
 	 * @return
-	 * @throws ClassNotFoundException
 	 */
-	public List<Formation> fillListOfFormationToShow(String type) throws ClassNotFoundException {
-		List<Formation> listOfFormationToShow = new LinkedList<Formation>();
+	public List<Formation> fillListOfFormationToShow(String type) {
+		List<Formation> listOfFormationToShow = new LinkedList<>();
 
 		for (Formation formation : this.datas.getFormations()) {
 			if (formation.getCategory().toString() == type)
@@ -76,8 +73,8 @@ public class DrawerSVGGen {
 		return listOfFormationToShow;
 	}
 
-	public void paint(Settings settings, DataBase datas) throws Exception {
-		this.datas = datas;
+	public void paint(Settings settings, DataBase datas1) throws Exception {
+		this.datas = datas1;
 		String output = "outLicence.svg";
 
 		db = dbf.newDocumentBuilder();
@@ -141,6 +138,7 @@ public class DrawerSVGGen {
 	 * This is to replace "&lt;" by "<" and "&gt;" by ">" because I did not
 	 * found how to avoid converting < into &lt; and > into &gt;
 	 **/
+	@SuppressWarnings("resource")
 	public String svgLinkable(String output) throws FileNotFoundException, IOException {
 		String content = IOUtils.toString(new FileInputStream(output), "UTF-8");
 		content = content.replaceAll("&lt;", "<");
@@ -158,9 +156,8 @@ public class DrawerSVGGen {
 	 * @param lineCENTER
 	 * @param lineYDOWN
 	 * @param lineYUP
-	 * @throws ClassNotFoundException
 	 */
-	public void drawFormation(Settings settings) throws ClassNotFoundException {
+	public void drawFormation(Settings settings) {
 		if (settings.isHiddenLicence() == false && settings.isHiddenMaster() == false) {
 			this.drawOnly = DrawOnly.BOTH;
 		} else if (settings.isHiddenLicence() == false && settings.isHiddenMaster() == true) {
@@ -169,7 +166,7 @@ public class DrawerSVGGen {
 			this.drawOnly = DrawOnly.MASTER;
 		}
 
-		List<Formation> listToDraw = new LinkedList();
+		List<Formation> listToDraw = new LinkedList<>();
 		// showing only licence formations
 		if (this.drawOnly == DrawOnly.LICENCE || this.drawOnly == DrawOnly.MASTER) {
 			listToDraw.addAll(this.fillListOfFormationToShow(drawOnly.toString()));
@@ -267,6 +264,7 @@ public class DrawerSVGGen {
 	 * @param y2
 	 */
 	public void drawArrow(Graphics g1, int x1, int y1, int x2, int y2) {
+		@SuppressWarnings("hiding")
 		Graphics2D g = (Graphics2D) g1.create();
 		int ARR_SIZE = 5;
 

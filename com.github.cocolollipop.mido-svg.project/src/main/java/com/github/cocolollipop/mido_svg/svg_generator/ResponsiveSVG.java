@@ -129,16 +129,6 @@ public class ResponsiveSVG {
 		}
 	}
 
-	private void getPlacement(List<Formation> someFormations) {
-		for (Formation aFormation : someFormations) {
-			System.out.println("Pour la formation " + aFormation.getFullName());
-			System.out.println("PosX = " + aFormation.getPoint().x);
-			System.out.println("PosY = " + aFormation.getPoint().y);
-			System.out.println("_________________");
-		}
-
-	}
-
 	/**
 	 * countFormations count the number of "myYear" in
 	 * lesFormations.getFullName()

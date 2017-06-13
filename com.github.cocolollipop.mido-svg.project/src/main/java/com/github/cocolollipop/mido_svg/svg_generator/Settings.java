@@ -15,7 +15,7 @@ public class Settings {
 	private boolean hiddenSubject;
 	private boolean hiddenTeacher;
 	private boolean hiddenPrerequisites;
-	private Enum format;
+	private Enum<?> format;
 	private int width, height;
 
 	/** The constructor to choose the size of the canevas (between A3 or A4) **/
@@ -111,11 +111,11 @@ public class Settings {
 		this.hiddenPrerequisites = hiddenPrerequisites;
 	}
 
-	public Enum getFormat() {
+	public Enum<?> getFormat() {
 		return this.format;
 	}
 
-	public void setFormat(Enum format) {
+	public void setFormat(Enum<?> format) {
 		this.format = format;
 	}
 
