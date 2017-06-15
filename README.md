@@ -19,10 +19,10 @@ Le département MIDO propose plusieurs parcours, contenant pour certains des cou
 - [x] Graphique équivalent pour la license.
 - [x] Paramètres : license seulement, master seulement, A3 ou A4.
 - [x] Mots clés sur cours. Utilisateur peut associer des mots-clés aux cours via interface graphique.
-- [in progress] Mots clés enregistrés dans un fichier.
-- [in progress] Lecture des mots clés depuis un fichier.
+- [x] Mots clés enregistrés dans un fichier.
+- [x] Lecture des mots clés depuis un fichier.
 - [in progress] Lecture des mots clés depuis plusieurs fichiers.
-- [in progress] Entrée et affichage de pré-requis entre cours.
+- [x] Entrée et affichage de pré-requis entre cours.
 - [in progress] Bibliothèque générale permettant de générer des SVG (sans interface graphique).
 - [in progress] Bibliothèque particulière permettant de générer des SVG MIDO (sans interface graphique).
 - [in progress] Compromis taille police min / espacement / nb données affichées
