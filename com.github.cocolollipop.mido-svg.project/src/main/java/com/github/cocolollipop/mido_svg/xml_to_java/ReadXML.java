@@ -73,7 +73,7 @@ public class ReadXML {
 				System.out.println("admission : " + admission.getTextContent());
 
 				// We set attribute to the Enseignant object
-				Licence licence = new Licence();
+				Licence licence = new Licence(level.getTextContent(), 0, 0, 0);
 				// licence.setNiveau(level.getTextContent());
 
 				Element person = (Element) childNodesList.item(i);
