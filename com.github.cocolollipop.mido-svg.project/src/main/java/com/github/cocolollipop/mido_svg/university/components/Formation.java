@@ -211,7 +211,6 @@ public abstract class Formation {
 		for (int i = 0; i < list.size(); i++) {
 			text += list.get(i) + ",";
 		}
-		@SuppressWarnings("resource")
 		FileOutputStream fileOutputStream = new FileOutputStream(name);
 		IOUtils.write(text, fileOutputStream, "UTF-8");
 

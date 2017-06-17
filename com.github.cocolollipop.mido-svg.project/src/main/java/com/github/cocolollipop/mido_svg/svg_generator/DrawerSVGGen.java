@@ -138,7 +138,6 @@ public class DrawerSVGGen {
 	 * This is to replace "&lt;" by "<" and "&gt;" by ">" because I did not
 	 * found how to avoid converting < into &lt; and > into &gt;
 	 **/
-	@SuppressWarnings("resource")
 	public String svgLinkable(String output) throws FileNotFoundException, IOException {
 		String content = IOUtils.toString(new FileInputStream(output), "UTF-8");
 		content = content.replaceAll("&lt;", "<");
@@ -264,7 +263,6 @@ public class DrawerSVGGen {
 	 * @param y2
 	 */
 	public void drawArrow(Graphics g1, int x1, int y1, int x2, int y2) {
-		@SuppressWarnings("hiding")
 		Graphics2D g = (Graphics2D) g1.create();
 		int ARR_SIZE = 5;
 
@@ -353,6 +351,14 @@ public class DrawerSVGGen {
 
 		}
 
+	}
+
+	public int getPolice() {
+		return police;
+	}
+
+	public void setPolice(int police) {
+		this.police = police;
 	}
 
 }

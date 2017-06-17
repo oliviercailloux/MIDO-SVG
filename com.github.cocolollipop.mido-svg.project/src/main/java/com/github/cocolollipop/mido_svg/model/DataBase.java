@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.w3c.dom.Document;
-
 import com.github.cocolollipop.mido_svg.paper.FactoryPaper;
 import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
@@ -19,7 +17,6 @@ import com.github.cocolollipop.mido_svg.university.components.Master;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 import com.github.cocolollipop.mido_svg.university.components.Teacher;
 import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
-import com.github.cocolollipop.mido_svg.xml_to_java.XMLMain;
 
 /**
  * This class is the current database of the application
@@ -38,7 +35,8 @@ public class DataBase {
 	private Map<String, Formation> formationsMap;
 
 	public DataBase() {
-		this.settings = new Settings(false, true, false, false, false, false, false, 2000, 2000);
+		// default settings
+		this.settings = new Settings(false, false, false, false, false, false, false, "A4");
 		this.teachers = new HashMap<>();
 		initTeachers();
 		this.formationsMap = new HashMap<>();
@@ -53,7 +51,7 @@ public class DataBase {
 		}
 
 		initSubjects();
-		setPaper(FactoryPaper.TypeFormat.A4, 2000, 2000);
+		setPaper(FactoryPaper.TypeFormat.A4, 0, 0);
 		initDepartment();
 		FillSubjectListInFormation();
 
@@ -83,7 +81,7 @@ public class DataBase {
 
 	///////////// INITIALIZE///////////////
 	/**
-	 * Initialize Canvas
+	 * Initialize Paper
 	 */
 	public void setPaper(Enum<?> format, int x, int y) {
 		FactoryPaper facp = new FactoryPaper();
@@ -122,13 +120,14 @@ public class DataBase {
 	 */
 	public void initSubjects() {
 		this.mapSubjects = new HashMap<>();
-		
-		// En dessous faudra commenter si on veut utiliser la méthode XML
+
+		// En dessous faudra commenter si on veut utiliser la mï¿½thode XML
 		// et decommenter ceci
-		/* XMLMain myTestXMLMain = new XMLMain();
-			myTestXMLMain.getXMLFile(); // pour récupérer le fichier XML
-			myTestXMLMain.getMyXMLDocument().fillSubjectsXML(this.mapSubjects);
-			*/
+		/*
+		 * XMLMain myTestXMLMain = new XMLMain(); myTestXMLMain.getXMLFile(); //
+		 * pour rï¿½cupï¿½rer le fichier XML
+		 * myTestXMLMain.getMyXMLDocument().fillSubjectsXML(this.mapSubjects);
+		 */
 		Subject proba = new Subject("ProbabilitÃ©s et Statistiques", teachers.get("Mayag"), 3, 350, 70);
 		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
 		Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
@@ -158,7 +157,6 @@ public class DataBase {
 	/**
 	 * Initialize formations
 	 */
-	@SuppressWarnings("unchecked")
 	public void initFormations() {
 		// L3MIAGE
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);

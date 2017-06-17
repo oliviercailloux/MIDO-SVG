@@ -6,8 +6,6 @@ public class PaperA4 extends Paper {
 		super();
 		this.setDimXCanvas(3508);
 		this.setDimYCanvas(4961);
-		// this.setCanevasX(3508);
-		// this.setCanevasY(4961);
 	}
 
 }
