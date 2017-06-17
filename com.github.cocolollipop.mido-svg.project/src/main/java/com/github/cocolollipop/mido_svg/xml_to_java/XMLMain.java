@@ -14,6 +14,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.github.cocolollipop.mido_svg.university.components.Subject;
+
 public class XMLMain {
     public static void main(final String[] args) throws ParserConfigurationException, SAXException, IOException {
     	// D'abord on pointe sur l'URL
@@ -52,25 +54,31 @@ public class XMLMain {
 	    final int nbRacineNoeuds = racineNoeuds.getLength();
 			
 	    for (int i = 0; i<nbRacineNoeuds; i++) {
+	    	
+	    	
 	        if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
-	            final Element subject = (Element) racineNoeuds.item(i);
+	        	
+	        	final Element subject = (Element) racineNoeuds.item(i);
 	            
 	            //Looking for subjects
 	            if(subject.getNodeName() == "ns3:course"){
-	            	if (subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue() != null){
-		            	String courseTitle = subject.getChildNodes().item(5).getFirstChild().getNodeValue();
-	            		System.out.println(subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue());
-	            	}
+	            	String courseTitle = "courseTitleBlank";
+			    	int courseCredit=0;
+			    	
+			    	// we get the name of the course here
+	            	courseTitle = subject.getChildNodes().item(5).getFirstChild().getNodeValue();
 	            	
+	            	// we get ECTS of the course
+	            	if (subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue() != null){
+	            		courseCredit = Integer.parseInt(subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue());
+	            	}
+	            	Subject sub = new Subject(courseTitle, courseCredit);
+	            	mapSubject.put(sub.getTitle(), sub); // mapSubject correspond à la hashmap ; on la passera en parametre au tt debut de la fonction
 	            }
-				
-		    //Affichage d'une personne
-//		    System.out.println("\n*************Matieres************");
-//		    System.out.println("courseName : " + matiere.getAttribute("courseName"));
-			
-					
-					
-	        }				
-	    }				
+	        }
+	        
+	        
+	    }	
+	    
     }
 }
