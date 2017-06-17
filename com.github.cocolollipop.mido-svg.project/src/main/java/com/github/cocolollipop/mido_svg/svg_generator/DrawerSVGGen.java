@@ -34,6 +34,8 @@ import com.github.cocolollipop.mido_svg.university.components.Subject;
  */
 public class DrawerSVGGen {
 
+	public static final String DRAWING_SVG = "./src/main/resources/images/mido-drawing.svg";
+
 	private DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 	private DocumentBuilder db;
 	private DOMImplementation domImpl;
@@ -75,7 +77,6 @@ public class DrawerSVGGen {
 
 	public void paint(Settings settings, DataBase datas1) throws Exception {
 		this.datas = datas1;
-		String output = "outLicence.svg";
 
 		db = dbf.newDocumentBuilder();
 		// Get a DOMImplementation.
@@ -125,12 +126,12 @@ public class DrawerSVGGen {
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes
-		try (Writer out = new OutputStreamWriter(new FileOutputStream(output), "UTF-8")) {
+		try (Writer out = new OutputStreamWriter(new FileOutputStream(DRAWING_SVG), "UTF-8")) {
 			g.stream(out, useCSS);
 		}
 
-		String content = this.svgLinkable(output);
-		IOUtils.write(content, new FileOutputStream(output), "UTF-8");
+		String content = this.svgLinkable();
+		IOUtils.write(content, new FileOutputStream(DRAWING_SVG), "UTF-8");
 
 	}
 
@@ -138,8 +139,8 @@ public class DrawerSVGGen {
 	 * This is to replace "&lt;" by "<" and "&gt;" by ">" because I did not
 	 * found how to avoid converting < into &lt; and > into &gt;
 	 **/
-	public String svgLinkable(String output) throws FileNotFoundException, IOException {
-		String content = IOUtils.toString(new FileInputStream(output), "UTF-8");
+	public String svgLinkable() throws FileNotFoundException, IOException {
+		String content = IOUtils.toString(new FileInputStream(DRAWING_SVG), "UTF-8");
 		content = content.replaceAll("&lt;", "<");
 		content = content.replaceAll("&gt;", ">");
 		return content = content.replaceAll("unicode=\"<\"", "unicode=\"\"");
