@@ -35,6 +35,16 @@ public class Subject {
 		this.listOfPrerequisites = new ArrayList<>();
 	}
 
+	public Subject(String title, int credit) {
+		this.responsible = new Teacher();
+		this.tags = new HashSet<>();
+		this.title = title;
+		this.credit = credit;
+		this.point = new Point();
+		this.point.setLocation(0, 0);
+		this.listOfPrerequisites = new ArrayList<>();
+	}
+
 	public boolean hasPrerequisites() {
 		if (this.getListOfPrerequisites().size() > 0) {
 			return true;
