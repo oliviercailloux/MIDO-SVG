@@ -15,7 +15,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.github.cocolollipop.mido_svg.university.components.Subject;
+import com.github.cocolollipop.mido_svg.university.components.*;
 
 public class XMLMain {
 	/**
@@ -79,6 +79,7 @@ public class XMLMain {
 	            	if (subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue() != null){
 	            		courseCredit = Double.parseDouble(subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue());
 	            	}
+	            	// we create a new subject
 	            	Subject sub = new Subject(courseTitle, courseCredit);
 	            	mapSubjects.put(sub.getTitle(), sub); // mapSubjects correspond à la hashmap ; on la passera en parametre au tt debut de la fonction
 	            }
@@ -88,6 +89,42 @@ public class XMLMain {
 		
 		
 	}
+public void fillTeachersXML(HashMap mapTeachers){
+    
+	final Element racine = this.myXMLDocument.getDocumentElement();
+	
+	//Affichage de l'élément racine
+	System.out.println("\n*************RACINE************");
+	System.out.println(racine.getNodeName());
+	
+	/*
+	 * Etape 5 : récupération des matières
+	 */
+	final NodeList racineNoeuds = racine.getChildNodes();
+	final int nbRacineNoeuds = racineNoeuds.getLength();
+		
+	for (int i = 0; i<nbRacineNoeuds; i++) {
+	    if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+	        final Element teacher = (Element) racineNoeuds.item(i);
+	        String fname = "Jules";
+	        String lname = "Scohy";
+	        String mail = "a@a.fr";
+	        String tel = "000";
+	        //Looking for subjects
+	        if(teacher.getNodeName() == "ns3:person"){
+	        	fname = teacher.getElementsByTagName("ns3:given").item(0).getFirstChild().getNodeValue();
+	        	lname = teacher.getElementsByTagName("ns3:family").item(0).getFirstChild().getNodeValue();
+	        	mail = teacher.getElementsByTagName("ns3:email").item(0).getFirstChild().getNodeValue();
+	        	tel = teacher.getElementsByTagName("ns3:telephone").item(0).getTextContent();
+	        	}
+	        Teacher tch = new Teacher();
+	        tch.setFirstName(fname);
+	        tch.setLastName(lname);
+	        tch.setAddress(mail);
+	        tch.setPhone(tel);
+	        }	
+	    }				
+} // fin for	FIN COPIE ICI	
 	
 	
 	
