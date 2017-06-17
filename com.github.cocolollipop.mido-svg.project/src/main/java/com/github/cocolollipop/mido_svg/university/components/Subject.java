@@ -16,7 +16,7 @@ public class Subject {
 
 	private String title;
 	private Teacher responsible;
-	private int credit;
+	private double credit;
 	private Point point;
 	private Set<Tag> tags; // we are using a set to avoid duplicate entry
 	private List<Subject> listOfPrerequisites;
@@ -32,6 +32,16 @@ public class Subject {
 		this.credit = credit;
 		this.point = new Point();
 		this.point.setLocation(x, y);
+		this.listOfPrerequisites = new ArrayList<>();
+	}
+
+	public Subject(String title, double courseCredit) {
+		this.responsible = new Teacher();
+		this.tags = new HashSet<>();
+		this.title = title;
+		this.credit = courseCredit;
+		this.point = new Point();
+		this.point.setLocation(0, 0);
 		this.listOfPrerequisites = new ArrayList<>();
 	}
 
@@ -68,11 +78,11 @@ public class Subject {
 		this.responsible = responsible;
 	}
 
-	public int getCredit() {
+	public double getCredit() {
 		return credit;
 	}
 
-	public void setCredit(int credit) {
+	public void setCredit(double credit) {
 		this.credit = credit;
 	}
 

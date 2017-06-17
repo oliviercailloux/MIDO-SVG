@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.w3c.dom.Document;
+
 import com.github.cocolollipop.mido_svg.paper.FactoryPaper;
 import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
@@ -17,6 +19,7 @@ import com.github.cocolollipop.mido_svg.university.components.Master;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 import com.github.cocolollipop.mido_svg.university.components.Teacher;
 import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
+import com.github.cocolollipop.mido_svg.xml_to_java.XMLMain;
 
 /**
  * This class is the current database of the application
@@ -119,6 +122,13 @@ public class DataBase {
 	 */
 	public void initSubjects() {
 		this.mapSubjects = new HashMap<>();
+		
+		// En dessous faudra commenter si on veut utiliser la méthode XML
+		// et decommenter ceci
+		/* XMLMain myTestXMLMain = new XMLMain();
+			myTestXMLMain.getXMLFile(); // pour récupérer le fichier XML
+			myTestXMLMain.getMyXMLDocument().fillSubjectsXML(this.mapSubjects);
+			*/
 		Subject proba = new Subject("ProbabilitÃ©s et Statistiques", teachers.get("Mayag"), 3, 350, 70);
 		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
 		Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
