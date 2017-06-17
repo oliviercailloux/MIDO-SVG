@@ -2,6 +2,7 @@ package com.github.cocolollipop.mido_svg.xml_to_java;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -13,96 +14,63 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.github.cocolollipop.mido_svg.university.components.Teacher;
+public class XMLMain {
+    public static void main(final String[] args) throws ParserConfigurationException, SAXException, IOException {
+    	// D'abord on pointe sur l'URL
+    			URL myXML = new URL("https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml");
 
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
+    			// Ensuite on parse
+    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+    			Document document = dBuilder.parse(myXML.openStream());
 
-public class ReadXMLbis {
-	/**
-	 * The aim of this class is to get data form an XML FILE in static mode
-	 * In a second time we will create a function which can used in the main program, in order to create
-	 * multiple objects such as Enseignant, Matiere, Formation (package univ)
-	 * 
-	 * We will use a DOM parser
-	 * @param args
-	 * @throws XPathExpressionException 
-	 */
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException{
-		
-		// First we have to create an object DocumentBuilderFactory in order to use the DocumentBuilder
-		// then we create the DocumentBuilder
-		// And finally we create the document which opens "myFile.xml"
-		// the try catch block is mandatory is order to use DocumentBuilder
+    			// si on veut récupérer par l'intermédiaire de JAX-RS
+    			// Client client = ClientBuilder.newClient();
+    			// On le normalise pour pas avoir de soucis ; cf
+    			// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+    			document.getDocumentElement().normalize();
 			
-		final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		final DocumentBuilder db = dbf.newDocumentBuilder();
+	    //Affiche du prologue
+	    System.out.println("*************PROLOGUE************");
+	    System.out.println("version : " + document.getXmlVersion());
+	    System.out.println("encodage : " + document.getXmlEncoding());		
+            System.out.println("standalone : " + document.getXmlStandalone());
+					
+	    /*
+	     * Etape 4 : récupération de l'Element racine
+	     */
+	    final Element racine = document.getDocumentElement();
 		
-		// MyFile is our XML file which contains data about Maude Manouvrier
-		final Document myDocument= db.parse(new File("myFile.xml"));
-
-		/*
-		 * Now we are going to create the Enseignant object and add set some attributes, thanks to the parser
-		 */
-		Element root = myDocument.getDocumentElement();
-		NodeList childNodesList = root.getChildNodes();
-		int nbRootNodesList = childNodesList.getLength();
+	    //Affichage de l'élément racine
+	    System.out.println("\n*************RACINE************");
+	    System.out.println(racine.getNodeName());
 		
-		// We show node Root Name !
-		System.out.println(root.getNodeName());
-		
-		// We show the nodeChild of the Root Node
-	    for (int i = 0; i<nbRootNodesList; i++) {
-	        if(childNodesList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-	            Element person = (Element) childNodesList.item(i);
+	    /*
+	     * Etape 5 : récupération des matières
+	     */
+	    final NodeList racineNoeuds = racine.getChildNodes();
+	    final int nbRacineNoeuds = racineNoeuds.getLength();
+			
+	    for (int i = 0; i<nbRacineNoeuds; i++) {
+	        if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+	            final Element subject = (Element) racineNoeuds.item(i);
+	            
+	            //Looking for subjects
+	            if(subject.getNodeName() == "ns3:course"){
+	            	if (subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue() != null){
+		            	String courseTitle = subject.getChildNodes().item(5).getFirstChild().getNodeValue();
+	            		System.out.println(subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue());
+	            	}
+	            	
+	            }
 				
-		    	// We show the gender of the person ; using getAttribute Method
-			    System.out.println("\nThe PERSON");
-			    System.out.println("GENDER : " + person.getAttribute("sexe"));
-				
-		    	// We use getElementsByTagName in order to get the name and the surname of the person
-			    Element name = (Element) person.getElementsByTagName("nom").item(0);
-			    Element surname = (Element) person.getElementsByTagName("prenom").item(0);
-						
-			    //We show the name and surname
-			    System.out.println("Name : " + name.getTextContent());
-			    System.out.println("Surname : " + surname.getTextContent());
-			    /**
-			    // We set attribute to the Enseignant object
-				Enseignant firstEnseignant = new Enseignant();
-				firstEnseignant.setNomEnseignant(name.getTextContent());
-				firstEnseignant.setPrenomEnseignant(surname.getTextContent());
-				
-				// Now we check whether it has been saved or not
-				System.out.println("\n READING FROM THE OBJECT "+firstEnseignant.toString());
-				System.out.println("Name obj : "+firstEnseignant.getNomEnseignant());
-				
-				
-				/**
-				 * Ici on va essayer de faire intervenir XPATH pour recuperer le nom des personne
-				 *  ON DEVRA EN FAIRE UNE METHODE
-				 */
-			    /**
-				XPath xPath =  XPathFactory.newInstance().newXPath();
-				String expressionXpath = "/enseignant/personne/nom";
-				NodeList myNodeList = (NodeList) xPath.compile(expressionXpath).evaluate(myDocument, XPathConstants.NODESET);
-				System.out.println("D'aprï¿½s XPATH : ");
-				for (int k = 0; i < myNodeList.getLength(); i++) {
-				    System.out.println(myNodeList.item(i).getFirstChild().getNodeName()); 
-				}
-				*/
-	        }
-	    }
-		
-		
-		
-
-		
-		
-		
-		}
-
-	}
-
+		    //Affichage d'une personne
+//		    System.out.println("\n*************Matieres************");
+//		    System.out.println("courseName : " + matiere.getAttribute("courseName"));
+			
+					
+					
+	        }				
+	    }				
+    }
+}
