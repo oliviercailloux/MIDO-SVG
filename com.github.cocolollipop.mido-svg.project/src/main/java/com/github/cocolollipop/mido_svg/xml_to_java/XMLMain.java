@@ -3,6 +3,8 @@ package com.github.cocolollipop.mido_svg.xml_to_java;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -194,8 +196,10 @@ public class XMLMain {
 		HashMap lesTeachers = new HashMap();
 		myTestXMLMain.fillTeachersXML(lesTeachers);
 
-		System.out.println("Boucle for:");
-		for (HashMap.Entry mapentry : lesTeachers.entrySet()) {
+		System.out.println("Boucle while");
+		Iterator iterator = lesTeachers.entrySet().iterator();
+		while (iterator.hasNext()) {
+			Map.Entry mapentry = (Map.Entry) iterator.next();
 			System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
 		}
 		System.out.println("OK");
