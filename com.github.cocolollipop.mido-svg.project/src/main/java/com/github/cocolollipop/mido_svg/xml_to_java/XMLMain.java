@@ -107,17 +107,8 @@ public class XMLMain {
 	public void fillTeachersXML(HashMap mapTeachers) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
-
-		// Affichage de l'�l�ment racine
-		System.out.println("\n*************RACINE************");
-		System.out.println(racine.getNodeName());
-
-		/*
-		 * Etape 5 : r�cup�ration des mati�res
-		 */
 		final NodeList racineNoeuds = racine.getChildNodes();
 		final int nbRacineNoeuds = racineNoeuds.getLength();
-
 		for (int i = 0; i < nbRacineNoeuds; i++) {
 			if (racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
 				final Element teacher = (Element) racineNoeuds.item(i);
@@ -200,5 +191,13 @@ public class XMLMain {
 		XMLMain myTestXMLMain = new XMLMain();
 		myTestXMLMain.getXMLFile();
 
+		HashMap lesTeachers = new HashMap();
+		myTestXMLMain.fillTeachersXML(lesTeachers);
+
+		System.out.println("Boucle for:");
+		for (HashMap.Entry mapentry : lesTeachers.entrySet()) {
+			System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
+		}
+		System.out.println("OK");
 	}
 }
