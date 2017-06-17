@@ -21,8 +21,12 @@ public class XMLMain {
 	/**
 	 * myXMLDocument contient après appel de getXMLFile() le contenu du fichier XML
 	 */
-	Document myXMLDocument;
+	private Document myXMLDocument;
 	
+	public Document getMyXMLDocument() {
+		return myXMLDocument;
+	}
+
 	/**
 	 * getXMLFile() permet de rapatrier le fichier XML contenant les données sur les formation, matières, prof. Le contenu est stocké dans l'objet XMLMain.document.
 	 * Si on veut travailler avec le contenu du fichier, on passera par l'attribut myXMLDocument de la classe

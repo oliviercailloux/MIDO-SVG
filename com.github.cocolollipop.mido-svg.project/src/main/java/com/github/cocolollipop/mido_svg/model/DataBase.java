@@ -127,7 +127,7 @@ public class DataBase {
 		// et decommenter ceci
 		/* XMLMain myTestXMLMain = new XMLMain();
 			myTestXMLMain.getXMLFile(); // pour récupérer le fichier XML
-			document.fillSubjectsXML(this.mapSubjects);
+			myTestXMLMain.getMyXMLDocument().fillSubjectsXML(this.mapSubjects);
 			*/
 		Subject proba = new Subject("ProbabilitÃ©s et Statistiques", teachers.get("Mayag"), 3, 350, 70);
 		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
