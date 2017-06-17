@@ -172,10 +172,7 @@ public class XMLMain {
 	            	    default:
 	            	    	System.out.println("erreur import formations");
 	            	    break;
-	            			
-	            			
-	            			
-	            		
+	            			  		
 	            		
 	            		
 	    	            	}
