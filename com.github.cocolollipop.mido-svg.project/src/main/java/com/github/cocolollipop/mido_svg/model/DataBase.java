@@ -29,6 +29,7 @@ public class DataBase {
 	private List<Subject> subjects;
 	private List<Formation> formations;
 	private List<String> tags;
+	private List<String> users;
 	private Department department;
 	private Paper paper;
 	private Settings settings;
@@ -49,7 +50,7 @@ public class DataBase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		initUsers();
 		initSubjects();
 		setPaper(FactoryPaper.TypeFormat.A4, 0, 0);
 		initDepartment();
@@ -70,12 +71,22 @@ public class DataBase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		initUsers();
 		initSubjects();
 		this.settings = settings;
 		setPaper(this.settings.getFormat(), this.settings.getWidth(), this.settings.getHeight());
 		initDepartment();
 		FillSubjectListInFormation();
+
+	}
+
+	private void initUsers() {
+		this.users = new ArrayList<String>();
+		this.users.add("ikram");
+		this.users.add("romain");
+		this.users.add("jules");
+		this.users.add("cocolollipop");
+		this.users.add("ocailloux");
 
 	}
 
@@ -326,6 +337,13 @@ public class DataBase {
 	public void setPaper(Paper paper) {
 		this.paper = paper;
 
+	}
+
+	public boolean isUser(String username) {
+		if (users.contains(username)) {
+			return true;
+		}
+		return false;
 	}
 
 }

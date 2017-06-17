@@ -21,8 +21,7 @@ import com.github.cocolollipop.mido_svg.xml.jaxb.model.TagStore;
  *
  */
 public class ControllerJAXB {
-
-	private static final String TAGSTORE_XML = "tagstore-jaxb.xml";
+	public static final String PATH_TAGS = "./src/main/resources/tags/";
 
 	/**
 	 * This subroutine is used to create an XML file from tags
@@ -30,7 +29,8 @@ public class ControllerJAXB {
 	 * @throws JAXBException
 	 * @throws IOException
 	 */
-	public void createTagsFileXML() throws JAXBException, IOException {
+	public void createTagsFileXML(String username) throws JAXBException, IOException {
+		// Map tags, String user
 		/**
 		 * We know that the list of available subjects contains: proba, java,
 		 * logique
@@ -66,7 +66,7 @@ public class ControllerJAXB {
 		m.marshal(tagstore, System.out);
 
 		// Write to File
-		m.marshal(tagstore, new File(TAGSTORE_XML));
+		m.marshal(tagstore, new File(PATH_TAGS + username + "-tagstore-jaxb.xml"));
 
 	}
 
@@ -77,12 +77,12 @@ public class ControllerJAXB {
 	 * @throws JAXBException
 	 * @throws IOException
 	 */
-	public List<Tag> readTagsFileXML() throws JAXBException, IOException {
+	public List<Tag> readTagsFileXML(String username) throws JAXBException, IOException {
 		System.out.println("Output from our XML File: ");
 		JAXBContext context = JAXBContext.newInstance(TagStore.class);
 		Unmarshaller um = context.createUnmarshaller();
 		/* Creates the tagStore */
-		TagStore tagstore2 = (TagStore) um.unmarshal(new FileReader(TAGSTORE_XML));
+		TagStore tagstore2 = (TagStore) um.unmarshal(new FileReader(PATH_TAGS + username + "-tagstore-jaxb.xml"));
 		List<Tag> list = tagstore2.getTagsList();
 		/**
 		 * The print so you can understand the results
