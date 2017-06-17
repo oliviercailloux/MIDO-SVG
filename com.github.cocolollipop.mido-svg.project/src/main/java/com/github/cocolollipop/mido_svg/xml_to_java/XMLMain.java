@@ -66,14 +66,14 @@ public class XMLMain {
 	            //Looking for subjects
 	            if(subject.getNodeName() == "ns3:course"){
 	            	String courseTitle = "courseTitleBlank";
-			    	int courseCredit=0;
+			    	double courseCredit=0;
 			    	
 			    	// we get the name of the course here
 	            	courseTitle = subject.getChildNodes().item(5).getFirstChild().getNodeValue();
 	            	
 	            	// we get ECTS of the course
 	            	if (subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue() != null){
-	            		courseCredit = Integer.parseInt(subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue());
+	            		courseCredit = Double.parseDouble(subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue());
 	            	}
 	            	Subject sub = new Subject(courseTitle, courseCredit);
 	            	//mapSubject.put(sub.getTitle(), sub); // mapSubject correspond à la hashmap ; on la passera en parametre au tt debut de la fonction
