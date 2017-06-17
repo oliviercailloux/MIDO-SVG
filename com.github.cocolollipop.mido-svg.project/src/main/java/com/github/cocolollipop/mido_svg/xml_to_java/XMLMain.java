@@ -126,7 +126,7 @@ public class XMLMain {
 	        }	
 	    }				
 } // fin for	FIN COPIE ICI	
-	public void fillFormationsXML(List listFormations){
+	public void fillFormationsXML(HashMap mapFormations){
 	 
 	    final Element racine = this.myXMLDocument.getDocumentElement();
 		
@@ -145,23 +145,32 @@ public class XMLMain {
 	            		switch(intitule.substring(0,1)){
 	            		
 	            		case "L1":
-	            			new Licence(intitule, 1, 0, 0);
+	            			Licence L1 = new Licence(intitule, 1, 0, 0);
+	            			mapFormations.put(intitule, L1);
 	            		break;
 	            				            		
 	            		case "L2":
-	            			new Licence(intitule, 2, 0, 0);
+	            			Licence L2 = new Licence(intitule, 2, 0, 0);
+	            			mapFormations.put(intitule, L2);
 	            	    break;
 	            	    
 	            		case "L3":
-	            			new Licence(intitule, 3, 0, 0);
+	            			Licence L3 = new Licence(intitule, 3, 0, 0);
+	            			mapFormations.put(intitule, L3);
 	            		break;
 	            		
 	            		case "M1":
-	            			new Master(intitule, 1, 0, 0);
+	            			Master M1 = new Master(intitule, 1, 0, 0);
+	            			mapFormations.put(intitule, M1);
 	            		break;
 	            			
 	            		case "M2":
-	            			new Master(intitule, 2, 0, 0);
+	            			Master M2 = new Master(intitule, 2, 0, 0);
+	            			mapFormations.put(intitule, M2);
+	            	    break;
+	            	    
+	            	    default:
+	            	    	System.out.println("erreur import formations");
 	            	    break;
 	            			
 	            			
