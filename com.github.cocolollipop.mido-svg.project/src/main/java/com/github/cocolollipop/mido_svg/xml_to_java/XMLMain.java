@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -89,7 +90,7 @@ public class XMLMain {
 		
 		
 	}
-public void fillTeachersXML(HashMap mapTeachers){
+	public void fillTeachersXML(HashMap mapTeachers){
     
 	final Element racine = this.myXMLDocument.getDocumentElement();
 	
@@ -125,7 +126,56 @@ public void fillTeachersXML(HashMap mapTeachers){
 	        }	
 	    }				
 } // fin for	FIN COPIE ICI	
-	
+	public void fillFormationsXML(List listFormations){
+	 
+	    final Element racine = this.myXMLDocument.getDocumentElement();
+		
+	    final NodeList racineNoeuds = racine.getChildNodes();
+	    final int nbRacineNoeuds = racineNoeuds.getLength();
+			
+	    for (int i = 0; i<nbRacineNoeuds; i++) {
+	        if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+	            final Element program = (Element) racineNoeuds.item(i);
+	            
+	            //Looking for subjects
+	            if(program.getNodeName() == "ns3:program"){
+	            	// on recupère si ça vérifie L1 L2 L3 M1 ou M2
+	            	String intitule = program.getElementsByTagName("ns2:text").item(0).getTextContent();
+	            	if(intitule.matches("[L][123]\\s.*|[M][12]\\s.*")){
+	            		switch(intitule.substring(0,1)){
+	            		
+	            		case "L1":
+	            			new Licence(intitule, 1, 0, 0);
+	            		break;
+	            				            		
+	            		case "L2":
+	            			new Licence(intitule, 2, 0, 0);
+	            	    break;
+	            	    
+	            		case "L3":
+	            			new Licence(intitule, 3, 0, 0);
+	            		break;
+	            		
+	            		case "M1":
+	            			new Master(intitule, 1, 0, 0);
+	            		break;
+	            			
+	            		case "M2":
+	            			new Master(intitule, 2, 0, 0);
+	            	    break;
+	            			
+	            			
+	            			
+	            		
+	            		
+	            		
+	    	            	}
+	            	}
+	            	
+	            }	
+	        }				
+	    }
+	}
 	
 	
     public static void main(final String[] args) throws ParserConfigurationException, SAXException, IOException {
