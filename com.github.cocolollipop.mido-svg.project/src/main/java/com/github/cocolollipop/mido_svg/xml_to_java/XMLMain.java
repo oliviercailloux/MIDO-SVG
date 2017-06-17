@@ -17,21 +17,24 @@ import org.xml.sax.SAXException;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 
 public class XMLMain {
+	
+	public Document getXMLFile() throws ParserConfigurationException, SAXException, IOException {
+		// D'abord on pointe sur l'URL
+		URL myXML = new URL("https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml");
+
+		// Ensuite on parse
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document document = dBuilder.parse(myXML.openStream());
+
+		// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+		document.getDocumentElement().normalize();
+		return document;
+	}
+	
     public static void main(final String[] args) throws ParserConfigurationException, SAXException, IOException {
-    	// D'abord on pointe sur l'URL
-    			URL myXML = new URL("https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml");
-
-    			// Ensuite on parse
-    			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-    			Document document = dBuilder.parse(myXML.openStream());
-
-    			// si on veut récupérer par l'intermédiaire de JAX-RS
-    			// Client client = ClientBuilder.newClient();
-    			// On le normalise pour pas avoir de soucis ; cf
-    			// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-    			document.getDocumentElement().normalize();
-			
+			XMLMain myTestXMLMain = new XMLMain();
+			Document document = myTestXMLMain.getXMLFile();
 	    //Affiche du prologue
 	    System.out.println("*************PROLOGUE************");
 	    System.out.println("version : " + document.getXmlVersion());
@@ -73,7 +76,7 @@ public class XMLMain {
 	            		courseCredit = Integer.parseInt(subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits").getNodeValue());
 	            	}
 	            	Subject sub = new Subject(courseTitle, courseCredit);
-	            	mapSubject.put(sub.getTitle(), sub); // mapSubject correspond à la hashmap ; on la passera en parametre au tt debut de la fonction
+	            	//mapSubject.put(sub.getTitle(), sub); // mapSubject correspond à la hashmap ; on la passera en parametre au tt debut de la fonction
 	            }
 	        }
 	        
