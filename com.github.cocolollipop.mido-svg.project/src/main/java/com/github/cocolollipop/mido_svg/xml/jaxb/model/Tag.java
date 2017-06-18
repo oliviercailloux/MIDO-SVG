@@ -11,7 +11,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * This class is corresponding to a tag
+ * This class is corresponding to a tag A tag stores 1 name and a Set of
+ * subjects
  *
  */
 @XmlRootElement(name = "tag")
