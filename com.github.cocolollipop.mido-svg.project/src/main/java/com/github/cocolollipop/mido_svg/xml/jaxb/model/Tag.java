@@ -41,7 +41,7 @@ public class Tag {
 		if (subjects == null) {
 			this.subjects = new HashSet<String>();
 		}
-		subjects.add(math);
+		this.subjects.add(math);
 
 	}
 
