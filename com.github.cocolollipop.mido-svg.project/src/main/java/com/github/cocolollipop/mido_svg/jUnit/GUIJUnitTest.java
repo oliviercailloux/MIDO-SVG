@@ -1,4 +1,4 @@
-package com.github.cocolollipop.mido_svg.JUnit;
+package com.github.cocolollipop.mido_svg.jUnit;
 
 import static org.junit.Assert.assertEquals;
 
