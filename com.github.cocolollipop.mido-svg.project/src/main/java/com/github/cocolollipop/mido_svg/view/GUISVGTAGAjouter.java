@@ -26,7 +26,6 @@ import org.eclipse.swt.events.SelectionEvent;
 
 public class GUISVGTAGAjouter {
 
-
 	private String USERNAME;
 	protected Shell shlAjouterTags;
 	private Text textNomTag;

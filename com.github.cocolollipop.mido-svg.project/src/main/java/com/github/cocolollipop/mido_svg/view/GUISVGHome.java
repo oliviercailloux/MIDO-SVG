@@ -96,7 +96,6 @@ public class GUISVGHome {
 		
 		/** This button opens the GUI of Adding a Tag  */
 
-		
 		btnSupprimerTag.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

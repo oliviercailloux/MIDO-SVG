@@ -343,7 +343,6 @@ public class GUISVGGeneratorbis {
 		 * Check box to choose display "Admission" or not
 		 * 
 		 */
-
 		btnLeModeDadmission.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

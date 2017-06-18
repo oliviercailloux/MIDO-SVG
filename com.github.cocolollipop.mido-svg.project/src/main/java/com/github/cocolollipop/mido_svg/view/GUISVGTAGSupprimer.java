@@ -33,7 +33,6 @@ public class GUISVGTAGSupprimer {
 	private Set<Tag> tags;
 	private String USERNAME;
 
-
 	/**
 	 * Create contents of the window.
 	 * @wbp.parser.entryPoint
