@@ -35,7 +35,7 @@ public class GUISVGTAGAjouter {
 	private List listTags;
 	private Button button;
 	private Button button_1;
-	private String Subject;
+	private String selectedSubject;
 	private List listSujets1;
 	private List listSujets2;
 	private Tag tag = new Tag();
@@ -165,8 +165,8 @@ public class GUISVGTAGAjouter {
 				if(listSujets1.getSelectionCount() ==0){
 					return;
 				}
-				Subject = listSujets1.getSelection().toString();
-				listSujets2.add(Subject);
+				selectedSubject = listSujets1.getSelection()[0];
+				listSujets2.add(selectedSubject);
 				listSujets1.remove(listSujets1.getSelectionIndex());
 
 
@@ -181,8 +181,8 @@ public class GUISVGTAGAjouter {
 				if(listSujets2.getSelectionCount() ==0){
 					return;
 				}
-				Subject = listSujets2.getSelection().toString();
-				listSujets1.add(Subject);
+				selectedSubject = listSujets2.getSelection()[0];
+				listSujets1.add(selectedSubject);
 				listSujets2.remove(listSujets2.getSelectionIndex());
 			}
 		});
