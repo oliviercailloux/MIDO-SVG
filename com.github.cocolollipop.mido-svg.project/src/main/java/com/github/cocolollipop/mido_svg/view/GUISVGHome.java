@@ -68,7 +68,7 @@ public class GUISVGHome {
 		GenererButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				GUISVGGeneratorbis svg = new GUISVGGeneratorbis();
+				GUISVGGenerator svg = new GUISVGGenerator();
 				try {
 					shlHome.close();
 					svg.open(USERNAME);
