@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,6 +24,14 @@ import com.github.cocolollipop.mido_svg.university.components.Teacher;
 
 import junit.framework.TestCase;
 
+/**
+ * XMLmain is used when you want to get MIDO's formations from the web At first,
+ * you have to create a new XMLMain, then use the function getXMLFile() to get a
+ * Document, which has been parsed
+ * 
+ * @author Romano
+ *
+ */
 public class XMLMain extends TestCase {
 	/**
 	 * myXMLDocument contains data after getXMLFile()
@@ -36,7 +45,9 @@ public class XMLMain extends TestCase {
 	/**
 	 * getXMLFile() is a method to get the XML File you gave us This XML
 	 * contains data to supply the database All data is stored in the attribute
-	 * myXMLDocument myXMLDocument is already parsed
+	 * myXMLDocument myXMLDocument is already parsed We set the URL with the
+	 * file you gave us :
+	 * https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml
 	 * 
 	 * @throws ParserConfigurationException
 	 * @throws SAXException
@@ -232,14 +243,14 @@ public class XMLMain extends TestCase {
 		XMLMain myTestXMLMain = new XMLMain();
 		myTestXMLMain.getXMLFile();
 		myTestXMLMain.testGetXML();
-		HashMap lesTeachers = new HashMap();
+		HashMap<String, Teacher> lesTeachers = new HashMap<>();
 		myTestXMLMain.fillTeachersXML(lesTeachers);
 
 		System.out.println("Boucle while");
-		Iterator iterator = lesTeachers.entrySet().iterator();
+		Iterator<Entry<String, Teacher>> iterator = lesTeachers.entrySet().iterator();
 		while (iterator.hasNext()) {
-			Map.Entry mapentry = (Map.Entry) iterator.next();
-			System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
+			Entry<String, Teacher> mapentry = iterator.next();
+			System.out.println("cle: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
 		}
 		System.out.println("OK");
 	}

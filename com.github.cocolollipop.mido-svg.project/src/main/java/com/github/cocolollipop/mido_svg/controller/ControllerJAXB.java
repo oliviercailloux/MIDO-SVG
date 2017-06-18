@@ -82,6 +82,8 @@ public class ControllerJAXB {
 		JAXBContext context = JAXBContext.newInstance(TagStore.class);
 		Unmarshaller um = context.createUnmarshaller();
 		/* Creates the tagStore */
+		File file = new File(PATH_TAGS + username + "-tagstore-jaxb.xml");
+		if(file.exists()&&!file.isDirectory()){
 		TagStore tagstore2 = (TagStore) um.unmarshal(new FileReader(PATH_TAGS + username + "-tagstore-jaxb.xml"));
 		List<Tag> list = tagstore2.getTagsList();
 		/**
@@ -92,6 +94,40 @@ public class ControllerJAXB {
 		}
 
 		return list;
+		}
+		else{
+			this.createTagsFileXML(username);
+			this.readTagsFileXML(username);
+			
+		}
+		return null;
+	
 
+	}
+
+	public void createTagsFileXML(String username, List<Tag> userListOfTags) throws JAXBException {
+		// Map tags, String user
+				/**
+				 * We know that the list of available subjects contains: proba, java,
+				 * logique
+				 */
+	
+				// create tagstore
+				TagStore tagstore = new TagStore();
+				tagstore.setName("TagStore");
+				tagstore.setTagList(userListOfTags);
+
+				// create JAXB context and instantiate marshaller
+				JAXBContext context = JAXBContext.newInstance(TagStore.class);
+				Marshaller m = context.createMarshaller();
+				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+				// Write to System.out
+				m.marshal(tagstore, System.out);
+
+				// Write to File
+				m.marshal(tagstore, new File(PATH_TAGS + username + "-tagstore-jaxb.xml"));
+
+		
 	}
 }

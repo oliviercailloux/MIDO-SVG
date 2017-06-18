@@ -5,6 +5,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -34,7 +35,7 @@ public class GUISVGTAGAjouter {
 	private List listTags;
 	private Button button;
 	private Button button_1;
-	private String Subject;
+	private String selectedSubject;
 	private List listSujets1;
 	private List listSujets2;
 	private Tag tag = new Tag();
@@ -119,7 +120,7 @@ public class GUISVGTAGAjouter {
 	 * 
 	 */
 	private void initTagsList() throws JAXBException, IOException {
-		java.util.List<Tag> listOfTags = jaxb.readTagsFileXML(USERNAME);
+		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
 		Set<Tag> tagsSet = new HashSet<Tag>();
 		
 		/* Adding the subjects to the Jlist of Subjetcs */
@@ -129,7 +130,7 @@ public class GUISVGTAGAjouter {
 
 			/* Adding the Tags to the Jlist of tags */
 			//tags = map.get(name).getTags();
-			for (Tag tag : listOfTags) {
+			for (Tag tag : userListOfTags) {
 				tagsSet.add(tag);
 		
 			}		
@@ -164,8 +165,8 @@ public class GUISVGTAGAjouter {
 				if(listSujets1.getSelectionCount() ==0){
 					return;
 				}
-				Subject = listSujets1.getSelection().toString();
-				listSujets2.add(Subject);
+				selectedSubject = listSujets1.getSelection()[0];
+				listSujets2.add(selectedSubject);
 				listSujets1.remove(listSujets1.getSelectionIndex());
 
 
@@ -180,8 +181,8 @@ public class GUISVGTAGAjouter {
 				if(listSujets2.getSelectionCount() ==0){
 					return;
 				}
-				Subject = listSujets2.getSelection().toString();
-				listSujets1.add(Subject);
+				selectedSubject = listSujets2.getSelection()[0];
+				listSujets1.add(selectedSubject);
 				listSujets2.remove(listSujets2.getSelectionIndex());
 			}
 		});
@@ -191,11 +192,27 @@ public class GUISVGTAGAjouter {
 
 		btnAjouter.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent e) {
-				tag.setName(textNomTag.getText());
-				for(int i=0; i<listSujets2.getSelectionCount();i++){
-					tag.addSubject(listSujets2.getItems()[i]);
+			public void widgetSelected(SelectionEvent e){
+				java.util.List<Tag> userListOfTags;
+				try {
+					userListOfTags = jaxb.readTagsFileXML(USERNAME);
+				} catch (JAXBException | IOException e1) {
+					throw new IllegalStateException();
 				}
+				Tag newTag = new Tag();
+				newTag.setName(textNomTag.getText());
+				for(int i=0; i<listSujets2.getItems().length;i++){
+					newTag.addSubject(listSujets2.getItem(i));
+				}
+				userListOfTags.add(newTag);
+		
+						try {
+							jaxb.createTagsFileXML(USERNAME,userListOfTags);
+						} catch (JAXBException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+			
 
 			}
 		});
