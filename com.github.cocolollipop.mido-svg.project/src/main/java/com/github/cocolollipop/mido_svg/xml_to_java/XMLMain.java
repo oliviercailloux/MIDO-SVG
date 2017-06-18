@@ -250,7 +250,7 @@ public class XMLMain extends TestCase {
 		Iterator<Entry<String, Teacher>> iterator = lesTeachers.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Entry<String, Teacher> mapentry = iterator.next();
-			System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
+			System.out.println("cle: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
 		}
 		System.out.println("OK");
 	}
