@@ -1,513 +1,227 @@
 package com.github.cocolollipop.mido_svg.view;
 
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
-import javax.swing.border.TitledBorder;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Spinner;
 
 import com.github.cocolollipop.mido_svg.model.DataBase;
-import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.DrawerSVGGen;
+import com.github.cocolollipop.mido_svg.svg_generator.ResponsiveSVG;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
-import com.github.cocolollipop.mido_svg.university.components.Formation;
 
 public class GUISVGGenerator {
 
-	private JFrame frmMidosvg;
-	private JButton btnGnrerLsvg;
-	private JButton btnAjouterMotCle;
-	private JButton btnAddList;
-	private JButton btnRemoveList;
-	private JButton btnFermer;
-	private JCheckBox chckbxA3;
-	private JCheckBox chckbxA4;
-	private JCheckBox chckbxLicence;
-	private JCheckBox chckbxMaster;
-	private JCheckBox chckbxLesResponsables;
-	private JCheckBox chckbxAdmission;
-	private JCheckBox chckbxLesMatieres;
-	private JCheckBox chckbxLesEnseignants;
-
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textFieldMotCle;
-	private DefaultListModel<String> listmodel1 = new DefaultListModel<String>();
-	private DefaultListModel<String> listmodel2 = new DefaultListModel<String>();
-	private JList<String> list1;
-	private JList<String> list2;
-	private String motCle;
-	/**
-	 * choices
-	 */
-	private boolean affFormationLicence;
+	protected Shell shell;
+	private String USERNAME;
+	private Button btnCheckButtonAutre;
+	private Button btnCheckButtonA4;
+	private Button btnCheckButtonA3;
+	private Label lblLargeur;
+	private Label lblLongueur;
+	private Label lblMsg1;
+	private Label lblChoixDeLaffichage;
+	private Button btnLesprerequis;
+	private Button btnLesEnseignants;
+	private Button btnLesMatires;
+	private Button btnLesResponsables;
+	private Button btnLicence;
+	private Button btnMaster;
+	private Label lblEtou;
+	private Label lblOptionsDaffichage;
+	private Button btnLeModeDadmission;
+	private Button btnFermer;
+	private Button btnPush;
+	private Label labelEtat;
+	private boolean affFormationLicence; //variable to 
 	private boolean affFormationMaster;
 	private boolean affResponsable;
-	private boolean affMatieres;
 	private boolean affAdmission;
 	private boolean affSubject;
 	private boolean affTeacher;
 	private boolean affPrereq;
-	private String form;
-	DataBase datas;
+	private DataBase datas;
+	private Settings settings;
+	private int width;
+	private int height;
 
 	private DrawerSVGGen svg = new DrawerSVGGen();
-	private Paper format = new Paper();
-	private Formation formation; // A VOIR
-	private JLabel lblEnseignWarning;
+	ResponsiveSVG responsive = new ResponsiveSVG();
+
+	private Spinner spinnerwidth;
+	private Spinner spinnerheight;
+
 
 	/**
-	 * Launch the application.
+	 * Create contents of the window.
+	 * @wbp.parser.entryPoint
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					GUISVGGenerator window = new GUISVGGenerator();
-					window.frmMidosvg.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	protected void createContents() {
+		shell = new Shell();
+		shell.setSize(550, 592);
+		shell.setText("SWT Application");
+		shell.setLayout(null);
+		
+		Label lblLogin = new Label(shell, SWT.NONE);
+		lblLogin.setBounds(20, 20, 300, 200);
+		lblLogin.setText(USERNAME);
 
-	/**
-	 * Create the application.
-	 * 
-	 * @throws IOException
-	 */
-	public GUISVGGenerator() throws IOException {
-		initialize();
-	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 * 
-	 * @throws IOException
-	 */
-	private void initialize() throws IOException {
+		Label lblNewLabel = new Label(shell, SWT.NONE);
+		lblNewLabel.setBounds(226, 47, 108, 27);
+		lblNewLabel.setText("MIDO Application");
 
-		initComponents();
-		createEvents();
-		list1.setModel(listmodel1);
-		list2.setModel(listmodel2);
-	}
+		Label lblChoixDuFormat = new Label(shell, SWT.NONE);
+		lblChoixDuFormat.setBounds(32, 130, 102, 14);
+		lblChoixDuFormat.setText("Choix du format: ");
 
-	/**
-	 * This method containt all code for creating and initializing components
-	 * 
-	 * @throws IOException
-	 * 
-	 **/
+		btnCheckButtonA3 = new Button(shell, SWT.RADIO);
 
-	private void initComponents() throws IOException {
-		frmMidosvg = new JFrame();
-		frmMidosvg.setIconImage(Toolkit.getDefaultToolkit().getImage(GUISVGGenerator.class
-				.getResource("/com/github/cocolollipop/mido_svg/resources/window_builder/dauphine.png")));
-		frmMidosvg.setTitle("MIDO-SVG");
-		frmMidosvg.getContentPane().setBackground(new Color(240, 248, 255));
+		btnCheckButtonA3.setBounds(52, 160, 94, 18);
+		btnCheckButtonA3.setText("A3");
 
-		JLabel label = new JLabel("");
-		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setVerticalAlignment(SwingConstants.TOP);
-		label.setIcon(new ImageIcon(GUISVGGenerator.class
-				.getResource("/com/github/cocolollipop/mido_svg/resources/window_builder/dauphine.png")));
+		btnCheckButtonA4 = new Button(shell, SWT.RADIO);
+		btnCheckButtonA4.setSelection(true);
 
-		JLabel lblMidosvgApplication = new JLabel("MIDO-SVG APPLICATION");
-		lblMidosvgApplication.setFont(new Font("Lucida Bright", Font.BOLD, 19));
-		lblMidosvgApplication.setForeground(new Color(0, 0, 205));
+		btnCheckButtonA4.setBounds(170, 160, 94, 18);
+		btnCheckButtonA4.setText("A4");
 
-		JLabel lblParamtres = new JLabel("Paramètres : ");
-		lblParamtres.setForeground(new Color(0, 0, 128));
-		lblParamtres.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		btnCheckButtonAutre = new Button(shell, SWT.RADIO);
 
-		JLabel lblTaille = new JLabel("Taille :");
-		lblTaille.setForeground(new Color(0, 0, 128));
-		lblTaille.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnCheckButtonAutre.setBounds(287, 160, 94, 18);
+		btnCheckButtonAutre.setText("Autre");
 
-		chckbxA3 = new JCheckBox("A3");
-		buttonGroup.add(chckbxA3);
-		chckbxA3.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lblLargeur = new Label(shell, SWT.NONE);
+		lblLargeur.setBounds(404, 146, 59, 18);
+		lblLargeur.setText("");
 
-		chckbxA4 = new JCheckBox("A4");
-		buttonGroup.add(chckbxA4);
-		chckbxA4.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lblLongueur = new Label(shell, SWT.NONE);
+		lblLongueur.setBounds(404, 186, 59, 18);
+		lblLongueur.setText("");
 
-		JLabel lblOu = new JLabel("ou");
-		lblOu.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		lblMsg1 = new Label(shell, SWT.NONE);
+		lblMsg1.setBounds(374, 108, 166, 14);
+		lblMsg1.setText("");
 
-		JLabel lblFormations = new JLabel("Formations :");
-		lblFormations.setForeground(new Color(0, 0, 128));
-		lblFormations.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		lblChoixDeLaffichage = new Label(shell, SWT.NONE);
+		lblChoixDeLaffichage.setBounds(32, 222, 128, 14);
+		lblChoixDeLaffichage.setText("Choix de Parcours :");
 
-		chckbxLicence = new JCheckBox("Licence");
-		chckbxLicence.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnLesprerequis = new Button(shell, SWT.CHECK);
+		btnLesprerequis.setSelection(true);
 
-		JLabel lblEtou = new JLabel("et/ou");
-		lblEtou.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		btnLesprerequis.setBounds(131, 393, 152, 18);
+		btnLesprerequis.setText("Les Prérequis");
 
-		chckbxMaster = new JCheckBox("Master");
-		chckbxMaster.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnLesEnseignants = new Button(shell, SWT.CHECK);
+		btnLesEnseignants.setSelection(true);
 
-		JLabel lblElementsAfficher = new JLabel("Elements à afficher : ");
-		lblElementsAfficher.setForeground(new Color(0, 0, 128));
-		lblElementsAfficher.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnLesEnseignants.setBounds(380, 348, 143, 18);
+		btnLesEnseignants.setText("Les enseignants");
 
-		chckbxLesResponsables = new JCheckBox("Les responsables");
-		chckbxLesResponsables.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		btnLesMatires = new Button(shell, SWT.CHECK);
+		btnLesMatires.setSelection(true);
 
-		chckbxAdmission = new JCheckBox("Admission");
-		chckbxAdmission.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		btnLesMatires.setBounds(226, 348, 119, 18);
+		btnLesMatires.setText("Les matières");
 
-		btnGnrerLsvg = new JButton("Générer le SVG");
+		btnLesResponsables = new Button(shell, SWT.CHECK);
+		btnLesResponsables.setSelection(true);
 
-		btnGnrerLsvg.setForeground(Color.BLACK);
-		btnGnrerLsvg.setBackground(new Color(255, 255, 255));
-		btnGnrerLsvg.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnLesResponsables.setBounds(52, 348, 152, 18);
+		btnLesResponsables.setText("Les responsables ");
 
-		JLabel lblLesMotscls = new JLabel("Les mots-clés :");
-		lblLesMotscls.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		lblLesMotscls.setForeground(new Color(0, 0, 128));
+		btnLicence = new Button(shell, SWT.CHECK);
+		btnLicence.setSelection(true);
 
-		JTextPane textPane = new JTextPane();
+		btnLicence.setBounds(131, 257, 90, 18);
+		btnLicence.setText("Licence ");
 
-		list1 = new JList();
+		btnMaster = new Button(shell, SWT.CHECK);
+		btnMaster.setSelection(true);
 
-		this.datas = new DataBase();
-		/*
-		 * list1.setModel(new AbstractListModel() { String[] values = new
-		 * String[] { "math" };
-		 * 
-		 * @Override public int getSize() { return values.length; }
-		 * 
-		 * @Override public Object getElementAt(int index) { return
-		 * values[index]; } });
-		 */
-		initTagsList(datas.getTags());
-		list1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		btnMaster.setBounds(342, 257, 90, 18);
+		btnMaster.setText("Master");
 
-		list2 = new JList<String>();
-		list2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblEtou = new Label(shell, SWT.NONE);
+		lblEtou.setBounds(260, 260, 59, 14);
+		lblEtou.setText("Et/Ou");
 
-		btnAddList = new JButton(">>");
+		lblOptionsDaffichage = new Label(shell, SWT.NONE);
+		lblOptionsDaffichage.setBounds(32, 305, 114, 14);
+		lblOptionsDaffichage.setText("Options d'affichage :");
 
-		btnRemoveList = new JButton("<<");
+		btnLeModeDadmission = new Button(shell, SWT.CHECK);
+		btnLeModeDadmission.setSelection(true);
 
-		textFieldMotCle = new JTextField();
-		textFieldMotCle.setColumns(10);
+		btnLeModeDadmission.setBounds(314, 393, 183, 18);
+		btnLeModeDadmission.setText("Le mode d'admission");
 
-		btnAjouterMotCle = new JButton("Ajouter ");
+		btnPush = new Button(shell, SWT.NONE);
 
-		btnAjouterMotCle.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnPush.setBounds(404, 516, 119, 28);
+		btnPush.setText("Générer le SVG");
 
-		btnFermer = new JButton("Fermer");
+		btnFermer = new Button(shell, SWT.NONE);
 
-		btnFermer.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		btnFermer.setBounds(32, 516, 94, 28);
+		btnFermer.setText("Fermer");
 
-		chckbxLesMatieres = new JCheckBox("Les matières");
-		chckbxLesMatieres.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-
-		chckbxLesEnseignants = new JCheckBox("Les enseignants");
-		chckbxLesEnseignants.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-
-		lblEnseignWarning = new JLabel("");
-		lblEnseignWarning.setFont(new Font("Lucida Grande", Font.PLAIN, 10));
-		lblEnseignWarning.setForeground(new Color(255, 0, 0));
-
-		GroupLayout groupLayout = new GroupLayout(frmMidosvg.getContentPane());
-		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup().addGap(152).addComponent(lblMidosvgApplication)
-						.addContainerGap(129, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup().addGap(55).addGroup(groupLayout
-						.createParallelGroup(
-								Alignment.LEADING)
-						.addComponent(lblParamtres)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addGroup(
-										groupLayout.createParallelGroup(Alignment.TRAILING)
-												.addGroup(groupLayout.createSequentialGroup()
-														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-																.addComponent(lblTaille).addComponent(lblFormations))
-														.addGap(60)
-														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-																.addComponent(chckbxLicence).addComponent(chckbxA3)))
-												.addGroup(groupLayout.createSequentialGroup().addGroup(groupLayout
-														.createParallelGroup(Alignment.TRAILING, false).addComponent(
-																btnRemoveList, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-														.addComponent(btnAddList,
-																Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 35,
-																GroupLayout.PREFERRED_SIZE))
-														.addPreferredGap(ComponentPlacement.RELATED)))
-								.addGap(49)
-								.addComponent(list2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblLesMotscls)
-						.addGroup(groupLayout.createSequentialGroup()
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(chckbxLesResponsables).addComponent(lblElementsAfficher))
-								.addGap(42).addComponent(chckbxAdmission)))
-						.addContainerGap(48, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup().addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 601, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap())
-				.addGroup(groupLayout.createSequentialGroup().addGap(35)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(
-										groupLayout.createSequentialGroup()
-												.addComponent(btnFermer)
-												.addPreferredGap(ComponentPlacement.RELATED, 263,
-														Short.MAX_VALUE)
-												.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 139,
-														GroupLayout.PREFERRED_SIZE)
-												.addGap(91))
-								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(textFieldMotCle, GroupLayout.PREFERRED_SIZE,
-												GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(btnAjouterMotCle).addGroup(groupLayout
-														.createSequentialGroup()
-														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-																.addComponent(lblOu).addComponent(lblEtou))
-														.addGap(24)))
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addComponent(chckbxA4).addComponent(chckbxMaster)
-												.addComponent(chckbxLesMatieres))
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 1,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(153))
-								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(list1, GroupLayout.PREFERRED_SIZE, 163,
-												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap())))
-				.addGroup(groupLayout.createSequentialGroup()
-						.addGap(111).addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblEnseignWarning).addComponent(chckbxLesEnseignants))
-						.addContainerGap(384, Short.MAX_VALUE)));
-		groupLayout.setVerticalGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-				.createSequentialGroup().addContainerGap().addComponent(label).addGap(12)
-				.addComponent(lblMidosvgApplication).addGap(28).addComponent(lblParamtres).addGap(31)
-				.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE).addComponent(lblTaille)
-						.addComponent(chckbxA3).addComponent(chckbxA4).addComponent(lblOu))
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup().addGap(29).addComponent(lblFormations).addGap(30)
-								.addComponent(lblElementsAfficher))
-						.addGroup(groupLayout.createSequentialGroup().addGap(18)
-								.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-										.addComponent(chckbxLicence).addComponent(lblEtou).addComponent(chckbxMaster))))
-				.addGap(18)
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addComponent(chckbxLesMatieres)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(chckbxLesResponsables).addComponent(chckbxAdmission)))
-				.addPreferredGap(ComponentPlacement.UNRELATED).addComponent(chckbxLesEnseignants)
-				.addPreferredGap(ComponentPlacement.RELATED).addComponent(lblEnseignWarning).addGap(14)
-				.addComponent(lblLesMotscls).addGap(23)
-				.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textFieldMotCle, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-										GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnAjouterMotCle))
-						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
-								GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING).addGroup(groupLayout
-						.createSequentialGroup().addGap(18)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(list1, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(list2, GroupLayout.PREFERRED_SIZE, 144,
-												GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-										.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-												.addComponent(btnGnrerLsvg, GroupLayout.PREFERRED_SIZE, 39,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(btnFermer, GroupLayout.PREFERRED_SIZE, 34,
-														GroupLayout.PREFERRED_SIZE)))))
-						.addGroup(groupLayout.createSequentialGroup().addGap(49).addComponent(btnAddList).addGap(27)
-								.addComponent(btnRemoveList)))
-				.addContainerGap()));
-		frmMidosvg.getContentPane().setLayout(groupLayout);
-		frmMidosvg.setBounds(100, 100, 528, 723);
-		frmMidosvg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		labelEtat = new Label(shell, SWT.NONE);
+		labelEtat.setBounds(185, 467, 183, 14);
 
 	}
-
-	/**
-	 * Initialise tagsList (list1)
-	 * 
-	 */
-	private void initTagsList(List tags) {
-
-		List<String> list = new ArrayList<>();
-		list = tags;
-		for (int i = 0; i < list.size(); i++) {
-			listmodel1.addElement(list.get(i));
-		}
-		list1.setModel(listmodel1);
-
-	}
-
-	/**
-	 * This method containt all code for creating events
-	 * 
-	 **/
 
 	private void createEvents() {
 
-		/*
-		 * Exit button
-		 * 
-		 */
-
-		btnFermer.addActionListener(new ActionListener() {
+		btnCheckButtonAutre.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
+			public void widgetSelected(SelectionEvent e) {
+				if (btnCheckButtonAutre.getSelection()) {
 
-		/*
-		 * The button "Générer l'SVG" that gives the final result (generates and
-		 * opens the SVG)
-		 * 
-		 */
+					lblMsg1.setText("Saisissez le format souhaité :");
+					lblLargeur.setText("Largeur");
+					lblLongueur.setText("Longueur");
 
-		btnGnrerLsvg.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				try {
+					spinnerwidth = new Spinner(shell, SWT.BORDER);
+					spinnerwidth.setMaximum(5000);
+					spinnerwidth.setMinimum(1000);
+					spinnerwidth.setBounds(469, 141, 71, 27);
 
-					Settings settings = new Settings(affFormationLicence, affFormationMaster, affResponsable,
-							affAdmission, affSubject, affTeacher, affPrereq, form);
-					svg.paint(settings, datas);
+					spinnerheight = new Spinner(shell, SWT.BORDER);
+					spinnerheight.setMaximum(5000);
+					spinnerheight.setMinimum(1000);
+					spinnerheight.setBounds(469, 181, 71, 28);
+					
 
-					File file = new File("./svg/outLicence.svg");
-
-					try {
-						java.awt.Desktop.getDesktop().open(file);
-					} catch (IOException exc) {
-						System.out.println("Exception: " + exc.toString());
-					}
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				JOptionPane.showMessageDialog(null, "SVG généré");
-			}
-		});
-
-		/*
-		 * The button "Ajouter" that add to the list of keywords
-		 * 
-		 */
-
-		btnAjouterMotCle.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				motCle = textFieldMotCle.getText();
-				if (motCle.length() >= 0) {
-					listmodel1.addElement(motCle);
 				}
 
 			}
 		});
 
-		/*
-		 * The button ">>" that adds the selected element from list1 to the
-		 * list2
-		 * 
-		 */
 
-		btnAddList.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				motCle = list1.getSelectedValue().toString();
-				listmodel2.addElement(motCle);
-				listmodel1.remove(list1.getSelectedIndex());
-
-			}
-		});
-
-		/*
-		 * The button ">>" that adds the selected element from list2 to the
-		 * list1
-		 * 
-		 */
-
-		btnRemoveList.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				motCle = list2.getSelectedValue().toString();
-				listmodel1.addElement(motCle);
-				listmodel2.remove(list2.getSelectedIndex());
-			}
-		});
-
-		/*
-		 * Check box to choose A3 format
-		 * 
-		 */
-
-		chckbxA3.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (chckbxA3.isSelected()) {
-					form = "A3";
-				}
-			}
-		});
-
-		/*
-		 * Check box to choose A4 format
-		 * 
-		 */
-
-		chckbxA4.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (chckbxA4.isSelected()) {
-					form = "A4";
-				}
-			}
-		});
-
-		/*
+		/**
 		 * Check box to choose Licence
 		 * 
 		 */
 
-		chckbxLicence.addItemListener(new ItemListener() {
+		btnLicence.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (chckbxLicence.isSelected()) {
-					affFormationLicence = true;
-				} else {
+			public void widgetSelected(SelectionEvent e) {
+				if (btnLicence.getSelection()) {
 					affFormationLicence = false;
+				} else {
+					affFormationLicence = true;
 				}
+
 			}
 		});
 
@@ -515,28 +229,80 @@ public class GUISVGGenerator {
 		 * Check box to choose Master
 		 * 
 		 */
-		chckbxMaster.addItemListener(new ItemListener() {
+
+		btnMaster.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (chckbxMaster.isSelected()) {
-					affFormationMaster = true;
-				} else {
+			public void widgetSelected(SelectionEvent e) {
+
+				if (btnMaster.getSelection()) {
 					affFormationMaster = false;
+				} else {
+					affFormationMaster = true;
 				}
 			}
 		});
 
 		/**
-		 * Check box to choose display "Responsables" or not
+		 * Check box to choose display responsibles of a Formation
 		 * 
 		 */
-		chckbxLesResponsables.addItemListener(new ItemListener() {
+
+		btnLesResponsables.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (chckbxLesResponsables.isSelected()) {
-					affResponsable = true;
-				} else {
+			public void widgetSelected(SelectionEvent e) {
+
+				if (btnLesResponsables.getSelection()) {
 					affResponsable = false;
+				} else {
+					affResponsable = true;
+
+				}
+			}
+		});
+
+		/**
+		 * Check box to choose display Subjects of a Formation
+		 * 
+		 */
+
+		btnLesMatires.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (btnLesMatires.getSelection()) {
+					affSubject = false;
+				} else {
+					affSubject = true;
+
+				}
+
+			}
+		});
+
+		btnLesEnseignants.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (btnLesEnseignants.getSelection()) {
+					affTeacher = false;
+				} else {
+					affTeacher = true;
+
+				}
+			}
+		});
+
+		/**
+		 * Check box to choose display Prerequisites of a subject
+		 * 
+		 */
+
+		btnLesprerequis.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				if (btnLesprerequis.getSelection()) {
+					affPrereq = false;
+				} else {
+					affPrereq = true;
 
 				}
 			}
@@ -546,48 +312,98 @@ public class GUISVGGenerator {
 		 * Check box to choose display "Admission" or not
 		 * 
 		 */
-		chckbxAdmission.addItemListener(new ItemListener() {
+		btnLeModeDadmission.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (chckbxAdmission.isSelected()) {
-					affAdmission = true;
-					System.out.println(affAdmission);
-				} else
+			public void widgetSelected(SelectionEvent e) {
+
+				if (btnLeModeDadmission.getSelection()) {
 					affAdmission = false;
-				System.out.println(affAdmission);
-			}
-		});
+				} else {
+					affAdmission = true;
 
-		/**
-		 * Check box to choose display "Subjects" or not
-		 * 
-		 */
-		chckbxLesMatieres.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (chckbxLesMatieres.isSelected()) {
-					affSubject = true;
-					affTeacher = false;
 				}
 			}
 		});
 
-		/**
-		 * Check box to choose display "Teachers" of each subject or not
-		 * 
-		 */
-		chckbxLesEnseignants.addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (chckbxLesEnseignants.isSelected() && chckbxLesMatieres.isSelected()) {
-					lblEnseignWarning.setText(" Rappel:Les enseignants sont affichés avec les matières associées !!");
-					affSubject = true;
-					affTeacher = true;
+		/**** Close Button ****/
 
+		btnFermer.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				shell.close();
+			}
+		});
+		
+		
+
+		/**** Push Button to generate the SVG ****/
+		
+		
+		btnPush.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+			
+				try {
+					if (btnCheckButtonA3.getSelection()) { // If this radio button is selected form = "A3"
+						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
+								affSubject, affTeacher, affPrereq, "A3");
+				
+
+					}else if(btnCheckButtonA4.getSelection()) { // If this radio button is selected form = "A4"
+						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
+								affSubject, affTeacher, affPrereq, "A4");
+						
+					} else if (btnCheckButtonAutre.getSelection()) { // Else If this radio button is selected the user get to choose his own values height, width
+						
+						// we should get back the values that the user has entered in the spinners
+						height = spinnerheight.getSelection();
+						width = spinnerwidth.getSelection();
+						
+						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
+								affSubject, affTeacher, affPrereq, width, height);
+					}
+					
+					datas = new DataBase(settings);
+					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
+					svg.paint(settings, datas);
+
+					File file = new File("./src/main/resources/images/mido-drawing.svg");
+
+					try {
+						java.awt.Desktop.getDesktop().open(file);
+					} catch (IOException exc) {
+						System.out.println("Exception: " + exc.toString());
+					}
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
 				}
+
+				labelEtat.setText(" SVG généré ");
 			}
 		});
 
 	}
+	
+	
 
+	/**
+	 * Open the window.
+	 * 
+	 * @throws IOException
+	 */
+
+	public void open(String username) throws IOException {
+		this.USERNAME = username;
+		Display display = Display.getDefault();
+		createContents();
+		shell.open();
+		shell.layout();
+		createEvents();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
 }
