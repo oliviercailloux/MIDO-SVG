@@ -2,22 +2,17 @@ package com.github.cocolollipop.mido_svg.university.components;
 
 import java.awt.Point;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
-
 /**
- * This class correspond to a formation of any kind
+ * This class correspond to a formation of any kind It is an abstract class,
+ * which helps a future group to create other kind of formations, but with same
+ * "default data" : a title, a grade (1-2-3 for example)
  */
 public abstract class Formation {
 
@@ -195,37 +190,6 @@ public abstract class Formation {
 
 		String[] tagsList1 = chaine.split(",");
 		return tagsList1;
-	}
-
-	/**
-	 * createTagList creates a file which contains each worlds of the list in
-	 * parameters
-	 * 
-	 * @throws IOException
-	 * @throws FileNotFoundException
-	 */
-	public void createTagList(List<String> list) throws FileNotFoundException, IOException {
-
-		String name = this.getFullName() + ".txt";
-		String text = "";
-		for (int i = 0; i < list.size(); i++) {
-			text += list.get(i) + ",";
-		}
-		FileOutputStream fileOutputStream = new FileOutputStream(name);
-		IOUtils.write(text, fileOutputStream, "UTF-8");
-
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(name))) {
-
-			bw.write(text);
-
-			System.out.println("Done");
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-
-		}
-
 	}
 
 	/**
