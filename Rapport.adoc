@@ -19,27 +19,25 @@ A l’issue de cela, l’idée est de généraliser la bibliothèque afin qu’e
 
 On a séparé nos classes en 9 packages  en ayant pris soin de respecter une architecture MVC (Model View Controller):
  
-controller : Permet de générer un fichier XML qui permet de faire le lien entre des tags et des matières.
-jUnit : Contient les tests unitaires réalisés.
-model : Contient la base de données, avec tous les objets créés ou récupérable par XML.
-paper : Permet de définir la taille du canevas , Il prend 2 formes standard, connues (A3 et A4) et une forme libre (“Other”). Le pattern factory permet cette gestion.
-svg_generator : Contient les classes permettant de générer le SVG: 
-ResponsiveSVG: permet de placer les informations au bon endroit sur le dessin en fonction du papier
-DrawSVGGen: dessine les formes (les traits, les flèches,les rectangles ..) et dessine les informations ( les formations, les enseignants ..) 
-Settings: précise les paramètres d’affichage .
-university.components : Ce package contient tous les éléments permettant de “former” une université : Une formation(Formation.java), un professeur(Teacher.java), une matière (Subject.java).
-view : Contient les interfaces graphiques qui se présente en deux parties principales : la gestion des tags , et la génération du SVG.
-
-
-Gestion des tags : cette interface nous permet d’ajouter ou supprimer des tags 
-Génération du SVG : cette interface nous permet de choisir les paramètres d’affichage et dessiner le SVG 
-xml_to_java : Permet de rappatrier le fichier XML que vous nous avez donné, https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml, puis d’extraire les données du XML (nom, prenom, adresse mail, etc…)
-xml.jaxb.model : Permet de générer les tags, et faire le lien avec les matières
+- controller : Permet de générer un fichier XML qui permet de faire le lien entre des tags et des matières.
+- jUnit : Contient les tests unitaires réalisés.
+- model : Contient la base de données, avec tous les objets créés ou récupérable par XML.
+- paper : Permet de définir la taille du canevas , Il prend 2 formes standard, connues (A3 et A4) et une forme libre (“Other”). Le pattern factory permet cette gestion.
+- svg_generator : Contient les classes permettant de générer le SVG: 
+- ResponsiveSVG: permet de placer les informations au bon endroit sur le dessin en fonction du papier
+- DrawSVGGen: dessine les formes (les traits, les flèches,les rectangles ..) et dessine les informations ( les formations, les enseignants ..) 
+- settings: précise les paramètres d’affichage .
+- university.components : Ce package contient tous les éléments permettant de “former” une université : Une formation(Formation.java), un professeur(Teacher.java), une matière (Subject.java).
+- view : Contient les interfaces graphiques qui se présente en deux parties principales : la gestion des tags , et la génération du SVG.
+- Gestion des tags : cette interface nous permet d’ajouter ou supprimer des tags 
+- Génération du SVG : cette interface nous permet de choisir les paramètres d’affichage et dessiner le SVG 
+- xml_to_java : Permet de rappatrier le fichier XML que vous nous avez donné, https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml, puis d’extraire les données du XML (nom, prenom, adresse mail, etc…)
+- xml.jaxb.model : Permet de générer les tags, et faire le lien avec les matières
  
  
 === Technologies utilisées
  
-- On a mis en place un projet maven, hébergé sur Github
+- On a mis en place un projet Maven, hébergé sur Github
 - On a mis en place Travis pour tester notre code source
 - On a utilisé SWT pour générer les interfaces graphiques
 - On a utilisé JAXB pour faire le lien entre tag et matières
