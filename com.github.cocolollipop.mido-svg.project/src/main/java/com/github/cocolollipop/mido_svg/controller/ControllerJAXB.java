@@ -77,57 +77,55 @@ public class ControllerJAXB {
 	 * @throws JAXBException
 	 * @throws IOException
 	 */
+	@SuppressWarnings("resource")
 	public List<Tag> readTagsFileXML(String username) throws JAXBException, IOException {
 		System.out.println("Output from our XML File: ");
 		JAXBContext context = JAXBContext.newInstance(TagStore.class);
 		Unmarshaller um = context.createUnmarshaller();
 		/* Creates the tagStore */
 		File file = new File(PATH_TAGS + username + "-tagstore-jaxb.xml");
-		if(file.exists()&&!file.isDirectory()){
-		TagStore tagstore2 = (TagStore) um.unmarshal(new FileReader(PATH_TAGS + username + "-tagstore-jaxb.xml"));
-		List<Tag> list = tagstore2.getTagsList();
-		/**
-		 * The print so you can understand the results
-		 */
-		for (Tag tag : list) {
-			System.out.println("Tag: " + tag.getName() + tag.getSubjects());
-		}
+		if (file.exists() && !file.isDirectory()) {
+			TagStore tagstore2 = (TagStore) um.unmarshal(new FileReader(PATH_TAGS + username + "-tagstore-jaxb.xml"));
+			List<Tag> list = tagstore2.getTagsList();
+			/**
+			 * The print so you can understand the results
+			 */
+			for (Tag tag : list) {
+				System.out.println("Tag: " + tag.getName() + tag.getSubjects());
+			}
 
-		return list;
-		}
-		else{
+			return list;
+		} else {
 			this.createTagsFileXML(username);
 			this.readTagsFileXML(username);
-			
+
 		}
 		return null;
-	
 
 	}
 
 	public void createTagsFileXML(String username, List<Tag> userListOfTags) throws JAXBException {
 		// Map tags, String user
-				/**
-				 * We know that the list of available subjects contains: proba, java,
-				 * logique
-				 */
-	
-				// create tagstore
-				TagStore tagstore = new TagStore();
-				tagstore.setName("TagStore");
-				tagstore.setTagList(userListOfTags);
+		/**
+		 * We know that the list of available subjects contains: proba, java,
+		 * logique
+		 */
 
-				// create JAXB context and instantiate marshaller
-				JAXBContext context = JAXBContext.newInstance(TagStore.class);
-				Marshaller m = context.createMarshaller();
-				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		// create tagstore
+		TagStore tagstore = new TagStore();
+		tagstore.setName("TagStore");
+		tagstore.setTagList(userListOfTags);
 
-				// Write to System.out
-				m.marshal(tagstore, System.out);
+		// create JAXB context and instantiate marshaller
+		JAXBContext context = JAXBContext.newInstance(TagStore.class);
+		Marshaller m = context.createMarshaller();
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-				// Write to File
-				m.marshal(tagstore, new File(PATH_TAGS + username + "-tagstore-jaxb.xml"));
+		// Write to System.out
+		m.marshal(tagstore, System.out);
 
-		
+		// Write to File
+		m.marshal(tagstore, new File(PATH_TAGS + username + "-tagstore-jaxb.xml"));
+
 	}
 }
