@@ -155,13 +155,13 @@ public class GUISVGTAGAjouter {
 	
 	private void createEvents() {
 		
-		
 		/** This button "Home" opens the GUI home  **/
 
 		btnHome.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGHome h = new GUISVGHome();
+				shlAjouterTags.close();
 				h.open();
 			}
 		});

@@ -21,6 +21,7 @@ public class GUISVGLoginForm {
 	private DataBase data = new DataBase();
 	private Label error;
 
+	
 	/**
 	 * Launch the application.
 	 * @param args
@@ -74,6 +75,7 @@ public class GUISVGLoginForm {
 				Login = text.getText();
 				if(data.isUser(Login)){
 				GUISVGHome h = new GUISVGHome();
+				shlMidosvg.close();
 				h.open();
 				}
 				error.setVisible(true);
