@@ -7,6 +7,8 @@ import org.eclipse.swt.widgets.Button;
 
 import java.io.IOException;
 
+import javax.xml.bind.JAXBException;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -70,7 +72,15 @@ public class GUISVGHome {
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGTAGAjouter a = new GUISVGTAGAjouter();
 				shlHome.close();
-				a.open(USERNAME);
+				try {
+					a.open(USERNAME);
+				} catch (JAXBException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});
