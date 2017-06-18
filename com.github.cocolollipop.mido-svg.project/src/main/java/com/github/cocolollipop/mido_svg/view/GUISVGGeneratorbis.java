@@ -73,6 +73,7 @@ public class GUISVGGeneratorbis {
 
 	/**
 	 * Create contents of the window.
+	 * @wbp.parser.entryPoint
 	 */
 	protected void createContents() {
 		shell = new Shell();
@@ -126,31 +127,37 @@ public class GUISVGGeneratorbis {
 		lblChoixDeLaffichage.setText("Choix de Parcours :");
 
 		btnLesprerequis = new Button(shell, SWT.CHECK);
+		btnLesprerequis.setSelection(true);
 
 		btnLesprerequis.setBounds(131, 393, 152, 18);
 		btnLesprerequis.setText("Les Prérequis");
 
 		btnLesEnseignants = new Button(shell, SWT.CHECK);
+		btnLesEnseignants.setSelection(true);
 
 		btnLesEnseignants.setBounds(380, 348, 143, 18);
 		btnLesEnseignants.setText("Les enseignants");
 
 		btnLesMatires = new Button(shell, SWT.CHECK);
+		btnLesMatires.setSelection(true);
 
 		btnLesMatires.setBounds(226, 348, 119, 18);
 		btnLesMatires.setText("Les matières");
 
 		btnLesResponsables = new Button(shell, SWT.CHECK);
+		btnLesResponsables.setSelection(true);
 
 		btnLesResponsables.setBounds(52, 348, 152, 18);
 		btnLesResponsables.setText("Les responsables ");
 
 		btnLicence = new Button(shell, SWT.CHECK);
+		btnLicence.setSelection(true);
 
 		btnLicence.setBounds(131, 257, 90, 18);
 		btnLicence.setText("Licence ");
 
 		btnMaster = new Button(shell, SWT.CHECK);
+		btnMaster.setSelection(true);
 
 		btnMaster.setBounds(342, 257, 90, 18);
 		btnMaster.setText("Master");
@@ -164,6 +171,7 @@ public class GUISVGGeneratorbis {
 		lblOptionsDaffichage.setText("Options d'affichage :");
 
 		btnLeModeDadmission = new Button(shell, SWT.CHECK);
+		btnLeModeDadmission.setSelection(true);
 
 		btnLeModeDadmission.setBounds(314, 393, 183, 18);
 		btnLeModeDadmission.setText("Le mode d'admission");
@@ -203,6 +211,7 @@ public class GUISVGGeneratorbis {
 					spinnerheight.setMaximum(5000);
 					spinnerheight.setMinimum(1000);
 					spinnerheight.setBounds(469, 181, 71, 28);
+					
 
 				}
 
@@ -360,7 +369,7 @@ public class GUISVGGeneratorbis {
 		btnPush.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
+			
 				try {
 					if (btnCheckButtonA3.getSelection()) {
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
@@ -374,6 +383,8 @@ public class GUISVGGeneratorbis {
 					} else if (btnCheckButtonAutre.getSelection()) {
 						height = spinnerheight.getDigits();
 						width = spinnerwidth.getDigits();
+						
+						System.out.println(spinnerheight.getDigits());
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
 								affSubject, affTeacher, affPrereq, width, height);
 					}
@@ -382,7 +393,7 @@ public class GUISVGGeneratorbis {
 					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
 					svg.paint(settings, datas);
 
-					File file = new File("./outLicence.svg");
+					File file = new File("./src/main/resources/images/mido-drawing.svg");
 
 					try {
 						java.awt.Desktop.getDesktop().open(file);

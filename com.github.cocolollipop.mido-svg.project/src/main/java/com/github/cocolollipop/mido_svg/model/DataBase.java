@@ -37,7 +37,7 @@ public class DataBase {
 
 	public DataBase() {
 		// default settings
-		this.settings = new Settings(false, false, false, false, false, false, false, "A4");
+		this.settings = new Settings(true,true,true,true,true,true,true, "A4");
 		this.teachers = new HashMap<>();
 		initTeachers();
 		this.formationsMap = new HashMap<>();
