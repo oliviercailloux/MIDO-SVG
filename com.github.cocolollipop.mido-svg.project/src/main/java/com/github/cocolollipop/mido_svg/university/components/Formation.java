@@ -1,11 +1,6 @@
 package com.github.cocolollipop.mido_svg.university.components;
 
 import java.awt.Point;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,12 +28,9 @@ public abstract class Formation {
 	private List<Subject> subjects;
 	// the main responsible of the formation
 	private Teacher teacher;
-	private String tagsList[];
 	private Point point;
 	protected Category category;
 	protected boolean shown;
-	private InputStream ips;
-	private BufferedReader br;
 
 	protected enum Category {
 		LICENCE, MASTER
@@ -56,7 +48,6 @@ public abstract class Formation {
 		this.admisssion = "";
 		this.teacher = new Teacher();
 		this.shown = false;
-		this.tagsList = new String[] { "", "", "", "", "" };
 
 	}
 
@@ -153,43 +144,6 @@ public abstract class Formation {
 
 	public void setShown(boolean shown) {
 		this.shown = shown;
-	}
-
-	public String[] getTagslist() {
-		return tagsList;
-	}
-
-	public void setTagsList(String fileName) {
-		String[] tagsList1 = this.readTagsList(fileName);
-		this.tagsList = tagsList1;
-	}
-
-	/**
-	 * readTagList read a file entered as a paramater and return a table of
-	 * String which contains each worlds of the file
-	 * 
-	 * @param fileName
-	 * @return tagsList
-	 */
-	public String[] readTagsList(String fileName) {
-		String chaine = "";
-
-		try {
-			ips = new FileInputStream(new File(fileName));
-			InputStreamReader ipsr = new InputStreamReader(ips);
-			br = new BufferedReader(ipsr);
-			String ligne;
-			while ((ligne = br.readLine()) != null) {
-				// System.out.println(ligne);
-				chaine += ligne + " ";
-			}
-			br.close();
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
-
-		String[] tagsList1 = chaine.split(",");
-		return tagsList1;
 	}
 
 	/**
