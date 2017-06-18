@@ -103,6 +103,7 @@ public class GUISVGTAGSupprimer {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGHome h = new GUISVGHome();
+				shlSupprimerTag.close();
 				h.open();
 			}
 		});

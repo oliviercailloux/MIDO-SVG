@@ -162,6 +162,7 @@ public class GUISVGTAGAjouter {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGHome h = new GUISVGHome();
+				shlAjouterTags.close();
 				h.open();
 			}
 		});

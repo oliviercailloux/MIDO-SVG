@@ -60,6 +60,7 @@ public class GUISVGHome {
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGGeneratorbis svg = new GUISVGGeneratorbis();
 				try {
+					shlHome.close();
 					svg.open();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -75,6 +76,7 @@ public class GUISVGHome {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGTAGAjouter a = new GUISVGTAGAjouter();
+				shlHome.close();
 				a.open();
 
 			}
