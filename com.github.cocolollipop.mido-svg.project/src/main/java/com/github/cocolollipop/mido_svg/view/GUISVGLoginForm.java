@@ -16,6 +16,7 @@ public class GUISVGLoginForm {
 	private String Login;
 	private Button btnConnexion;
 
+	
 	/**
 	 * Launch the application.
 	 * @param args

@@ -155,7 +155,6 @@ public class GUISVGTAGAjouter {
 	
 	private void createEvents() {
 		
-		
 		/** This button "Home" opens the GUI home  **/
 
 		btnHome.addSelectionListener(new SelectionAdapter() {

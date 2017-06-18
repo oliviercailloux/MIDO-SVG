@@ -95,6 +95,7 @@ public class GUISVGTAGSupprimer {
        
 	}
 	
+	
 	private void createEvents() {
 		
 		/** This button "Home" opens the GUI home  **/
