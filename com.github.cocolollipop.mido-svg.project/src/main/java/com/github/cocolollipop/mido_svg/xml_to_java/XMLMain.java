@@ -17,6 +17,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.github.cocolollipop.mido_svg.university.components.Formation;
 import com.github.cocolollipop.mido_svg.university.components.Licence;
 import com.github.cocolollipop.mido_svg.university.components.Master;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
@@ -79,7 +80,7 @@ public class XMLMain extends TestCase {
 	 * @param mapSubjects
 	 * @param document
 	 */
-	public void fillSubjectsXML(Map mapSubjects) {
+	public void fillSubjectsXML(Map<String, Subject> mapSubjects) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
 		final NodeList racineNoeuds = racine.getChildNodes();
@@ -130,7 +131,7 @@ public class XMLMain extends TestCase {
 	 * 
 	 * @param mapTeachers
 	 */
-	public void fillTeachersXML(Map mapTeachers) {
+	public void fillTeachersXML(Map<String, Teacher> mapTeachers) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
 		final NodeList racineNoeuds = racine.getChildNodes();
@@ -166,7 +167,7 @@ public class XMLMain extends TestCase {
 	 * 
 	 * @param mapFormations
 	 */
-	public void fillFormationsXML(Map mapFormations) {
+	public void fillFormationsXML(Map<String, Formation> mapFormations) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
 
