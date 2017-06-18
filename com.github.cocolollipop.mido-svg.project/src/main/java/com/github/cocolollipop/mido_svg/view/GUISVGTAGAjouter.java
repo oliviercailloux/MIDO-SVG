@@ -110,6 +110,7 @@ public class GUISVGTAGAjouter {
 		btnAjouter.setText("Ajouter");
 		
 		listMatassociees = new List(shlAjouterTags, SWT.BORDER);
+		listMatassociees.setEnabled(false);
 		listMatassociees.setBounds(464, 43, 160, 65);
 		
 		Label lblLesMatiresAssocies = new Label(shlAjouterTags, SWT.NONE);
@@ -130,7 +131,7 @@ public class GUISVGTAGAjouter {
 	 */
 	private void initTagsList() throws JAXBException, IOException {
 		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
-		Set<Tag> tagsSet = new HashSet<Tag>();
+		Set<Tag> tagsSet = new HashSet<>();
 		
 		/* Adding the subjects to the Jlist of Subjetcs */
 		for(String name : map.keySet()){
@@ -139,14 +140,14 @@ public class GUISVGTAGAjouter {
 
 			/* Adding the Tags to the Jlist of tags */
 			//tags = map.get(name).getTags();
-			for (Tag tag : userListOfTags) {
-				tagsSet.add(tag);
+			for (Tag tag1 : userListOfTags) {
+				tagsSet.add(tag1);
 		
 			}		
 		}
 
-		for(Tag tag:tagsSet){
-			listTags.add(tag.getName());
+		for(Tag tag1:tagsSet){
+			listTags.add(tag1.getName());
 		}
 	}
 
@@ -157,7 +158,8 @@ public class GUISVGTAGAjouter {
 		 * List listen
 		 */
 		listTags.addListener(SWT.Selection, new Listener() {
-		      public void handleEvent(Event e) {
+		      @Override
+			public void handleEvent(Event e) {
 		    	  listMatassociees.removeAll();
 		    	  
 		        String string = listTags.getSelection()[0];
@@ -226,7 +228,7 @@ public class GUISVGTAGAjouter {
 				java.util.List<Tag> userListOfTags;
 				try {
 					userListOfTags = jaxb.readTagsFileXML(USERNAME);
-				} catch (JAXBException | IOException e1) {
+				} catch (@SuppressWarnings("unused") JAXBException | IOException e2) {
 					throw new IllegalStateException();
 				}
 				Tag newTag = new Tag();
@@ -250,17 +252,19 @@ public class GUISVGTAGAjouter {
 	}
 
 	private Set<?> createListMatiere(String string) {
+		java.util.List<Tag> listOfTags;
 		try {
-			java.util.List<Tag> listOfTags;
 			listOfTags = jaxb.readTagsFileXML(USERNAME);
-			for(Tag tag: listOfTags){
-				if(tag.getName().equals(string)){
-				 return tag.getSubjects();
-					 
-				}
+		} catch (JAXBException e) {
+			throw new IllegalStateException(e);
+		} catch (IOException e) {
+			throw new IllegalStateException(e);
+		}
+		for(Tag tag1: listOfTags){
+			if(tag1.getName().equals(string)){
+			 return tag1.getSubjects();
+				 
 			}
-		} catch (JAXBException | IOException e1) {
-			throw new IllegalStateException();
 		}
 		return null;	
 	}
@@ -283,5 +287,15 @@ public class GUISVGTAGAjouter {
 				display.sleep();
 			}
 		}
+	}
+
+
+	public Tag getTag() {
+		return tag;
+	}
+
+
+	public void setTag(Tag tag) {
+		this.tag = tag;
 	}
 }

@@ -82,6 +82,7 @@ public class GUISVGTAGSupprimer {
 		lblListeDesMatires.setText("Liste des matières associées :");
 		
 		listMatassociees = new List(shlSupprimerTag, SWT.BORDER);
+		listMatassociees.setEnabled(false);
 		listMatassociees.setBounds(346, 92, 197, 110);
 
 
@@ -98,7 +99,7 @@ public class GUISVGTAGSupprimer {
 	 */
 	private void initTagsList() throws JAXBException, IOException {
 		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
-		Set<Tag> tagsSet = new HashSet<Tag>();
+		Set<Tag> tagsSet = new HashSet<>();
 	
 		for (Tag tag : userListOfTags) {
 			tagsSet.add(tag);
@@ -117,7 +118,8 @@ public class GUISVGTAGSupprimer {
 		 * List listen
 		 */
 		listTags.addListener(SWT.Selection, new Listener() {
-		      public void handleEvent(Event e) {
+		      @Override
+			public void handleEvent(Event e) {
 		    	  listMatassociees.removeAll();
 		    	  
 		        String string = listTags.getSelection()[0];
@@ -149,27 +151,50 @@ public class GUISVGTAGSupprimer {
 		
 		btnSupprimer.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent e) {
-				Tag = listTags.getSelection().toString();
+			////
+			/**public void widgetSelected(SelectionEvent e) {
+				Tag = listTags.getSelection()[0];
 				listTags.remove(listTags.getSelectionIndex());
 				tagstore.getTagsList().remove(Tag);
-			 
+			}*/
+			public void widgetSelected(SelectionEvent e){
+				java.util.List<Tag> userListOfTags;
+				try {
+					userListOfTags = jaxb.readTagsFileXML(USERNAME);
+				} catch (@SuppressWarnings("unused") JAXBException | IOException e1) {
+					throw new IllegalStateException();
+				}
+				for(Tag tag1: userListOfTags){
+					if(tag1.getName().equals(listTags.getSelection()[0])){
+					 userListOfTags.remove(tag1);		 
+					}
+					try {
+						jaxb.createTagsFileXML(USERNAME,userListOfTags);
+					} catch (@SuppressWarnings("unused") JAXBException e1) {
+						throw new IllegalStateException();
+					}
+				}
 			}
+		
+			
+			////
 		});
 	}
 
 	private Set<?> createListMatiere(String string) {
+		java.util.List<Tag> listOfTags;
 		try {
-			java.util.List<Tag> listOfTags;
 			listOfTags = jaxb.readTagsFileXML(USERNAME);
-			for(Tag tag: listOfTags){
-				if(tag.getName().equals(string)){
-				 return tag.getSubjects();
-					 
-				}
+		} catch (JAXBException e) {
+			throw new IllegalStateException(e);
+		} catch (IOException e) {
+			throw new IllegalStateException(e);
+		}
+		for(Tag tag: listOfTags){
+			if(tag.getName().equals(string)){
+			 return tag.getSubjects();
+				 
 			}
-		} catch (JAXBException | IOException e1) {
-			throw new IllegalStateException();
 		}
 		return null;	
 	}
@@ -193,5 +218,25 @@ public class GUISVGTAGSupprimer {
 				display.sleep();
 			}
 		}
+	}
+
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
+
+
+	public Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> getMap() {
+		return map;
+	}
+
+
+	public void setMap(Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map) {
+		this.map = map;
 	}
 }
