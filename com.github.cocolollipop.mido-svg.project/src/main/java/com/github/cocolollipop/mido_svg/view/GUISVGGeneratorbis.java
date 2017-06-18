@@ -61,7 +61,6 @@ public class GUISVGGeneratorbis {
 	private Spinner spinnerheight;
 
 
-
 	/**
 	 * Create contents of the window.
 	 * @wbp.parser.entryPoint
