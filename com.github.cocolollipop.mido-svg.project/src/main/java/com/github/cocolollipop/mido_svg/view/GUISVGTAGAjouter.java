@@ -1,11 +1,13 @@
 package com.github.cocolollipop.mido_svg.view;
 
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -14,6 +16,7 @@ import javax.xml.bind.JAXBException;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import com.github.cocolollipop.mido_svg.controller.ControllerJAXB;
@@ -151,6 +154,30 @@ public class GUISVGTAGAjouter {
 
 
 	private void createEvents() {
+		
+		/**
+		 * List listen
+		 */
+		listTags.addListener(SWT.Selection, new Listener() {
+		      public void handleEvent(Event e) {
+		    	  listMatassociees.removeAll();
+		    	  
+		        String string = listTags.getSelection()[0];
+		//
+		        System.out.println("Selection={" + string + "}");
+		       Set<?> listMat = createListMatiere(string);
+		       for(Object str: listMat){
+		       listMatassociees.add((String) str);
+		       }
+		       
+		       
+		       
+		        
+		        ////
+		      }
+
+
+		    });
 
 		/** This button "Home" opens the GUI home  **/
 
@@ -227,7 +254,25 @@ public class GUISVGTAGAjouter {
 
 	}
 
-
+	private Set<?> createListMatiere(String string) {
+		try {
+			java.util.List<Tag> listOfTags;
+			listOfTags = jaxb.readTagsFileXML(USERNAME);
+			for(Tag tag: listOfTags){
+				if(tag.getName().equals(string)){
+				 return tag.getSubjects();
+					 
+				}
+			}
+		} catch (JAXBException | IOException e1) {
+			throw new IllegalStateException();
+		}
+		return null;
+		
+	
+		
+		
+	}
 
 	/**
 	 * Open the window.
