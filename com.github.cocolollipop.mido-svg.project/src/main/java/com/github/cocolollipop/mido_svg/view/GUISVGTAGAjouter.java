@@ -41,7 +41,7 @@ public class GUISVGTAGAjouter {
 	private Tag tag = new Tag();
 	private DataBase data = new DataBase();
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
-	ControllerJAXB jaxb = new ControllerJAXB();
+	private ControllerJAXB jaxb = new ControllerJAXB();
 	private List listMatassociees;
 	/**
 	 * Create contents of the window.
@@ -167,10 +167,7 @@ public class GUISVGTAGAjouter {
 		       for(Object str: listMat){
 		       listMatassociees.add((String) str);
 		       }
-		       
-		       
-		       
-		        
+ 
 		        ////
 		      }
 
@@ -265,11 +262,7 @@ public class GUISVGTAGAjouter {
 		} catch (JAXBException | IOException e1) {
 			throw new IllegalStateException();
 		}
-		return null;
-		
-	
-		
-		
+		return null;	
 	}
 
 	/**

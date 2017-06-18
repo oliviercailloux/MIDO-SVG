@@ -1,6 +1,7 @@
 package com.github.cocolollipop.mido_svg.view;
 
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 
 import com.github.cocolollipop.mido_svg.controller.ControllerJAXB;
@@ -10,11 +11,16 @@ import com.github.cocolollipop.mido_svg.xml.jaxb.model.TagStore;
 
 import org.eclipse.swt.widgets.Label;
 
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.xml.bind.JAXBException;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -31,9 +37,10 @@ public class GUISVGTAGSupprimer {
 	private DataBase data = new DataBase();
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 	private Set<Tag> tags;
+	private ControllerJAXB jaxb = new ControllerJAXB();
 	private String USERNAME;
 	private Label lblListeDesMatires;
-	private List list;
+	private List listMatassociees;
 
 	/**
 	 * Create contents of the window.
@@ -74,8 +81,8 @@ public class GUISVGTAGSupprimer {
 		lblListeDesMatires.setBounds(346, 72, 185, 14);
 		lblListeDesMatires.setText("Liste des matières associées :");
 		
-		list = new List(shlSupprimerTag, SWT.BORDER);
-		list.setBounds(346, 92, 197, 110);
+		listMatassociees = new List(shlSupprimerTag, SWT.BORDER);
+		listMatassociees.setBounds(346, 92, 197, 110);
 
 
 	}
@@ -85,23 +92,46 @@ public class GUISVGTAGSupprimer {
 	 * Initialise ListTags 
 	 * 
 	 * Add All Tags to ListTags
+	 * @throws IOException 
+	 * @throws JAXBException 
 	 * 
 	 */
-	private void initTagsList() {
+	private void initTagsList() throws JAXBException, IOException {
+		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
+		Set<Tag> tagsSet = new HashSet<Tag>();
 	
-			for(String name : map.keySet()){
-				 tags = map.get(name).getTags();
-				 for (Tag tag : tags) {
-					 listTags.add(tag.getName());
-					}		
-			
+		for (Tag tag : userListOfTags) {
+			tagsSet.add(tag);
 		}		
+		for(Tag tag:tagsSet){
+			listTags.add(tag.getName());
+		
+       
+	}
        
 	}
 	
 	
 	private void createEvents() {
-		
+		/**
+		 * List listen
+		 */
+		listTags.addListener(SWT.Selection, new Listener() {
+		      public void handleEvent(Event e) {
+		    	  listMatassociees.removeAll();
+		    	  
+		        String string = listTags.getSelection()[0];
+		//
+		        System.out.println("Selection={" + string + "}");
+		       Set<?> listMat = createListMatiere(string);
+		       for(Object str: listMat){
+		       listMatassociees.add((String) str);
+		       }
+
+		      }
+
+
+		    });
 		/** This button "Home" opens the GUI home  **/
 
 		btnHome.addSelectionListener(new SelectionAdapter() {
@@ -128,17 +158,35 @@ public class GUISVGTAGSupprimer {
 		});
 	}
 
-	
+	private Set<?> createListMatiere(String string) {
+		try {
+			java.util.List<Tag> listOfTags;
+			listOfTags = jaxb.readTagsFileXML(USERNAME);
+			for(Tag tag: listOfTags){
+				if(tag.getName().equals(string)){
+				 return tag.getSubjects();
+					 
+				}
+			}
+		} catch (JAXBException | IOException e1) {
+			throw new IllegalStateException();
+		}
+		return null;	
+	}
+
 
 	/**
 	 * Open the window.
+	 * @throws IOException 
+	 * @throws JAXBException 
 	 */
-	public void open(String username) {
+	public void open(String username) throws JAXBException, IOException {
 		this.USERNAME = username;
 		Display display = Display.getDefault();
 		createContents();
 		shlSupprimerTag.open();
 		shlSupprimerTag.layout();
+		initTagsList();
 		createEvents();
 		while (!shlSupprimerTag.isDisposed()) {
 			if (!display.readAndDispatch()) {
