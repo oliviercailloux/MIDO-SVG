@@ -21,10 +21,11 @@ import com.github.cocolollipop.mido_svg.university.components.Master;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 import com.github.cocolollipop.mido_svg.university.components.Teacher;
 
-public class XMLMain {
+import junit.framework.TestCase;
+
+public class XMLMain extends TestCase {
 	/**
-	 * myXMLDocument contient apr�s appel de getXMLFile() le contenu du fichier
-	 * XML
+	 * myXMLDocument contains data after getXMLFile()
 	 */
 	private Document myXMLDocument;
 
@@ -33,34 +34,36 @@ public class XMLMain {
 	}
 
 	/**
-	 * getXMLFile() permet de rapatrier le fichier XML contenant les donn�es sur
-	 * les formation, mati�res, prof. Le contenu est stock� dans l'objet
-	 * XMLMain.document. Si on veut travailler avec le contenu du fichier, on
-	 * passera par l'attribut myXMLDocument de la classe Le contenu est deja
-	 * pars�
+	 * getXMLFile() is a method to get the XML File you gave us This XML
+	 * contains data to supply the database All data is stored in the attribute
+	 * myXMLDocument myXMLDocument is already parsed
 	 * 
 	 * @throws ParserConfigurationException
 	 * @throws SAXException
 	 * @throws IOException
 	 */
 	public void getXMLFile() throws ParserConfigurationException, SAXException, IOException {
-		// D'abord on pointe sur l'URL
+		// First, we point to the URL given
 		URL myXML = new URL("https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml");
 
-		// Ensuite on parse
+		// Then we parse
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document document = dBuilder.parse(myXML.openStream());
 
+		// Some infos
 		// http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
 		document.getDocumentElement().normalize();
+
+		// Finally, we set the document parsed in the attribute myXMLDocument
 		this.myXMLDocument = document;
 	}
 
 	/**
-	 * fillSubjectsXML permet remplir la hashmap transmise en parametre, en lui
-	 * ajoutant la liste de toutes les mati�res trouv�es dans l'attribut
-	 * myXMLDocument
+	 * fillSubjectsXML is a procedure to create and fill Subjects (Coursename
+	 * and ECTS)
+	 * 
+	 * and put in the HashMap
 	 * 
 	 * @param mapSubjects
 	 * @param document
@@ -110,6 +113,12 @@ public class XMLMain {
 
 	}
 
+	/**
+	 * fillTeachersXML is a procedure to create and fill all the Teachers found
+	 * in myXMLDocument and put in the HashMap
+	 * 
+	 * @param mapTeachers
+	 */
 	public void fillTeachersXML(HashMap mapTeachers) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
@@ -138,8 +147,14 @@ public class XMLMain {
 				mapTeachers.put(tch.getLastName(), tch);
 			}
 		}
-	} // fin for FIN COPIE ICI
+	}
 
+	/**
+	 * fillFormationsXML is a method to create Formations thanks to
+	 * myXMLDocument and fill the HashMap with these data
+	 * 
+	 * @param mapFormations
+	 */
 	public void fillFormationsXML(HashMap mapFormations) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
@@ -153,7 +168,7 @@ public class XMLMain {
 
 				// Looking for subjects
 				if (program.getNodeName() == "ns3:program") {
-					// on recup�re si �a v�rifie L1 L2 L3 M1 ou M2
+					// We verify if it's a L1 L2 L3 M1 or M2
 					String intitule = program.getElementsByTagName("ns2:text").item(0).getTextContent();
 					if (intitule.matches("[L][123]\\s.*|[M][12]\\s.*")) {
 						switch (intitule.substring(0, 1)) {
@@ -184,7 +199,7 @@ public class XMLMain {
 							break;
 
 						default:
-							System.out.println("erreur import formations");
+							System.out.println("error import formations");
 							break;
 						}
 					}
@@ -193,10 +208,30 @@ public class XMLMain {
 		}
 	}
 
+	/**
+	 * JUNIT TEST
+	 * 
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @throws IOException
+	 */
+	public void testGetXML() throws ParserConfigurationException, SAXException, IOException {
+
+		URL myXML = new URL("https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml");
+
+		// Then we parse
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document document = dBuilder.parse(myXML.openStream());
+		assertNotNull(document);
+		assertTrue(document.getFirstChild().getNodeName() == "CDM");
+	}
+
 	public static void main(final String[] args) throws ParserConfigurationException, SAXException, IOException {
+		// some tests
 		XMLMain myTestXMLMain = new XMLMain();
 		myTestXMLMain.getXMLFile();
-
+		myTestXMLMain.testGetXML();
 		HashMap lesTeachers = new HashMap();
 		myTestXMLMain.fillTeachersXML(lesTeachers);
 
