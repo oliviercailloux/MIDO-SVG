@@ -1,6 +1,5 @@
 package com.github.cocolollipop.mido_svg.view;
 
-
 import java.io.File;
 import java.io.IOException;
 
@@ -41,7 +40,7 @@ public class GUISVGGenerator {
 	private Button btnFermer;
 	private Button btnPush;
 	private Label labelEtat;
-	private boolean affFormationLicence; //variable to 
+	private boolean affFormationLicence; // variable to
 	private boolean affFormationMaster;
 	private boolean affResponsable;
 	private boolean affAdmission;
@@ -59,9 +58,9 @@ public class GUISVGGenerator {
 	private Spinner spinnerwidth;
 	private Spinner spinnerheight;
 
-
 	/**
 	 * Create contents of the window.
+	 * 
 	 * @wbp.parser.entryPoint
 	 */
 	protected void createContents() {
@@ -69,11 +68,10 @@ public class GUISVGGenerator {
 		shell.setSize(550, 592);
 		shell.setText("SWT Application");
 		shell.setLayout(null);
-		
+
 		Label lblLogin = new Label(shell, SWT.NONE);
 		lblLogin.setBounds(20, 20, 300, 200);
 		lblLogin.setText(USERNAME);
-
 
 		Label lblNewLabel = new Label(shell, SWT.NONE);
 		lblNewLabel.setBounds(226, 47, 108, 27);
@@ -200,13 +198,11 @@ public class GUISVGGenerator {
 					spinnerheight.setMaximum(5000);
 					spinnerheight.setMinimum(1000);
 					spinnerheight.setBounds(469, 181, 71, 28);
-					
 
 				}
 
 			}
 		});
-
 
 		/**
 		 * Check box to choose Licence
@@ -333,36 +329,56 @@ public class GUISVGGenerator {
 				shell.close();
 			}
 		});
-		
-		
 
 		/**** Push Button to generate the SVG ****/
-		
-		
+
 		btnPush.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-			
+
 				try {
-					if (btnCheckButtonA3.getSelection()) { // If this radio button is selected form = "A3"
+					if (btnCheckButtonA3.getSelection()) { // If this radio
+															// button is
+															// selected form =
+															// "A3"
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
 								affSubject, affTeacher, affPrereq, "A3");
-				
 
-					}else if(btnCheckButtonA4.getSelection()) { // If this radio button is selected form = "A4"
+					} else if (btnCheckButtonA4.getSelection()) { // If this
+																	// radio
+																	// button is
+																	// selected
+																	// form =
+																	// "A4"
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
 								affSubject, affTeacher, affPrereq, "A4");
-						
-					} else if (btnCheckButtonAutre.getSelection()) { // Else If this radio button is selected the user get to choose his own values height, width
-						
-						// we should get back the values that the user has entered in the spinners
+
+					} else if (btnCheckButtonAutre.getSelection()) { // Else If
+																		// this
+																		// radio
+																		// button
+																		// is
+																		// selected
+																		// the
+																		// user
+																		// get
+																		// to
+																		// choose
+																		// his
+																		// own
+																		// values
+																		// height,
+																		// width
+
+						// we should get back the values that the user has
+						// entered in the spinners
 						height = spinnerheight.getSelection();
 						width = spinnerwidth.getSelection();
-						
+
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
 								affSubject, affTeacher, affPrereq, width, height);
 					}
-					
+
 					datas = new DataBase(settings);
 					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
 					svg.paint(settings, datas);
@@ -384,8 +400,6 @@ public class GUISVGGenerator {
 		});
 
 	}
-	
-	
 
 	/**
 	 * Open the window.
