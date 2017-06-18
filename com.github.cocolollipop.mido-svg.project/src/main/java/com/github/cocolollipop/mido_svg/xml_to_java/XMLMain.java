@@ -88,6 +88,8 @@ public class XMLMain {
 					// we get ECTS of the course
 					// we use try catch to avoid NULLPOINTEREXCEPTION if ECTS
 					// doesn't exists in XML
+					// I kno you don't encourage us to use this, but It is the
+					// only solution to keep going if ECTS doesn't exist !
 					try {
 						if (subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits")
 								.getNodeValue() != null) {
