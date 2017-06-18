@@ -12,14 +12,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Spinner;
-import org.eclipse.swt.widgets.Text;
 
 import com.github.cocolollipop.mido_svg.model.DataBase;
-import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.DrawerSVGGen;
 import com.github.cocolollipop.mido_svg.svg_generator.ResponsiveSVG;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
-import com.github.cocolollipop.mido_svg.university.components.Formation;
 
 public class GUISVGGeneratorbis {
 
@@ -28,8 +25,6 @@ public class GUISVGGeneratorbis {
 	private Button btnCheckButtonAutre;
 	private Button btnCheckButtonA4;
 	private Button btnCheckButtonA3;
-	private Text text;
-	private Text text_1;
 	private Label lblLargeur;
 	private Label lblLongueur;
 	private Label lblMsg1;
@@ -54,7 +49,6 @@ public class GUISVGGeneratorbis {
 	private boolean affSubject;
 	private boolean affTeacher;
 	private boolean affPrereq;
-	private String form;
 	private DataBase datas;
 	private Settings settings;
 	private int width;
@@ -62,11 +56,7 @@ public class GUISVGGeneratorbis {
 
 	private DrawerSVGGen svg = new DrawerSVGGen();
 	ResponsiveSVG responsive = new ResponsiveSVG();
-	private Paper format = new Paper();
-	private Formation formation; // A VOIR
-	private Spinner spinnerWidth;
-	private Spinner spinnerHeight;
-	private Spinner spinner;
+
 	private Spinner spinnerwidth;
 	private Spinner spinnerheight;
 
@@ -219,25 +209,6 @@ public class GUISVGGeneratorbis {
 			}
 		});
 
-		btnCheckButtonA4.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (btnCheckButtonA4.getSelection()) {
-					form = "A4";
-				}
-
-			}
-		});
-
-		btnCheckButtonA3.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (btnCheckButtonA3.getSelection()) {
-					form = "A3";
-				}
-
-			}
-		});
 
 		/**
 		 * Check box to choose Licence
