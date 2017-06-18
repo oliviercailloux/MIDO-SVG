@@ -27,15 +27,14 @@ public class ControllerJAXB {
 	 * This subroutine is used to create an XML file from tags
 	 * 
 	 * @throws JAXBException
-	 * @throws IOException
 	 */
-	public void createTagsFileXML(String username) throws JAXBException, IOException {
+	public void createTagsFileXML(String username) throws JAXBException {
 		// Map tags, String user
 		/**
 		 * We know that the list of available subjects contains: proba, java,
 		 * logique
 		 */
-		List<Tag> TagList = new ArrayList<Tag>();
+		List<Tag> TagList = new ArrayList<>();
 
 		// create tag1 for subjects: info, proba, java
 		Tag tag1 = new Tag();
