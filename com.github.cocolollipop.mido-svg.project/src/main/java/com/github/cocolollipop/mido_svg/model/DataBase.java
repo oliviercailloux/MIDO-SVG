@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+
+
 import com.github.cocolollipop.mido_svg.paper.FactoryPaper;
 import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
@@ -90,6 +94,9 @@ public class DataBase {
 		this.users.add("ocailloux");
 
 	}
+	
+	// LOGGERS
+	//public static final Logger LOGGER = LoggerFactory.getLogger(DataBase.class);
 
 	///////////// INITIALIZE///////////////
 	/**
@@ -318,6 +325,7 @@ public class DataBase {
 
 			if (this.getFormations().get(i).getAvailableFormations().size() == 0) {
 				System.out.println("Pas de formation accessible");
+				//Logger.info("Pas de formation accessible");
 			}
 			for (int j = 0; j < this.getFormations().get(i).getAvailableFormations().size(); j++) {
 				System.out.println("Les formations accessibles sont:"
