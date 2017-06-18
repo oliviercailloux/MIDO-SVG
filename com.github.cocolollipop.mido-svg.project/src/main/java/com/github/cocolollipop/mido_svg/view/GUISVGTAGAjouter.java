@@ -1,10 +1,5 @@
 package com.github.cocolollipop.mido_svg.view;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Label;
-
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Map;
@@ -13,24 +8,27 @@ import java.util.Set;
 import javax.xml.bind.JAXBException;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 import com.github.cocolollipop.mido_svg.controller.ControllerJAXB;
 import com.github.cocolollipop.mido_svg.model.DataBase;
 import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
 
-import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-
 public class GUISVGTAGAjouter {
 
 	private String USERNAME;
 	protected Shell shlAjouterTags;
 	private Text textNomTag;
-	private Button btnAjouter ;
+	private Button btnAjouter;
 	private Button btnHome;
 	private List listTags;
 	private Button button;
@@ -43,19 +41,20 @@ public class GUISVGTAGAjouter {
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 	private ControllerJAXB jaxb = new ControllerJAXB();
 	private List listMatassociees;
+
 	/**
 	 * Create contents of the window.
+	 * 
 	 * @wbp.parser.entryPoint
 	 */
 	protected void createContents() {
 		shlAjouterTags = new Shell();
 		shlAjouterTags.setSize(634, 427);
 		shlAjouterTags.setText("Ajouter Tags");
-		
+
 		Label lblLogin = new Label(shlAjouterTags, SWT.NONE);
 		lblLogin.setBounds(35, 10, 63, 104);
 		lblLogin.setText(USERNAME);
-
 
 		Label lblAjouterTags = new Label(shlAjouterTags, SWT.NONE);
 		lblAjouterTags.setBounds(210, 10, 137, 14);
@@ -108,75 +107,68 @@ public class GUISVGTAGAjouter {
 
 		btnAjouter.setBounds(464, 363, 94, 28);
 		btnAjouter.setText("Ajouter");
-		
+
 		listMatassociees = new List(shlAjouterTags, SWT.BORDER);
 		listMatassociees.setEnabled(false);
 		listMatassociees.setBounds(464, 43, 160, 65);
-		
+
 		Label lblLesMatiresAssocies = new Label(shlAjouterTags, SWT.NONE);
 		lblLesMatiresAssocies.setBounds(317, 60, 128, 14);
 		lblLesMatiresAssocies.setText("Les matières associées:");
 
 	}
 
-
 	/**
-	 * Initialise ListTags 
+	 * Initialise ListTags
 	 * 
-	 * 1- Adds All Subjects to ListSubject1 of GUI
-	 * 2- Adds All Tags to listTags of GUI
-	 * @throws IOException 
-	 * @throws JAXBException 
+	 * 1- Adds All Subjects to ListSubject1 of GUI 2- Adds All Tags to listTags
+	 * of GUI
+	 * 
+	 * @throws IOException
+	 * @throws JAXBException
 	 * 
 	 */
 	private void initTagsList() throws JAXBException, IOException {
 		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
 		Set<Tag> tagsSet = new HashSet<>();
-		
+
 		/* Adding the subjects to the Jlist of Subjetcs */
-		for(String name : map.keySet()){
+		for (String name : map.keySet()) {
 			String value = map.get(name).getTitle();
 			listSujets1.add(value);
 
 			/* Adding the Tags to the Jlist of tags */
-			//tags = map.get(name).getTags();
 			for (Tag tag1 : userListOfTags) {
 				tagsSet.add(tag1);
-		
-			}		
+
+			}
 		}
 
-		for(Tag tag1:tagsSet){
+		for (Tag tag1 : tagsSet) {
 			listTags.add(tag1.getName());
 		}
 	}
 
-
 	private void createEvents() {
-		
+
 		/**
-		 * List listen
+		 * Listener used to display the subjects which are linked to the
+		 * selected tag
 		 */
 		listTags.addListener(SWT.Selection, new Listener() {
-		      @Override
+			@Override
 			public void handleEvent(Event e) {
-		    	  listMatassociees.removeAll();
-		    	  
-		        String string = listTags.getSelection()[0];
-		//
-		        System.out.println("Selection={" + string + "}");
-		       Set<?> listMat = createListMatiere(string);
-		       for(Object str: listMat){
-		       listMatassociees.add((String) str);
-		       }
- 
-		        ////
-		      }
+				listMatassociees.removeAll();
+				String string = listTags.getSelection()[0];
+				Set<?> listMat = getSubjects(string);
+				for (Object str : listMat) {
+					listMatassociees.add((String) str);
+				}
+			}
 
+		});
 
-		    });
-
-		/** This button "Home" opens the GUI home  **/
+		/** This button "Home" opens the GUI home **/
 
 		btnHome.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -184,23 +176,21 @@ public class GUISVGTAGAjouter {
 				GUISVGHome h = new GUISVGHome();
 				shlAjouterTags.close();
 				h.open(USERNAME);
-			
+
 			}
 		});
-
 
 		/** This button ">>" adds a selected subject to a list **/
 
 		button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if(listSujets1.getSelectionCount() ==0){
+				if (listSujets1.getSelectionCount() == 0) {
 					return;
 				}
 				selectedSubject = listSujets1.getSelection()[0];
 				listSujets2.add(selectedSubject);
 				listSujets1.remove(listSujets1.getSelectionIndex());
-
 
 			}
 		});
@@ -210,7 +200,7 @@ public class GUISVGTAGAjouter {
 		button_1.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				if(listSujets2.getSelectionCount() ==0){
+				if (listSujets2.getSelectionCount() == 0) {
 					return;
 				}
 				selectedSubject = listSujets2.getSelection()[0];
@@ -219,12 +209,13 @@ public class GUISVGTAGAjouter {
 			}
 		});
 
-
-		/** This button " Ajouter" adds un tag with the subjects associeted to it  **/
+		/**
+		 * This button " Ajouter" adds a tag with the subjects associeted to it
+		 **/
 
 		btnAjouter.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent e){
+			public void widgetSelected(SelectionEvent e) {
 				java.util.List<Tag> userListOfTags;
 				try {
 					userListOfTags = jaxb.readTagsFileXML(USERNAME);
@@ -233,25 +224,31 @@ public class GUISVGTAGAjouter {
 				}
 				Tag newTag = new Tag();
 				newTag.setName(textNomTag.getText());
-				for(int i=0; i<listSujets2.getItems().length;i++){
+				for (int i = 0; i < listSujets2.getItems().length; i++) {
 					newTag.addSubject(listSujets2.getItem(i));
 				}
 				userListOfTags.add(newTag);
-		
-						try {
-							jaxb.createTagsFileXML(USERNAME,userListOfTags);
-						} catch (JAXBException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-			
+
+				try {
+					jaxb.createTagsFileXML(USERNAME, userListOfTags);
+				} catch (JAXBException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 			}
 		});
 
 	}
 
-	private Set<?> createListMatiere(String string) {
+	/**
+	 * This subroutine is used to get the subjects linked to a specific tag
+	 * which is given in param in
+	 * 
+	 * @param string
+	 * @return
+	 */
+	private Set<?> getSubjects(String string) {
 		java.util.List<Tag> listOfTags;
 		try {
 			listOfTags = jaxb.readTagsFileXML(USERNAME);
@@ -260,19 +257,20 @@ public class GUISVGTAGAjouter {
 		} catch (IOException e) {
 			throw new IllegalStateException(e);
 		}
-		for(Tag tag1: listOfTags){
-			if(tag1.getName().equals(string)){
-			 return tag1.getSubjects();
-				 
+		for (Tag tag1 : listOfTags) {
+			if (tag1.getName().equals(string)) {
+				return tag1.getSubjects();
+
 			}
 		}
-		return null;	
+		return null;
 	}
 
 	/**
 	 * Open the window.
-	 * @throws IOException 
-	 * @throws JAXBException 
+	 * 
+	 * @throws IOException
+	 * @throws JAXBException
 	 */
 	public void open(String username) throws JAXBException, IOException {
 		this.USERNAME = username;
@@ -289,11 +287,9 @@ public class GUISVGTAGAjouter {
 		}
 	}
 
-
 	public Tag getTag() {
 		return tag;
 	}
-
 
 	public void setTag(Tag tag) {
 		this.tag = tag;

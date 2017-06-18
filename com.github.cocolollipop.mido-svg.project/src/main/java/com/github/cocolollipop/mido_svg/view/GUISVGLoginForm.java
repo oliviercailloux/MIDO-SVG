@@ -76,7 +76,7 @@ public class GUISVGLoginForm {
 				}
 				error.setVisible(true);
 				text.setText("");
-				System.out.println("vous êtes un imposteur !");
+				System.out.println("Vous êtes un imposteur !");
 				
 			}
 		});
@@ -88,12 +88,9 @@ public class GUISVGLoginForm {
 		return Login;
 	}
 
-
 	public void setLogin(String login) {
 		Login = login;
 	}
-
-
 
 	/**
 	 * Open the window.

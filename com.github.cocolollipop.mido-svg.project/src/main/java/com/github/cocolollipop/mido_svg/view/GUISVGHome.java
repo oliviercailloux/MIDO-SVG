@@ -82,7 +82,6 @@ public class GUISVGHome {
 		
 		
 		/** This button opens the GUI of Tags  */
-
 		tagsbutton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -95,7 +94,6 @@ public class GUISVGHome {
 		});
 		
 		/** This button opens the GUI of Adding a Tag  */
-
 		btnAjouterTags.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -116,8 +114,6 @@ public class GUISVGHome {
 		});
 		
 		/** This button opens the GUI of Deleting a Tag  */
-
-		
 		btnSupprimerTag.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
