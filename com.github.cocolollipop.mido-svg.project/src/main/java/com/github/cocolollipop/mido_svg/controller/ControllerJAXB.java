@@ -82,6 +82,8 @@ public class ControllerJAXB {
 		JAXBContext context = JAXBContext.newInstance(TagStore.class);
 		Unmarshaller um = context.createUnmarshaller();
 		/* Creates the tagStore */
+		File file = new File(PATH_TAGS + username + "-tagstore-jaxb.xml");
+		if(file.exists()&&!file.isDirectory()){
 		TagStore tagstore2 = (TagStore) um.unmarshal(new FileReader(PATH_TAGS + username + "-tagstore-jaxb.xml"));
 		List<Tag> list = tagstore2.getTagsList();
 		/**
@@ -92,6 +94,14 @@ public class ControllerJAXB {
 		}
 
 		return list;
+		}
+		else{
+			this.createTagsFileXML(username);
+			this.readTagsFileXML(username);
+			
+		}
+		return null;
+	
 
 	}
 
