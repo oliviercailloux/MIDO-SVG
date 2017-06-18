@@ -1,6 +1,7 @@
 package com.github.cocolollipop.mido_svg.view;
 
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
 
@@ -15,19 +16,7 @@ public class GUISVGHome {
 	protected Shell shlHome;
 	private Button GenererButton;
 	private Button tagsbutton;
-
-	/**
-	 * Launch the application.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			GUISVGHome window = new GUISVGHome();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	private String USERNAME;
 
 
 	/**
@@ -47,6 +36,9 @@ public class GUISVGHome {
 		
 		GenererButton.setBounds(162, 137, 159, 57);
 		GenererButton.setText("Générer SVG");
+		Label lblLogin = new Label(shlHome, SWT.NONE);
+		lblLogin.setBounds(20, 20, 300, 200);
+		lblLogin.setText(USERNAME);
 
 	}
 	
@@ -61,7 +53,7 @@ public class GUISVGHome {
 				GUISVGGeneratorbis svg = new GUISVGGeneratorbis();
 				try {
 					shlHome.close();
-					svg.open();
+					svg.open(USERNAME);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -78,7 +70,7 @@ public class GUISVGHome {
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGTAGAjouter a = new GUISVGTAGAjouter();
 				shlHome.close();
-				a.open();
+				a.open(USERNAME);
 
 			}
 		});
@@ -89,7 +81,8 @@ public class GUISVGHome {
 	/**
 	 * Open the window.
 	 */
-	public void open() {
+	public void open(String username) {
+		this.USERNAME = username;
 		Display display = Display.getDefault();
 		createContents();
 		shlHome.open();

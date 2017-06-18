@@ -19,25 +19,14 @@ public class GUITagGenerator {
 
 	protected Shell shell;
 	private Text tag;
+	private String USERNAME;
 
-	/**
-	 * Launch the application.
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			GUITagGenerator window = new GUITagGenerator();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Open the window.
 	 */
-	public void open() {
+	public void open(String username) {
+		this.USERNAME = username;
 		Display display = Display.getDefault();
 		createContents();
 		shell.open();
@@ -55,6 +44,10 @@ public class GUITagGenerator {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(450, 300);
+		Label lblLogin = new Label(shell, SWT.NONE);
+		lblLogin.setBounds(20, 20, 300, 200);
+		lblLogin.setText(USERNAME);
+
 		shell.setText("Générateur de tags pour MIDO-SVG");
 		shell.setLayout(new GridLayout(5, false));
 		new Label(shell, SWT.NONE);

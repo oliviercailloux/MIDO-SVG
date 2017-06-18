@@ -30,19 +30,7 @@ public class GUISVGTAGSupprimer {
 	private DataBase data = new DataBase();
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 	private Set<Tag> tags;
-
-	/**
-	 * Launch the application.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			GUISVGTAGSupprimer window = new GUISVGTAGSupprimer();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	private String USERNAME;
 
 
 	/**
@@ -52,6 +40,11 @@ public class GUISVGTAGSupprimer {
 		shlSupprimerTag = new Shell();
 		shlSupprimerTag.setSize(450, 300);
 		shlSupprimerTag.setText("Supprimer Tag");
+		
+		Label lblLogin = new Label(shlSupprimerTag, SWT.NONE);
+		lblLogin.setBounds(20, 20, 300, 200);
+		lblLogin.setText(USERNAME);
+
 		
 		Label lblSupprimerTags = new Label(shlSupprimerTag, SWT.NONE);
 		lblSupprimerTags.setBounds(190, 27, 109, 14);
@@ -73,6 +66,7 @@ public class GUISVGTAGSupprimer {
 	
 		btnHome.setBounds(10, 228, 73, 28);
 		btnHome.setText("Home");
+
 
 	}
 	
@@ -104,8 +98,9 @@ public class GUISVGTAGSupprimer {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGHome h = new GUISVGHome();
+				h.open(USERNAME);
 				shlSupprimerTag.close();
-				h.open();
+			
 			}
 		});
 		
@@ -128,7 +123,8 @@ public class GUISVGTAGSupprimer {
 	/**
 	 * Open the window.
 	 */
-	public void open() {
+	public void open(String username) {
+		this.USERNAME = username;
 		Display display = Display.getDefault();
 		createContents();
 		shlSupprimerTag.open();

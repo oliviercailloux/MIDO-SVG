@@ -35,8 +35,6 @@ public class GUISVGLoginForm {
 		}
 	}
 
-
-
 	/**
 	 * Create contents of the window.
 	 */
@@ -54,11 +52,8 @@ public class GUISVGLoginForm {
 		this.error = new Label(shlMidosvg, SWT.NONE);
 		this.error.setBounds(220, 80, 250, 50);
 		this.error.setText("vous êtes un imposteur !");
-		this.error.setVisible(false);
-	
-		
+		this.error.setVisible(false);	
 		btnConnexion = new Button(shlMidosvg, SWT.NONE);
-	
 		btnConnexion.setBounds(174, 147, 94, 28);
 		btnConnexion.setText("Connexion");
 
@@ -74,13 +69,14 @@ public class GUISVGLoginForm {
 				
 				Login = text.getText();
 				if(data.isUser(Login)){
+					error.setVisible(false);
 				GUISVGHome h = new GUISVGHome();
 				shlMidosvg.close();
-				h.open();
+				h.open(Login);
 				}
 				error.setVisible(true);
+				text.setText("");
 				System.out.println("vous êtes un imposteur !");
-				//sinon il faudrait afficher un commentaire comme quoi il peut pas se logger
 				
 			}
 		});

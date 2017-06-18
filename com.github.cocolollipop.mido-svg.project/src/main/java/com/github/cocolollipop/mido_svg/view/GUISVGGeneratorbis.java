@@ -23,6 +23,7 @@ import com.github.cocolollipop.mido_svg.university.components.Formation;
 public class GUISVGGeneratorbis {
 
 	protected Shell shell;
+	private String USERNAME;
 	private Button btnCheckButtonAutre;
 	private Button btnCheckButtonA4;
 	private Button btnCheckButtonA3;
@@ -68,19 +69,6 @@ public class GUISVGGeneratorbis {
 	private Spinner spinnerwidth;
 	private Spinner spinnerheight;
 
-	/**
-	 * Launch the application.
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		try {
-			GUISVGGeneratorbis window = new GUISVGGeneratorbis();
-			window.open();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 
 	/**
@@ -91,6 +79,11 @@ public class GUISVGGeneratorbis {
 		shell.setSize(550, 592);
 		shell.setText("SWT Application");
 		shell.setLayout(null);
+		
+		Label lblLogin = new Label(shell, SWT.NONE);
+		lblLogin.setBounds(20, 20, 300, 200);
+		lblLogin.setText(USERNAME);
+
 
 		Label lblNewLabel = new Label(shell, SWT.NONE);
 		lblNewLabel.setBounds(226, 47, 108, 27);
@@ -415,7 +408,8 @@ public class GUISVGGeneratorbis {
 	 * @throws IOException
 	 */
 
-	public void open() throws IOException {
+	public void open(String username) throws IOException {
+		this.USERNAME = username;
 		Display display = Display.getDefault();
 		createContents();
 		shell.open();
