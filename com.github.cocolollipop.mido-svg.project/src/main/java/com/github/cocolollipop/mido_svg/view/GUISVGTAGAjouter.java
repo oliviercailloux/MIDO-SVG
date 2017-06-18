@@ -167,10 +167,7 @@ public class GUISVGTAGAjouter {
 		       for(Object str: listMat){
 		       listMatassociees.add((String) str);
 		       }
-		       
-		       
-		       
-		        
+ 
 		        ////
 		      }
 
