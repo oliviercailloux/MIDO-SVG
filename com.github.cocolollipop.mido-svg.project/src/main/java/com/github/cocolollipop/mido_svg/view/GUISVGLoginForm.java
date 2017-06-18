@@ -5,6 +5,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Text;
+
+import com.github.cocolollipop.mido_svg.model.DataBase;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -15,6 +18,8 @@ public class GUISVGLoginForm {
 	private Text text;
 	private String Login;
 	private Button btnConnexion;
+	private DataBase data = new DataBase();
+	private Label error;
 
 	/**
 	 * Launch the application.
@@ -45,6 +50,11 @@ public class GUISVGLoginForm {
 		
 		text = new Text(shlMidosvg, SWT.BORDER);
 		text.setBounds(146, 105, 148, 19);
+		this.error = new Label(shlMidosvg, SWT.NONE);
+		this.error.setBounds(220, 80, 250, 50);
+		this.error.setText("vous êtes un imposteur !");
+		this.error.setVisible(false);
+	
 		
 		btnConnexion = new Button(shlMidosvg, SWT.NONE);
 	
@@ -60,9 +70,15 @@ public class GUISVGLoginForm {
 		btnConnexion.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				
 				Login = text.getText();
+				if(data.isUser(Login)){
 				GUISVGHome h = new GUISVGHome();
 				h.open();
+				}
+				error.setVisible(true);
+				System.out.println("vous êtes un imposteur !");
+				//sinon il faudrait afficher un commentaire comme quoi il peut pas se logger
 				
 			}
 		});
