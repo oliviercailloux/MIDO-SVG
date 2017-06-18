@@ -3,7 +3,9 @@ package com.github.cocolollipop.mido_svg.university.components;
 import java.util.ArrayList;
 
 /**
- * This class is corresponding to the Department of the formation
+ * This class is corresponding to the Department of the formation. It contains :
+ * title (the name of departement) and listOfFormations (the formations
+ * available in this Departement)
  *
  */
 public class Department {
@@ -40,6 +42,7 @@ public class Department {
 		this.posY = y;
 	}
 
+	// Constructors
 	public Department(String name, int x, int y) {
 		this.title = name;
 		this.posX = x;
