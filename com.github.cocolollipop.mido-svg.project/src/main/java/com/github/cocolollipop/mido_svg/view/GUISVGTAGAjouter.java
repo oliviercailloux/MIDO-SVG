@@ -5,7 +5,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -27,7 +26,7 @@ import org.eclipse.swt.events.SelectionEvent;
 public class GUISVGTAGAjouter {
 
 
-	private static String USERNAME;
+	private String USERNAME;
 	protected Shell shlAjouterTags;
 	private Text textNomTag;
 	private Button btnAjouter ;
@@ -42,8 +41,6 @@ public class GUISVGTAGAjouter {
 	private DataBase data = new DataBase();
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 	ControllerJAXB jaxb = new ControllerJAXB();
-	private Set<Tag> tags;
-
 	/**
 	 * Create contents of the window.
 	 */
@@ -159,11 +156,14 @@ public class GUISVGTAGAjouter {
 		});
 
 
-		/** This button ">>" adds un subject to a list **/
+		/** This button ">>" adds a selected subject to a list **/
 
 		button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				if(listSujets1.getSelectionCount() ==0){
+					return;
+				}
 				Subject = listSujets1.getSelection().toString();
 				listSujets2.add(Subject);
 				listSujets1.remove(listSujets1.getSelectionIndex());
@@ -174,11 +174,12 @@ public class GUISVGTAGAjouter {
 
 		/** This button "<<" removes un subject from a list **/
 
-
 		button_1.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
+				if(listSujets2.getSelectionCount() ==0){
+					return;
+				}
 				Subject = listSujets2.getSelection().toString();
 				listSujets1.add(Subject);
 				listSujets2.remove(listSujets2.getSelectionIndex());
