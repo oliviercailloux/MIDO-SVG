@@ -88,6 +88,10 @@ public class Teacher {
 
 	}
 
+	/**
+	 * Returns the full name (LastName + FirstName) of a teacher
+	 * 
+	 * */
 	public String getFullNameTeacher() {
 		return lastName + " " + firstName;
 	}

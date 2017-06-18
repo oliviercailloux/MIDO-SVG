@@ -32,6 +32,8 @@ public class GUISVGTAGSupprimer {
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 	private Set<Tag> tags;
 	private String USERNAME;
+	private Label lblListeDesMatires;
+	private List list;
 
 	/**
 	 * Create contents of the window.
@@ -39,11 +41,11 @@ public class GUISVGTAGSupprimer {
 	 */
 	protected void createContents() {
 		shlSupprimerTag = new Shell();
-		shlSupprimerTag.setSize(450, 300);
+		shlSupprimerTag.setSize(577, 293);
 		shlSupprimerTag.setText("Supprimer Tag");
 		
 		Label lblLogin = new Label(shlSupprimerTag, SWT.NONE);
-		lblLogin.setBounds(20, 20, 300, 200);
+		lblLogin.setBounds(21, 42, 210, 133);
 		lblLogin.setText(USERNAME);
 
 		
@@ -56,17 +58,24 @@ public class GUISVGTAGSupprimer {
 		lblListeDesTags.setText("Liste des tags :");
 		
 		listTags = new List(shlSupprimerTag, SWT.BORDER);
-		listTags.setBounds(165, 99, 149, 116);
+		listTags.setBounds(31, 92, 197, 110);
 		
 		btnSupprimer = new Button(shlSupprimerTag, SWT.NONE);
 		
-		btnSupprimer.setBounds(324, 228, 94, 28);
+		btnSupprimer.setBounds(473, 228, 94, 28);
 		btnSupprimer.setText("Supprimer");
 		
 		btnHome = new Button(shlSupprimerTag, SWT.NONE);
 	
 		btnHome.setBounds(10, 228, 73, 28);
 		btnHome.setText("Home");
+		
+		lblListeDesMatires = new Label(shlSupprimerTag, SWT.NONE);
+		lblListeDesMatires.setBounds(346, 72, 185, 14);
+		lblListeDesMatires.setText("Liste des matières associées :");
+		
+		list = new List(shlSupprimerTag, SWT.BORDER);
+		list.setBounds(346, 92, 197, 110);
 
 
 	}
