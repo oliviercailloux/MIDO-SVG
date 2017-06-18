@@ -7,7 +7,6 @@ import org.eclipse.swt.widgets.Shell;
 import com.github.cocolollipop.mido_svg.controller.ControllerJAXB;
 import com.github.cocolollipop.mido_svg.model.DataBase;
 import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
-import com.github.cocolollipop.mido_svg.xml.jaxb.model.TagStore;
 
 import org.eclipse.swt.widgets.Label;
 
@@ -32,8 +31,6 @@ public class GUISVGTAGSupprimer {
 	private Button btnHome;
 	private Button btnSupprimer;
 	private List listTags;
-	private String Tag;
-	private TagStore tagstore = new TagStore();
 	private DataBase data = new DataBase();
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 	private Set<Tag> tags;
