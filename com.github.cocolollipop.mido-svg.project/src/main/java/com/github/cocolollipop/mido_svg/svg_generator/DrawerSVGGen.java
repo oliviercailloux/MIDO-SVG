@@ -76,6 +76,7 @@ public class DrawerSVGGen {
 		return listOfFormationToShow;
 	}
 
+	@SuppressWarnings("resource")
 	public void paint(Settings settings, DataBase datas1) throws Exception {
 		this.datas = datas1;
 
@@ -140,6 +141,7 @@ public class DrawerSVGGen {
 	 * This is to replace "&lt;" by "<" and "&gt;" by ">" because I did not
 	 * found how to avoid converting < into &lt; and > into &gt;
 	 **/
+	@SuppressWarnings("resource")
 	public String svgLinkable() throws FileNotFoundException, IOException {
 		String content = IOUtils.toString(new FileInputStream(DRAWING_SVG), "UTF-8");
 		content = content.replaceAll("&lt;", "<");
