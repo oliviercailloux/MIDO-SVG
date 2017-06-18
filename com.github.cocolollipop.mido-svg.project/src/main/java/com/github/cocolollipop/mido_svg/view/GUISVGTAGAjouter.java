@@ -158,8 +158,8 @@ public class GUISVGTAGAjouter {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGHome h = new GUISVGHome();
-				h.open(USERNAME);
 				shlAjouterTags.close();
+				h.open(USERNAME);
 			
 			}
 		});
