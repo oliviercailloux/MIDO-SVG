@@ -68,7 +68,7 @@ public class XMLMain extends TestCase {
 	 * @param mapSubjects
 	 * @param document
 	 */
-	public void fillSubjectsXML(HashMap mapSubjects) {
+	public void fillSubjectsXML(Map mapSubjects) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
 		final NodeList racineNoeuds = racine.getChildNodes();
@@ -119,7 +119,7 @@ public class XMLMain extends TestCase {
 	 * 
 	 * @param mapTeachers
 	 */
-	public void fillTeachersXML(HashMap mapTeachers) {
+	public void fillTeachersXML(Map mapTeachers) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
 		final NodeList racineNoeuds = racine.getChildNodes();
@@ -155,7 +155,7 @@ public class XMLMain extends TestCase {
 	 * 
 	 * @param mapFormations
 	 */
-	public void fillFormationsXML(HashMap mapFormations) {
+	public void fillFormationsXML(Map mapFormations) {
 
 		final Element racine = this.myXMLDocument.getDocumentElement();
 

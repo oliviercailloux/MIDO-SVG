@@ -38,7 +38,7 @@ public class DataBase {
 
 	public DataBase() {
 		// default settings
-		this.settings = new Settings(true,true,true,true,true,true,true, "A4");
+		this.settings = new Settings(true, true, true, true, true, true, true, "A4");
 		this.teachers = new HashMap<>();
 		initTeachers();
 		this.formationsMap = new HashMap<>();
@@ -136,9 +136,8 @@ public class DataBase {
 		// En dessous faudra commenter si on veut utiliser la m�thode XML
 		// et decommenter ceci
 		/*
-		 * XMLMain myTestXMLMain = new XMLMain(); myTestXMLMain.getXMLFile(); //
-		 * pour r�cup�rer le fichier XML
-		 * myTestXMLMain.getMyXMLDocument().fillSubjectsXML(this.mapSubjects);
+		 * XMLMain myTestXMLMain = new XMLMain();
+		 * myTestXMLMain.fillSubjectsXML(this.mapSubjects);
 		 */
 		Subject proba = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
 		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
