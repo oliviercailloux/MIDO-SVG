@@ -1,0 +1,85 @@
+RAPPORT MIDO SVG
+ 
+Contexte du projet
+ 
+Dans le cadre du module “PROJET JAVA”, il nous a été demandé de réaliser un projet s’étalant sur 13 séances en prenant soin d’appliquer les Best Practices, d’utiliser une méthode agile (par le rendu régulier de petites fonctions fonctionnelles) et de répondre au mieux aux spécifications (cf. récit utilisateur).
+ 
+Composition de notre équipe :
+Jules BESSON-LEGOFF, Ikram BOUHYA, Romain SCOHY et Caroline VONG
+ 
+Objectif du projet :
+ 
+L’objectif premier de ce projet est de créer une bibliothèque qui permet à un utilisateur de créer un dessin (au format SVG) représentant au moyen d’un arbre, les formations offertes dans le département MIDO. Il est aussi possible d’afficher les détails des formations, les enseignants, etc. Les informations utilisées pour la génération du dessin sont entrées manuellement.
+ 
+A l’issue de cela, l’idée est de généraliser la bibliothèque afin qu’elle puisse à terme, être utilisée à une plus grande échelle, ce en récupérant les informations sur le site de l’université.
+ 
+Notre solution
+
+L’architecture
+
+On a séparé nos classes en 9 packages  en ayant pris soin de respecter une architecture MVC (Model View Controller):
+ 
+ controller : Permet de générer un fichier XML qui permet de faire le lien entre des tags et des matières.
+ jUnit : Contient les tests unitaires réalisés.
+ model : Contient la base de données, avec tous les objets créés ou récupérable par XML.
+paper : Permet de définir la taille du canevas , Il prend 2 formes standard, connues (A3 et A4) et une forme libre (“Other”). Le pattern factory permet cette gestion.
+svg_generator : Contient les classes permettant de générer le SVG: 
+ResponsiveSVG: permet de placer les informations au bon endroit sur le dessin en fonction du papier
+DrawSVGGen: dessine les formes (les traits, les flèches,les rectangles ..) et dessine les informations ( les formations, les enseignants ..) 
+Settings: précise les paramètres d’affichage .
+university.components : Ce package contient tous les éléments permettant de “former” une université : Une formation(Formation.java), un professeur(Teacher.java), une matière (Subject.java).
+view : Contient les interfaces graphiques qui se présente en deux parties principales : la gestion des tags , et la génération du SVG.
+Gestion des tags : cette interface nous permet d’ajouter ou supprimer des tags 
+Génération du SVG : cette interface nous permet de choisir les paramètres d’affichage et dessiner le SVG 
+xml_to_java : Permet de rappatrier le fichier XML que vous nous avez donné, https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml, puis d’extraire les données du XML (nom, prenom, adresse mail, etc…)
+xml.jaxb.model : Permet de générer les tags, et faire le lien avec les matières
+ 
+ 
+Technologies utilisées
+ 
+- On a mis en place un projet maven, hébergé sur Github
+- On a mis en place Travis pour tester notre code source
+- On a utilisé SWT pour générer les interfaces graphiques
+- On a utilisé JAXB pour faire le lien entre tag et matières
+- Pour récupérer les données depuis le fichier XML sur Internet, on a utilisé la classe URL puis le parser DOM du JDK.
+- Pour générer les SVG, on a utilisé Batik
+- Pour les loggers, on a utilisé SLF4J
+ 
+ 
+Les fonctionnalités réalisées pour le projet Mido-SVG
+ 
+Ligne de lecture: 
+[Fonctionnalité réalisée] (Participants)
+ 
+Une interface graphique qui permettent de générer un fichier SVG, selon les critères de l’utilisateur.(Ikram)
+Une bibliothèque permettant de générer un fichier SVG mais sans passer par l’interface graphique (un exemple d’utilisation se trouve dans la classe ControllerSVG) (Caroline, Jules, Ikram, Romain)
+Une interface graphique qui permettent de générer une liste de mots clés (tags) pour des matières(Caroline,Ikram)
+Génération d’un SVG avec données statiques : voir dessin à la main, se concentrer sur partie Informatique des Organisations, dessin à partir d’une liste de cours en mémoire. (Caroline, Jules, Ikram, Romain)
+Pouvoir ajouter les responsables aux parcours au dessin.
+Pouvoir ajouter les enseignants responsables de chaque cours au dessin.
+Différents types d’informations peuvent être colorées différemment.
+Récupérer les données depuis le web (Jules, Romain)
+Liens sur les parcours renvoient au programme des cours(Jules, Caroline)
+Graphique équivalent pour la licence.
+Paramètres : licence seulement, master seulement
+Choix du format : A3 ou A4 ou autres dimensions que l’utilisateur choisit.(Caroline, Ikram)
+Entrée et affichage de prérequis entre cours.(Ikram)
+Mots clés sur cours. Utilisateur peut associer des mots-clés aux cours via interface graphique.(Caroline, Ikram, Romain)
+Mots clés enregistrés dans un fichier. (Caroline)
+Lecture des mots clés depuis un fichier(Caroline, Ikram,Jules,Romain)
+ 
+ 
+Difficultées rencontrées
+ 
+Rapport-client
+Problème de compréhension des attentes du client ou de la priorisation des tâches (on pensait qu’on pouvait commencer par faire la récupération et parserDOM, mais vous nous avez dit que nous devions tout créer “en dur” d’abord, puis après de nous préoccuper de la lecture du fichier XML ; alors qu’en fait vous vouliez nous dire autre chose). 
+Cela nous a poussé à adapter notre code au besoin client et à l’ajuster en cours de route et donc de faire face à quelques imprévus. 
+ 
+Niveau travail d’équipe 
+ Il nous a été demandé de travailler en binôme à l’alternat (avec changement du binôme). En fonction de la difficulté des fonctionnalités, cet alternat explique pourquoi nous avons plusieurs participants pour certaines fonctionnalités et parfois non. La compréhension du code de chacun a été primordial pour arriver à un résultat cohérent.
+Le fait d’avoir deux binômes travaillant en parallèle n’est pas toujours évident d’autant plus quand les fonctionnalités sont amenées à se recouper. 
+ 
+Niveau technique
+JAXB et la lecture du schéma XSD fourni par la CDM (nous n’avons pas eu le temps de mettre en place)
+Mise en place de Travis (on a le badge Travis en couleur grise)
+Prise en main de technologies que nous n’avions pas l’habitude d’utiliser: Git, Maven etc.
