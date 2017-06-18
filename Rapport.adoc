@@ -73,15 +73,15 @@ Ce package contient :
  
 == Difficultées rencontrées
  
-** Rapport-client
+=== Rapport avec le client
 Problème de compréhension des attentes du client ou de la priorisation des tâches (on pensait qu’on pouvait commencer par faire la récupération et parserDOM, mais vous nous avez dit que nous devions tout créer “en dur” d’abord, puis après de nous préoccuper de la lecture du fichier XML ; alors qu’en fait vous vouliez nous dire autre chose). 
 Cela nous a poussé à adapter notre code au besoin client et à l’ajuster en cours de route et donc de faire face à quelques imprévus. 
  
-** Niveau travail d’équipe 
+=== Niveau travail d’équipe 
  Il nous a été demandé de travailler en binôme à l’alternat (avec changement du binôme). En fonction de la difficulté des fonctionnalités, cet alternat explique pourquoi nous avons plusieurs participants pour certaines fonctionnalités et parfois non. La compréhension du code de chacun a été primordial pour arriver à un résultat cohérent.
 Le fait d’avoir deux binômes travaillant en parallèle n’est pas toujours évident d’autant plus quand les fonctionnalités sont amenées à se recouper. 
  
-** Niveau technique
+=== Niveau technique
 JAXB et la lecture du schéma XSD fourni par la CDM (nous n’avons pas eu le temps de mettre en place)
 Mise en place de Travis (on a le badge Travis en couleur grise)
-Prise en main de technologies que nous n’avions pas l’habitude d’utiliser: Git, Maven etc.
+Prise en main de technologies que nous n’avions pas l’habitude d’utiliser: Git, Maven, Batik, etc...
