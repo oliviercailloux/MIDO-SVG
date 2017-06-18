@@ -42,16 +42,18 @@ public class GUISVGTAGAjouter {
 	private DataBase data = new DataBase();
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 	ControllerJAXB jaxb = new ControllerJAXB();
+	private List listMatassociees;
 	/**
 	 * Create contents of the window.
+	 * @wbp.parser.entryPoint
 	 */
 	protected void createContents() {
 		shlAjouterTags = new Shell();
-		shlAjouterTags.setSize(450, 423);
+		shlAjouterTags.setSize(634, 427);
 		shlAjouterTags.setText("Ajouter Tags");
 		
 		Label lblLogin = new Label(shlAjouterTags, SWT.NONE);
-		lblLogin.setBounds(20, 20, 300, 200);
+		lblLogin.setBounds(35, 10, 63, 104);
 		lblLogin.setText(USERNAME);
 
 
@@ -64,48 +66,55 @@ public class GUISVGTAGAjouter {
 		lblListeDeM.setText("Liste de mes tags :");
 
 		listTags = new List(shlAjouterTags, SWT.BORDER | SWT.H_SCROLL);
-		listTags.setBounds(186, 43, 186, 55);
+		listTags.setBounds(138, 43, 150, 65);
 
 		Label lblAjouterUnTag = new Label(shlAjouterTags, SWT.NONE);
 		lblAjouterUnTag.setBounds(25, 127, 128, 14);
 		lblAjouterUnTag.setText("Ajouter un Tag :");
 
 		Label lblNomDuTag = new Label(shlAjouterTags, SWT.NONE);
-		lblNomDuTag.setBounds(122, 165, 106, 14);
+		lblNomDuTag.setBounds(187, 165, 106, 14);
 		lblNomDuTag.setText("Nom du Tag : ");
 
 		textNomTag = new Text(shlAjouterTags, SWT.BORDER);
-		textNomTag.setBounds(234, 162, 150, 19);
+		textNomTag.setBounds(341, 162, 150, 19);
 
 		Label lblSujetsAssocier = new Label(shlAjouterTags, SWT.NONE);
 		lblSujetsAssocier.setBounds(25, 211, 128, 14);
 		lblSujetsAssocier.setText("Sujets à associer:");
 
 		listSujets1 = new List(shlAjouterTags, SWT.BORDER);
-		listSujets1.setBounds(10, 231, 164, 104);
+		listSujets1.setBounds(103, 231, 164, 104);
 
 		listSujets2 = new List(shlAjouterTags, SWT.BORDER);
-		listSujets2.setBounds(259, 231, 164, 104);
+		listSujets2.setBounds(431, 231, 164, 104);
 
 		button = new Button(shlAjouterTags, SWT.NONE);
 
-		button.setBounds(195, 245, 47, 28);
+		button.setBounds(317, 246, 47, 28);
 		button.setText(">>");
 
 		button_1 = new Button(shlAjouterTags, SWT.NONE);
 
 		button_1.setText("<<");
-		button_1.setBounds(195, 279, 47, 28);
+		button_1.setBounds(317, 280, 47, 28);
 
 		btnHome = new Button(shlAjouterTags, SWT.NONE);
 
-		btnHome.setBounds(29, 363, 57, 28);
+		btnHome.setBounds(35, 363, 57, 28);
 		btnHome.setText("Home");
 
 		btnAjouter = new Button(shlAjouterTags, SWT.NONE);
 
-		btnAjouter.setBounds(346, 363, 94, 28);
+		btnAjouter.setBounds(464, 363, 94, 28);
 		btnAjouter.setText("Ajouter");
+		
+		listMatassociees = new List(shlAjouterTags, SWT.BORDER);
+		listMatassociees.setBounds(464, 43, 160, 65);
+		
+		Label lblLesMatiresAssocies = new Label(shlAjouterTags, SWT.NONE);
+		lblLesMatiresAssocies.setBounds(317, 60, 128, 14);
+		lblLesMatiresAssocies.setText("Les matières associées:");
 
 	}
 
@@ -240,5 +249,4 @@ public class GUISVGTAGAjouter {
 			}
 		}
 	}
-
 }
