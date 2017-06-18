@@ -35,6 +35,7 @@ public class GUISVGTAGSupprimer {
 
 	/**
 	 * Create contents of the window.
+	 * @wbp.parser.entryPoint
 	 */
 	protected void createContents() {
 		shlSupprimerTag = new Shell();

@@ -47,7 +47,7 @@ public class GUISVGGeneratorbis {
 	private Button btnPush;
 	private Label labelEtat;
 
-	private boolean affFormationLicence;
+	private boolean affFormationLicence; //variable to 
 	private boolean affFormationMaster;
 	private boolean affResponsable;
 	private boolean affAdmission;

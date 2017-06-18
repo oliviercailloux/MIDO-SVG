@@ -19,28 +19,44 @@ public class GUISVGHome {
 	private Button GenererButton;
 	private Button tagsbutton;
 	private String USERNAME;
+	private Button btnAjouterTags;
+	private Button btnSupprimerTag;
+	
 
 
 	/**
 	 * Create contents of the window.
+	 * @wbp.parser.entryPoint
 	 */
 	protected void createContents() {
 		shlHome = new Shell();
-		shlHome.setSize(450, 300);
+		shlHome.setSize(503, 273);
 		shlHome.setText("Home");
 		
 		tagsbutton = new Button(shlHome, SWT.NONE);
 		
-		tagsbutton.setBounds(162, 56, 159, 57);
+		tagsbutton.setBounds(178, 53, 159, 57);
 		tagsbutton.setText("Gestion des Tags");
 		
 		GenererButton = new Button(shlHome, SWT.NONE);
 		
-		GenererButton.setBounds(162, 137, 159, 57);
+		GenererButton.setBounds(178, 152, 159, 57);
 		GenererButton.setText("Générer SVG");
 		Label lblLogin = new Label(shlHome, SWT.NONE);
-		lblLogin.setBounds(20, 20, 300, 200);
+		lblLogin.setBounds(20, 20, 37, 21);
 		lblLogin.setText(USERNAME);
+		
+		btnAjouterTags = new Button(shlHome, SWT.NONE);
+		
+		btnAjouterTags.setBounds(30, 69, 127, 28);
+		btnAjouterTags.setText("Ajouter les Tags");
+		btnAjouterTags.setVisible(false);
+		
+		btnSupprimerTag = new Button(shlHome, SWT.NONE);
+		
+		btnSupprimerTag.setBounds(354, 69, 139, 28);
+		btnSupprimerTag.setText("Supprimer les Tags");
+		btnSupprimerTag.setVisible(false);
 
 	}
 	
@@ -70,9 +86,24 @@ public class GUISVGHome {
 		tagsbutton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				
+				btnAjouterTags.setVisible(true);
+				btnSupprimerTag.setVisible(true);
+			
+
+			}
+		});
+		
+		/** This button opens the GUI of Adding a Tag  */
+
+		
+		btnSupprimerTag.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
 				GUISVGTAGAjouter a = new GUISVGTAGAjouter();
-				shlHome.close();
+				
 				try {
+					shlHome.close();
 					a.open(USERNAME);
 				} catch (JAXBException e1) {
 					// TODO Auto-generated catch block
@@ -81,7 +112,20 @@ public class GUISVGHome {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
+			}
+		});
+		
+		/** This button opens the GUI of Deleting a Tag  */
 
+		
+		btnAjouterTags.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				GUISVGTAGSupprimer s = new GUISVGTAGSupprimer();
+				shlHome.close();
+				s.open(USERNAME);
+			
 			}
 		});
 		
@@ -104,6 +148,4 @@ public class GUISVGHome {
 			}
 		}
 	}
-
-
 }
