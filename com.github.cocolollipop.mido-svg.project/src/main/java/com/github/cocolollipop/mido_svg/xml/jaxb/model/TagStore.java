@@ -20,7 +20,7 @@ public class TagStore {
 	@XmlElementWrapper(name = "tagList")
 	// XmlElement sets the name of the entities
 	@XmlElement(name = "tag")
-	private List<Tag> tagList = new ArrayList<Tag>();
+	private List<Tag> tagList = new ArrayList<>();
 	private String name;
 
 	public void setTagList(List<Tag> tagList) {

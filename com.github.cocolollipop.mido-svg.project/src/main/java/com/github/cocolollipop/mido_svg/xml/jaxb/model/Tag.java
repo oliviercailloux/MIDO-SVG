@@ -40,7 +40,7 @@ public class Tag {
 
 	public void addSubject(String math) {
 		if (subjects == null) {
-			this.subjects = new HashSet<String>();
+			this.subjects = new HashSet<>();
 		}
 		this.subjects.add(math);
 
