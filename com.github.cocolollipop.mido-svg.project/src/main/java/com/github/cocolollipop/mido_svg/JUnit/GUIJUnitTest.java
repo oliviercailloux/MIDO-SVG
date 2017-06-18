@@ -4,13 +4,11 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 
-import javax.xml.crypto.Data;
 
 import org.junit.Test;
 
 import com.github.cocolollipop.mido_svg.model.DataBase;
 import com.github.cocolollipop.mido_svg.svg_generator.ResponsiveSVG;
-import com.github.cocolollipop.mido_svg.view.GUISVGGeneratorbis;
 
 public class GUIJUnitTest {
 	
