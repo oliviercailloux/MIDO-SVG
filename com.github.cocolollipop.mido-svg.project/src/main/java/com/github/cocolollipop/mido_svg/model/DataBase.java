@@ -10,7 +10,6 @@ import java.util.Set;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
-
 import com.github.cocolollipop.mido_svg.paper.FactoryPaper;
 import com.github.cocolollipop.mido_svg.paper.Paper;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
@@ -86,7 +85,7 @@ public class DataBase {
 	}
 
 	private void initUsers() {
-		this.users = new ArrayList<String>();
+		this.users = new ArrayList<>();
 		this.users.add("ikram");
 		this.users.add("romain");
 		this.users.add("jules");
@@ -94,9 +93,10 @@ public class DataBase {
 		this.users.add("ocailloux");
 
 	}
-	
+
 	// LOGGERS
-	//public static final Logger LOGGER = LoggerFactory.getLogger(DataBase.class);
+	// public static final Logger LOGGER =
+	// LoggerFactory.getLogger(DataBase.class);
 
 	///////////// INITIALIZE///////////////
 	/**
@@ -115,12 +115,12 @@ public class DataBase {
 	 * Initialize teachers
 	 */
 	public void initTeachers() {
-		
+
 		// The equivalent of the function but with the data from de XML file
 		/*
-		* XMLMain myTestXMLMain = new XMLMain();
-		* myTestXMLMain.fillTeacherssXML(this.teachers);
-		*/
+		 * XMLMain myTestXMLMain = new XMLMain();
+		 * myTestXMLMain.fillTeacherssXML(this.teachers);
+		 */
 
 		Teacher Mayag = new Teacher("Mayag", "Brice ", 150, 70);
 		Teacher Pigozzi = new Teacher("Pigozzi", "Gabriella ", 650, 70);
@@ -181,13 +181,13 @@ public class DataBase {
 	 * Initialize formations
 	 */
 	public void initFormations() {
-		
+
 		// The equivalent of the function but with the data from de XML file
 		/*
-		* XMLMain myTestXMLMain = new XMLMain();
-		* myTestXMLMain.fillFormationsXML(this.formationsMap);
-		*/
-		
+		 * XMLMain myTestXMLMain = new XMLMain();
+		 * myTestXMLMain.fillFormationsXML(this.formationsMap);
+		 */
+
 		// L3MIAGE
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);
 		L3MIAGE.setTeacher(teachers.get("Mayag"));
@@ -325,7 +325,7 @@ public class DataBase {
 
 			if (this.getFormations().get(i).getAvailableFormations().size() == 0) {
 				System.out.println("Pas de formation accessible");
-				//Logger.info("Pas de formation accessible");
+				// Logger.info("Pas de formation accessible");
 			}
 			for (int j = 0; j < this.getFormations().get(i).getAvailableFormations().size(); j++) {
 				System.out.println("Les formations accessibles sont:"
