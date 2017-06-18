@@ -78,7 +78,7 @@ Problème de compréhension des attentes du client ou de la priorisation des tâ
 Cela nous a poussé à adapter notre code au besoin client et à l’ajuster en cours de route et donc de faire face à quelques imprévus. 
  
 === Niveau travail d’équipe 
- Il nous a été demandé de travailler en binôme à l’alternat (avec changement du binôme). En fonction de la difficulté des fonctionnalités, cet alternat explique pourquoi nous avons plusieurs participants pour certaines fonctionnalités et parfois non. La compréhension du code de chacun a été primordial pour arriver à un résultat cohérent.
+Il nous a été demandé de travailler en binôme à l’alternat (avec changement du binôme). En fonction de la difficulté des fonctionnalités, cet alternat explique pourquoi nous avons plusieurs participants pour certaines fonctionnalités et parfois non. La compréhension du code de chacun a été primordial pour arriver à un résultat cohérent.
 Le fait d’avoir deux binômes travaillant en parallèle n’est pas toujours évident d’autant plus quand les fonctionnalités sont amenées à se recouper. 
  
 === Niveau technique
