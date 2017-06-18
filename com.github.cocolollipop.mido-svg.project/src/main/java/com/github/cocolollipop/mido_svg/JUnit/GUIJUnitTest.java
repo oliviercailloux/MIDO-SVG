@@ -14,7 +14,6 @@ import com.github.cocolollipop.mido_svg.view.GUISVGGeneratorbis;
 
 public class GUIJUnitTest {
 	
-	
 	/**
 	 * In this function we will test the function that count the number of formations in Parcours (or Year) "M1"
 	 * 
