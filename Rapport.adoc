@@ -5,7 +5,7 @@
 Dans le cadre du module “PROJET JAVA”, il nous a été demandé de réaliser un projet s’étalant sur 13 séances en prenant soin d’appliquer les Best Practices, d’utiliser une méthode agile (par le rendu régulier de petites fonctions fonctionnelles) et de répondre au mieux aux spécifications (cf. récit utilisateur).
  
 Composition de notre équipe :
-Jules BESSON-LEGOFF, Ikram BOUHYA, Romain SCOHY et Caroline VONG
+Jules BESSON-LEGOFF, Ikram BOUHYA, Romain SCOHY et Caroline
  
 == Objectif du projet :
  
