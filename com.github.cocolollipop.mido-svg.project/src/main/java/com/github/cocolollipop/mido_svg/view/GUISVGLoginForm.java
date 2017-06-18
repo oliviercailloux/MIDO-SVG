@@ -16,6 +16,7 @@ public class GUISVGLoginForm {
 	private String Login;
 	private Button btnConnexion;
 
+	
 	/**
 	 * Launch the application.
 	 * @param args
@@ -62,6 +63,7 @@ public class GUISVGLoginForm {
 			public void widgetSelected(SelectionEvent e) {
 				Login = text.getText();
 				GUISVGHome h = new GUISVGHome();
+				shlMidosvg.close();
 				h.open();
 				
 			}

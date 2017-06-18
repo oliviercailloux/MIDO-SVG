@@ -95,6 +95,7 @@ public class GUISVGTAGSupprimer {
        
 	}
 	
+	
 	private void createEvents() {
 		
 		/** This button "Home" opens the GUI home  **/
@@ -103,6 +104,7 @@ public class GUISVGTAGSupprimer {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGHome h = new GUISVGHome();
+				shlSupprimerTag.close();
 				h.open();
 			}
 		});
