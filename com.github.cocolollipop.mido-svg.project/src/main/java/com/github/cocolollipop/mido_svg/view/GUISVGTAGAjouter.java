@@ -6,8 +6,11 @@ import org.eclipse.swt.widgets.Label;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import javax.xml.bind.JAXBException;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.List;
@@ -114,25 +117,30 @@ public class GUISVGTAGAjouter {
 	 * 
 	 * 1- Adds All Subjects to ListSubject1 of GUI
 	 * 2- Adds All Tags to listTags of GUI
+	 * @throws IOException 
+	 * @throws JAXBException 
 	 * 
 	 */
-	private void initTagsList() {
-
-
-
+	private void initTagsList() throws JAXBException, IOException {
+		java.util.List<Tag> listOfTags = jaxb.readTagsFileXML(USERNAME);
+		Set<Tag> tagsSet = new HashSet<Tag>();
+		
 		/* Adding the subjects to the Jlist of Subjetcs */
 		for(String name : map.keySet()){
 			String value = map.get(name).getTitle();
 			listSujets1.add(value);
 
-
 			/* Adding the Tags to the Jlist of tags */
-			tags = map.get(name).getTags();
-			for (Tag tag : tags) {
-				listTags.add(tag.getName());
+			//tags = map.get(name).getTags();
+			for (Tag tag : listOfTags) {
+				tagsSet.add(tag);
+		
 			}		
 		}
 
+		for(Tag tag:tagsSet){
+			listTags.add(tag.getName());
+		}
 	}
 
 
@@ -197,8 +205,10 @@ public class GUISVGTAGAjouter {
 
 	/**
 	 * Open the window.
+	 * @throws IOException 
+	 * @throws JAXBException 
 	 */
-	public void open(String username) {
+	public void open(String username) throws JAXBException, IOException {
 		this.USERNAME = username;
 		Display display = Display.getDefault();
 		createContents();
