@@ -69,6 +69,18 @@ public class GUISVGLoginForm {
 	}
 	
 	
+	
+	public String getLogin() {
+		return Login;
+	}
+
+
+	public void setLogin(String login) {
+		Login = login;
+	}
+
+
+
 	/**
 	 * Open the window.
 	 */

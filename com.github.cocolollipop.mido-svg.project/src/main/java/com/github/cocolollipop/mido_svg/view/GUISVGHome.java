@@ -69,7 +69,6 @@ public class GUISVGHome {
 			}
 		});
 		
-		
 		/** This button opens the GUI of Tags  */
 
 		tagsbutton.addSelectionListener(new SelectionAdapter() {

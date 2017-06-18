@@ -2,7 +2,17 @@ package com.github.cocolollipop.mido_svg.view;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+
+import com.github.cocolollipop.mido_svg.controller.ControllerJAXB;
+import com.github.cocolollipop.mido_svg.model.DataBase;
+import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
+import com.github.cocolollipop.mido_svg.xml.jaxb.model.TagStore;
+
 import org.eclipse.swt.widgets.Label;
+
+import java.util.Map;
+import java.util.Set;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Button;
@@ -16,6 +26,10 @@ public class GUISVGTAGSupprimer {
 	private Button btnSupprimer;
 	private List listTags;
 	private String Tag;
+	private TagStore tagstore = new TagStore();
+	private DataBase data = new DataBase();
+	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
+	private Set<Tag> tags;
 
 	/**
 	 * Launch the application.
@@ -66,16 +80,25 @@ public class GUISVGTAGSupprimer {
 	/**
 	 * Initialise ListTags 
 	 * 
-	 * 1- Add All Tags to ListTags
+	 * Add All Tags to ListTags
 	 * 
 	 */
-	private void initTagsList(List tags) {
-		/* Il faut récup tt les tags et les ajouter dans le tableau subjects */
-		
+	private void initTagsList() {
+	
+			for(String name : map.keySet()){
+				 tags = map.get(name).getTags();
+				 for (Tag tag : tags) {
+					 listTags.add(tag.getName());
+					}		
+			
+		}		
        
 	}
 	
 	private void createEvents() {
+		
+		/** This button "Home" opens the GUI home  **/
+
 		btnHome.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -85,11 +108,14 @@ public class GUISVGTAGSupprimer {
 		});
 		
 		
+		/** This button "Supprimer" removes the selected Tag from the List  **/
+		
 		btnSupprimer.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Tag = listTags.getSelection().toString();
 				listTags.remove(listTags.getSelectionIndex());
+				tagstore.getTagsList().remove(Tag);
 			 
 			}
 		});
