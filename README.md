@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/Cocolollipop/mido-svg.svg?branch=master)](https://travis-ci.org/Cocolollipop/mido-svg)  
 
 Subject: https://github.com/oliviercailloux/projets/blob/master/mido_svg.adoc  
+Rapport / Compte-Rendu : https://github.com/Cocolollipop/mido-svg/blob/master/Rapport.adoc
 
 = MIDO SVG
 Le département MIDO propose plusieurs parcours, contenant pour certains des cours à option, avec des passerelles entre certains parcours. Il est difficile pour un enseignant extérieur (ou débutant) de se repérer dans l’offre de cours et de voir comment son cours s’articule avec les cours existants. Une manière de pallier ce problème consiste à représenter graphiquement l’offre de cours et les relations entre les cours. Cependant, de tels dessins requièrent du temps pour être bien faits, et deviennent rapidement obsolète. Ce projet vise à génération automatique de diagrammes au format SVG représentant des organigramme des cours et autres informations liées.
