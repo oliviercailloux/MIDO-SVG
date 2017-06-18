@@ -117,10 +117,9 @@ public class DataBase {
 	public void initTeachers() {
 
 		// The equivalent of the function but with the data from de XML file
-		/*
-		 * XMLMain myTestXMLMain = new XMLMain();
-		 * myTestXMLMain.fillTeacherssXML(this.teachers);
-		 */
+		//
+		// XMLMain myTestXMLMain = new XMLMain();
+		// myTestXMLMain.fillTeachersXML(this.teachers);
 
 		Teacher Mayag = new Teacher("Mayag", "Brice ", 150, 70);
 		Teacher Pigozzi = new Teacher("Pigozzi", "Gabriella ", 650, 70);
@@ -147,10 +146,9 @@ public class DataBase {
 		this.mapSubjects = new HashMap<>();
 
 		// The equivalent of the function but with the data from de XML file
-		/*
-		 * XMLMain myTestXMLMain = new XMLMain();
-		 * myTestXMLMain.fillSubjectsXML(this.mapSubjects);
-		 */
+		// XMLMain myTestXMLMain = new XMLMain();
+		// myTestXMLMain.fillSubjectsXML(this.mapSubjects);
+
 		Subject proba = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
 		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
 		Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
