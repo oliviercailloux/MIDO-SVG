@@ -82,26 +82,6 @@ public class GUISVGGeneratorbis {
 		}
 	}
 
-	/**
-	 * Open the window.
-	 * 
-	 * @throws IOException
-	 */
-
-	public void open() throws IOException {
-		Display display = Display.getDefault();
-		createContents();
-		shell.open();
-		shell.layout();
-		createEvents();
-		this.datas = new DataBase();
-		responsive.defineObjectsPosition(datas.getFormations(), 1920, 1080);
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
-	}
 
 	/**
 	 * Create contents of the window.
@@ -154,22 +134,22 @@ public class GUISVGGeneratorbis {
 
 		btnLesprerequis = new Button(shell, SWT.CHECK);
 
-		btnLesprerequis.setBounds(131, 393, 108, 18);
+		btnLesprerequis.setBounds(131, 393, 152, 18);
 		btnLesprerequis.setText("Les Prérequis");
 
 		btnLesEnseignants = new Button(shell, SWT.CHECK);
 
-		btnLesEnseignants.setBounds(380, 348, 108, 18);
+		btnLesEnseignants.setBounds(380, 348, 143, 18);
 		btnLesEnseignants.setText("Les enseignants");
 
 		btnLesMatires = new Button(shell, SWT.CHECK);
 
-		btnLesMatires.setBounds(226, 348, 94, 18);
+		btnLesMatires.setBounds(226, 348, 119, 18);
 		btnLesMatires.setText("Les matières");
 
 		btnLesResponsables = new Button(shell, SWT.CHECK);
 
-		btnLesResponsables.setBounds(52, 348, 117, 18);
+		btnLesResponsables.setBounds(52, 348, 152, 18);
 		btnLesResponsables.setText("Les responsables ");
 
 		btnLicence = new Button(shell, SWT.CHECK);
@@ -192,7 +172,7 @@ public class GUISVGGeneratorbis {
 
 		btnLeModeDadmission = new Button(shell, SWT.CHECK);
 
-		btnLeModeDadmission.setBounds(314, 393, 133, 18);
+		btnLeModeDadmission.setBounds(314, 393, 183, 18);
 		btnLeModeDadmission.setText("Le mode d'admission");
 
 		btnPush = new Button(shell, SWT.NONE);
@@ -265,9 +245,9 @@ public class GUISVGGeneratorbis {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnLicence.getSelection()) {
-					affFormationLicence = true;
-				} else {
 					affFormationLicence = false;
+				} else {
+					affFormationLicence = true;
 				}
 
 			}
@@ -283,9 +263,9 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				if (btnMaster.getSelection()) {
-					affFormationMaster = true;
-				} else {
 					affFormationMaster = false;
+				} else {
+					affFormationMaster = true;
 				}
 			}
 		});
@@ -300,9 +280,9 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				if (btnLesResponsables.getSelection()) {
-					affResponsable = true;
-				} else {
 					affResponsable = false;
+				} else {
+					affResponsable = true;
 
 				}
 			}
@@ -317,9 +297,9 @@ public class GUISVGGeneratorbis {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnLesMatires.getSelection()) {
-					affSubject = true;
-				} else {
 					affSubject = false;
+				} else {
+					affSubject = true;
 
 				}
 
@@ -330,9 +310,9 @@ public class GUISVGGeneratorbis {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				if (btnLesEnseignants.getSelection()) {
-					affTeacher = true;
-				} else {
 					affTeacher = false;
+				} else {
+					affTeacher = true;
 
 				}
 			}
@@ -348,9 +328,9 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				if (btnLesprerequis.getSelection()) {
-					affPrereq = true;
-				} else {
 					affPrereq = false;
+				} else {
+					affPrereq = true;
 
 				}
 			}
@@ -366,9 +346,9 @@ public class GUISVGGeneratorbis {
 			public void widgetSelected(SelectionEvent e) {
 
 				if (btnLeModeDadmission.getSelection()) {
-					affAdmission = true;
-				} else {
 					affAdmission = false;
+				} else {
+					affAdmission = true;
 
 				}
 			}
@@ -387,22 +367,26 @@ public class GUISVGGeneratorbis {
 		btnPush.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-
+				
 				try {
 					if (btnCheckButtonA3.getSelection()) {
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
 								affSubject, affTeacher, affPrereq, "A3");
-					} else if (btnCheckButtonA4.getSelection()) {
+				
+
+					}else if(btnCheckButtonA4.getSelection()) {
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
 								affSubject, affTeacher, affPrereq, "A4");
+						
 					} else if (btnCheckButtonAutre.getSelection()) {
-
 						height = spinnerheight.getDigits();
 						width = spinnerwidth.getDigits();
 						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
 								affSubject, affTeacher, affPrereq, width, height);
 					}
-
+					
+					datas = new DataBase(settings);
+					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
 					svg.paint(settings, datas);
 
 					File file = new File("./outLicence.svg");
@@ -421,5 +405,26 @@ public class GUISVGGeneratorbis {
 			}
 		});
 
+	}
+	
+	
+
+	/**
+	 * Open the window.
+	 * 
+	 * @throws IOException
+	 */
+
+	public void open() throws IOException {
+		Display display = Display.getDefault();
+		createContents();
+		shell.open();
+		shell.layout();
+		createEvents();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
 	}
 }
