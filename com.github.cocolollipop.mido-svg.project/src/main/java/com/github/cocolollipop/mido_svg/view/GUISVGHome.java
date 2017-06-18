@@ -123,7 +123,12 @@ public class GUISVGHome {
 			public void widgetSelected(SelectionEvent e) {
 				GUISVGTAGSupprimer s = new GUISVGTAGSupprimer();
 				shlHome.close();
-				s.open(USERNAME);
+				try {
+					s.open(USERNAME);
+				} catch (JAXBException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			
 			}
 		});

@@ -10,8 +10,12 @@ import com.github.cocolollipop.mido_svg.xml.jaxb.model.TagStore;
 
 import org.eclipse.swt.widgets.Label;
 
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import javax.xml.bind.JAXBException;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.List;
@@ -31,6 +35,7 @@ public class GUISVGTAGSupprimer {
 	private DataBase data = new DataBase();
 	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 	private Set<Tag> tags;
+	private ControllerJAXB jaxb = new ControllerJAXB();
 	private String USERNAME;
 
 	/**
@@ -76,17 +81,22 @@ public class GUISVGTAGSupprimer {
 	 * Initialise ListTags 
 	 * 
 	 * Add All Tags to ListTags
+	 * @throws IOException 
+	 * @throws JAXBException 
 	 * 
 	 */
-	private void initTagsList() {
+	private void initTagsList() throws JAXBException, IOException {
+		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
+		Set<Tag> tagsSet = new HashSet<Tag>();
 	
-			for(String name : map.keySet()){
-				 tags = map.get(name).getTags();
-				 for (Tag tag : tags) {
-					 listTags.add(tag.getName());
-					}		
-			
+		for (Tag tag : userListOfTags) {
+			tagsSet.add(tag);
 		}		
+		for(Tag tag:tagsSet){
+			listTags.add(tag.getName());
+		
+       
+	}
        
 	}
 	
@@ -123,13 +133,16 @@ public class GUISVGTAGSupprimer {
 
 	/**
 	 * Open the window.
+	 * @throws IOException 
+	 * @throws JAXBException 
 	 */
-	public void open(String username) {
+	public void open(String username) throws JAXBException, IOException {
 		this.USERNAME = username;
 		Display display = Display.getDefault();
 		createContents();
 		shlSupprimerTag.open();
 		shlSupprimerTag.layout();
+		initTagsList();
 		createEvents();
 		while (!shlSupprimerTag.isDisposed()) {
 			if (!display.readAndDispatch()) {
