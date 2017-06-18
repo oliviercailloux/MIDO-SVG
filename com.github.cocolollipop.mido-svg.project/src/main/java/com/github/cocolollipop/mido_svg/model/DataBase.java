@@ -108,6 +108,12 @@ public class DataBase {
 	 * Initialize teachers
 	 */
 	public void initTeachers() {
+		
+		// The equivalent of the function but with the data from de XML file
+		/*
+		* XMLMain myTestXMLMain = new XMLMain();
+		* myTestXMLMain.fillTeacherssXML(this.teachers);
+		*/
 
 		Teacher Mayag = new Teacher("Mayag", "Brice ", 150, 70);
 		Teacher Pigozzi = new Teacher("Pigozzi", "Gabriella ", 650, 70);
@@ -133,8 +139,7 @@ public class DataBase {
 	public void initSubjects() {
 		this.mapSubjects = new HashMap<>();
 
-		// En dessous faudra commenter si on veut utiliser la m�thode XML
-		// et decommenter ceci
+		// The equivalent of the function but with the data from de XML file
 		/*
 		 * XMLMain myTestXMLMain = new XMLMain();
 		 * myTestXMLMain.fillSubjectsXML(this.mapSubjects);
@@ -169,6 +174,13 @@ public class DataBase {
 	 * Initialize formations
 	 */
 	public void initFormations() {
+		
+		// The equivalent of the function but with the data from de XML file
+		/*
+		* XMLMain myTestXMLMain = new XMLMain();
+		* myTestXMLMain.fillFormationsXML(this.formationsMap);
+		*/
+		
 		// L3MIAGE
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);
 		L3MIAGE.setTeacher(teachers.get("Mayag"));
