@@ -86,20 +86,22 @@ public class XMLMain {
 					courseTitle = subject.getChildNodes().item(5).getFirstChild().getNodeValue();
 
 					// we get ECTS of the course
-					if (subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits")
-							.getNodeValue() != null) {
-						courseCredit = Double.parseDouble(subject.getChildNodes().item(23).getAttributes()
-								.getNamedItem("ECTScredits").getNodeValue());
+					// we use try catch to avoid NULLPOINTEREXCEPTION if ECTS
+					// doesn't exists in XML
+					try {
+						if (subject.getChildNodes().item(23).getAttributes().getNamedItem("ECTScredits")
+								.getNodeValue() != null) {
+							courseCredit = Double.parseDouble(subject.getChildNodes().item(23).getAttributes()
+									.getNamedItem("ECTScredits").getNodeValue());
+						}
+					} catch (NullPointerException e) {
+						// if ECTS can't be read, we set it to "0"
+						courseCredit = 0.0;
 					}
+
 					// we create a new subject
 					Subject sub = new Subject(courseTitle, courseCredit);
-					mapSubjects.put(sub.getTitle(), sub); // mapSubjects
-					// correspond � la
-					// hashmap ; on la
-					// passera en
-					// parametre au tt
-					// debut de la
-					// fonction
+					mapSubjects.put(sub.getTitle(), sub);
 				}
 			}
 		}
