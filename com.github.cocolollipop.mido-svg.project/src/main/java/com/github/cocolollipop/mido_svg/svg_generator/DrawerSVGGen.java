@@ -32,6 +32,7 @@ import com.github.cocolollipop.mido_svg.university.components.Subject;
  * This class draws and generates an SVG for specifics datas
  * 
  */
+
 public class DrawerSVGGen {
 
 	public static final String DRAWING_SVG = "./src/main/resources/images/mido-drawing.svg";

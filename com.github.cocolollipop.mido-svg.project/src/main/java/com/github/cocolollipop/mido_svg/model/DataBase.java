@@ -22,6 +22,7 @@ import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
  * This class is the current database of the application
  *
  */
+
 public class DataBase {
 
 	private Map<String, Teacher> teachers;
