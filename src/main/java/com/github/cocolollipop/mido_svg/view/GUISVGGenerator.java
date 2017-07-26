@@ -11,6 +11,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Spinner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.github.cocolollipop.mido_svg.model.DataBase;
 import com.github.cocolollipop.mido_svg.svg_generator.DrawerSVGGen;
@@ -18,6 +20,13 @@ import com.github.cocolollipop.mido_svg.svg_generator.ResponsiveSVG;
 import com.github.cocolollipop.mido_svg.svg_generator.Settings;
 
 public class GUISVGGenerator {
+
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = LoggerFactory.getLogger(GUISVGGenerator.class);
+
+	public static void main(String[] args) throws Exception {
+		new GUISVGGenerator().open("ocailloux");
+	}
 
 	private boolean affAdmission;
 
@@ -314,6 +323,7 @@ public class GUISVGGenerator {
 
 					datas = new DataBase(settings);
 					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
+					LOGGER.info("Painting.");
 					svg.paint(settings, datas);
 
 					File file = new File("./src/main/resources/images/mido-drawing.svg");
