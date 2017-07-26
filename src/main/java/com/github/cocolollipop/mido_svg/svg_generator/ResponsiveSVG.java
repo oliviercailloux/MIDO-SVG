@@ -12,9 +12,29 @@ import com.github.cocolollipop.mido_svg.university.components.Formation;
 public class ResponsiveSVG {
 
 	/**
+	 * countFormations count the number of "myYear" in lesFormations.getFullName()
+	 *
+	 * @param list
+	 *            is a LinkedList of Formation
+	 * @param myYear
+	 *            is a year such as "L3" or "M1"
+	 * @return an integer or a negative if myYear isn't in the List
+	 */
+	public int countFormations(List<Formation> list, String myYear) {
+		int nb = 0;
+		for (Formation aFormation : list) {
+			if (aFormation.getFullName().indexOf(myYear) != -1) {
+				nb++;
+			}
+
+		}
+		return nb;
+	}
+
+	/**
 	 * defineObjectsPosition determine the position of each Formation in the
 	 * someFormations List
-	 * 
+	 *
 	 * @param list
 	 *            : LinkedList of all the formations available in the University
 	 * @param canvasX
@@ -24,9 +44,8 @@ public class ResponsiveSVG {
 
 		/*
 		 * We define initial offset In order to it, we must count number of each
-		 * Formation in someFormations Then calculate Y offset depending on
-		 * which formation exists (Only L1 or all ?) Finally we calculate X
-		 * offset
+		 * Formation in someFormations Then calculate Y offset depending on which
+		 * formation exists (Only L1 or all ?) Finally we calculate X offset
 		 */
 		int offsetX = 0;
 		int offsetY = 0;
@@ -110,7 +129,7 @@ public class ResponsiveSVG {
 	/**
 	 * associatePositionX set the posX of each Formation which satisfy
 	 * uneFormation.getFullName() == myYear
-	 * 
+	 *
 	 * @param list
 	 *            is a LinkedList of Formation
 	 * @param myYear
@@ -127,27 +146,6 @@ public class ResponsiveSVG {
 				System.out.println("associerOK : " + aFormation.getFullName());
 			}
 		}
-	}
-
-	/**
-	 * countFormations count the number of "myYear" in
-	 * lesFormations.getFullName()
-	 * 
-	 * @param list
-	 *            is a LinkedList of Formation
-	 * @param myYear
-	 *            is a year such as "L3" or "M1"
-	 * @return an integer or a negative if myYear isn't in the List
-	 */
-	public int countFormations(List<Formation> list, String myYear) {
-		int nb = 0;
-		for (Formation aFormation : list) {
-			if (aFormation.getFullName().indexOf(myYear) != -1) {
-				nb++;
-			}
-
-		}
-		return nb;
 	}
 
 }

@@ -24,91 +24,68 @@ import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
 
 public class GUISVGTAGSupprimer {
 
-	protected Shell shlSupprimerTag;
 	private Button btnHome;
+
 	private Button btnSupprimer;
-	private List listTags;
+
 	private DataBase data = new DataBase();
-	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
-	private Set<Tag> tags;
+
 	private ControllerJAXB jaxb = new ControllerJAXB();
-	private String USERNAME;
+
 	private Label lblListeDesMatires;
+
 	private List listMatassociees;
 
-	/**
-	 * Create contents of the window.
-	 * 
-	 * @wbp.parser.entryPoint
-	 */
-	protected void createContents() {
-		shlSupprimerTag = new Shell();
-		shlSupprimerTag.setSize(577, 293);
-		shlSupprimerTag.setText("Supprimer Tag");
+	private List listTags;
 
-		Label lblLogin = new Label(shlSupprimerTag, SWT.NONE);
-		lblLogin.setBounds(21, 42, 210, 133);
-		lblLogin.setText(USERNAME);
+	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 
-		Label lblSupprimerTags = new Label(shlSupprimerTag, SWT.NONE);
-		lblSupprimerTags.setBounds(190, 27, 109, 14);
-		lblSupprimerTags.setText("Supprimer Tags");
+	private Set<Tag> tags;
 
-		Label lblListeDesTags = new Label(shlSupprimerTag, SWT.NONE);
-		lblListeDesTags.setBounds(34, 72, 125, 14);
-		lblListeDesTags.setText("Liste des tags :");
+	private String USERNAME;
 
-		listTags = new List(shlSupprimerTag, SWT.BORDER);
-		listTags.setBounds(31, 92, 197, 110);
+	protected Shell shlSupprimerTag;
 
-		btnSupprimer = new Button(shlSupprimerTag, SWT.NONE);
+	public Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> getMap() {
+		return map;
+	}
 
-		btnSupprimer.setBounds(473, 228, 94, 28);
-		btnSupprimer.setText("Supprimer");
-
-		btnHome = new Button(shlSupprimerTag, SWT.NONE);
-
-		btnHome.setBounds(10, 228, 73, 28);
-		btnHome.setText("Home");
-
-		lblListeDesMatires = new Label(shlSupprimerTag, SWT.NONE);
-		lblListeDesMatires.setBounds(346, 72, 185, 14);
-		lblListeDesMatires.setText("Liste des matières associées :");
-
-		listMatassociees = new List(shlSupprimerTag, SWT.BORDER);
-		listMatassociees.setEnabled(false);
-		listMatassociees.setBounds(346, 92, 197, 110);
-
+	public Set<Tag> getTags() {
+		return tags;
 	}
 
 	/**
-	 * Initialise ListTags
-	 * 
-	 * Add All Tags to ListTags
-	 * 
+	 * Open the window.
+	 *
 	 * @throws IOException
 	 * @throws JAXBException
-	 * 
 	 */
-	private void initTagsList() throws JAXBException, IOException {
-		// we get the tags from the user's tags file
-		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
-		Set<Tag> tagsSet = new HashSet<>();
-		for (Tag tag : userListOfTags) {
-			tagsSet.add(tag);
+	public void open(String username) throws JAXBException, IOException {
+		this.USERNAME = username;
+		Display display = Display.getDefault();
+		createContents();
+		shlSupprimerTag.open();
+		shlSupprimerTag.layout();
+		initTagsList();
+		createEvents();
+		while (!shlSupprimerTag.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
 		}
+	}
 
-		/* Adding the Tags to the Jlist of tags */
-		for (Tag tag : tagsSet) {
-			listTags.add(tag.getName());
-		}
+	public void setMap(Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map) {
+		this.map = map;
+	}
 
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
 	}
 
 	private void createEvents() {
 		/**
-		 * Listener used to display the subjects which are linked to the
-		 * selected tag
+		 * Listener used to display the subjects which are linked to the selected tag
 		 */
 		listTags.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -167,9 +144,9 @@ public class GUISVGTAGSupprimer {
 	}
 
 	/**
-	 * This subroutine is used to get the subjects linked to a specific tag
-	 * which is given in param in
-	 * 
+	 * This subroutine is used to get the subjects linked to a specific tag which is
+	 * given in param in
+	 *
 	 * @param specificTag
 	 * @return
 	 */
@@ -192,39 +169,71 @@ public class GUISVGTAGSupprimer {
 	}
 
 	/**
-	 * Open the window.
-	 * 
+	 * Initialise ListTags
+	 *
+	 * Add All Tags to ListTags
+	 *
 	 * @throws IOException
 	 * @throws JAXBException
+	 *
 	 */
-	public void open(String username) throws JAXBException, IOException {
-		this.USERNAME = username;
-		Display display = Display.getDefault();
-		createContents();
-		shlSupprimerTag.open();
-		shlSupprimerTag.layout();
-		initTagsList();
-		createEvents();
-		while (!shlSupprimerTag.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
+	private void initTagsList() throws JAXBException, IOException {
+		// we get the tags from the user's tags file
+		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
+		Set<Tag> tagsSet = new HashSet<>();
+		for (Tag tag : userListOfTags) {
+			tagsSet.add(tag);
 		}
+
+		/* Adding the Tags to the Jlist of tags */
+		for (Tag tag : tagsSet) {
+			listTags.add(tag.getName());
+		}
+
 	}
 
-	public Set<Tag> getTags() {
-		return tags;
-	}
+	/**
+	 * Create contents of the window.
+	 *
+	 * @wbp.parser.entryPoint
+	 */
+	protected void createContents() {
+		shlSupprimerTag = new Shell();
+		shlSupprimerTag.setSize(577, 293);
+		shlSupprimerTag.setText("Supprimer Tag");
 
-	public void setTags(Set<Tag> tags) {
-		this.tags = tags;
-	}
+		Label lblLogin = new Label(shlSupprimerTag, SWT.NONE);
+		lblLogin.setBounds(21, 42, 210, 133);
+		lblLogin.setText(USERNAME);
 
-	public Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> getMap() {
-		return map;
-	}
+		Label lblSupprimerTags = new Label(shlSupprimerTag, SWT.NONE);
+		lblSupprimerTags.setBounds(190, 27, 109, 14);
+		lblSupprimerTags.setText("Supprimer Tags");
 
-	public void setMap(Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map) {
-		this.map = map;
+		Label lblListeDesTags = new Label(shlSupprimerTag, SWT.NONE);
+		lblListeDesTags.setBounds(34, 72, 125, 14);
+		lblListeDesTags.setText("Liste des tags :");
+
+		listTags = new List(shlSupprimerTag, SWT.BORDER);
+		listTags.setBounds(31, 92, 197, 110);
+
+		btnSupprimer = new Button(shlSupprimerTag, SWT.NONE);
+
+		btnSupprimer.setBounds(473, 228, 94, 28);
+		btnSupprimer.setText("Supprimer");
+
+		btnHome = new Button(shlSupprimerTag, SWT.NONE);
+
+		btnHome.setBounds(10, 228, 73, 28);
+		btnHome.setText("Home");
+
+		lblListeDesMatires = new Label(shlSupprimerTag, SWT.NONE);
+		lblListeDesMatires.setBounds(346, 72, 185, 14);
+		lblListeDesMatires.setText("Liste des matières associées :");
+
+		listMatassociees = new List(shlSupprimerTag, SWT.BORDER);
+		listMatassociees.setEnabled(false);
+		listMatassociees.setBounds(346, 92, 197, 110);
+
 	}
 }

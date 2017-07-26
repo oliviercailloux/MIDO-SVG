@@ -11,35 +11,20 @@ import java.util.ArrayList;
 public class Department {
 	// name of the department (for example: "MIDO", "LSO" etc.)
 	private String title;
+
 	// list of the formations
 	protected ArrayList<Formation> listOfFormations;
+
 	// coordinate X
 	protected int posX;
+
 	// coordinate Y
 	protected int posY;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getNomDepartement() {
-		return title;
-	}
-
-	public int getX() {
-		return posX;
-	}
-
-	public void setX(int x) {
-		this.posX = x;
-	}
-
-	public int getY() {
-		return posY;
-	}
-
-	public void setY(int y) {
-		this.posY = y;
+	public Department() {
+		this.title = "";
+		this.posX = 0;
+		this.posY = 0;
 	}
 
 	// Constructors
@@ -50,9 +35,27 @@ public class Department {
 
 	}
 
-	public Department() {
-		this.title = "";
-		this.posX = 0;
-		this.posY = 0;
+	public String getNomDepartement() {
+		return title;
+	}
+
+	public int getX() {
+		return posX;
+	}
+
+	public int getY() {
+		return posY;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setX(int x) {
+		this.posX = x;
+	}
+
+	public void setY(int y) {
+		this.posY = y;
 	}
 }

@@ -3,24 +3,28 @@ package com.github.cocolollipop.mido_svg.paper;
 /**
  * This class is used to create different format of paper. It's based on the
  * pattern factory
- * 
+ *
  * @author Cocolollipop
  *
  */
 public class FactoryPaper {
+
+	public enum TypeFormat {
+		A3, A4, Other
+
+	}
 
 	/**
 	 * Current possibilities for format's settings
 	 */
 	private Enum<?> format;
 
-	public enum TypeFormat {
-		A4, A3, Other
+	public FactoryPaper() {
 
 	}
 
-	public FactoryPaper() {
-
+	public Enum<?> getFormat() {
+		return format;
 	}
 
 	public Paper getPaper(Enum<?> settings) {
@@ -39,10 +43,6 @@ public class FactoryPaper {
 
 		return null;
 
-	}
-
-	public Enum<?> getFormat() {
-		return format;
 	}
 
 	public void setFormat(Enum<?> format) {

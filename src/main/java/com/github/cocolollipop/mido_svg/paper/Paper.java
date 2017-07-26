@@ -7,6 +7,7 @@ package com.github.cocolollipop.mido_svg.paper;
 public class Paper {
 
 	private int dimXCanvas;
+
 	private int dimYCanvas;
 
 	public Paper() {
@@ -25,12 +26,12 @@ public class Paper {
 		return dimXCanvas;
 	}
 
-	public void setDimXCanvas(int dimXCanvas) {
-		this.dimXCanvas = dimXCanvas;
-	}
-
 	public int getDimYCanvas() {
 		return dimYCanvas;
+	}
+
+	public void setDimXCanvas(int dimXCanvas) {
+		this.dimXCanvas = dimXCanvas;
 	}
 
 	public void setDimYCanvas(int dimYCanvas) {

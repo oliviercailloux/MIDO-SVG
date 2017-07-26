@@ -28,16 +28,6 @@ public class Tag {
 	@XmlElement(name = "subject")
 	private Set<String> subjects; // we are using a set to avoid duplicate entry
 
-	public void setName(String name) {
-		this.name = name;
-
-	}
-
-	public String getName() {
-		return this.name;
-
-	}
-
 	public void addSubject(String math) {
 		if (subjects == null) {
 			this.subjects = new HashSet<>();
@@ -46,8 +36,18 @@ public class Tag {
 
 	}
 
+	public String getName() {
+		return this.name;
+
+	}
+
 	public Set<String> getSubjects() {
 		return this.subjects;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+
 	}
 
 }

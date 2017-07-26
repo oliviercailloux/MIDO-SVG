@@ -16,7 +16,7 @@ import com.github.cocolollipop.mido_svg.xml.jaxb.model.TagStore;
 
 /**
  * This class is used to use JAXB
- * 
+ *
  * @author Cocolollipop
  *
  */
@@ -25,14 +25,13 @@ public class ControllerJAXB {
 
 	/**
 	 * This subroutine is used to create an XML file from tags
-	 * 
+	 *
 	 * @throws JAXBException
 	 */
 	public void createTagsFileXML(String username) throws JAXBException {
 		// Map tags, String user
 		/**
-		 * We know that the list of available subjects contains: proba, java,
-		 * logique
+		 * We know that the list of available subjects contains: proba, java, logique
 		 */
 		List<Tag> TagList = new ArrayList<>();
 
@@ -69,9 +68,33 @@ public class ControllerJAXB {
 
 	}
 
+	public void createTagsFileXML(String username, List<Tag> userListOfTags) throws JAXBException {
+		// Map tags, String user
+		/**
+		 * We know that the list of available subjects contains: proba, java, logique
+		 */
+
+		// create tagstore
+		TagStore tagstore = new TagStore();
+		tagstore.setName("TagStore");
+		tagstore.setTagList(userListOfTags);
+
+		// create JAXB context and instantiate marshaller
+		JAXBContext context = JAXBContext.newInstance(TagStore.class);
+		Marshaller m = context.createMarshaller();
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+		// Write to System.out
+		m.marshal(tagstore, System.out);
+
+		// Write to File
+		m.marshal(tagstore, new File(PATH_TAGS + username + "-tagstore-jaxb.xml"));
+
+	}
+
 	/**
 	 * This subroutine creates tags from an XML file
-	 * 
+	 *
 	 * @return
 	 * @throws JAXBException
 	 * @throws IOException
@@ -100,31 +123,6 @@ public class ControllerJAXB {
 
 		}
 		return null;
-
-	}
-
-	public void createTagsFileXML(String username, List<Tag> userListOfTags) throws JAXBException {
-		// Map tags, String user
-		/**
-		 * We know that the list of available subjects contains: proba, java,
-		 * logique
-		 */
-
-		// create tagstore
-		TagStore tagstore = new TagStore();
-		tagstore.setName("TagStore");
-		tagstore.setTagList(userListOfTags);
-
-		// create JAXB context and instantiate marshaller
-		JAXBContext context = JAXBContext.newInstance(TagStore.class);
-		Marshaller m = context.createMarshaller();
-		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-		// Write to System.out
-		m.marshal(tagstore, System.out);
-
-		// Write to File
-		m.marshal(tagstore, new File(PATH_TAGS + username + "-tagstore-jaxb.xml"));
 
 	}
 }

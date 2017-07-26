@@ -19,48 +19,324 @@ import com.github.cocolollipop.mido_svg.svg_generator.Settings;
 
 public class GUISVGGenerator {
 
-	protected Shell shell;
-	private String USERNAME;
-	private Button btnCheckButtonAutre;
-	private Button btnCheckButtonA4;
-	private Button btnCheckButtonA3;
-	private Label lblLargeur;
-	private Label lblLongueur;
-	private Label lblMsg1;
-	private Label lblChoixDeLaffichage;
-	private Button btnLesprerequis;
-	private Button btnLesEnseignants;
-	private Button btnLesMatires;
-	private Button btnLesResponsables;
-	private Button btnLicence;
-	private Button btnMaster;
-	private Label lblEtou;
-	private Label lblOptionsDaffichage;
-	private Button btnLeModeDadmission;
-	private Button btnFermer;
-	private Button btnPush;
-	private Label labelEtat;
-	private boolean affFormationLicence; // variable to
-	private boolean affFormationMaster;
-	private boolean affResponsable;
 	private boolean affAdmission;
-	private boolean affSubject;
-	private boolean affTeacher;
+
+	private boolean affFormationLicence; // variable to
+
+	private boolean affFormationMaster;
+
 	private boolean affPrereq;
+
+	private boolean affResponsable;
+
+	private boolean affSubject;
+
+	private boolean affTeacher;
+
+	private Button btnCheckButtonA3;
+
+	private Button btnCheckButtonA4;
+
+	private Button btnCheckButtonAutre;
+
+	private Button btnFermer;
+
+	private Button btnLeModeDadmission;
+
+	private Button btnLesEnseignants;
+
+	private Button btnLesMatires;
+
+	private Button btnLesprerequis;
+
+	private Button btnLesResponsables;
+
+	private Button btnLicence;
+
+	private Button btnMaster;
+
+	private Button btnPush;
+
 	private DataBase datas;
-	private Settings settings;
-	private int width;
+
 	private int height;
 
-	private DrawerSVGGen svg = new DrawerSVGGen();
-	ResponsiveSVG responsive = new ResponsiveSVG();
+	private Label labelEtat;
+
+	private Label lblChoixDeLaffichage;
+
+	private Label lblEtou;
+
+	private Label lblLargeur;
+
+	private Label lblLongueur;
+
+	private Label lblMsg1;
+
+	private Label lblOptionsDaffichage;
+
+	private Settings settings;
+
+	private Spinner spinnerheight;
 
 	private Spinner spinnerwidth;
-	private Spinner spinnerheight;
+
+	private DrawerSVGGen svg = new DrawerSVGGen();
+
+	private String USERNAME;
+
+	private int width;
+
+	protected Shell shell;
+
+	ResponsiveSVG responsive = new ResponsiveSVG();
+
+	/**
+	 * Open the window.
+	 *
+	 * @throws IOException
+	 */
+
+	public void open(String username) throws IOException {
+		this.USERNAME = username;
+		Display display = Display.getDefault();
+		createContents();
+		shell.open();
+		shell.layout();
+		createEvents();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
+
+	private void createEvents() {
+
+		btnCheckButtonAutre.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (btnCheckButtonAutre.getSelection()) {
+
+					lblMsg1.setText("Saisissez le format souhaité :");
+					lblLargeur.setText("Largeur");
+					lblLongueur.setText("Longueur");
+
+					spinnerwidth = new Spinner(shell, SWT.BORDER);
+					spinnerwidth.setMaximum(5000);
+					spinnerwidth.setMinimum(1000);
+					spinnerwidth.setBounds(469, 141, 71, 27);
+
+					spinnerheight = new Spinner(shell, SWT.BORDER);
+					spinnerheight.setMaximum(5000);
+					spinnerheight.setMinimum(1000);
+					spinnerheight.setBounds(469, 181, 71, 28);
+
+				}
+
+			}
+		});
+
+		/**
+		 * Check box to choose Licence
+		 *
+		 */
+
+		btnLicence.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (btnLicence.getSelection()) {
+					affFormationLicence = false;
+				} else {
+					affFormationLicence = true;
+				}
+
+			}
+		});
+
+		/**
+		 * Check box to choose Master
+		 *
+		 */
+
+		btnMaster.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				if (btnMaster.getSelection()) {
+					affFormationMaster = false;
+				} else {
+					affFormationMaster = true;
+				}
+			}
+		});
+
+		/**
+		 * Check box to choose display responsibles of a Formation
+		 *
+		 */
+
+		btnLesResponsables.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				if (btnLesResponsables.getSelection()) {
+					affResponsable = false;
+				} else {
+					affResponsable = true;
+
+				}
+			}
+		});
+
+		/**
+		 * Check box to choose display Subjects of a Formation
+		 *
+		 */
+
+		btnLesMatires.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (btnLesMatires.getSelection()) {
+					affSubject = false;
+				} else {
+					affSubject = true;
+
+				}
+
+			}
+		});
+
+		btnLesEnseignants.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (btnLesEnseignants.getSelection()) {
+					affTeacher = false;
+				} else {
+					affTeacher = true;
+
+				}
+			}
+		});
+
+		/**
+		 * Check box to choose display Prerequisites of a subject
+		 *
+		 */
+
+		btnLesprerequis.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				if (btnLesprerequis.getSelection()) {
+					affPrereq = false;
+				} else {
+					affPrereq = true;
+
+				}
+			}
+		});
+
+		/**
+		 * Check box to choose display "Admission" or not
+		 *
+		 */
+		btnLeModeDadmission.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				if (btnLeModeDadmission.getSelection()) {
+					affAdmission = false;
+				} else {
+					affAdmission = true;
+
+				}
+			}
+		});
+
+		/**** Close Button ****/
+
+		btnFermer.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				shell.close();
+			}
+		});
+
+		/**** Push Button to generate the SVG ****/
+
+		btnPush.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+
+				try {
+					if (btnCheckButtonA3.getSelection()) { // If this radio
+															// button is
+															// selected form =
+															// "A3"
+						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
+								affSubject, affTeacher, affPrereq, "A3");
+
+					} else if (btnCheckButtonA4.getSelection()) { // If this
+																	// radio
+																	// button is
+																	// selected
+																	// form =
+																	// "A4"
+						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
+								affSubject, affTeacher, affPrereq, "A4");
+
+					} else if (btnCheckButtonAutre.getSelection()) { // Else If
+																		// this
+																		// radio
+																		// button
+																		// is
+																		// selected
+																		// the
+																		// user
+																		// get
+																		// to
+																		// choose
+																		// his
+																		// own
+																		// values
+																		// height,
+																		// width
+
+						// we should get back the values that the user has
+						// entered in the spinners
+						height = spinnerheight.getSelection();
+						width = spinnerwidth.getSelection();
+
+						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
+								affSubject, affTeacher, affPrereq, width, height);
+					}
+
+					datas = new DataBase(settings);
+					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
+					svg.paint(settings, datas);
+
+					File file = new File("./src/main/resources/images/mido-drawing.svg");
+
+					try {
+						java.awt.Desktop.getDesktop().open(file);
+					} catch (IOException exc) {
+						System.out.println("Exception: " + exc.toString());
+					}
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+
+				labelEtat.setText(" SVG généré ");
+			}
+		});
+
+	}
 
 	/**
 	 * Create contents of the window.
-	 * 
+	 *
 	 * @wbp.parser.entryPoint
 	 */
 	protected void createContents() {
@@ -176,248 +452,5 @@ public class GUISVGGenerator {
 		labelEtat = new Label(shell, SWT.NONE);
 		labelEtat.setBounds(185, 467, 183, 14);
 
-	}
-
-	private void createEvents() {
-
-		btnCheckButtonAutre.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (btnCheckButtonAutre.getSelection()) {
-
-					lblMsg1.setText("Saisissez le format souhaité :");
-					lblLargeur.setText("Largeur");
-					lblLongueur.setText("Longueur");
-
-					spinnerwidth = new Spinner(shell, SWT.BORDER);
-					spinnerwidth.setMaximum(5000);
-					spinnerwidth.setMinimum(1000);
-					spinnerwidth.setBounds(469, 141, 71, 27);
-
-					spinnerheight = new Spinner(shell, SWT.BORDER);
-					spinnerheight.setMaximum(5000);
-					spinnerheight.setMinimum(1000);
-					spinnerheight.setBounds(469, 181, 71, 28);
-
-				}
-
-			}
-		});
-
-		/**
-		 * Check box to choose Licence
-		 * 
-		 */
-
-		btnLicence.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (btnLicence.getSelection()) {
-					affFormationLicence = false;
-				} else {
-					affFormationLicence = true;
-				}
-
-			}
-		});
-
-		/**
-		 * Check box to choose Master
-		 * 
-		 */
-
-		btnMaster.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-
-				if (btnMaster.getSelection()) {
-					affFormationMaster = false;
-				} else {
-					affFormationMaster = true;
-				}
-			}
-		});
-
-		/**
-		 * Check box to choose display responsibles of a Formation
-		 * 
-		 */
-
-		btnLesResponsables.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-
-				if (btnLesResponsables.getSelection()) {
-					affResponsable = false;
-				} else {
-					affResponsable = true;
-
-				}
-			}
-		});
-
-		/**
-		 * Check box to choose display Subjects of a Formation
-		 * 
-		 */
-
-		btnLesMatires.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (btnLesMatires.getSelection()) {
-					affSubject = false;
-				} else {
-					affSubject = true;
-
-				}
-
-			}
-		});
-
-		btnLesEnseignants.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (btnLesEnseignants.getSelection()) {
-					affTeacher = false;
-				} else {
-					affTeacher = true;
-
-				}
-			}
-		});
-
-		/**
-		 * Check box to choose display Prerequisites of a subject
-		 * 
-		 */
-
-		btnLesprerequis.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-
-				if (btnLesprerequis.getSelection()) {
-					affPrereq = false;
-				} else {
-					affPrereq = true;
-
-				}
-			}
-		});
-
-		/**
-		 * Check box to choose display "Admission" or not
-		 * 
-		 */
-		btnLeModeDadmission.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-
-				if (btnLeModeDadmission.getSelection()) {
-					affAdmission = false;
-				} else {
-					affAdmission = true;
-
-				}
-			}
-		});
-
-		/**** Close Button ****/
-
-		btnFermer.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				shell.close();
-			}
-		});
-
-		/**** Push Button to generate the SVG ****/
-
-		btnPush.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-
-				try {
-					if (btnCheckButtonA3.getSelection()) { // If this radio
-															// button is
-															// selected form =
-															// "A3"
-						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
-								affSubject, affTeacher, affPrereq, "A3");
-
-					} else if (btnCheckButtonA4.getSelection()) { // If this
-																	// radio
-																	// button is
-																	// selected
-																	// form =
-																	// "A4"
-						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
-								affSubject, affTeacher, affPrereq, "A4");
-
-					} else if (btnCheckButtonAutre.getSelection()) { // Else If
-																		// this
-																		// radio
-																		// button
-																		// is
-																		// selected
-																		// the
-																		// user
-																		// get
-																		// to
-																		// choose
-																		// his
-																		// own
-																		// values
-																		// height,
-																		// width
-
-						// we should get back the values that the user has
-						// entered in the spinners
-						height = spinnerheight.getSelection();
-						width = spinnerwidth.getSelection();
-
-						settings = new Settings(affFormationLicence, affFormationMaster, affResponsable, affAdmission,
-								affSubject, affTeacher, affPrereq, width, height);
-					}
-
-					datas = new DataBase(settings);
-					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
-					svg.paint(settings, datas);
-
-					File file = new File("./src/main/resources/images/mido-drawing.svg");
-
-					try {
-						java.awt.Desktop.getDesktop().open(file);
-					} catch (IOException exc) {
-						System.out.println("Exception: " + exc.toString());
-					}
-
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-
-				labelEtat.setText(" SVG généré ");
-			}
-		});
-
-	}
-
-	/**
-	 * Open the window.
-	 * 
-	 * @throws IOException
-	 */
-
-	public void open(String username) throws IOException {
-		this.USERNAME = username;
-		Display display = Display.getDefault();
-		createContents();
-		shell.open();
-		shell.layout();
-		createEvents();
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
 	}
 }

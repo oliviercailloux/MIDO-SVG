@@ -25,135 +25,71 @@ import com.github.cocolollipop.mido_svg.xml.jaxb.model.Tag;
 
 public class GUISVGTAGAjouter {
 
-	private String USERNAME;
-	protected Shell shlAjouterTags;
-	private Text textNomTag;
 	private Button btnAjouter;
+
 	private Button btnHome;
-	private List listTags;
+
 	private Button button;
+
 	private Button button_1;
-	private String selectedSubject;
-	private List listSujets1;
-	private List listSujets2;
-	private Tag tag = new Tag();
+
 	private DataBase data = new DataBase();
-	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
+
 	private ControllerJAXB jaxb = new ControllerJAXB();
+
 	private List listMatassociees;
 
-	/**
-	 * Create contents of the window.
-	 * 
-	 * @wbp.parser.entryPoint
-	 */
-	protected void createContents() {
-		shlAjouterTags = new Shell();
-		shlAjouterTags.setSize(634, 427);
-		shlAjouterTags.setText("Ajouter Tags");
+	private List listSujets1;
 
-		Label lblLogin = new Label(shlAjouterTags, SWT.NONE);
-		lblLogin.setBounds(35, 10, 63, 104);
-		lblLogin.setText(USERNAME);
+	private List listSujets2;
 
-		Label lblAjouterTags = new Label(shlAjouterTags, SWT.NONE);
-		lblAjouterTags.setBounds(210, 10, 137, 14);
-		lblAjouterTags.setText("Ajouter Tags");
+	private List listTags;
 
-		Label lblListeDeM = new Label(shlAjouterTags, SWT.NONE);
-		lblListeDeM.setBounds(25, 60, 186, 14);
-		lblListeDeM.setText("Liste de mes tags :");
+	private Map<String, com.github.cocolollipop.mido_svg.university.components.Subject> map = data.getSubjects();
 
-		listTags = new List(shlAjouterTags, SWT.BORDER | SWT.H_SCROLL);
-		listTags.setBounds(138, 43, 150, 65);
+	private String selectedSubject;
 
-		Label lblAjouterUnTag = new Label(shlAjouterTags, SWT.NONE);
-		lblAjouterUnTag.setBounds(25, 127, 128, 14);
-		lblAjouterUnTag.setText("Ajouter un Tag :");
+	private Tag tag = new Tag();
 
-		Label lblNomDuTag = new Label(shlAjouterTags, SWT.NONE);
-		lblNomDuTag.setBounds(187, 165, 106, 14);
-		lblNomDuTag.setText("Nom du Tag : ");
+	private Text textNomTag;
 
-		textNomTag = new Text(shlAjouterTags, SWT.BORDER);
-		textNomTag.setBounds(341, 162, 150, 19);
+	private String USERNAME;
 
-		Label lblSujetsAssocier = new Label(shlAjouterTags, SWT.NONE);
-		lblSujetsAssocier.setBounds(25, 211, 128, 14);
-		lblSujetsAssocier.setText("Sujets à associer:");
+	protected Shell shlAjouterTags;
 
-		listSujets1 = new List(shlAjouterTags, SWT.BORDER);
-		listSujets1.setBounds(103, 231, 164, 104);
-
-		listSujets2 = new List(shlAjouterTags, SWT.BORDER);
-		listSujets2.setBounds(431, 231, 164, 104);
-
-		button = new Button(shlAjouterTags, SWT.NONE);
-
-		button.setBounds(317, 246, 47, 28);
-		button.setText(">>");
-
-		button_1 = new Button(shlAjouterTags, SWT.NONE);
-
-		button_1.setText("<<");
-		button_1.setBounds(317, 280, 47, 28);
-
-		btnHome = new Button(shlAjouterTags, SWT.NONE);
-
-		btnHome.setBounds(35, 363, 57, 28);
-		btnHome.setText("Home");
-
-		btnAjouter = new Button(shlAjouterTags, SWT.NONE);
-
-		btnAjouter.setBounds(464, 363, 94, 28);
-		btnAjouter.setText("Ajouter");
-
-		listMatassociees = new List(shlAjouterTags, SWT.BORDER);
-		listMatassociees.setEnabled(false);
-		listMatassociees.setBounds(464, 43, 160, 65);
-
-		Label lblLesMatiresAssocies = new Label(shlAjouterTags, SWT.NONE);
-		lblLesMatiresAssocies.setBounds(317, 60, 128, 14);
-		lblLesMatiresAssocies.setText("Les matières associées:");
-
+	public Tag getTag() {
+		return tag;
 	}
 
 	/**
-	 * Initialise ListTags
-	 * 
-	 * 1- Adds All Subjects to ListSubject1 of GUI 2- Adds All Tags to listTags
-	 * of GUI
-	 * 
+	 * Open the window.
+	 *
 	 * @throws IOException
 	 * @throws JAXBException
-	 * 
 	 */
-	private void initTagsList() throws JAXBException, IOException {
-		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
-		Set<Tag> tagsSet = new HashSet<>();
-
-		/* Adding the subjects to the Jlist of Subjetcs */
-		for (String name : map.keySet()) {
-			String value = map.get(name).getTitle();
-			listSujets1.add(value);
-
-			/* Adding the Tags to the Jlist of tags */
-			for (Tag tag1 : userListOfTags) {
-				tagsSet.add(tag1);
-
+	public void open(String username) throws JAXBException, IOException {
+		this.USERNAME = username;
+		Display display = Display.getDefault();
+		createContents();
+		shlAjouterTags.open();
+		shlAjouterTags.layout();
+		initTagsList();
+		createEvents();
+		while (!shlAjouterTags.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
 			}
 		}
+	}
 
-		for (Tag tag1 : tagsSet) {
-			listTags.add(tag1.getName());
-		}
+	public void setTag(Tag tag) {
+		this.tag = tag;
 	}
 
 	private void createEvents() {
 
 		/**
-		 * Listener used to display the subjects which are linked to the
-		 * selected tag
+		 * Listener used to display the subjects which are linked to the selected tag
 		 */
 		listTags.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -242,9 +178,9 @@ public class GUISVGTAGAjouter {
 	}
 
 	/**
-	 * This subroutine is used to get the subjects linked to a specific tag
-	 * which is given in param in
-	 * 
+	 * This subroutine is used to get the subjects linked to a specific tag which is
+	 * given in param in
+	 *
 	 * @param string
 	 * @return
 	 */
@@ -267,31 +203,109 @@ public class GUISVGTAGAjouter {
 	}
 
 	/**
-	 * Open the window.
-	 * 
+	 * Initialise ListTags
+	 *
+	 * 1- Adds All Subjects to ListSubject1 of GUI 2- Adds All Tags to listTags of
+	 * GUI
+	 *
 	 * @throws IOException
 	 * @throws JAXBException
+	 *
 	 */
-	public void open(String username) throws JAXBException, IOException {
-		this.USERNAME = username;
-		Display display = Display.getDefault();
-		createContents();
-		shlAjouterTags.open();
-		shlAjouterTags.layout();
-		initTagsList();
-		createEvents();
-		while (!shlAjouterTags.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
+	private void initTagsList() throws JAXBException, IOException {
+		java.util.List<Tag> userListOfTags = jaxb.readTagsFileXML(USERNAME);
+		Set<Tag> tagsSet = new HashSet<>();
+
+		/* Adding the subjects to the Jlist of Subjetcs */
+		for (String name : map.keySet()) {
+			String value = map.get(name).getTitle();
+			listSujets1.add(value);
+
+			/* Adding the Tags to the Jlist of tags */
+			for (Tag tag1 : userListOfTags) {
+				tagsSet.add(tag1);
+
 			}
+		}
+
+		for (Tag tag1 : tagsSet) {
+			listTags.add(tag1.getName());
 		}
 	}
 
-	public Tag getTag() {
-		return tag;
-	}
+	/**
+	 * Create contents of the window.
+	 *
+	 * @wbp.parser.entryPoint
+	 */
+	protected void createContents() {
+		shlAjouterTags = new Shell();
+		shlAjouterTags.setSize(634, 427);
+		shlAjouterTags.setText("Ajouter Tags");
 
-	public void setTag(Tag tag) {
-		this.tag = tag;
+		Label lblLogin = new Label(shlAjouterTags, SWT.NONE);
+		lblLogin.setBounds(35, 10, 63, 104);
+		lblLogin.setText(USERNAME);
+
+		Label lblAjouterTags = new Label(shlAjouterTags, SWT.NONE);
+		lblAjouterTags.setBounds(210, 10, 137, 14);
+		lblAjouterTags.setText("Ajouter Tags");
+
+		Label lblListeDeM = new Label(shlAjouterTags, SWT.NONE);
+		lblListeDeM.setBounds(25, 60, 186, 14);
+		lblListeDeM.setText("Liste de mes tags :");
+
+		listTags = new List(shlAjouterTags, SWT.BORDER | SWT.H_SCROLL);
+		listTags.setBounds(138, 43, 150, 65);
+
+		Label lblAjouterUnTag = new Label(shlAjouterTags, SWT.NONE);
+		lblAjouterUnTag.setBounds(25, 127, 128, 14);
+		lblAjouterUnTag.setText("Ajouter un Tag :");
+
+		Label lblNomDuTag = new Label(shlAjouterTags, SWT.NONE);
+		lblNomDuTag.setBounds(187, 165, 106, 14);
+		lblNomDuTag.setText("Nom du Tag : ");
+
+		textNomTag = new Text(shlAjouterTags, SWT.BORDER);
+		textNomTag.setBounds(341, 162, 150, 19);
+
+		Label lblSujetsAssocier = new Label(shlAjouterTags, SWT.NONE);
+		lblSujetsAssocier.setBounds(25, 211, 128, 14);
+		lblSujetsAssocier.setText("Sujets à associer:");
+
+		listSujets1 = new List(shlAjouterTags, SWT.BORDER);
+		listSujets1.setBounds(103, 231, 164, 104);
+
+		listSujets2 = new List(shlAjouterTags, SWT.BORDER);
+		listSujets2.setBounds(431, 231, 164, 104);
+
+		button = new Button(shlAjouterTags, SWT.NONE);
+
+		button.setBounds(317, 246, 47, 28);
+		button.setText(">>");
+
+		button_1 = new Button(shlAjouterTags, SWT.NONE);
+
+		button_1.setText("<<");
+		button_1.setBounds(317, 280, 47, 28);
+
+		btnHome = new Button(shlAjouterTags, SWT.NONE);
+
+		btnHome.setBounds(35, 363, 57, 28);
+		btnHome.setText("Home");
+
+		btnAjouter = new Button(shlAjouterTags, SWT.NONE);
+
+		btnAjouter.setBounds(464, 363, 94, 28);
+		btnAjouter.setText("Ajouter");
+
+		listMatassociees = new List(shlAjouterTags, SWT.BORDER);
+		listMatassociees.setEnabled(false);
+		listMatassociees.setBounds(464, 43, 160, 65);
+
+		Label lblLesMatiresAssocies = new Label(shlAjouterTags, SWT.NONE);
+		lblLesMatiresAssocies.setBounds(317, 60, 128, 14);
+		lblLesMatiresAssocies.setText("Les matières associées:");
+
 	}
 }
