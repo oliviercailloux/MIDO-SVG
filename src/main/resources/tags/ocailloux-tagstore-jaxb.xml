@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:tagStore xmlns:ns2="com.github.cocolollipop.mido_svg.xml.jaxb.model">
+    <tagList>
+        <tag>
+            <name>info</name>
+            <subjects>
+                <subject>proba</subject>
+                <subject>java</subject>
+            </subjects>
+        </tag>
+        <tag>
+            <name>maths</name>
+            <subjects>
+                <subject>java</subject>
+                <subject>proba</subject>
+                <subject>logique</subject>
+            </subjects>
+        </tag>
+    </tagList>
+    <name>TagStore</name>
+</ns2:tagStore>

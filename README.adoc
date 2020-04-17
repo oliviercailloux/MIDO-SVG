@@ -1,68 +1,59 @@
 = MIDO SVG
-
+ 
 A Java project developed during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
-
+ 
 The code is hereby published under the MIT License, with their permission.
-
+ 
 Here below, a part of the “Rapport” written by the students who coded on the project.
-
+ 
 == Objectif du projet
  
-L’objectif premier de ce projet est de créer une bibliothèque qui permet à un utilisateur de créer un dessin (au format SVG) représentant au moyen d’un arbre, les formations offertes dans le département MIDO. Il est aussi possible d’afficher les détails des formations, les enseignants, etc. Les informations utilisées pour la génération du dessin sont entrées manuellement.
- 
-A l’issue de cela, l’idée est de généraliser la bibliothèque afin qu’elle puisse à terme, être utilisée à une plus grande échelle, ce en récupérant les informations sur le site de l’université.
- 
-== Notre solution
+L’objectif premier de ce projet est de créer une bibliothèque qui permet à un utilisateur de créer un dessin (au format SVG) représentant au moyen d’un arbre, les formations offertes dans le département MIDO. Il est aussi possible d’afficher les détails des formations, les enseignants, etc. L’idée est de généraliser et dynamiser la bibliothèque afin qu’elle puisse être utilisée à une plus grande échelle, ce en récupérant les informations sur le site de l’université.
 
-=== L’architecture
+== Evolution Prévue (objectif à long terme)
 
-On a séparé nos classes en 9 packages  en ayant pris soin de respecter une architecture MVC (Model View Controller):
- 
-* controller : Permet de générer un fichier XML qui permet de faire le lien entre des tags et des matières.
-* jUnit : Contient les tests unitaires réalisés.
-* model : Contient la base de données, avec tous les objets créés ou récupérable par XML.
-* paper : Permet de définir la taille du canevas , Il prend 2 formes standard, connues (A3 et A4) et une forme libre (“Other”). Le pattern factory permet cette gestion.
-* svg_generator : Contient les classes permettant de générer le SVG: 
-** ResponsiveSVG: permet de placer les informations au bon endroit sur le dessin en fonction du papier
-** DrawSVGGen: dessine les formes (les traits, les flèches,les rectangles ..) et dessine les informations ( les formations, les enseignants ..) 
-** settings: précise les paramètres d’affichage .
-* university.components : Ce package contient tous les éléments permettant de “former” une université : Une formation(Formation.java), un professeur(Teacher.java), une matière (Subject.java).
-* view : Contient les interfaces graphiques qui se présente en deux parties principales : la gestion des tags , et la génération du SVG.
-Ce package contient :
-** Gestion des tags : cette interface nous permet d’ajouter ou supprimer des tags 
-** Génération du SVG : cette interface nous permet de choisir les paramètres d’affichage et dessiner le SVG 
+Après avoir pris connaissance de l’existant, nous nous sommes aperçus que les évolutions à concevoir se portent essentiellement sur :
 
-* xml_to_java : Permet de rappatrier le fichier XML que vous nous avez donné, https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml, puis d’extraire les données du XML (nom, prenom, adresse mail, etc…)
-* xml.jaxb.model : Permet de générer les tags, et faire le lien avec les matières
- 
- 
-=== Technologies utilisées
- 
-- On a mis en place un projet Maven, hébergé sur Github
-- On a mis en place Travis pour tester notre code source
-- On a utilisé SWT pour générer les interfaces graphiques
-- On a utilisé JAXB pour faire le lien entre tag et matières
-- Pour récupérer les données depuis le fichier XML sur Internet, on a utilisé la classe URL puis le parser DOM du JDK.
-- Pour générer les SVG, on a utilisé Batik
-- Pour les loggers, on a utilisé SLF4J
- 
- 
-== Les fonctionnalités réalisées pour le projet Mido-SVG
- 
-* Une interface graphique qui permettent de générer un fichier SVG, selon les critères de l’utilisateur.(Ikram)
-* Une bibliothèque permettant de générer un fichier SVG mais sans passer par l’interface graphique (un exemple d’utilisation se trouve dans la classe ControllerSVG) (Caroline, Jules, Ikram, Romain)
-* Une interface graphique qui permettent de générer une liste de mots clés (tags) pour des matières(Caroline,Ikram)
-* Génération d’un SVG avec données statiques : voir dessin à la main, se concentrer sur partie Informatique des Organisations, dessin à partir d’une liste de cours en mémoire. (Caroline, Jules, Ikram, Romain)
-* Pouvoir ajouter les responsables aux parcours au dessin.
-* Pouvoir ajouter les enseignants responsables de chaque cours au dessin.
-* Différents types d’informations peuvent être colorées différemment.
-* Récupérer les données depuis le web (Jules, Romain)
-* Liens sur les parcours renvoient au programme des cours(Jules, Caroline)
-* Graphique équivalent pour la licence.
-* Paramètres : licence seulement, master seulement
-* Choix du format : A3 ou A4 ou autres dimensions que l’utilisateur choisit.(Caroline, Ikram)
-* Entrée et affichage de prérequis entre cours.(Ikram)
-* Mots clés sur cours. Utilisateur peut associer des mots-clés aux cours via interface graphique.(Caroline, Ikram, Romain)
-* Mots clés enregistrés dans un fichier. (Caroline)
-* Lecture des mots clés depuis un fichier(Caroline, Ikram,Jules,Romain)
+[square]
+* La récupérationd de la base de données Dauphine
+* La génération d'un fichier SVG fonctionnel
+* L’esthétique GUI, aujourd’hui les différents formulaires sont incomplets et non responsive.
+* Fichier tags, à ce jour la gestion des tags est static.
+* La liste des utilisateurs habilités, dans notre application, nous constatons que seuls un certain nombre d’user est habilité à utiliser l’application. (ocailloux, ikram, cocolollipop, romain, jules)
+
+
+== Objectif itération 1 JAVA
+
+=== Equipe 1 : Base de données
+
+Pré-requis : Après avoir pris contact avec la DSI, prendre connaissance de la structure des données fournis via API-ROF.
+
+Pour action : En s'aidant du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO], voir les classes utiles à la récupération des données.
+Objectif principal : Création d'une package `ROFBDD` permettant de récupérer les données reROF et mettre sous la forme structurelle du package `University` adaptée au traitement SVG.
+
+Objectif à court terme : Création d'un package `ROFBDD` avec 3 classes :
+
+[square]
+* `Queries`, classe permettant de récupérer les données reROF (issue du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO])
+* `QueriesHelper.java`, classe permettant d'établir un accès aux données reROF(issue du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO])
+* `ROFDataBase`, classe `main` permettant de lancer la procédure, en appelant la procédure de connexion `QueriesHelper.setDefaultAuthenticator()` ainsi qu'une liste de `Courses` s'apparentant à l'objet `Subject` du package `University`
+
+Aide : Voir avec le professeur pour l'exécution du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO] afin de voir le fonctionnement. (Problème m2e)
+
+=== Equipe 2 : SVG
+
+Pré-requis : Comprendre la structure d’un fichier SVG et comment elle est générée dans l’application.
+
+Pour action : En se basant sur le jeu de test saisie “en dur”, sur l’image SVG généré à ce jour, les données sont tous superposés. Trouver une solution pour les faire apparaître un en dessous de l’autre.
+Objectif principal : Génération du fichier `SVG` responsive. A ce jour, le paramétrage de chaque données saisie "en dur" admettent un emplacement déterministe.
+
+Objectif à court terme : Actuellement, dû au codage "en dur" des positions des différents éléments d'un graphe MIDO, si nous voulons générer un graphe que de master 2, ces formations seront tout en bas de la page, peut importe la taille `Settings` determiné par l'utilisateur. Cependant, des classes ont été codé dans l'objectif de générer un fichier `SVG` responsive (dans notre cas, si l'utilisateur à choisi de faire apparaître que les masters 2, les formations devront être placées en première ligne en haut du graphe).
+
+[square]
+
+* `mido_svg.view.GUISVGGenerator`, particulièrement la méthode `btnPush.addSelectionListener` qui a pour fonction de générer le fichier au clic du button "Générer SVG" et qui se réfère à la méthode `paint`.
+* `svg_generator.DrawerSVGGen`, particulièrement la méthode `drawFormation` appelé dans la méthode `paint`, ajouter la fonction `defineObjectsPosition`
+* `svg_generator.ResponsiveSVG`, particulièrement la méthode `defineObjectsPosition` qui ne semble pas marcher.
+
+
 

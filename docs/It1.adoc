@@ -1,0 +1,28 @@
+﻿= MIDO - SVG / Itération 1
+
+Le projet MIDO-SVG étant une continuité d’un projet entamé par nos prédécesseurs, il nous a paru important d’établir dans un premier temps un “état des lieux” afin de pouvoir distinguer l’existant et la maintenance à apporter.
+Dans un optique de fluidité transitionnelle, nous avons fait le choix de partager les tâches par packages. Il nous a paru pertinent de modéliser l’existant par un diagramme de classe (exemple : lorsque le package était orienté objet), un diagramme un diagramme de cas d’utilisation (exemple : lorsque le package était orienté procédural) ou une documentation (exemple : model, base de donées).
+
+=== Binôme Raphaël – Camille
+
+* Réalisation du diagramme de classe de l’existant pour les classes du package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existing/UniversityClassDiagram.svg[University.components] et documentation associée
+* Réalisation du diagramme de classe de l’existant pour les classes du package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existing/PaperClassDiagram.svg[Paper] et documentation associée
+* Description dans une documentation de l’existant concernant le package dataBase https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/DocFile.adoc[Model]
+* Réalisation d’un diagramme de cas d’utilisation pour les modifications à venir sur le package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/ComingSoon/DatabaseUseCaseDiagram.svg[dataBase]
+
+
+=== Binôme Sarra - Jérémie
+
+* Réalisation du diagramme de classe de l'existant pour les classes du package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existing/XMLClassDiagram.svg[XML] et documentation associée
+* Réalisation du diagramme de cas d'utilisation (de l'existant) d'un point de vue programmeur du package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existing/SVGUseCaseDiagram.svg[svg_generator] et documentation associée.
+* Réalisation du diagramme de cas d'utilisation (évolutions) d'un point de vue programmeur du package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/ComingSoon/GenerationSVGUseCaseDiagram.svg[svg_generator] et documentation associée.
+* Participation au diagramme de cas d'utilisation pour les modifications à venir sur le package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/ComingSoon/GUIUseCaseDiagram.svg[GUI].
+
+
+=== Binôme Zhenyi – Marcellino
+
+* Réalisation du diagramme de cas d’utilisation du package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existing/GUIUseCaseDiagram.svg[GUI] d’un point de vue utilisateur final
+* Réalisation du diagramme de cas d’utilisation du package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existing/ControllerUseCaseDiagram.svg[controller] d’un point de vue programmeur
+* Réalisation du diagramme de cas d’utilisation du package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existing/JUnitUseCaseDiagram.svg[JUnit] d’un point de vue programmeur
+* Réalisation d'un diagramme de cas d'utilisation pour les modifications à venir sur le package https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/ComingSoon/GUIUseCaseDiagram.svg[GUI]
+
