@@ -9,9 +9,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 
+/** 
+ this class is from the project-mido
+ * */
 public class QueriesHelper {
 
-	// Récupère l'authentificator et indique que ce sera celui la à utiliser en cas de demande d'un authentificator par une page
+	
+	
+	
+	/** 
+	 * the method get the authentificator and indicate that is this one wich is use when it's required
+	 * */
 	public static void setDefaultAuthenticator() {
 		final Authenticator myAuth = getTokenAuthenticator();
 		Authenticator.setDefault(myAuth);
@@ -26,8 +34,7 @@ public class QueriesHelper {
 		}
 		final PasswordAuthentication passwordAuthentication = new PasswordAuthentication("guest_miage",
 				tokenValue.toCharArray());
-		// camille : je pense que c'est username et mdp=tokenValue
-		// mais pq ne pas directement mettre le mdp qu'on a ?
+
 		final Authenticator myAuth = getConstantAuthenticator(passwordAuthentication);
 		return myAuth;
 	}
@@ -56,7 +63,7 @@ public class QueriesHelper {
 			return Optional.empty();
 		}
 		final String content = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
-		// content est le contenu du fichier API_password.txt
+		// content in API_password.txt
 		return Optional.of(content.replaceAll("\n", ""));
 	}
 	
