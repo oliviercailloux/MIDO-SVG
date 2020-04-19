@@ -1,15 +1,26 @@
-package com.github.cocolollipop.mido_svg;
+package com.github.cocolollipop.mido_svg.model;
 
-import static org.junit.Assert.*;
-
-import com.github.cocolollipop.mido_svg.model.*;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
+import java.util.Iterator;
+import java.util.List;
+
+import com.github.cocolollipop.mido_svg.university.components.Subject;
+
+
 
 public class DataRecuperatorTest {
 
+	/**
+	 * Tests to see if the method getSubject create correct objects
+	 * 
+	 * @result the first Subject collected should be "Introduction à la microéconomie" and the second "Anglais 1"
+	 * with their credits and teacher attached
+	 */
 	@Test
 	public void getSubjectsTest() {
-		List<Subject> list = getSubjects("FRUAI0750736TPRCP1ALUEC1");
+		List<Subject> list = DataRecuperator.getSubjects("FRUAI0750736TPRCP1ALUEC1");
 		Assertions.assertEquals(list.size(), 2);
 		
 		Iterator<Subject> l = list.iterator();
