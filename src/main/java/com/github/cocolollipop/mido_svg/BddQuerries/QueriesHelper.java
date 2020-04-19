@@ -17,7 +17,7 @@ import java.util.Optional;
 public class QueriesHelper {
 
 	/** 
-	 * the method get the authenticator and indicate that is this one wich is use when it's required
+	 * the method get the authenticator and indicate that is this one which is use when it's required
 	 * */
 	public static void setDefaultAuthenticator() {
 		final Authenticator myAuth = getTokenAuthenticator();
@@ -26,8 +26,9 @@ public class QueriesHelper {
 
 	
 	/** 
-	 * the method get the token value and build athenticator with this token and the ID
+	 * the method get the token value and build authenticator with this token and the ID
 	 * @return myAuth a Authenticator object which contain ID and the token value
+	 * @see <a href="https://github.com/Dauphine-MIDO/plaquette-MIDO"> plaquette-mido link </a>
 	 * */
 	public static Authenticator getTokenAuthenticator() {
 		final String tokenValue;

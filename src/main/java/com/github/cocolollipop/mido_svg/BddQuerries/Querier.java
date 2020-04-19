@@ -26,15 +26,19 @@ import schemas.ebx.dataservices_1.SelectProgramRequestType;
 import schemas.ebx.dataservices_1.SelectProgramResponseType;
 
 /**
- * This class use the Rof to build objects 
+ * This class use the Rof to build objects which
  * @author plaquette-MIDO
+ * @see <a href="https://github.com/Dauphine-MIDO/plaquette-MIDO"> plaquette-mido link </a>
  */
 public class Querier {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LoggerFactory.getLogger(Querier.class);
 
 	private final EbxDataservices dataservices;
-
+	
+	/**
+	 * This is the constructor of Querier.
+	 * @param no parameters are owned	 */
 	public Querier() {
 		dataservices = new EbxDataservicesService().getEbxDataservices();
 	}
