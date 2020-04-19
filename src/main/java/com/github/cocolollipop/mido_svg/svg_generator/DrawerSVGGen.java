@@ -57,14 +57,9 @@ public class DrawerSVGGen {
 
 	private SVGGraphics2D g;
 
-	private int lineCENTER = 50; // Makes the line arrive in the center of the
-								// rectangle
-	
-	private int lineYDOWN = 7; // Makes the line go DOWN a little so the line is
-							  // not on the text
+	private int lineYDOWN = 7; 
 
-	private int lineYUP = -20; // Makes the line go UP a little so the line is
-							  // not on the text
+	private int lineYUP = -20; 
 
 	private int police;
 
@@ -108,7 +103,7 @@ public class DrawerSVGGen {
 	 * @param y2 : an integer corresponding to the ordinate of the second  point
 	 */
 	public void drawArrow(Graphics g1, int x1, int y1, int x2, int y2) {
-		Graphics2D g = (Graphics2D) g1.create();
+		Graphics2D graphic = (Graphics2D) g1.create();
 		int ARR_SIZE = 5;
 
 		double dx = x2 - x1, dy = y2 - y1;
@@ -116,11 +111,11 @@ public class DrawerSVGGen {
 		int len = (int) Math.sqrt(dx * dx + dy * dy);
 		AffineTransform at = AffineTransform.getTranslateInstance(x1, y1);
 		at.concatenate(AffineTransform.getRotateInstance(angle));
-		g.transform(at);
+		graphic.transform(at);
 
 		// Draw horizontal arrow starting in (0, 0)
-		g.drawLine(0, 0, len, 0);
-		g.fillPolygon(new int[] { len, len - ARR_SIZE, len - ARR_SIZE, len }, new int[] { 0, -ARR_SIZE, ARR_SIZE, 0 },
+		graphic.drawLine(0, 0, len, 0);
+		graphic.fillPolygon(new int[] { len, len - ARR_SIZE, len - ARR_SIZE, len }, new int[] { 0, -ARR_SIZE, ARR_SIZE, 0 },
 				4);
 	}
 
@@ -374,13 +369,18 @@ public class DrawerSVGGen {
 
 		// Finally, stream out SVG using UTF-8 encoding.
 		boolean useCSS = true; // we want to use CSS style attributes
-		try (Writer out = new OutputStreamWriter(new FileOutputStream(DRAWING_SVG), "UTF-8")) {
+		//FileOutputStream output =;
+		try (Writer out = new OutputStreamWriter( extracted(), "UTF-8")) {
 			g.stream(out, useCSS);
 		}
 
 		String content = this.svgLinkable();
-		IOUtils.write(content, new FileOutputStream(DRAWING_SVG), "UTF-8");
+		IOUtils.write(content,  extracted(), "UTF-8");
 
+	}
+
+	private FileOutputStream extracted() throws FileNotFoundException {
+		return new FileOutputStream(DRAWING_SVG);
 	}
 
 	public void setPolice(int police) {
@@ -391,6 +391,7 @@ public class DrawerSVGGen {
 	 * This is to replace "&lt;" by "<" and "&gt;" by ">" because I did not found
 	 * how to avoid converting < into &lt; and > into &gt;
 	 **/
+	@SuppressWarnings("resource")
 	public String svgLinkable() throws FileNotFoundException, IOException {
 		String content = IOUtils.toString(new FileInputStream(DRAWING_SVG), "UTF-8");
 		content = content.replaceAll("&lt;", "<");
