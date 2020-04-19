@@ -13,6 +13,7 @@ import java.util.Optional;
 /**
  * This class build an authenticator for network connection
  * @author plaquette-MIDO
+ * @see <a href="https://github.com/Dauphine-MIDO/plaquette-MIDO"> plaquette-mido link </a>
  */
 public class QueriesHelper {
 
