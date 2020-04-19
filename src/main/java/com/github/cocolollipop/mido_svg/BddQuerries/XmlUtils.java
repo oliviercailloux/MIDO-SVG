@@ -27,6 +27,9 @@ import net.sf.saxon.TransformerFactoryImpl;
 import net.sf.saxon.lib.FeatureKeys;
 import net.sf.saxon.serialize.MessageWarner;
 
+/** 
+the code of this class comes from the project plaquette-MIDO
+**/
 public class XmlUtils {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LoggerFactory.getLogger(XmlUtils.class);

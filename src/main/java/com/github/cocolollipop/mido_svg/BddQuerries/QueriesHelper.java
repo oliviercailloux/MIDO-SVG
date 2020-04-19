@@ -10,13 +10,10 @@ import java.nio.file.Paths;
 import java.util.Optional;
 
 /** 
- this class is from the project-mido
- * */
+ the code of this class comes from the project plaquette-MIDO
+**/
 public class QueriesHelper {
 
-	
-	
-	
 	/** 
 	 * the method get the authentificator and indicate that is this one wich is use when it's required
 	 * */
