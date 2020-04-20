@@ -8,7 +8,12 @@ import java.util.List;
 
 import com.github.cocolollipop.mido_svg.university.components.Subject;
 
-
+/**
+ * 
+ * This class enables to test the class ObjectTransformer
+ * @author brulej
+ *
+ */
 
 public class DataRecuperatorTest {
 
