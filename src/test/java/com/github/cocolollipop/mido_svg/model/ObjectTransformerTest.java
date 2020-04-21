@@ -2,6 +2,7 @@ package com.github.cocolollipop.mido_svg.model;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Iterator;
 import java.util.List;
