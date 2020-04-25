@@ -56,4 +56,17 @@ Objectif à court terme : Actuellement, dû au codage "en dur" des positions des
 * `svg_generator.ResponsiveSVG`, particulièrement la méthode `defineObjectsPosition` qui ne semble pas marcher.
 
 
+== Objectif itération 2 JAVA
 
+=== Equipe 1 : Base de données
+
+Pré-requis : comprendre la structure des données fournies via API-ROF et comprendre le fonctionnement des méthodes de la classe `Querier`.
+
+Objectif principal : Modification du package `model` pour qu'il permette de récupérer les données reROF et mettre sous la forme structurelle du package `University` adaptée au traitement SVG.
+
+Objectif à court terme : Compléter la classe `DataRecuperator` avec 2 méthodes :
+
+[square]
+* `getProgramID`, méthode permettant de récupérer tous les programID rattachés à une formation. Cette méthode prendra l'ID d'une formation en paramètre et renverra une liste des ID des programmes qui lui sont rattachés. Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.
+* `getFormations`, méthode permettant de récupérer toutes les formations disponibles du département MIDO. Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.
+* Il sera peut-être nécessaire de créer des méthodes supplémentaires afin de faire fonctionner de manière convenable les méthodes précédentes.
