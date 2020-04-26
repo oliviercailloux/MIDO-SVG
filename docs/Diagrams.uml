@@ -597,115 +597,6 @@ and call Querier.getCourse to get a Course List. &#xD;
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_RMo_gIeaEeqlZY9rOCAo-w" name="SVG">
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_-9FhuG3mEeq7r7ozzGhjkA" name="Generation_SVG" visibility="package">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_-9FhuW3mEeq7r7ozzGhjkA" annotatedElement="_-9Fhv23mEeq7r7ozzGhjkA">
-        <body>This fonction is not working for all of the users. &#xD;
-Perhaps it depends on the computer's settings
-&#xD;
-</body>
-      </ownedComment>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_nUCzoG4AEeq7r7ozzGhjkA" name="Draw an svg">
-        <include xmi:type="uml:Include" xmi:id="_MezJUG4dEeqT6Y2oaDa2Yg" addition="_-9Fhum3mEeq7r7ozzGhjkA"/>
-        <include xmi:type="uml:Include" xmi:id="_QWB5kG4dEeqT6Y2oaDa2Yg" addition="_-9Fhv23mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9Fhum3mEeq7r7ozzGhjkA" name="set_svg"/>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9Fhu23mEeq7r7ozzGhjkA" name="Set _other">
-        <generalization xmi:type="uml:Generalization" xmi:id="_-9FhvG3mEeq7r7ozzGhjkA" general="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhvW3mEeq7r7ozzGhjkA" name="set_A3A4">
-        <generalization xmi:type="uml:Generalization" xmi:id="_-9Fhvm3mEeq7r7ozzGhjkA" general="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9Fhv23mEeq7r7ozzGhjkA" name="responsive_svg" visibility="public">
-        <include xmi:type="uml:Include" xmi:id="_-9FhwG3mEeq7r7ozzGhjkA" addition="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhwW3mEeq7r7ozzGhjkA" name="position_obj_svg">
-        <include xmi:type="uml:Include" xmi:id="_-9Fhwm3mEeq7r7ozzGhjkA" addition="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9Fhw23mEeq7r7ozzGhjkA" name="calcul_offset _svg">
-        <include xmi:type="uml:Include" xmi:id="_-9FhxG3mEeq7r7ozzGhjkA" addition="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhxW3mEeq7r7ozzGhjkA" name="count_nbfor"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhxm3mEeq7r7ozzGhjkA" name=""/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhx23mEeq7r7ozzGhjkA" name="" type="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhyG3mEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhyW3mEeq7r7ozzGhjkA" name="" type="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhym3mEeq7r7ozzGhjkA" name=""/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhy23mEeq7r7ozzGhjkA" name="" type="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhzG3mEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhzW3mEeq7r7ozzGhjkA" name="" type="_-9FhvW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhzm3mEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhz23mEeq7r7ozzGhjkA" name="" type="_-9FhvW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh0G3mEeq7r7ozzGhjkA" name="" type="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh0W3mEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh0m3mEeq7r7ozzGhjkA" name="" type="_-9Fhv23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh023mEeq7r7ozzGhjkA" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh1G3mEeq7r7ozzGhjkA" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh1W3mEeq7r7ozzGhjkA" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh1m3mEeq7r7ozzGhjkA" name=""/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh123mEeq7r7ozzGhjkA" name="" type="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh2G3mEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh2W3mEeq7r7ozzGhjkA" name="" type="_-9FhvW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh2m3mEeq7r7ozzGhjkA" name="" type="_-9Fhv23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh223mEeq7r7ozzGhjkA" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh3G3mEeq7r7ozzGhjkA" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fh3W3mEeq7r7ozzGhjkA" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZFSO4W4AEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZGFgIG4AEeq7r7ozzGhjkA" name="" type="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZGV-0G4AEeq7r7ozzGhjkA" name="" type="_-9Fhv23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZGkoUG4AEeq7r7ozzGhjkA" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZGz44G4AEeq7r7ozzGhjkA" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZG5YcW4AEeq7r7ozzGhjkA" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_Zqt3MG4AEeq7r7ozzGhjkA" name="" type="_-9Fhv23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_aUwSsG4AEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_a80_UW4AEeq7r7ozzGhjkA" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_bU46AG4AEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_cJveYG4AEeq7r7ozzGhjkA" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_cpNBkW4AEeq7r7ozzGhjkA" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_eSU7gG4AEeq7r7ozzGhjkA" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_er7HQG4AEeq7r7ozzGhjkA" name="" type="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_g3iqQG4AEeq7r7ozzGhjkA" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_hbj9UG4AEeq7r7ozzGhjkA" name="" type="_-9FhvW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_idwaIG4AEeq7r7ozzGhjkA" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_kaWpsW4AEeq7r7ozzGhjkA" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_k4eJEG4AEeq7r7ozzGhjkA" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_lauhkG4AEeq7r7ozzGhjkA" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_GGOdsG4dEeqT6Y2oaDa2Yg" name="" type="_nUCzoG4AEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_HxtvIG4dEeqT6Y2oaDa2Yg" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_IHkqYG4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_Ik0nEW4dEeqT6Y2oaDa2Yg" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_IyaXIG4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_I-z0YG4dEeqT6Y2oaDa2Yg" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_KDp8kW4dEeqT6Y2oaDa2Yg" name="" type="_nUCzoG4AEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_S1LckG4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhv23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TR_7cW4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhu23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TYioUG4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhum3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_Ta1uYG4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhv23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TdA4oW4dEeqT6Y2oaDa2Yg" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TfPGMW4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ThiMQW4dEeqT6Y2oaDa2Yg" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_TjwZ0W4dEeqT6Y2oaDa2Yg" name="" type="_-9FhvW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_Tq15QW4dEeqT6Y2oaDa2Yg" name="" type="_nUCzoG4AEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_UJLbEW4dEeqT6Y2oaDa2Yg" name="" type="_-9FhxW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_UbJ74G4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_UtFZYW4dEeqT6Y2oaDa2Yg" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_U7JqkW4dEeqT6Y2oaDa2Yg" name="" type="_-9Fhw23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_VRoQ4G4dEeqT6Y2oaDa2Yg" name="" type="_-9FhwW3mEeq7r7ozzGhjkA"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_-9Fh_G3mEeq7r7ozzGhjkA" memberEnd="_-9Fh_23mEeq7r7ozzGhjkA _-9FiAG3mEeq7r7ozzGhjkA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-9Fh_W3mEeq7r7ozzGhjkA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-9Fh_m3mEeq7r7ozzGhjkA" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-9Fh_23mEeq7r7ozzGhjkA" name="calcul_offset _svg" type="_-9Fhw23mEeq7r7ozzGhjkA" association="_-9Fh_G3mEeq7r7ozzGhjkA"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-9FiAG3mEeq7r7ozzGhjkA" name="set_svg" type="_-9Fhum3mEeq7r7ozzGhjkA" association="_-9Fh_G3mEeq7r7ozzGhjkA"/>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Actor" xmi:id="_NnmDkG4AEeq7r7ozzGhjkA" name="application_user"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_Od0awG4dEeqT6Y2oaDa2Yg" memberEnd="_Oez5QG4dEeqT6Y2oaDa2Yg _Oe0gUG4dEeqT6Y2oaDa2Yg">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Od7IcG4dEeqT6Y2oaDa2Yg" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Od7vgG4dEeqT6Y2oaDa2Yg" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Oez5QG4dEeqT6Y2oaDa2Yg" name="draw an svg" type="_nUCzoG4AEeq7r7ozzGhjkA" association="_Od0awG4dEeqT6Y2oaDa2Yg"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Oe0gUG4dEeqT6Y2oaDa2Yg" name="application_user" type="_NnmDkG4AEeq7r7ozzGhjkA" association="_Od0awG4dEeqT6Y2oaDa2Yg"/>
-      </nestedClassifier>
-    </packagedElement>
     <packagedElement xmi:type="uml:Interaction" xmi:id="_kysEUHHpEeqv_YrGSHGdGQ" name="SequenceSVG">
       <ownedComment xmi:type="uml:Comment" xmi:id="_kLHRgHHqEeqv_YrGSHGdGQ" annotatedElement="_9ip-AHHpEeqv_YrGSHGdGQ">
         <body>The user chooses preferences and paper format</body>
@@ -762,7 +653,7 @@ Perhaps it depends on the computer's settings
       <message xmi:type="uml:Message" xmi:id="_9ip-AHHpEeqv_YrGSHGdGQ" name="Set Settings" receiveEvent="_9iqlEXHpEeqv_YrGSHGdGQ" sendEvent="_9iqlEHHpEeqv_YrGSHGdGQ"/>
       <message xmi:type="uml:Message" xmi:id="_Cn9D4HHqEeqv_YrGSHGdGQ" name="ButtonPush.addListener" messageSort="asynchCall" receiveEvent="_Cn-SAHHqEeqv_YrGSHGdGQ" sendEvent="_Cn9q8HHqEeqv_YrGSHGdGQ"/>
       <message xmi:type="uml:Message" xmi:id="_IIXYcHHqEeqv_YrGSHGdGQ" name="Settings = news Setting( )" messageSort="asynchCall" receiveEvent="_IIYmkXHqEeqv_YrGSHGdGQ" sendEvent="_IIYmkHHqEeqv_YrGSHGdGQ"/>
-      <message xmi:type="uml:Message" xmi:id="_MdvdQHHqEeqv_YrGSHGdGQ" name="datas = new data(...)" messageSort="asynchCall" receiveEvent="_MdwEUXHqEeqv_YrGSHGdGQ" sendEvent="_MdwEUHHqEeqv_YrGSHGdGQ"/>
+      <message xmi:type="uml:Message" xmi:id="_MdvdQHHqEeqv_YrGSHGdGQ" name="ask for data" messageSort="asynchCall" receiveEvent="_MdwEUXHqEeqv_YrGSHGdGQ" sendEvent="_MdwEUHHqEeqv_YrGSHGdGQ"/>
       <message xmi:type="uml:Message" xmi:id="_PS-lAHHqEeqv_YrGSHGdGQ" name="return datas" messageSort="reply" receiveEvent="_PS_zIHHqEeqv_YrGSHGdGQ" sendEvent="_PS_MEHHqEeqv_YrGSHGdGQ"/>
       <message xmi:type="uml:Message" xmi:id="_UP8OQHHqEeqv_YrGSHGdGQ" name="SVG.Paint(datas, settings)" messageSort="asynchCall" receiveEvent="_UP-DcHHqEeqv_YrGSHGdGQ" sendEvent="_UP9cYHHqEeqv_YrGSHGdGQ"/>
       <message xmi:type="uml:Message" xmi:id="_WYNiUHHqEeqv_YrGSHGdGQ" name="draw admission, formation, Responsable, etc" messageSort="reply" receiveEvent="_WYOwcHHqEeqv_YrGSHGdGQ" sendEvent="_WYOJYHHqEeqv_YrGSHGdGQ"/>
@@ -848,6 +739,9 @@ Perhaps it depends on the computer's settings
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_gwM3gHKzEeqTEN4gHi6gfg" name="height">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
             </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YOZYwIefEeqp8c2nJra3dQ" name="fontSize">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+            </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_pAIGUHKzEeqTEN4gHi6gfg" name="Settings" visibility="public">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pAIGUXKzEeqTEN4gHi6gfg" name="lic">
@@ -874,9 +768,16 @@ Perhaps it depends on the computer's settings
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_2NwlQHKzEeqTEN4gHi6gfg" name="format">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
             </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_cXdf4IefEeqp8c2nJra3dQ" name="fontSize">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+            </ownedParameter>
           </ownedOperation>
         </nestedClassifier>
-        <nestedClassifier xmi:type="uml:Class" xmi:id="_azGEEHKsEeqTEN4gHi6gfg" name="ResponsiveSVG" visibility="private">
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_azGEEHKsEeqTEN4gHi6gfg" name="ResponsiveSVG" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_xFFlgIefEeqp8c2nJra3dQ" name="calls" type="_Y-Cm8HKsEeqTEN4gHi6gfg" association="_xFBUEIefEeqp8c2nJra3dQ">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xFIo0IefEeqp8c2nJra3dQ" value="1"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xFJP4IefEeqp8c2nJra3dQ" value="*"/>
+          </ownedAttribute>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_T9H4gHKxEeqTEN4gHi6gfg" name="countFormation">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_fG7egHKxEeqTEN4gHi6gfg" name="list">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
@@ -910,6 +811,9 @@ Perhaps it depends on the computer's settings
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
             </ownedParameter>
           </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Bc4v0IefEeqp8c2nJra3dQ" name="controlSettings" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Bc4v0YefEeqp8c2nJra3dQ" name="settings" type="_Y-Cm8HKsEeqTEN4gHi6gfg"/>
+          </ownedOperation>
         </nestedClassifier>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:Association" xmi:id="_cWBUwHK_EeqTi6zh0OU6cA" memberEnd="_cWE_IHK_EeqTi6zh0OU6cA _cWGNQXK_EeqTi6zh0OU6cA">
@@ -930,131 +834,14 @@ Perhaps it depends on the computer's settings
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6tSOIHK_EeqTi6zh0OU6cA" value="*"/>
         </ownedEnd>
       </nestedClassifier>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_7jtKG23mEeq7r7ozzGhjkA" name="generationSVG_UseCase">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_7jtKHG3mEeq7r7ozzGhjkA" annotatedElement="_7jtww23mEeq7r7ozzGhjkA">
-        <body>This fonction is not working for all of the users. &#xD;
-Perhaps it depends on settings's computer&#xD;
-</body>
-      </ownedComment>
-      <ownedComment xmi:type="uml:Comment" xmi:id="_e8UDgG6LEeq7r7ozzGhjkA">
-        <body>The user can access the formation's url page of just by clicking on the formation on the SVG.
-This will enable the user to access the courses of the formation
-</body>
-      </ownedComment>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtKHW3mEeq7r7ozzGhjkA" name="Draw an SVG">
-        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtKHm3mEeq7r7ozzGhjkA" name="ExtensionPoint5"/>
-        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtKH23mEeq7r7ozzGhjkA" name="ExtensionPoint6"/>
-        <include xmi:type="uml:Include" xmi:id="_7jtKIG3mEeq7r7ozzGhjkA" addition="_7jtKJG3mEeq7r7ozzGhjkA"/>
-        <include xmi:type="uml:Include" xmi:id="_7jtKI23mEeq7r7ozzGhjkA" addition="_7jtww23mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtKJG3mEeq7r7ozzGhjkA" name="Set the  SVG"/>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtKJW3mEeq7r7ozzGhjkA" name="Set other format">
-        <generalization xmi:type="uml:Generalization" xmi:id="_7jtwwG3mEeq7r7ozzGhjkA" general="_7jtKJG3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtwwW3mEeq7r7ozzGhjkA" name="Set format A3 or A4">
-        <generalization xmi:type="uml:Generalization" xmi:id="_7jtwwm3mEeq7r7ozzGhjkA" general="_7jtKJG3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtww23mEeq7r7ozzGhjkA" name="Make this svg responsive">
-        <include xmi:type="uml:Include" xmi:id="_7jtwxG3mEeq7r7ozzGhjkA" addition="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtwxm3mEeq7r7ozzGhjkA" name="Define objetcs positions">
-        <include xmi:type="uml:Include" xmi:id="_7jtwyG3mEeq7r7ozzGhjkA" addition="_7jtwyW3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtwyW3mEeq7r7ozzGhjkA" name="Calcul x and y offset for each objects">
-        <include xmi:type="uml:Include" xmi:id="_7jtwy23mEeq7r7ozzGhjkA" addition="_7jtwzG3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtwzG3mEeq7r7ozzGhjkA" name="Count number of formations"/>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtwzW3mEeq7r7ozzGhjkA" name="Zoom on the SVG">
-        <extend xmi:type="uml:Extend" xmi:id="_7jtwzm3mEeq7r7ozzGhjkA" extendedCase="_7jtKHW3mEeq7r7ozzGhjkA" extensionLocation="_7jtKHm3mEeq7r7ozzGhjkA"/>
-        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtwz23mEeq7r7ozzGhjkA" name="ExtensionPoint1"/>
-        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtw0G3mEeq7r7ozzGhjkA" name="ExtensionPoint2"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtw0W3mEeq7r7ozzGhjkA" name="Zoom In ">
-        <generalization xmi:type="uml:Generalization" xmi:id="_7jtw0m3mEeq7r7ozzGhjkA" general="_7jtwzW3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtw023mEeq7r7ozzGhjkA" name="Zoom Out">
-        <generalization xmi:type="uml:Generalization" xmi:id="_7jtw1G3mEeq7r7ozzGhjkA" general="_7jtwzW3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtw1W3mEeq7r7ozzGhjkA" name="drive to the link when clik on the svg">
-        <extend xmi:type="uml:Extend" xmi:id="_7jtw1m3mEeq7r7ozzGhjkA" extendedCase="_7jtKHW3mEeq7r7ozzGhjkA" extensionLocation="_7jtKH23mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw123mEeq7r7ozzGhjkA" name="" type="_7jtww23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw2G3mEeq7r7ozzGhjkA" name="" type="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw2W3mEeq7r7ozzGhjkA" name="" type="_7jtwyW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw2m3mEeq7r7ozzGhjkA" name="" type="_7jtww23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw223mEeq7r7ozzGhjkA" name="" type="_7jtww23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw3G3mEeq7r7ozzGhjkA" name="" type="_7jtww23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw3W3mEeq7r7ozzGhjkA" name="" type="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw3m3mEeq7r7ozzGhjkA" name="" type="_7jtwzW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw323mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw4G3mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw4W3mEeq7r7ozzGhjkA" name="" type="_7jtw023mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw4m3mEeq7r7ozzGhjkA" name="" type="_7jtw023mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw423mEeq7r7ozzGhjkA" name="" type="_7jtKHW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw5G3mEeq7r7ozzGhjkA" name="" type="_7jtKJG3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw5W3mEeq7r7ozzGhjkA" name="" type="_7jtKJW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw5m3mEeq7r7ozzGhjkA" name="" type="_7jtwwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw523mEeq7r7ozzGhjkA" name="" type="_7jtww23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw6G3mEeq7r7ozzGhjkA" name="" type="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw6W3mEeq7r7ozzGhjkA" name="" type="_7jtwyW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw6m3mEeq7r7ozzGhjkA" name="" type="_7jtwzG3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw623mEeq7r7ozzGhjkA" name="" type="_7jtwzW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw7G3mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw7W3mEeq7r7ozzGhjkA" name="" type="_7jtw023mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw7m3mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw723mEeq7r7ozzGhjkA" name="" type="_7jtw023mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw8G3mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw8W3mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw8m3mEeq7r7ozzGhjkA" name="" type="_7jtw023mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw823mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw9G3mEeq7r7ozzGhjkA" name="" type="_7jtwzW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw9W3mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw9m3mEeq7r7ozzGhjkA" name="" type="_7jtw023mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw923mEeq7r7ozzGhjkA" name="" type="_7jtw1W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw-G3mEeq7r7ozzGhjkA" name="" type="_7jtwzW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw-W3mEeq7r7ozzGhjkA" name="" type="_7jtw023mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw-m3mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_7jtw-23mEeq7r7ozzGhjkA" name="" type="_7jtw0W3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_rByxYG34Eeq7r7ozzGhjkA" name="" type="_7jtKHW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_raIY4G34Eeq7r7ozzGhjkA" name="" type="_7jtKHW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="__4SfIG34Eeq7r7ozzGhjkA" name="" type="_7jtwzW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_AkF1MW35Eeq7r7ozzGhjkA" name="" type="_7jtKHW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_BTsGIG35Eeq7r7ozzGhjkA" name="" type="_7jtxIW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_BvtTwG35Eeq7r7ozzGhjkA" name="" type="_7jtxIW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_hcP-AG35Eeq7r7ozzGhjkA" name="" type="_7jtwwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_h5zcsG35Eeq7r7ozzGhjkA" name="" type="_7jtKJG3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_jKXFoG35Eeq7r7ozzGhjkA" name="" type="_7jtKJW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_kQ4o0G35Eeq7r7ozzGhjkA" name="" type="_7jtKHW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_k90nUW35Eeq7r7ozzGhjkA" name="" type="_7jtKJG3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_nFGc4G35Eeq7r7ozzGhjkA" name="" type="_7jtwwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_nums4G35Eeq7r7ozzGhjkA" name="" type="_7jtKJW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o9bQcG35Eeq7r7ozzGhjkA" name="" type="_7jtKHW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o9kaYW35Eeq7r7ozzGhjkA" name="" type="_7jtKJG3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o9tkUG35Eeq7r7ozzGhjkA" name="" type="_7jtKJW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o-V2cW35Eeq7r7ozzGhjkA" name="" type="_7jtww23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o-eZUW35Eeq7r7ozzGhjkA" name="" type="_7jtwwW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o_GrcW35Eeq7r7ozzGhjkA" name="" type="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o_ftAG35Eeq7r7ozzGhjkA" name="" type="_7jtwyW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o_o28W35Eeq7r7ozzGhjkA" name="" type="_7jtwzG3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_o_yA4W35Eeq7r7ozzGhjkA" name="" type="_7jtwzW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ptliEG35Eeq7r7ozzGhjkA" name="" type="_7jtwyW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_qIZOwG35Eeq7r7ozzGhjkA" name="" type="_7jtwzG3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_q5IIIG35Eeq7r7ozzGhjkA" name="" type="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_rQ5u8G35Eeq7r7ozzGhjkA" name="" type="_7jtww23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_sXTWUW35Eeq7r7ozzGhjkA" name="" type="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_s7K4YG35Eeq7r7ozzGhjkA" name="" type="_7jtww23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_t11J0G35Eeq7r7ozzGhjkA" name="" type="_7jtwyW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_uRytEG35Eeq7r7ozzGhjkA" name="" type="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_vHwEsG35Eeq7r7ozzGhjkA" name="" type="_7jtwxm3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_wBX0UW35Eeq7r7ozzGhjkA" name="" type="_7jtwyW3mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_wdrV0W35Eeq7r7ozzGhjkA" name="" type="_7jtwzG3mEeq7r7ozzGhjkA"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_7jtxIW3mEeq7r7ozzGhjkA" memberEnd="_7jtxJG3mEeq7r7ozzGhjkA _7jtxJW3mEeq7r7ozzGhjkA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7jtxIm3mEeq7r7ozzGhjkA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7jtxI23mEeq7r7ozzGhjkA" key="nature" value="UML_Nature"/>
+      <nestedClassifier xmi:type="uml:Association" xmi:id="_xFBUEIefEeqp8c2nJra3dQ" memberEnd="_xFFlgIefEeqp8c2nJra3dQ _xFJP4YefEeqp8c2nJra3dQ">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xFEXYIefEeqp8c2nJra3dQ" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xFEXYYefEeqp8c2nJra3dQ" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_7jtxJG3mEeq7r7ozzGhjkA" name="windows final user" type="_7jtKFW3mEeq7r7ozzGhjkA" association="_7jtxIW3mEeq7r7ozzGhjkA"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_7jtxJW3mEeq7r7ozzGhjkA" name="draw_svg" type="_7jtKHW3mEeq7r7ozzGhjkA" association="_7jtxIW3mEeq7r7ozzGhjkA"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_xFJP4YefEeqp8c2nJra3dQ" name="is called by" type="_azGEEHKsEeqTEN4gHi6gfg" association="_xFBUEIefEeqp8c2nJra3dQ">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Dy6WkIegEeqp8c2nJra3dQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Dy_PEIegEeqp8c2nJra3dQ" value="*"/>
+        </ownedEnd>
       </nestedClassifier>
     </packagedElement>
   </packagedElement>
