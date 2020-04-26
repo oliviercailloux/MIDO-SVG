@@ -14,10 +14,10 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Rm3mEeq7r7ozzGhjkA" name="posX" visibility="protected">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5R23mEeq7r7ozzGhjkA" name="posY" visibility="protected">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_-9E5VW3mEeq7r7ozzGhjkA" name="Formation" isAbstract="true">
@@ -40,7 +40,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5YW3mEeq7r7ozzGhjkA" name="grade" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Ym3mEeq7r7ozzGhjkA" name="intitule" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -126,10 +126,10 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgyW3mEeq7r7ozzGhjkA" name="posX" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgym3mEeq7r7ozzGhjkA" name="posY" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgxm3mEeq7r7ozzGhjkA" name="gender" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -318,10 +318,10 @@
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhP23mEeq7r7ozzGhjkA" name="getPaper">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQG3mEeq7r7ozzGhjkA" name="x">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQW3mEeq7r7ozzGhjkA" name="y">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQm3mEeq7r7ozzGhjkA" name="settings"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQ23mEeq7r7ozzGhjkA" type="_-9FhR23mEeq7r7ozzGhjkA" direction="return"/>
@@ -330,10 +330,10 @@
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_-9FhR23mEeq7r7ozzGhjkA" name="Paper">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhSG3mEeq7r7ozzGhjkA" name="dimXCanvas" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhSW3mEeq7r7ozzGhjkA" name="dimYCanvas" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_-9FhUm3mEeq7r7ozzGhjkA" name="PaperA3">
           <generalization xmi:type="uml:Generalization" xmi:id="_-9FhU23mEeq7r7ozzGhjkA" general="_-9FhR23mEeq7r7ozzGhjkA"/>
