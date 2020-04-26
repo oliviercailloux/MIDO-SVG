@@ -23,7 +23,7 @@
                 <stop stop-opacity="1" stop-color="white" offset="0%"/>
                 <stop stop-opacity="1" stop-color="rgb(195,215,221)" offset="100%"/>
             </linearGradient>
-            <linearGradient x1="470" x2="470" y1="370" gradientUnits="userSpaceOnUse" y2="448" xlink:type="simple" xlink:actuate="onLoad" id="linearGradient6" xlink:show="other" spreadMethod="pad">
+            <linearGradient x1="470" x2="470" y1="370" gradientUnits="userSpaceOnUse" y2="459" xlink:type="simple" xlink:actuate="onLoad" id="linearGradient6" xlink:show="other" spreadMethod="pad">
                 <stop stop-opacity="1" stop-color="rgb(255,255,204)" offset="0%"/>
                 <stop stop-opacity="1" stop-color="white" offset="100%"/>
             </linearGradient>
@@ -192,13 +192,13 @@
                 <path d="M468 469 L679 469 L679 571 L468 571 L468 469 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath53">
-                <path d="M470 370 L470 447 L671 447 L671 382 L659 370 Z"/>
+                <path d="M470 370 L470 458 L671 458 L671 382 L659 370 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath54">
-                <path d="M475 375 L658 375 L658 443 L475 443 L475 375 Z"/>
+                <path d="M475 375 L658 375 L658 454 L475 454 L475 375 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath55">
-                <path d="M469 369 L673 369 L673 449 L469 449 L469 369 Z"/>
+                <path d="M469 369 L673 369 L673 460 L469 460 L469 369 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath56">
                 <path d="M130 393 L130 506 L370 506 L370 393 Z"/>
@@ -365,24 +365,25 @@
             <text x="494" font-size="12" y="506" clip-path="url(#clipPath50)" fill="black" stroke="none" xml:space="preserve"> + main()</text>
             <line clip-path="url(#clipPath51)" fill="none" x1="469" x2="678" y1="490" y2="490" stroke="black"/>
             <rect x="469" y="470" clip-path="url(#clipPath52)" fill="none" width="208" rx="0" ry="0" height="99" stroke="black"/>
-            <rect x="470" y="370" clip-path="url(#clipPath53)" fill="url(#linearGradient6)" width="202" height="78" stroke="none"/>
+            <rect x="470" y="370" clip-path="url(#clipPath53)" fill="url(#linearGradient6)" width="202" height="89" stroke="none"/>
             <text x="476" font-size="12" y="388" clip-path="url(#clipPath54)" fill="black" stroke="none" xml:space="preserve">Main method to call</text>
             <text x="476" font-size="12" y="399" clip-path="url(#clipPath54)" fill="black" stroke="none" xml:space="preserve">QueriesHelper.setDefaultAuthenticator();</text>
             <text x="476" font-size="12" y="410" clip-path="url(#clipPath54)" fill="black" stroke="none" xml:space="preserve">to connect</text>
-            <text x="476" font-size="12" y="421" clip-path="url(#clipPath54)" fill="black" stroke="none" xml:space="preserve">and call Querier.getCourse to get a</text>
-            <text x="476" font-size="12" y="432" clip-path="url(#clipPath54)" fill="black" stroke="none" xml:space="preserve">Course List. </text>
+            <text x="476" font-size="12" y="421" clip-path="url(#clipPath54)" fill="black" stroke="none" xml:space="preserve">and call DataRecuperator to create</text>
+            <text x="476" font-size="12" y="432" clip-path="url(#clipPath54)" fill="black" stroke="none" xml:space="preserve">objects and lists of objects (Formations,</text>
+            <text x="476" font-size="12" y="443" clip-path="url(#clipPath54)" fill="black" stroke="none" xml:space="preserve">Subjects, Teacher...).</text>
             <line clip-path="url(#clipPath55)" fill="none" x1="470" x2="659" y1="370" y2="370" stroke="black"/>
             <line clip-path="url(#clipPath55)" fill="none" x1="659" x2="671" y1="370" y2="382" stroke="black"/>
-            <line clip-path="url(#clipPath55)" fill="none" x1="671" x2="671" y1="382" y2="447" stroke="black"/>
-            <line clip-path="url(#clipPath55)" fill="none" x1="671" x2="470" y1="447" y2="447" stroke="black"/>
-            <line clip-path="url(#clipPath55)" fill="none" x1="470" x2="470" y1="447" y2="370" stroke="black"/>
+            <line clip-path="url(#clipPath55)" fill="none" x1="671" x2="671" y1="382" y2="458" stroke="black"/>
+            <line clip-path="url(#clipPath55)" fill="none" x1="671" x2="470" y1="458" y2="458" stroke="black"/>
+            <line clip-path="url(#clipPath55)" fill="none" x1="470" x2="470" y1="458" y2="370" stroke="black"/>
             <line clip-path="url(#clipPath55)" fill="none" x1="470" x2="470" y1="370" y2="370" stroke="black"/>
             <line clip-path="url(#clipPath55)" fill="none" x1="659" x2="659" y1="370" y2="382" stroke="black"/>
             <line clip-path="url(#clipPath55)" fill="none" x1="659" x2="672" y1="382" y2="382" stroke="black"/>
             <rect x="130" y="393" clip-path="url(#clipPath56)" fill="url(#linearGradient7)" width="241" height="114" stroke="none"/>
             <image stroke="black" width="16" xlink:show="embed" xlink:type="simple" fill="black" clip-path="url(#clipPath57)" preserveAspectRatio="none" height="16" x="204" y="396" font-size="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR42mNkgIKC&#10;BUf+P3jyCchiBOL/QMgIYTFCREDg/38GOFCU4WWYkGDDyAITuP/4E8OkNDsGYkHu&#10;rINgGm7Av7//GNjZmIk2gOHff1QDwBxmJgZSAZoBjJQZwEqRC4BBzEqCC/6hh8H/&#10;//8YmJmIN+D/fyyB6NewCZwO/qORMIBIIUA2IyOmAUsrvIh2QUzndjBNeqjhiwWY&#10;qWQbsKTccwC9oKIkTJIXQOqpAgBzFjJ6SnHW0gAAAABJRU5ErkJggg==" xlink:actuate="onLoad"/>
             <text x="223" font-size="12" y="410" clip-path="url(#clipPath58)" fill="black" stroke="none" xml:space="preserve">DataRecuperator</text>
-            <image stroke="black" width="16" xlink:show="embed" xlink:type="simple" fill="black" clip-path="url(#clipPath59)" preserveAspectRatio="none" height="16" x="136" y="415" font-size="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACF0lEQVR42sVSS0xT&#10;QRQ98175xJXdKIm6dKfRkIhNbNOI1raipIosdGGsKAuDFeNGEWRqrGFBXCjBaFhQ&#10;VibqArCFAK+AZaEmBiQaIwE0YhojG0KI2PL6rvNSM7TW6tKbzORM7twz5547wP8O&#10;tVDCxYdoXrdyz5kQnx3vCRa6p2QfDgYHCY4rZOJh7Rni9y5jUHuSSe67RB6uUUEF&#10;7tYhGtb6EWtvQPi9wrubz2FDSQkqbeXo/VjMY3cCaLnfDdfZNj4/HpaKmJRiD1Bf&#10;20WACIylYVARxAaLYoisBTrS4raBo1c7gYm7LE8BfX4ZfDTDuM9uw9oaEHkxiZmF&#10;Bbz7lMC2sjKkdKC2pROUVSwJ3K0jNJfeyEMX/ChSVYy9mRSMOrqir7Fn+xbMfk1g&#10;q3Uz9u7chZHFUn6oLsTnxjLGZtjsjXT7/GnRB4NqKPjwZRrhgSnEQj44mx+j3m3D&#10;g+sn8ybARFhM4HUdQVNXD+qP18JaqoIJr/1V5djf9BR1VRUwfnVafPOwLE7diOaa&#10;mFESIP8JHxRdTDeVEDMmPLx2SqZNgobdO9Ax9VYSWGTW0UjVXi+WVky3k1BoE9JK&#10;Mu/lbLKcj+RwVqIvGsFS8gd6ByL49n0Fy6vrBebL5vodS4L4rWpWYXNidFSDMdHB&#10;4s9jWE6tM5iyzTW9uCpxbgsiXrXXSE88B46Jb9wvUI3s998m/iVIxJ8IfgKCUdWm&#10;JbotDAAAAABJRU5ErkJggg==" xlink:actuate="onLoad"/>
+            <image stroke="black" width="16" xlink:show="embed" xlink:type="simple" fill="black" clip-path="url(#clipPath59)" preserveAspectRatio="none" height="16" x="136" y="415" font-size="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42sVTX0hT&#10;URz+7p3OCIqkaMLq0R6CCIRMaCMyr9ushkT17Fq9RNk/iJBk5z5s+BAhBQYh6Hyp&#10;B5W0NufcbCuNFcToIQrxz5g0IsVE5u52d+89HScMYw56CPo9nHN+/L7z8fGd7wD/&#10;u3TlBgIJ0nmlmljb3GQ2OiCWw/FbmyYxQGG+SzfOE+HXePfkNgLhwc3hiZvUSsK0&#10;rAKLK0gnwq8w+fA6vF950v/gCnZWVaGxoQ4jC3oy+agdnU/7IVzuIvNRb1ERV5Ri&#10;aqejXTcASsFxKjRaCbaggtfYtAIKVIbWcO5+DzD1mCtRQJMfxBczHGk1NSCfB3yx&#10;OGYWF/ElkcLBmhrICnCxswd0y+UigcUVonPqHuK+5kClTofI5zhjVNDr/4RjtUbM&#10;/kjhQLUBx48cRWhpB2l2uslcZNPYgonjzDDP1TZsqFxeyUHTFPSNxRH1nMez8Rh4&#10;lcP31RwUlcLjdCAYfPnnK9iEs+joHUBiOYOVjASOee04U4dTHUNw2uqh8TqsrctI&#10;/FpnuD4IFjtKTCwUM9JxoRW8wnjlFGOn0BiE0xug6vTwDg5Bm+7mtg+S+Ra1t7RA&#10;zgGSKiNHdyPNVbJ9FyRNRUZWcfhQLb7l9xEkY2JJkMwnGzHq92E1l8XImA8/M2ms&#10;ScCSlMWwP4h0VsJwwI/TTbbtg5R8+1ysv3SPTE9FCk+VpPvJXqMRHyOsf9/NLagG&#10;Igh2hFwC91efxOp6Q2G6Q5vF0vj+0/oNRdDxkTDUjqQAAAAASUVORK5CYII=" xlink:actuate="onLoad"/>
             <text x="155" font-size="12" y="429" clip-path="url(#clipPath60)" fill="black" stroke="none" xml:space="preserve"> + getSubjects(  in programID: String): EEList</text>
             <image stroke="black" width="16" xlink:show="embed" xlink:type="simple" fill="black" clip-path="url(#clipPath61)" preserveAspectRatio="none" height="16" x="136" y="431" font-size="12" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42sVTX0hT&#10;URz+7p3OCIqkaMLq0R6CCIRMaCMyr9ushkT17Fq9RNk/iJBk5z5s+BAhBQYh6Hyp&#10;B5W0NufcbCuNFcToIQrxz5g0IsVE5u52d+89HScMYw56CPo9nHN+/L7z8fGd7wD/&#10;u3TlBgIJ0nmlmljb3GQ2OiCWw/FbmyYxQGG+SzfOE+HXePfkNgLhwc3hiZvUSsK0&#10;rAKLK0gnwq8w+fA6vF950v/gCnZWVaGxoQ4jC3oy+agdnU/7IVzuIvNRb1ERV5Ri&#10;aqejXTcASsFxKjRaCbaggtfYtAIKVIbWcO5+DzD1mCtRQJMfxBczHGk1NSCfB3yx&#10;OGYWF/ElkcLBmhrICnCxswd0y+UigcUVonPqHuK+5kClTofI5zhjVNDr/4RjtUbM&#10;/kjhQLUBx48cRWhpB2l2uslcZNPYgonjzDDP1TZsqFxeyUHTFPSNxRH1nMez8Rh4&#10;lcP31RwUlcLjdCAYfPnnK9iEs+joHUBiOYOVjASOee04U4dTHUNw2uqh8TqsrctI&#10;/FpnuD4IFjtKTCwUM9JxoRW8wnjlFGOn0BiE0xug6vTwDg5Bm+7mtg+S+Ra1t7RA&#10;zgGSKiNHdyPNVbJ9FyRNRUZWcfhQLb7l9xEkY2JJkMwnGzHq92E1l8XImA8/M2ms&#10;ScCSlMWwP4h0VsJwwI/TTbbtg5R8+1ysv3SPTE9FCk+VpPvJXqMRHyOsf9/NLagG&#10;Igh2hFwC91efxOp6Q2G6Q5vF0vj+0/oNRdDxkTDUjqQAAAAASUVORK5CYII=" xlink:actuate="onLoad"/>
             <text x="155" font-size="12" y="445" clip-path="url(#clipPath62)" fill="black" stroke="none" xml:space="preserve"> + getProgramID(  in formationID: String): EEList</text>
