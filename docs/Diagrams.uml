@@ -408,7 +408,7 @@ The class Authenticator represents an object that knows how to obtain authentica
       </ownedComment>
       <ownedComment xmi:type="uml:Comment" xmi:id="_CLPnoHHHEeqADqZe4Qf0-Q">
         <body>Main method to call QueriesHelper.setDefaultAuthenticator(); to connect&#xD;
-and call Querier.getCourse to get a Course List. &#xD;
+and call DataRecuperator to create objects and lists of objects (Formations, Subjects, Teacher...).&#xD;
 </body>
       </ownedComment>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_Yg2GAHEqEeqD4qiy1uAq0g" name="" type="_yuwZ0HEpEeqD4qiy1uAq0g"/>
