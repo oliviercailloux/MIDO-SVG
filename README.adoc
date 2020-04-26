@@ -75,7 +75,7 @@ Objectif à court terme : Compléter la classe `DataRecuperator` avec 2 méthode
 
 Pré-requis : comprendre la procédure de création d'un fichier SVG et particulièrement sur la méthode `defineObjectsPosition` de la classe `svg_generator.ResponsiveSVG`.
 
-Objectif principal : Modifier la classe `svg_generator.ResponsiveSVG` et ajouter une étape de contrôle avant la génération du graphe (évitant les superpositions des éléments).
+Objectif principal : Modifier la classe `svg_generator.ResponsiveSVG` et ajouter une étape de contrôle avant la génération du graphe (évitant les superpositions des éléments) à travers la méthode `controlSettings`.
 
 Objectif à court terme : Revoir intégralement l'algorithme de calcul des positions x et y de chaque formation de la méthode `defineObjectsPosition`. Pour ce faire, voici les modifications à apporter dans la méthode:
 
