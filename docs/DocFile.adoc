@@ -2,7 +2,7 @@
 
 == Existing
 
-=== University Class Diagram (Raphaël et Camille)
+=== University Class Diagram 
 
 image::../docs/Diagrams/Existing/UniversityClassDiagram.svg[University Class Diagram]
 
@@ -14,7 +14,7 @@ The `UniversityClassDiagram` diagram allows you to view the different links betw
 This package seems complete and functional to us, so we do not anticipate any major developments on this part of the project. However, additions of methods or attribute can be made if necessary to allow another evolution.
 
 
-=== GUI Use Case Diagram (Zhenyi et Marcellino)
+=== GUI Use Case Diagram 
 
 image::../docs/Diagrams/Existing/GUIUseCaseDiagram.svg[GUI Use Case Diagram]
 
@@ -25,7 +25,7 @@ On the other hand, if the programmer run another class, the name user is by defa
 
 The tag is saved in an xml file in `src/main/resources/tags/`
 
-=== Controller Use Case Diagram (Zhenyi et Marcellino)
+=== Controller Use Case Diagram 
 
 image::../docs/Diagrams/Existing/ControllerUseCaseDiagram.svg[Controller Use Case Diagram]
 
@@ -35,7 +35,7 @@ To make the application runnable (able to generate SVG file), the previous progr
 
 The controller step is not a priority in term of evolution, thus we decided to do anything.
 
-=== Paper Class Diagram (Raphaël et Camille)
+=== Paper Class Diagram 
 
 image::../docs/Diagrams/Existing/PaperClassDiagram.svg[Paper Class Diagram]
 
@@ -50,7 +50,7 @@ The https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existin
 This package appears to us to be complete and functional, so we do not expect any developments on this part of the project.
 
 
-=== XML Class Diagram (Jérémie et Sarra)
+=== XML Class Diagram 
 
 image::../docs/Diagrams/Existing/XMLClassDiagram.svg[XML Class Diagram]
 
@@ -63,20 +63,20 @@ The `XMLMain` class (in the xml-to-java package) is used to retrieve an XML file
 Since we are planning to retrieve these informations directly from Dauphine's DSI, this class won't be useful anymore.  
 
 
-=== JUnit Use Case Diagram (Zhenyi et Marcellino)
+=== JUnit Use Case Diagram 
 
 image::../docs/Diagrams/Existing/JUnitUseCaseDiagram.svg[JUnit Use Case]
 
 Up to now, the `GUIJUnitTest` in `jUnit` package is only able to test if the translation of xml to JAVa language if working well by checking the number of "M1" is hard-coded in this application. 
 
-=== SVG Class Diagram (Jérémie et Sarra)
+=== SVG Class Diagram
 
 image::../docs/Diagrams/Existing/SVGClassDiagram.svg[SVG Class Diagram]
 
 This diagram models the `svg-generator package`. It represents an overview of drawing an SVG process: the classes involved and the methods.
 However, the process is much detailed in the SVG Sequence Diagram. 
 
-=== SVG Sequence Diagram (Zhenyi and Camille)
+=== SVG Sequence Diagram 
 
 image::../docs/Diagrams/Existing/SequenceSVG.svg[SVG Sequence Diagram]
 
@@ -86,7 +86,7 @@ There is another way to generate the SVG image by using the `ControllerSVG` clas
 
 == Coming Soon
 
-=== Database Use Case Diagram (Raphaël et Camille)
+=== Database Use Case Diagram 
 
 image::../docs/Diagrams/ComingSoon/DatabaseUseCaseDiagram.svg[Database Use Case]
 
@@ -99,7 +99,7 @@ We want to connect the application to the Dauphine database so that each time th
 Initially, we plan to contact the Dauphine DSI to have access to the database. Then, we will find a solution who is represented by this diagram : https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/ComingSoon/DatabaseUseCaseDiagram.svg[Database Use Case]
 
 
-=== GUI Use Case Diagram (Zhenyi, Sarra, Jérémie, Marcellino)
+=== GUI Use Case Diagram 
 
 image::../docs/Diagrams/ComingSoon/GUIUseCaseDiagram.svg[GUI Use Case]
 
@@ -110,7 +110,7 @@ This is what we are planned to do :
 * Be able to save courses preferences 
 * Be able to access to the formation site by clicking on it
 
-=== Generation SVG Use Case (Jérémie et Sarra)
+=== Generation SVG Use Case 
 
 image::../docs/Diagrams/ComingSoon/GenerationSVGUseCaseDiagram.svg[SVG Use Case Diagram]
 
@@ -118,7 +118,7 @@ This diagram presents some more evolutions than we judge necessary for the svg_g
 Indeed, the result (the SVG drawing) is not entirely functional. One of the evolutions is the possibility to zoom in or out. This functionality allows you to see the whole graph at first and be able to zoom in according to the user's needs. - → This corrects the fact that you have to move with the elevators (in the existing one), which we had found a bit restrictive.
 In addition, a second use case has been added: access the training pages from the SVG drawing. - → This will save us from putting a lot of informations in the drawing and therefore cluttering it up.
 
-=== ROF Class Diagram (Raphaël, Sarra, Jérémie et Camille)
+=== ROF Class Diagram 
 
 image::../docs/Diagrams/ComingSoon/ROFClassDiagram.svg[ROF Class Diagram]
 

@@ -190,8 +190,9 @@
         </ownedEnd>
       </nestedClassifier>
     </packagedElement>
+    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_AGQUQIfEEeq9p4BXwyfr0g" name="Get information" informationSource="_YKmiEIeYEeqlZY9rOCAo-w" informationTarget="_GVDK4IeaEeqlZY9rOCAo-w"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Model" xmi:id="_iT0NwIeYEeqlZY9rOCAo-w" name="GUI">
+  <packagedElement xmi:type="uml:Model" xmi:id="_iT0NwIeYEeqlZY9rOCAo-w" name="View">
     <packagedElement xmi:type="uml:Interaction" xmi:id="_7jtJ2m3mEeq7r7ozzGhjkA" name="GUI" useCase="_gDfmEG4fEeqT6Y2oaDa2Yg _i1jeAG4fEeqT6Y2oaDa2Yg">
       <ownedComment xmi:type="uml:Comment" xmi:id="_O-DFsG3rEeq7r7ozzGhjkA" annotatedElement="_7jtKFW3mEeq7r7ozzGhjkA">
         <body>We observe that Mac user and Windows user didn't see the same thing. Windows user saw a unesthetic GUI form</body>
@@ -315,7 +316,7 @@
       </nestedClassifier>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Model" xmi:id="_gCxiwIeZEeqlZY9rOCAo-w" name="XML_Tag">
+  <packagedElement xmi:type="uml:Model" xmi:id="_gCxiwIeZEeqlZY9rOCAo-w" name="XML">
     <packagedElement xmi:type="uml:Class" xmi:id="_EfK5gG6PEeq7r7ozzGhjkA" name="XML_Tag">
       <nestedClassifier xmi:type="uml:Class" xmi:id="_-9Fhkm3mEeq7r7ozzGhjkA" name="TagStore">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhk23mEeq7r7ozzGhjkA" name="name" visibility="private">
@@ -372,29 +373,7 @@
       </nestedClassifier>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Model" xmi:id="_ysYiMIeZEeqlZY9rOCAo-w" name="Database">
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_7jtJt23mEeq7r7ozzGhjkA" name="Database" useCase="_7jtJuG3mEeq7r7ozzGhjkA _7jtJum3mEeq7r7ozzGhjkA _7jtJvG3mEeq7r7ozzGhjkA _7jtJvm3mEeq7r7ozzGhjkA">
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJuG3mEeq7r7ozzGhjkA" name="Collect all the up-to-date objects necessary for the construction of the diagram" subject="_7jtJt23mEeq7r7ozzGhjkA">
-        <include xmi:type="uml:Include" xmi:id="_7jtJuW3mEeq7r7ozzGhjkA" addition="_7jtJum3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJum3mEeq7r7ozzGhjkA" name="Create all the necessary objects from the database" subject="_7jtJt23mEeq7r7ozzGhjkA">
-        <include xmi:type="uml:Include" xmi:id="_7jtJu23mEeq7r7ozzGhjkA" addition="_7jtJvG3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJvG3mEeq7r7ozzGhjkA" name="Retrieve information from the Dauphine database" subject="_7jtJt23mEeq7r7ozzGhjkA">
-        <include xmi:type="uml:Include" xmi:id="_7jtJvW3mEeq7r7ozzGhjkA" addition="_7jtJvm3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJvm3mEeq7r7ozzGhjkA" name="Delete all existing objects" subject="_7jtJt23mEeq7r7ozzGhjkA"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_7jtJ1W3mEeq7r7ozzGhjkA" memberEnd="_7jtJ2G3mEeq7r7ozzGhjkA _7jtJ2W3mEeq7r7ozzGhjkA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7jtJ1m3mEeq7r7ozzGhjkA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7jtJ123mEeq7r7ozzGhjkA" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_7jtJ2G3mEeq7r7ozzGhjkA" name="application" type="_7jtJtm3mEeq7r7ozzGhjkA" association="_7jtJ1W3mEeq7r7ozzGhjkA"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_7jtJ2W3mEeq7r7ozzGhjkA" name="usecase1" type="_7jtJuG3mEeq7r7ozzGhjkA" association="_7jtJ1W3mEeq7r7ozzGhjkA"/>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Actor" xmi:id="_7jtJtm3mEeq7r7ozzGhjkA" name="Application"/>
-    </packagedElement>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Model" xmi:id="_GVDK4IeaEeqlZY9rOCAo-w" name="ROF">
+  <packagedElement xmi:type="uml:Model" xmi:id="_GVDK4IeaEeqlZY9rOCAo-w" name="Database">
     <packagedElement xmi:type="uml:Interaction" xmi:id="_ybHU0HEYEeqD4qiy1uAq0g" name="ROF">
       <ownedComment xmi:type="uml:Comment" xmi:id="_SGQ6IHEoEeqD4qiy1uAq0g">
         <body>Querier enables us to retrieve the data from the ROF 
