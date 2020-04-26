@@ -70,3 +70,19 @@ Objectif à court terme : Compléter la classe `DataRecuperator` avec 2 méthode
 * `getProgramID`, méthode permettant de récupérer tous les programID rattachés à une formation. Cette méthode prendra l'ID d'une formation en paramètre et renverra une liste des ID des programmes qui lui sont rattachés. Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.
 * `getFormations`, méthode permettant de récupérer toutes les formations disponibles du département MIDO. Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.
 * Il sera peut-être nécessaire de créer des méthodes supplémentaires afin de faire fonctionner de manière convenable les méthodes précédentes.
+
+=== Equipe 2 : SVG
+
+Pré-requis : comprendre la procédure de création d'un fichier SVG et particulièrement sur la méthode `defineObjectsPosition` de la classe `svg_generator.ResponsiveSVG`.
+
+Objectif principal : Modifier la classe `svg_generator.ResponsiveSVG` et ajouter une étape de contrôle avant la génération du graphe (évitant les superpositions des éléments).
+
+Objectif à court terme : Revoir intégralement l'algorithme de calcul des positions x et y de chaque formation de la méthode `defineObjectsPosition`. Pour ce faire, voici les modifications à apporter dans la méthode:
+
+[square]
+* avec le `Setting` rentré en paramètre dans la méthode, redéfinir un nouveaux champ de calcul (enlever 5% en bas, gauche et droite et 10% en haut, et donc créer de nouvelles variables locales). Car aujourd'hui les marges sont calculés a chaque itération de boucle, engendrant ainsi des pertes d'espace. Ainsi à chaque itération de la boucle, on peut commencer à `int = 0`.
+image::https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/svgmargins.jpg[Schema Margin, 602, 416,role="right"]
+* la methode de calcul des positions `x` à ne pas toucher, car cela semble bon. Mais algorithme des positions `y` à revoir. De part le changement des cours (maintenant _en liste vertical_) rendre le découpage horizontal non plus en nombre de _niveau de formation_ mais en fonction du nombre de cours. Pour ce faire, faire une boucle qui balaye chaque formation sur chaque niveau et récupérer le nombre de cours (suggestion : `maxNumberOfCourse`) et l'intitulé le plus long d'un cours (suggestion : une liste de `maxLengthOfCourse`). Ce qui nous permettra de determiner la position `y` du niveau du dessous avec `maxNumberOfCourse` mais aussi faire un contrôle de chevauchement plus tard.
+
+Pour aller plus loin : Si tout est terminé, créer une nouvelle méthode (suggestion : `isOverlap`) dans la classe `svg_generator.ResponsiveSVG` qui permet, avant chaque paramétrage d'un point d'une formation, le contrôle du chevauchement (exemple s'assurer que la position x de la formation d'après `new_x > maxNumberOfCourse (de la formation précédente) && new_x < setting.length`)
+Cette méthode prendra en paramètre la position `x` et `y` de la formation d'après, `maxNumberOfCourse` du niveau du dessus et `maxLengthOfCourse` de la formation précédente et renvoi un `true` si tout est ok.
