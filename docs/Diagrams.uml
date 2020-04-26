@@ -194,13 +194,6 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_iT0NwIeYEeqlZY9rOCAo-w" name="View">
     <packagedElement xmi:type="uml:Interaction" xmi:id="_7jtJ2m3mEeq7r7ozzGhjkA" name="GUI" useCase="_gDfmEG4fEeqT6Y2oaDa2Yg _i1jeAG4fEeqT6Y2oaDa2Yg">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_O-DFsG3rEeq7r7ozzGhjkA" annotatedElement="_7jtKFW3mEeq7r7ozzGhjkA">
-        <body>We observe that Mac user and Windows user didn't see the same thing. Windows user saw a unesthetic GUI form</body>
-      </ownedComment>
-      <ownedComment xmi:type="uml:Comment" xmi:id="_O-CeoG3rEeq7r7ozzGhjkA" annotatedElement="_7jtJ3W3mEeq7r7ozzGhjkA">
-        <body>The big change here is to allow a user to acces to home page without the login process, a default value to &quot;User&quot;&#xD;
-</body>
-      </ownedComment>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ223mEeq7r7ozzGhjkA" name="Edit a SVG file">
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtJ3G3mEeq7r7ozzGhjkA" name="ExtensionPoint1"/>
         <include xmi:type="uml:Include" xmi:id="_UYhzwG4fEeqT6Y2oaDa2Yg" addition="_7jtJ3W3mEeq7r7ozzGhjkA"/>
@@ -260,6 +253,9 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_kyLt5G6PEeq7r7ozzGhjkA" name="final user" type="_7jtKFW3mEeq7r7ozzGhjkA" association="_kyLt4G6PEeq7r7ozzGhjkA"/>
       </nestedClassifier>
     </packagedElement>
+    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_zO-UQIfNEeq9p4BXwyfr0g" name="Collect objects" informationSource="_iT0NwIeYEeqlZY9rOCAo-w" informationTarget="_YKmiEIeYEeqlZY9rOCAo-w _l-jhoG2jEeq7r7ozzGhjkA"/>
+    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_mlcLcIfOEeq9p4BXwyfr0g" name="Collect objects" informationSource="_iT0NwIeYEeqlZY9rOCAo-w _l-jhoG2jEeq7r7ozzGhjkA" informationTarget="_wggV8IeYEeqlZY9rOCAo-w"/>
+    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_zkaRYIfQEeq9p4BXwyfr0g" name="Call methods to generate SVG" informationSource="_iT0NwIeYEeqlZY9rOCAo-w" informationTarget="_RMo_gIeaEeqlZY9rOCAo-w"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_wggV8IeYEeqlZY9rOCAo-w" name="Paper">
     <packagedElement xmi:type="uml:Class" xmi:id="_vd0uAG6LEeq7r7ozzGhjkA" name="Paper_root">

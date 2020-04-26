@@ -19,9 +19,11 @@ This package seems complete and functional to us, so we do not anticipate any ma
 image::../docs/Diagrams/Existing/GUIUseCaseDiagram.svg[GUI Use Case Diagram]
 
 The "GUI" aspect of the project is coded in the `view` package.
+We observe that Mac user and Windows user didn't see the same thing. Windows user saw a unesthetic GUI form.
 At this point of the project, there is no specific main class to run.
 If we run the GUISVGLoginForm, the final user is able to log in (if the final user name is known by the application, coded in "model" database class.
 On the other hand, if the programmer run another class, the name user is by default "ocailloux".
+The big change here is to allow a user to acces to home page without the login process, a default value to "User"
 
 The tag is saved in an xml file in `src/main/resources/tags/`
 
