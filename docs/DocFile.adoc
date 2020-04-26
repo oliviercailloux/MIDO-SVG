@@ -30,7 +30,7 @@ The tag is saved in an xml file in `src/main/resources/tags/`
 
 image::../docs/Diagrams/View/GUIUseCaseDiagram2.svg[GUI Use Case Diagram]
 
-Pretty much same elements that the https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/JUnitUseCaseDiagram.svg[JUnit Use Case].
+Pretty much same elements that the https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/JUnit/JUnitUseCaseDiagram.svg[JUnit Use Case].
 This is what we are planned to do :
 [square]
 * Saved the user preferences in a xml file and reuse it in a further launch application
@@ -50,7 +50,7 @@ The `PaperA4` class allows you to create a Paper type object having the dimensio
 The `PaperOther` class allows you to create a Paper type object with dimensions chosen by the program user (by calling the constructor of the super class and putting attributes corresponding to the user's choice)
 The `FactoryPaper` class allows you to generate a Paper type object (either `PaperA3`, `PaperA4`, or `PaperOther`)
  
-The https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Existing/PaperClassDiagram.svg[Paper Class Diagram] allows you to visualize the different links between the classes of this package.
+The https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Paper/PaperClassDiagram.svg[Paper Class Diagram] allows you to visualize the different links between the classes of this package.
 
 This package appears to us to be complete and functional, so we do not expect any developments on this part of the project.
 
@@ -114,7 +114,7 @@ There is another way to generate the SVG image by using the `ControllerSVG` clas
 
 image::../docs/Diagrams/SVG/GenerationSVGUseCaseDiagram.svg[Generation SVG Use Case]
 
-This diagram presents some more evolutions than we judge necessary for the svg_generator package. Indeed, the result (the SVG drawing) is not entirely functional. One of the evolutions is the possibility to zoom in or out. This functionality allows you to see the whole graph at first and be able to zoom in according to the user’s needs. - → This corrects the fact that you have to move with the elevators (in the existing one), which we had found a bit restrictive. In addition, a second use case has been added: access the training pages from the SVG drawing. - → This will save us from putting a lot of informations in the drawing and therefore cluttering it up.
+This diagram presents some more evolutions than we judge necessary for the `svg-generator package`. Indeed, the result (the SVG drawing) is not entirely functional. One of the evolutions is the possibility to zoom in or out. This functionality allows you to see the whole graph at first and be able to zoom in according to the user’s needs. - → This corrects the fact that you have to move with the elevators (in the existing one), which we had found a bit restrictive. In addition, a second use case has been added: access the training pages from the SVG drawing. - → This will save us from putting a lot of informations in the drawing and therefore cluttering it up.
 
 
 
