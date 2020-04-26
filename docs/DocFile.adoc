@@ -118,11 +118,13 @@ This diagram presents some more evolutions than we judge necessary for the svg_g
 Indeed, the result (the SVG drawing) is not entirely functional. One of the evolutions is the possibility to zoom in or out. This functionality allows you to see the whole graph at first and be able to zoom in according to the user's needs. - → This corrects the fact that you have to move with the elevators (in the existing one), which we had found a bit restrictive.
 In addition, a second use case has been added: access the training pages from the SVG drawing. - → This will save us from putting a lot of informations in the drawing and therefore cluttering it up.
 
-=== ROF Class Diagram (Raphaël et Sarra)
+=== ROF Class Diagram (Raphaël, Sarra, Jérémie et Camille)
 
 image::../docs/Diagrams/ComingSoon/ROFClassDiagram.svg[ROF Class Diagram]
 
 This diagram contains the classes that would be useful to retrieve the data directly from ROF. 
 `Querier` Class enables us to get the mentions, programs, courses ... from ROF. 
+`DataRecuperator` class uses `Querier` class to get all the useful informations from ROF and create objects with them.
+`DataRecuperator` also uses the `ObjectTransformer` class to transform the objects retrieved by the `Querier` class (and then create objects from the `University` package).
 `QueriesHelper` is essential to login into ROF. 
-The third class `ROFMain` will be useful to store the data (retrieved with calling the two other classes) in a file which will be read by the SVG generator. 
+The last class `ROFMain` will be useful to store the data (retrieved with calling `DataRecuperator` and `QueriesHelper` classes) in a file which will be read by the SVG generator. 
