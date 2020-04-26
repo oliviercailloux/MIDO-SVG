@@ -24,6 +24,7 @@ Nous continuons à développer les deux axes principaux :
 * Suppression des diagrammes inutiles (DatabaseUsecase et SVGUseCase).
 * Déplacement de certains commentaires de diagrammes dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/DocFile.adoc[DocFile]
 * Mise à jour des SVG des diagrammes
+* Supression de l'ancienne doc
 
 === Equipe BDD : Binôme Jérémie – Camille
 

@@ -24,11 +24,13 @@ The `UniversityClassDiagram` diagram allows you to view the different links betw
  
 This package seems complete and functional to us, so we do not anticipate any major developments on this part of the project. However, additions of methods or attribute can be made if necessary to allow another evolution.
 
+PS : We do not proceed to the suppression of Master et Licence and the attribut posX eand posY class, because it needed to draw the SVG file
+
 == View
 
 === GUI Use Case Diagram 
 
-image::../docs/Diagrams/View/GUIUseCaseDiagram1.svg[GUI Use Case Diagram]
+image::../docs/Diagrams/View/GUIUseCaseDiagram.svg[GUI Use Case Diagram]
 
 The "GUI" aspect of the project is coded in the `view` package.
 We observe that Mac user and Windows user didn't see the same thing. Windows user saw a unesthetic GUI form.
@@ -38,8 +40,6 @@ On the other hand, if the programmer run another class, the name user is by defa
 The big change here is to allow a user to acces to home page without the login process, a default value to "User"
 
 The tag is saved in an xml file in `src/main/resources/tags/`
-
-image::../docs/Diagrams/View/GUIUseCaseDiagram2.svg[GUI Use Case Diagram]
 
 Pretty much same elements that the https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/JUnit/JUnitUseCaseDiagram.svg[JUnit Use Case].
 This is what we are planned to do :

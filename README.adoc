@@ -24,7 +24,7 @@ Après avoir pris connaissance de l’existant, nous nous sommes aperçus que le
 
 == Objectif itération 1 JAVA
 
-=== Equipe 1 : Base de données
+=== Equipe 1 : Base de données - Camille et Jérémie
 
 Pré-requis : Après avoir pris contact avec la DSI, prendre connaissance de la structure des données fournis via API-ROF.
 
@@ -40,7 +40,7 @@ Objectif à court terme : Création d'un package `ROFBDD` avec 3 classes :
 
 Aide : Voir avec le professeur pour l'exécution du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO] afin de voir le fonctionnement. (Problème m2e)
 
-=== Equipe 2 : SVG
+=== Equipe 2 : SVG - Marcellino et Sarra
 
 Pré-requis : Comprendre la structure d’un fichier SVG et comment elle est générée dans l’application.
 
@@ -55,6 +55,12 @@ Objectif à court terme : Actuellement, dû au codage "en dur" des positions des
 * `svg_generator.DrawerSVGGen`, particulièrement la méthode `drawFormation` appelé dans la méthode `paint`, ajouter la fonction `defineObjectsPosition`
 * `svg_generator.ResponsiveSVG`, particulièrement la méthode `defineObjectsPosition` qui ne semble pas marcher.
 
+=== Equipe 3 : SPMO Raphaël et Zhenyi
+
+* Support aux binômes de développeurs
+* Vérification de la cohérence du code et création des pull request
+* Communication avec le client
+* Organisation générale
 
 == Objectif itération 2 JAVA
 
@@ -81,7 +87,7 @@ Objectif à court terme : Revoir intégralement l'algorithme de calcul des posit
 
 [square]
 * avec le `Setting` rentré en paramètre dans la méthode, redéfinir un nouveaux champ de calcul (enlever 5% en bas, gauche et droite et 10% en haut, et donc créer de nouvelles variables locales). Car aujourd'hui les marges sont calculés a chaque itération de boucle, engendrant ainsi des pertes d'espace. Ainsi à chaque itération de la boucle, on peut commencer à `int = 0`.
-image::docs/svgmargins.jpg [margins, 602, 416,role="right"]
+image::./docs/svgmargins.jpg [margins, 602, 416,role="right"]
 * la methode de calcul des positions `x` à ne pas toucher, car cela semble bon. Mais algorithme des positions `y` à revoir. De part le changement des cours (maintenant _en liste vertical_) rendre le découpage horizontal non plus en nombre de _niveau de formation_ mais en fonction du nombre de cours. Pour ce faire, faire une boucle qui balaye chaque formation sur chaque niveau et récupérer le nombre de cours (suggestion : `maxNumberOfCourse`) et l'intitulé le plus long d'un cours (suggestion : une liste de `maxLengthOfCourse`). Ce qui nous permettra de determiner la position `y` du niveau du dessous avec `maxNumberOfCourse` mais aussi faire un contrôle de chevauchement plus tard.
 
 Pour aller plus loin : Si tout est terminé, créer une nouvelle méthode (suggestion : `controlSettings`) dans la classe `svg_generator.ResponsiveSVG` qui permet, avant chaque paramétrage d'un point d'une formation, le contrôle du chevauchement (exemple s'assurer que la position x de la formation d'après `new_x > maxNumberOfCourse (de la formation précédente) && new_x < setting.length`)
