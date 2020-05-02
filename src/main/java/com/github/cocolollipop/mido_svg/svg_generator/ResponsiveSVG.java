@@ -1,8 +1,12 @@
 package com.github.cocolollipop.mido_svg.svg_generator;
 
-import java.util.List;
-
+import com.github.cocolollipop.mido_svg.university.components.*;	
 import com.github.cocolollipop.mido_svg.university.components.Formation;
+
+import java.util.List;
+import sun.font.FontDesignMetrics;
+import java.awt.Color;
+import java.awt.FontMetrics;
 
 /**
  * This class adapts the position of objects in order to draw a
@@ -10,6 +14,7 @@ import com.github.cocolollipop.mido_svg.university.components.Formation;
  *
  */
 public class ResponsiveSVG {
+	
 
 	/**
 	 * Count the number of formations of a specific level in a list.
@@ -30,7 +35,22 @@ public class ResponsiveSVG {
 		}
 		return nb;
 	}
-
+	
+	
+	/**
+	 * Count the number of subjects in a Formation.
+	 *
+	 * @param formation is a Formation
+	 * 
+	 * @return an integer corresponding to the number of subjects in the formation"
+	 */
+	
+	public int countSubjects(Formation formation) {
+		List<Subject> listesub = formation.getSubjects();
+		int nb=listesub.size();
+		return nb;
+	}
+	
 	/**
 	 * Determine the position of each Formation in the 
 	 * Canvas according to the number of formations and their level.
@@ -51,68 +71,70 @@ public class ResponsiveSVG {
 		 */
 		int offsetX = 0;
 		int offsetY = 0;
-		int nbL1 = 0;
-		int nbL2 = 0;
-		int nbL3 = 0;
-		int nbM1 = 0;
-		int nbM2 = 0;
+	
 		
 		int totalCptY = 0; /* O<=totalCptY<=5 corresponds to the DOM Tree height 
 						    * totalCptY = 5 means we have to draw the formations from 
-					        * level "L1" to "M2" 
+					        * grade 1 to 5 ("L1" to "M2") 
 					        */
 
-		int cptY[] = {0,0,0,0,0};   /* We assume that the indexes correspond to the levels 
-									 * ordered from "L1" to "M2"
+		int cptY[] = {0,0,0,0,0};   /* We assume that the indexes correspond to the grade 
+									 * ordered from 1 to 5 ("L1" to "M2")
 									 * For the moment we just initialize the tab with zeros 
 									 * Afterwards, depending on which levels the user choose to
 									 * draw, each level will have a certain height in the tree
 									 */
-								
-		
-		// First we count the number of formations of every level
-		nbL1 = countFormations(list, "L1");
-		nbL2 = countFormations(list, "L2");
-		nbL3 = countFormations(list, "L3");
-		nbM1 = countFormations(list, "M1");
-		nbM2 = countFormations(list, "M2");
-
-
-		/* We fill cptY
+	
+		/* 
+		 * The following instruction loop on the list of formation and calculate:
 		 * 
-		 * For example if nbL1==0 and nbL2 == 0 
+		 * 		- the number of formation per grade --> each result is store on the array "nb_forma_per_grade"
+		 * 		- the maximum number of subjects per grade--> each result is store on the array "maxsubj_per_grade"
+		 * */
+		
+		int[] nb_forma_per_grade = new int[5]; 
+		int[] maxsubj_per_grade = new int[5];
+		
+		for (Formation f: list) {
+			for (int i=0; i<=4; i++){
+				if (f.getGrade()==i+1) {
+					nb_forma_per_grade[i] ++; 
+					
+					int nbsujet =countSubjects(f);
+					if (nbsujet >= maxsubj_per_grade[i]) {
+						maxsubj_per_grade[i]= nbsujet;
+					}
+				}
+			}	
+		}
+
+		
+
+		/* The following instruction loop on the number of formation per grade to:
+		 * 		- fill cptY
+		 * 		- calculate totalCptY
+		 * 
+		 * For example grade 1 (nb_forma_per_grade[0]) and grade 2 (nb_forma_per_grade[1])
 		 * then cpt[2] == 1 which means that the level 
-		 * "L3" has the height 1 in the tree which means
-		 * "L3" is the root of the tree.
+		 * grade 3 has the height 1 in the tree which means
+		 * grade 3 is the root of the tree.
 		 * 
 		 */
-		int tempCpt = 0;
-		if (nbL1 != 0) {					
-			totalCptY += 1;     
-			cptY[0] = tempCpt + 1;
-			tempCpt++;
-		}
-		if (nbL2 != 0) {
-			totalCptY += 1; 
-			cptY[1] = tempCpt + 1;
-			tempCpt++;
-		}
-		if (nbL3 != 0) {
-			totalCptY += 1; 
-			cptY[2] = tempCpt + 1;
-			tempCpt++;
-		}
-		if (nbM1 != 0) {
-			totalCptY += 1; 
-			cptY[3] = tempCpt + 1;
-			tempCpt++;
-		}
-		if (nbM2 != 0) {
-			totalCptY += 1; 
-			cptY[4] = tempCpt + 1;
-		}
 		
+		for (int i=0; i<=4; i++) {
+			if (nb_forma_per_grade[i] !=0) {
+				totalCptY++;
+				cptY[i] = totalCptY;
+			}	
+		}
 		totalCptY+= 1;
+		
+		/* calculate the offset for an subject */
+		
+		java.awt.Font Basicfont = new java.awt.Font("TimesRoman", 12, 12);
+		FontMetrics fm = FontDesignMetrics.getMetrics(Basicfont);
+		int height_font_subj = fm.getHeight();
+		int offset_subject = height_font_subj + 14;
 		
 		/*
 		 * Now we calculate X and Y offset
@@ -126,38 +148,18 @@ public class ResponsiveSVG {
 		 * 		Plus, we added a margin, which is proportional to the canvas to 
 		 * 		make it responsive, so that the SVG would be centered. 
 		 */
-		if (nbL1 != 0) {
-			offsetX = canvasX / (nbL1 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[0] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "L1", offsetX, offsetY);
-		}
 		
-		if (nbL2 != 0) {
-			offsetX = canvasX / (nbL2 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[1] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "L2", offsetX, offsetY);
-		}
-		
-		if (nbL3 != 0) {
-			offsetX = canvasX / (nbL3 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[2] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "L3", offsetX, offsetY);
-		}
-		
-		if (nbM1 != 0) {
-			offsetX = canvasX / (nbM1 + 1);
-			offsetY = (int) ((canvasY / (totalCptY)) * (cptY[3] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "M1", offsetX, offsetY);
-		}
-		
-		if (nbM2 != 0) {
-			offsetX = canvasX / (nbM2 + 2);
-			offsetY = (int) ((canvasY / (totalCptY)) * (cptY[4] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "M2", offsetX, offsetY);
-		}
-
+		for (int i=0; i<=4; i++) {
+			if (nb_forma_per_grade[i] !=0) {
+				
+				offsetX = canvasX / (nb_forma_per_grade[i] + 1);
+				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[i] - 1) + (canvasY * 0.1));
+				associatePositionX(list, i+1, offsetX, offsetY);
+				
+			}	
+		}	
 	}
-
+	
 	/**
 	 * Associate each formation of the specified level to a certain 
 	 * position according to the coordinates passed in parameter 
@@ -165,16 +167,17 @@ public class ResponsiveSVG {
 	 * @param list
 	 *            is a LinkedList of Formation
 	 * @param myYear
-	 *            is a year of study such as "L3" or "M1"
+	 *            is the grade 1="l1", 2=" l2",....
 	 * @param offsetX
 	 * 			  the abscissa calculated after shifting and adjusting 
 	 * @param offsetY
 	 * 			  the ordinate calculated after shifting and adjusting
 	 */
-	private void associatePositionX(List<Formation> list, String myYear, int offsetX, int offsetY) {
+
+	private void associatePositionX(List<Formation> list, int myYear, int offsetX, int offsetY) {
 		int i = 0;
 		for (Formation aFormation : list) {
-			if (aFormation.getFullName().indexOf(myYear) != -1) {
+			if (aFormation.getGrade() == myYear) {
 				aFormation.setPosX((int) (offsetX * i + offsetX * 0.5));
 				aFormation.setPosY(offsetY);
 				i++;
