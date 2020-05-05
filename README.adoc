@@ -64,7 +64,7 @@ Objectif à court terme : Actuellement, dû au codage "en dur" des positions des
 
 == Objectif itération 2 JAVA
 
-=== Equipe 1 : Base de données
+=== Equipe 1 : Base de données - Marcellino Dour et Raphaël Pardini
 
 Pré-requis : comprendre la structure des données fournies via API-ROF et comprendre le fonctionnement des méthodes de la classe `Querier`.
 
@@ -77,7 +77,7 @@ Objectif à court terme : Compléter la classe `DataRecuperator` avec 2 méthode
 * `getFormations`, méthode permettant de récupérer toutes les formations disponibles du département MIDO. Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.
 * Il sera peut-être nécessaire de créer des méthodes supplémentaires afin de faire fonctionner de manière convenable les méthodes précédentes.
 
-=== Equipe 2 : SVG
+=== Equipe 2 : SVG - Jérémie Brulé et Zhenyi Guo 
 
 Pré-requis : comprendre la procédure de création d'un fichier SVG et particulièrement sur la méthode `defineObjectsPosition` de la classe `svg_generator.ResponsiveSVG`.
 
@@ -94,3 +94,13 @@ image::./docs/svgmargins.jpg[margins, 602, 416,role="right"]
 
 Pour aller plus loin : Si tout est terminé, créer une nouvelle méthode (suggestion : `controlSettings`) dans la classe `svg_generator.ResponsiveSVG` qui permet, avant chaque paramétrage d'un point d'une formation, le contrôle du chevauchement (exemple s'assurer que la position x de la formation d'après `new_x > maxNumberOfCourse (de la formation précédente) && new_x < setting.length`)
 Cette méthode prendra en paramètre la position `x` et `y` de la formation d'après, `maxNumberOfCourse` du niveau du dessus et `maxLengthOfCourse` de la formation précédente et renvoi un `true` si tout est ok.
+
+=== Equipe 3 : SMPO Camille Langlois et Sarra Tajouri 
+
+* Support aux binômes de développeurs
+* Création des issues 
+* Vérification de la cohérence du code et création des pull request
+* Communication avec le client
+* Organisation générale
+
+
