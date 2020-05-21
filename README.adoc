@@ -103,4 +103,21 @@ Cette méthode prendra en paramètre la position `x` et `y` de la formation d'ap
 * Communication avec le client
 * Organisation générale
 
+== Objectif itération 2 JAVA
+
+=== Equipe 1 : Base de données - Sarra Tajouri et Zhenyi Guo
+
+Pré-requis : comprendre la structure des données fournies via API-ROF (identifier la récuperation du département MIDO)  et comprendre le fonctionnement des méthodes de la classe `ROFDatabase`. Et particulièrement le protocole `initialize` -> les méthodes fetch -> les méthodes create.
+
+Objectif principal : Modification du package `model` pour qu'il permette de récupérer les données reROF et mettre sous la forme structurelle du package `University` adaptée au traitement SVG.
+
+Objectif à court terme : 
+
+[square]
+* Créer la méthode `createFormation` afin de transformer un `Program` en une `Formation`.
+* Compléter la méthodes `fetchFormations` afin de récuperer toutes les formations du département MIDO et non pas juste le M1 MIAGE App.
+* Modifier la méthode `fetchSubjects` afin de récupérer tous les cours en fonction des formations récupérées avec la méthode `fetchFormations`.
+* S'assurer que tous les professeurs soient récupérés grace à la méthode `fetchTeachers`.
+* Rédaction des tests unitaires associés.
+
 

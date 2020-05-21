@@ -370,189 +370,170 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_GVDK4IeaEeqlZY9rOCAo-w" name="Database">
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_ybHU0HEYEeqD4qiy1uAq0g" name="ROF">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_SGQ6IHEoEeqD4qiy1uAq0g">
-        <body>Querier enables us to retrieve the data from the ROF 
+    <ownedComment xmi:type="uml:Comment" xmi:id="_SGQ6IHEoEeqD4qiy1uAq0g">
+      <body>Querier enables us to retrieve the data from the ROF 
 The data is either Mention, Program, Person, Course or OrgaUnit.
 predicate should be like &quot;mentionId = ****&quot;</body>
-      </ownedComment>
-      <ownedComment xmi:type="uml:Comment" xmi:id="_aYGikHEqEeqD4qiy1uAq0g">
-        <body>QueriesHelper enables us to login into ROF.
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_aYGikHEqEeqD4qiy1uAq0g">
+      <body>QueriesHelper enables us to login into ROF.
 The class Authenticator represents an object that knows how to obtain authentication for a network connection.
 </body>
-      </ownedComment>
-      <ownedComment xmi:type="uml:Comment" xmi:id="_CLPnoHHHEeqADqZe4Qf0-Q">
-        <body>Main method to call QueriesHelper.setDefaultAuthenticator(); to connect&#xD;
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_CLPnoHHHEeqADqZe4Qf0-Q">
+      <body>Main method to call QueriesHelper.setDefaultAuthenticator(); to connect&#xD;
 and call DataRecuperator to create objects and lists of objects (Formations, Subjects, Teacher...).&#xD;
 </body>
-      </ownedComment>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_Yg2GAHEqEeqD4qiy1uAq0g" name="" type="_yuwZ0HEpEeqD4qiy1uAq0g"/>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_2f-4cHEYEeqD4qiy1uAq0g" name="Querier" visibility="public">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_n_q6kHEhEeqD4qiy1uAq0g" name="dataservices" visibility="private"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_c9-ugIe5Eeqf7uyY-izBqA" name="datarecuperator" type="_Hl5BgIe3Eeqf7uyY-izBqA" association="_c952AIe5Eeqf7uyY-izBqA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c9_VkIe5Eeqf7uyY-izBqA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c9_VkYe5Eeqf7uyY-izBqA" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_asLj4HEkEeqD4qiy1uAq0g" name="getMentions">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_asLj4XEkEeqD4qiy1uAq0g" name="predicate">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_asLj4nEkEeqD4qiy1uAq0g" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_90qJgHEkEeqD4qiy1uAq0g" name="getMention" visibility="package">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_90qJgXEkEeqD4qiy1uAq0g" name="mentionID">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_90qJgnEkEeqD4qiy1uAq0g" type="_XJkG0HEmEeqD4qiy1uAq0g" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_yjuyYHElEeqD4qiy1uAq0g" name="getPrograms">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_yjuyYXElEeqD4qiy1uAq0g" name="predicate">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_yjuyYnElEeqD4qiy1uAq0g" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_L5GpwHEnEeqD4qiy1uAq0g" name="getProgram">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_L5GpwXEnEeqD4qiy1uAq0g" name="programId">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_L5GpwnEnEeqD4qiy1uAq0g" type="_Y8LT8HEmEeqD4qiy1uAq0g" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_UqJooHEnEeqD4qiy1uAq0g" name="getCourses">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UqJooXEnEeqD4qiy1uAq0g" name="predicate">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UqJoonEnEeqD4qiy1uAq0g" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_cEZMoHEnEeqD4qiy1uAq0g" name="getCourse">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_cEZMoXEnEeqD4qiy1uAq0g" name="courseId">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_cEZMonEnEeqD4qiy1uAq0g" type="_baV_gHEmEeqD4qiy1uAq0g" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_ieXmcHEnEeqD4qiy1uAq0g" name="getPersons">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ieYNgHEnEeqD4qiy1uAq0g" name="predicate">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_veZHMHEnEeqD4qiy1uAq0g" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_1PhYUHEnEeqD4qiy1uAq0g" name="getPerson">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PhYUXEnEeqD4qiy1uAq0g" name="personId">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PhYUnEnEeqD4qiy1uAq0g" type="_neDzkHEnEeqD4qiy1uAq0g" direction="return"/>
-        </ownedOperation>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_XJkG0HEmEeqD4qiy1uAq0g" name="Mention"/>
+    </ownedComment>
+    <packagedElement xmi:type="uml:Class" xmi:id="_2f-4cHEYEeqD4qiy1uAq0g" name="Querier" visibility="public">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_n_q6kHEhEeqD4qiy1uAq0g" name="dataservices" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_asLj4HEkEeqD4qiy1uAq0g" name="getMentions">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_asLj4XEkEeqD4qiy1uAq0g" name="predicate">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_asLj4nEkEeqD4qiy1uAq0g" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_90qJgHEkEeqD4qiy1uAq0g" name="getMention" visibility="package">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_90qJgXEkEeqD4qiy1uAq0g" name="mentionID">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_90qJgnEkEeqD4qiy1uAq0g" type="_XJkG0HEmEeqD4qiy1uAq0g" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yjuyYHElEeqD4qiy1uAq0g" name="getPrograms">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yjuyYXElEeqD4qiy1uAq0g" name="predicate">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yjuyYnElEeqD4qiy1uAq0g" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_L5GpwHEnEeqD4qiy1uAq0g" name="getProgram">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_L5GpwXEnEeqD4qiy1uAq0g" name="programId">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_L5GpwnEnEeqD4qiy1uAq0g" type="_Y8LT8HEmEeqD4qiy1uAq0g" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_UqJooHEnEeqD4qiy1uAq0g" name="getCourses">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_UqJooXEnEeqD4qiy1uAq0g" name="predicate">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_UqJoonEnEeqD4qiy1uAq0g" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_cEZMoHEnEeqD4qiy1uAq0g" name="getCourse">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_cEZMoXEnEeqD4qiy1uAq0g" name="courseId">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_cEZMonEnEeqD4qiy1uAq0g" type="_baV_gHEmEeqD4qiy1uAq0g" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ieXmcHEnEeqD4qiy1uAq0g" name="getPersons">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ieYNgHEnEeqD4qiy1uAq0g" name="predicate">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_veZHMHEnEeqD4qiy1uAq0g" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1PhYUHEnEeqD4qiy1uAq0g" name="getPerson">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PhYUXEnEeqD4qiy1uAq0g" name="personId">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PhYUnEnEeqD4qiy1uAq0g" type="_neDzkHEnEeqD4qiy1uAq0g" direction="return"/>
+      </ownedOperation>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_Y8LT8HEmEeqD4qiy1uAq0g" name="Program"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_XJkG0HEmEeqD4qiy1uAq0g" name="Mention"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_baV_gHEmEeqD4qiy1uAq0g" name="Course"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_neDzkHEnEeqD4qiy1uAq0g" name="Person"/>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_yuwZ0HEpEeqD4qiy1uAq0g" name="QueriesHelper">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_jG3nMnKjEeqIt_nXE7TRWg" name="rofdatabase" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_jG3AIHKjEeqIt_nXE7TRWg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_jG4OQHKjEeqIt_nXE7TRWg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_jG4OQXKjEeqIt_nXE7TRWg" value="*"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_7_nhMHEpEeqD4qiy1uAq0g" name="setDefaultAuthenticator"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_CAhTsHEqEeqD4qiy1uAq0g" name="getTokenAuthenticator">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_JDMFMHEqEeqD4qiy1uAq0g" type="_DC59wHEqEeqD4qiy1uAq0g" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_rzFywHEqEeqD4qiy1uAq0g" name="getTokenValue" isStatic="true">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_vhohEHEqEeqD4qiy1uAq0g" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_EBt58HErEeqD4qiy1uAq0g" name="getTokenOpt">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_mFb28HErEeqD4qiy1uAq0g" type="_ZHuDUHErEeqD4qiy1uAq0g" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_tsMM8HErEeqD4qiy1uAq0g" name="getConstantAuthenticator">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_tsMM8XErEeqD4qiy1uAq0g" type="_DC59wHEqEeqD4qiy1uAq0g" direction="return"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_3eZt4HErEeqD4qiy1uAq0g" type="_xd91cHErEeqD4qiy1uAq0g"/>
-        </ownedOperation>
+      <nestedClassifier xmi:type="uml:Association" xmi:id="_r1u8AJs4EeqGYc7sBUjHUw" memberEnd="_r10bkJs4EeqGYc7sBUjHUw _r13e4Js4EeqGYc7sBUjHUw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_r1x_UJs4EeqGYc7sBUjHUw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_r1x_UZs4EeqGYc7sBUjHUw" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_r10bkJs4EeqGYc7sBUjHUw" name="rofdatabase" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_r1u8AJs4EeqGYc7sBUjHUw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_r13e4Js4EeqGYc7sBUjHUw" name="querier" type="_2f-4cHEYEeqD4qiy1uAq0g" association="_r1u8AJs4EeqGYc7sBUjHUw"/>
       </nestedClassifier>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_yuwZ0HEpEeqD4qiy1uAq0g" name="QueriesHelper">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_7_nhMHEpEeqD4qiy1uAq0g" name="setDefaultAuthenticator"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CAhTsHEqEeqD4qiy1uAq0g" name="getTokenAuthenticator">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_JDMFMHEqEeqD4qiy1uAq0g" type="_DC59wHEqEeqD4qiy1uAq0g" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_rzFywHEqEeqD4qiy1uAq0g" name="getTokenValue" isStatic="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vhohEHEqEeqD4qiy1uAq0g" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_EBt58HErEeqD4qiy1uAq0g" name="getTokenOpt">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_mFb28HErEeqD4qiy1uAq0g" type="_ZHuDUHErEeqD4qiy1uAq0g" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_tsMM8HErEeqD4qiy1uAq0g" name="getConstantAuthenticator">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tsMM8XErEeqD4qiy1uAq0g" type="_DC59wHEqEeqD4qiy1uAq0g" direction="return"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3eZt4HErEeqD4qiy1uAq0g" type="_xd91cHErEeqD4qiy1uAq0g"/>
+      </ownedOperation>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_DC59wHEqEeqD4qiy1uAq0g" name="Authenticator"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_ZHuDUHErEeqD4qiy1uAq0g" name="Optional&lt;String>"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_xd91cHErEeqD4qiy1uAq0g" name="PasswordAuthentication"/>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_GH9tYHEuEeqD4qiy1uAq0g" name="ROFDataBase">
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_8Q7RUHKiEeqIt_nXE7TRWg" name="main"/>
-        <nestedClassifier xmi:type="uml:Association" xmi:id="_jG3AIHKjEeqIt_nXE7TRWg" name="is used   " visibility="public" memberEnd="_jG3nMnKjEeqIt_nXE7TRWg _jG4OQnKjEeqIt_nXE7TRWg">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_jG3nMHKjEeqIt_nXE7TRWg" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_jG3nMXKjEeqIt_nXE7TRWg" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_jG4OQnKjEeqIt_nXE7TRWg" name="querieshelper" type="_yuwZ0HEpEeqD4qiy1uAq0g" association="_jG3AIHKjEeqIt_nXE7TRWg">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dRAg4HLAEeqTi6zh0OU6cA"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dRC9IHLAEeqTi6zh0OU6cA" value="*"/>
-          </ownedEnd>
-        </nestedClassifier>
-        <nestedClassifier xmi:type="uml:Association" xmi:id="_O6TAMHKjEeqIt_nXE7TRWg" name="is used   " visibility="package" memberEnd="_O6UOUnKjEeqIt_nXE7TRWg _O6U1YXKjEeqIt_nXE7TRWg">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_O6UOUHKjEeqIt_nXE7TRWg" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_O6UOUXKjEeqIt_nXE7TRWg" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_O6U1YXKjEeqIt_nXE7TRWg" name="querier" type="_Hl5BgIe3Eeqf7uyY-izBqA" association="_O6TAMHKjEeqIt_nXE7TRWg">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XtdYwHLAEeqTi6zh0OU6cA"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XthqMHLAEeqTi6zh0OU6cA" value="*"/>
-          </ownedEnd>
-        </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Association" xmi:id="_03X7oJs4EeqGYc7sBUjHUw" memberEnd="_03ZJwps4EeqGYc7sBUjHUw _03Zw0Js4EeqGYc7sBUjHUw">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_03ZJwJs4EeqGYc7sBUjHUw" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_03ZJwZs4EeqGYc7sBUjHUw" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_03ZJwps4EeqGYc7sBUjHUw" name="rofdatabase" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_03X7oJs4EeqGYc7sBUjHUw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_03Zw0Js4EeqGYc7sBUjHUw" name="querieshelper" type="_yuwZ0HEpEeqD4qiy1uAq0g" association="_03X7oJs4EeqGYc7sBUjHUw"/>
       </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_Hl5BgIe3Eeqf7uyY-izBqA" name="DataRecuperator">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_O6UOUnKjEeqIt_nXE7TRWg" name="rofdatabase" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_O6TAMHKjEeqIt_nXE7TRWg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U21w8HLAEeqTi6zh0OU6cA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U27QgHLAEeqTi6zh0OU6cA" value="*"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_NjeaQIe3Eeqf7uyY-izBqA" name="getSubjects">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_UqguYIe3Eeqf7uyY-izBqA" name="programID">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_bnE34Ie3Eeqf7uyY-izBqA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_fg5CEIe3Eeqf7uyY-izBqA" name="getProgramID">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_pRn8UIe3Eeqf7uyY-izBqA" name="formationID">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_wEBdMIe3Eeqf7uyY-izBqA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_4BdN0Ie3Eeqf7uyY-izBqA" name="getFormations">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="__mxZYIe3Eeqf7uyY-izBqA" direction="return">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-          </ownedParameter>
-        </ownedOperation>
-        <nestedClassifier xmi:type="uml:Association" xmi:id="_c952AIe5Eeqf7uyY-izBqA" name="is used" memberEnd="_c9-ugIe5Eeqf7uyY-izBqA _c9_Vkoe5Eeqf7uyY-izBqA">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_c98SQIe5Eeqf7uyY-izBqA" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_c985UIe5Eeqf7uyY-izBqA" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_c9_Vkoe5Eeqf7uyY-izBqA" name="querier" type="_2f-4cHEYEeqD4qiy1uAq0g" association="_c952AIe5Eeqf7uyY-izBqA"/>
-        </nestedClassifier>
-        <nestedClassifier xmi:type="uml:Association" xmi:id="_1-MqsIe5Eeqf7uyY-izBqA" name="is used" memberEnd="_1-N40Ye5Eeqf7uyY-izBqA _1-Of4Ye5Eeqf7uyY-izBqA">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1-NRwIe5Eeqf7uyY-izBqA" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1-N40Ie5Eeqf7uyY-izBqA" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_1-Of4Ye5Eeqf7uyY-izBqA" name="objecttransformer" type="_Jj37sIe4Eeqf7uyY-izBqA" association="_1-MqsIe5Eeqf7uyY-izBqA"/>
-        </nestedClassifier>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_Jj37sIe4Eeqf7uyY-izBqA" name="ObjectTransformer">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_1-N40Ye5Eeqf7uyY-izBqA" name="datarecuperator" type="_Hl5BgIe3Eeqf7uyY-izBqA" association="_1-MqsIe5Eeqf7uyY-izBqA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1-N40oe5Eeqf7uyY-izBqA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1-Of4Ie5Eeqf7uyY-izBqA" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_OgOg8Ie4Eeqf7uyY-izBqA" name="createSubject">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VYbu4Ie4Eeqf7uyY-izBqA" name="course" type="_baV_gHEmEeqD4qiy1uAq0g"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZHpyoIe4Eeqf7uyY-izBqA" name="subject" type="_-9Fgi23mEeq7r7ozzGhjkA" direction="return"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_aOcbkIe4Eeqf7uyY-izBqA" name="createTeacher">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_dmsw0Ie4Eeqf7uyY-izBqA" name="person" type="_neDzkHEnEeqD4qiy1uAq0g"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_f3qG0Ie4Eeqf7uyY-izBqA" name="teacher" type="_-9FgwG3mEeq7r7ozzGhjkA" direction="return"/>
-        </ownedOperation>
-      </nestedClassifier>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GH9tYHEuEeqD4qiy1uAq0g" name="ROFDataBase">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_XpoZoJs5EeqGYc7sBUjHUw" name="department" visibility="private" type="_-9E5Q23mEeq7r7ozzGhjkA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ykYI0Js5EeqGYc7sBUjHUw" name="formations" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_K79XsJs6EeqGYc7sBUjHUw" name="subjects" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_RjRC4Js6EeqGYc7sBUjHUw" name="tags" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_VRj5kJs6EeqGYc7sBUjHUw" name="teachers" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Arc7wJs7EeqGYc7sBUjHUw" name="initialize" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_I-5_sJs7EeqGYc7sBUjHUw" name="fetchTeachers" visibility="private">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tL5WUJs7EeqGYc7sBUjHUw" visibility="public" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_y4JugJs7EeqGYc7sBUjHUw" name="fetchSubjects" visibility="private">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_y4JugZs7EeqGYc7sBUjHUw" visibility="public" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_zQf9EJs7EeqGYc7sBUjHUw" name="fetchFormations" visibility="private">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zQf9EZs7EeqGYc7sBUjHUw" visibility="public" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ze6MgJs7EeqGYc7sBUjHUw" name="fetchTags" visibility="private">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ze6MgZs7EeqGYc7sBUjHUw" visibility="public" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_I8JxMJs8EeqGYc7sBUjHUw" name="fetchDepartement" visibility="protected">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_I8JxMZs8EeqGYc7sBUjHUw" visibility="public" type="_-9E5Q23mEeq7r7ozzGhjkA" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_NKCG4Js8EeqGYc7sBUjHUw" name="createSubject" visibility="package">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_cBHP4Js8EeqGYc7sBUjHUw" name="course" type="_baV_gHEmEeqD4qiy1uAq0g"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_e65gcJs8EeqGYc7sBUjHUw" name="formation" type="_-9E5VW3mEeq7r7ozzGhjkA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_klqD0Js8EeqGYc7sBUjHUw" name="subject" type="_-9Fgi23mEeq7r7ozzGhjkA" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_xetZ4Js8EeqGYc7sBUjHUw" name="createTeacher" visibility="package">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_xetZ4Zs8EeqGYc7sBUjHUw" name="person" type="_neDzkHEnEeqD4qiy1uAq0g"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_xetZ45s8EeqGYc7sBUjHUw" name="teacher" type="_-9FgwG3mEeq7r7ozzGhjkA" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_xs-fYJs8EeqGYc7sBUjHUw" name="createFormation" visibility="package">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_xs-fYZs8EeqGYc7sBUjHUw" name="program" type="_Y8LT8HEmEeqD4qiy1uAq0g"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_xs-fY5s8EeqGYc7sBUjHUw" name="formation" type="_-9E5VW3mEeq7r7ozzGhjkA" direction="return"/>
+      </ownedOperation>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_RMo_gIeaEeqlZY9rOCAo-w" name="SVG">
