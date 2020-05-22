@@ -297,40 +297,7 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_gCxiwIeZEeqlZY9rOCAo-w" name="XML">
-    <packagedElement xmi:type="uml:Class" xmi:id="_EfK5gG6PEeq7r7ozzGhjkA" name="XML_Tag">
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_-9Fhkm3mEeq7r7ozzGhjkA" name="TagStore">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhk23mEeq7r7ozzGhjkA" name="name" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhlG3mEeq7r7ozzGhjkA" name="tagList" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhlW3mEeq7r7ozzGhjkA" type="_-9FhiW3mEeq7r7ozzGhjkA" aggregation="composite" association="_-9Fh9m3mEeq7r7ozzGhjkA">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-9Fhlm3mEeq7r7ozzGhjkA"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-9Fhl23mEeq7r7ozzGhjkA" value="1"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhmG3mEeq7r7ozzGhjkA" name="getName" visibility="public"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhmW3mEeq7r7ozzGhjkA" name="getTagsList" visibility="public"/>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9Fhmm3mEeq7r7ozzGhjkA" name="setName" visibility="public">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9Fhm23mEeq7r7ozzGhjkA" name="name">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          </ownedParameter>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhnG3mEeq7r7ozzGhjkA" name="setTagsList" visibility="public">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhnW3mEeq7r7ozzGhjkA" name="list">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-          </ownedParameter>
-        </ownedOperation>
-        <nestedClassifier xmi:type="uml:Association" xmi:id="_-9Fh9m3mEeq7r7ozzGhjkA" visibility="public" memberEnd="_-9FhlW3mEeq7r7ozzGhjkA _-9Fh-W3mEeq7r7ozzGhjkA">
-          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-9Fh923mEeq7r7ozzGhjkA" source="org.eclipse.papyrus">
-            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-9Fh-G3mEeq7r7ozzGhjkA" key="nature" value="UML_Nature"/>
-          </eAnnotations>
-          <ownedEnd xmi:type="uml:Property" xmi:id="_-9Fh-W3mEeq7r7ozzGhjkA" type="_-9Fhkm3mEeq7r7ozzGhjkA" association="_-9Fh9m3mEeq7r7ozzGhjkA">
-            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-9Fh-m3mEeq7r7ozzGhjkA"/>
-            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-9Fh-23mEeq7r7ozzGhjkA" value="*"/>
-          </ownedEnd>
-        </nestedClassifier>
-      </nestedClassifier>
+    <packagedElement xmi:type="uml:Interaction" xmi:id="_ngXiwJw_Eeq5brtEZYbw5Q" name="XML_TAG">
       <nestedClassifier xmi:type="uml:Class" xmi:id="_-9FhiW3mEeq7r7ozzGhjkA" name="Tag" visibility="package">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhim3mEeq7r7ozzGhjkA" name="name" visibility="private" aggregation="composite">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -348,6 +315,25 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhkG3mEeq7r7ozzGhjkA" name="setName">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhkW3mEeq7r7ozzGhjkA" name="name">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_-9Fhkm3mEeq7r7ozzGhjkA" name="TagStore">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fhk23mEeq7r7ozzGhjkA" name="name" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhlG3mEeq7r7ozzGhjkA" name="tagList" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhmG3mEeq7r7ozzGhjkA" name="getName" visibility="public"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9Fhmm3mEeq7r7ozzGhjkA" name="setName" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9Fhm23mEeq7r7ozzGhjkA" name="name">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhnG3mEeq7r7ozzGhjkA" name="setTagsList" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhnW3mEeq7r7ozzGhjkA" name="list">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
           </ownedParameter>
         </ownedOperation>
       </nestedClassifier>
@@ -822,5 +808,15 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
         <ownedEnd xmi:type="uml:Property" xmi:id="_-9FhMm3mEeq7r7ozzGhjkA" name="xml database" type="_-9FhJ23mEeq7r7ozzGhjkA" association="_-9FhLm3mEeq7r7ozzGhjkA"/>
       </nestedClassifier>
     </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_9l9g4Jw_Eeq5brtEZYbw5Q" memberEnd="_9l-vApw_Eeq5brtEZYbw5Q _9l_WEJw_Eeq5brtEZYbw5Q">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9l-vAJw_Eeq5brtEZYbw5Q" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9l-vAZw_Eeq5brtEZYbw5Q" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_9l-vApw_Eeq5brtEZYbw5Q" type="_-9FhiW3mEeq7r7ozzGhjkA" association="_9l9g4Jw_Eeq5brtEZYbw5Q">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DGtzsJxAEeq5brtEZYbw5Q" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DGysMJxAEeq5brtEZYbw5Q" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_9l_WEJw_Eeq5brtEZYbw5Q" type="_-9Fhkm3mEeq7r7ozzGhjkA" aggregation="composite" association="_9l9g4Jw_Eeq5brtEZYbw5Q"/>
   </packagedElement>
 </uml:Model>

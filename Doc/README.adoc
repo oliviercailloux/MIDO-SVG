@@ -5,9 +5,8 @@
 
 image::../docs/Diagrams/MIDO-SVG_General.svg[MIDO-SVG Diagram]
 
-The `JUnit` package contains tests allowing to test all code additions during java iterations.
-
-`Controller` `XML` packages are no longer useful to us and will therefore be deleted in the next java iteration.
+This diagram aim to represent an overview on our application.
+ `Controller` package is no longer useful to us and will therefore be deleted in the next java iteration.
 
 You can see the details of all these packages just below
 
@@ -54,25 +53,8 @@ This is what we are planned to do :
 === Paper Class Diagram 
 
 image::../docs/Diagrams/Paper/PaperClassDiagram.svg[Paper Class Diagram]
-
-The `Paper` class allows you to represent as an object papers in a certain format (determined by the dimXCanvas and dimYCanvas attributes)
-The `PaperA3` class allows you to create a Paper type object having the dimensions of an A3 sheet (by calling the constructor of the super class and setting the attributes corresponding to A3 format)
-The `PaperA4` class allows you to create a Paper type object having the dimensions of an A4 sheet (by calling the constructor of the super class and setting the attributes corresponding to A4 format)
-The `PaperOther` class allows you to create a Paper type object with dimensions chosen by the program user (by calling the constructor of the super class and putting attributes corresponding to the user's choice)
-The `FactoryPaper` class allows you to generate a Paper type object (either `PaperA3`, `PaperA4`, or `PaperOther`)
  
 The https://github.com/marcellinodour/MIDO-SVG/blob/master/docs/Diagrams/Paper/PaperClassDiagram.svg[Paper Class Diagram] allows you to visualize the different links between the classes of this package.
-
-This package appears to us to be complete and functional, so we do not expect any developments on this part of the project.
-
-
-== JUnit
-
-=== JUnit Use Case Diagram 
-
-image::../docs/Diagrams/JUnit/JUnitUseCaseDiagram.svg[JUnit Use Case]
-
-Up to now, the `GUIJUnitTest` in `jUnit` package is only able to test if the translation of xml to JAVa language if working well by checking the number of "M1" is hard-coded in this application. 
 
 
 == XML
@@ -86,8 +68,7 @@ Each tag has a name and a list of subjects.
 The TagStore class allows you to store several tags.
 In the future, we want to be able to choose the courses by tags. 
 
-The `XMLMain` class (in the xml-to-java package) is used to retrieve an XML file and extract the data (name, first name, address, etc.) to store it in a hash table. Afterwards, this hash table will be used to fill the Database (Database class). 
-Since we are planning to retrieve these informations directly from Dauphine's DSI, this class won't be useful anymore.  
+The `XMLMain` class (in the xml-to-java package) is used to retrieve an XML file and extract the data (name, first name, address, etc.) to store it in a hash table. Afterwards, this hash table will be used to fill the tags. 
 
 
 == Database
