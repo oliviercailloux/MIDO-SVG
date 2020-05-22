@@ -114,6 +114,7 @@ Objectif principal : Modification du package `model` pour qu'il permette de réc
 Objectif à court terme : 
 
 [square]
+* Suppression de l'attribut `Users` + les methodes associées
 * Créer la méthode `createFormation` afin de transformer un `Program` en une `Formation`.
 * Compléter la méthodes `fetchFormations` afin de récuperer toutes les formations du département MIDO et non pas juste le M1 MIAGE App.
 * Modifier la méthode `fetchSubjects` afin de récupérer tous les cours en fonction des formations récupérées avec la méthode `fetchFormations`.
