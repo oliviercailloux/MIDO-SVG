@@ -296,22 +296,6 @@
       </nestedClassifier>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Model" xmi:id="_TsC2oIeZEeqlZY9rOCAo-w" name="JUnit">
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_-9Fhnm3mEeq7r7ozzGhjkA" name="JUnit">
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9Fhn23mEeq7r7ozzGhjkA" name="test GUI">
-        <include xmi:type="uml:Include" xmi:id="_-9FhoG3mEeq7r7ozzGhjkA" addition="_-9FhoW3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhoW3mEeq7r7ozzGhjkA" name="test number of M1"/>
-      <nestedClassifier xmi:type="uml:Actor" xmi:id="_-9FhrG3mEeq7r7ozzGhjkA" name="ProgrammerUser"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_Ze3Q4G4eEeqT6Y2oaDa2Yg" memberEnd="_Ze5GEm4eEeqT6Y2oaDa2Yg _Ze5tIG4eEeqT6Y2oaDa2Yg">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ze5GEG4eEeqT6Y2oaDa2Yg" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Ze5GEW4eEeqT6Y2oaDa2Yg" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Ze5GEm4eEeqT6Y2oaDa2Yg" name="test gui" type="_-9Fhn23mEeq7r7ozzGhjkA" association="_Ze3Q4G4eEeqT6Y2oaDa2Yg"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_Ze5tIG4eEeqT6Y2oaDa2Yg" name="programmeruser" type="_-9FhrG3mEeq7r7ozzGhjkA" association="_Ze3Q4G4eEeqT6Y2oaDa2Yg"/>
-      </nestedClassifier>
-    </packagedElement>
-  </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_gCxiwIeZEeqlZY9rOCAo-w" name="XML">
     <packagedElement xmi:type="uml:Class" xmi:id="_EfK5gG6PEeq7r7ozzGhjkA" name="XML_Tag">
       <nestedClassifier xmi:type="uml:Class" xmi:id="_-9Fhkm3mEeq7r7ozzGhjkA" name="TagStore">
@@ -553,7 +537,7 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
       <lifeline xmi:type="uml:Lifeline" xmi:id="_vjHhAHHpEeqv_YrGSHGdGQ" name="Final User" coveredBy="_9iqlEHHpEeqv_YrGSHGdGQ _Cn9q8HHqEeqv_YrGSHGdGQ _2Lt9sHKOEeqyNMwXb1RL5w _2LpFMHKOEeqyNMwXb1RL5w _gsM6oHHqEeqv_YrGSHGdGQ _GedMYHKPEeqyNMwXb1RL5w _Geb-QHKPEeqyNMwXb1RL5w"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_xFpqwHHpEeqv_YrGSHGdGQ" name="GUI SVG Generator" coveredBy="_9iqlEXHpEeqv_YrGSHGdGQ _IIYmkHHqEeqv_YrGSHGdGQ _Cn-SAHHqEeqv_YrGSHGdGQ _IIYmkXHqEeqv_YrGSHGdGQ _HBkvgHHqEeqv_YrGSHGdGQ _HBjhYHHqEeqv_YrGSHGdGQ _MdwEUHHqEeqv_YrGSHGdGQ _PS_zIHHqEeqv_YrGSHGdGQ _CdG20HKPEeqyNMwXb1RL5w _CdFosHKPEeqyNMwXb1RL5w _UP9cYHHqEeqv_YrGSHGdGQ _WYOwcHHqEeqv_YrGSHGdGQ _FKaKkHKPEeqyNMwXb1RL5w _FKY8cHKPEeqyNMwXb1RL5w _atzpkHHqEeqv_YrGSHGdGQ _atzCgHHqEeqv_YrGSHGdGQ _blYKwHHqEeqv_YrGSHGdGQ _blYx0HHqEeqv_YrGSHGdGQ _at0QoHHqEeqv_YrGSHGdGQ _gsMTkHHqEeqv_YrGSHGdGQ"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_3yevIHHpEeqv_YrGSHGdGQ" name="Database" coveredBy="_MdwEUXHqEeqv_YrGSHGdGQ _PS_MEHHqEeqv_YrGSHGdGQ _SJJg4HHqEeqv_YrGSHGdGQ _SJI50HHqEeqv_YrGSHGdGQ"/>
-      <lifeline xmi:type="uml:Lifeline" xmi:id="_6wweIHHpEeqv_YrGSHGdGQ" name="Draw SVG" coveredBy="_ZerkAHHqEeqv_YrGSHGdGQ _Zeq88HHqEeqv_YrGSHGdGQ _UP-DcHHqEeqv_YrGSHGdGQ _V2cbYIfKEeqp8c2nJra3dQ _WYOJYHHqEeqv_YrGSHGdGQ _kQylEIfKEeqp8c2nJra3dQ _ZerkAXHqEeqv_YrGSHGdGQ"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_6wweIHHpEeqv_YrGSHGdGQ" name="Draw SVG" coveredBy="_ZerkAHHqEeqv_YrGSHGdGQ _Zeq88HHqEeqv_YrGSHGdGQ _V2cbYIfKEeqp8c2nJra3dQ _UP-DcHHqEeqv_YrGSHGdGQ _WYOJYHHqEeqv_YrGSHGdGQ _kQylEIfKEeqp8c2nJra3dQ _ZerkAXHqEeqv_YrGSHGdGQ"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_ZdKcsIfFEeqp8c2nJra3dQ" name="Responsive SVG" coveredBy="_MNSv0IfKEeqp8c2nJra3dQ _MNRhsIfKEeqp8c2nJra3dQ _aTX5sIfKEeqp8c2nJra3dQ _V2dCcIfKEeqp8c2nJra3dQ _kQxW8IfKEeqp8c2nJra3dQ _aTYgwIfKEeqp8c2nJra3dQ"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_9iqlEHHpEeqv_YrGSHGdGQ" name="Message5SendEvent" covered="_vjHhAHHpEeqv_YrGSHGdGQ" message="_9ip-AHHpEeqv_YrGSHGdGQ"/>
       <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_2LpFMHKOEeqyNMwXb1RL5w" name="BehaviorExecutionSpecification45" covered="_vjHhAHHpEeqv_YrGSHGdGQ" finish="_2Lt9sHKOEeqyNMwXb1RL5w" start="_9iqlEHHpEeqv_YrGSHGdGQ"/>
@@ -579,9 +563,9 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
       <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_Zeq88HHqEeqv_YrGSHGdGQ" name="BehaviorExecutionSpecification30" covered="_6wweIHHpEeqv_YrGSHGdGQ" finish="_ZerkAXHqEeqv_YrGSHGdGQ" start="_ZerkAHHqEeqv_YrGSHGdGQ"/>
       <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_MNSv0IfKEeqp8c2nJra3dQ" name="BehaviorExecutionSpecification59Start" covered="_ZdKcsIfFEeqp8c2nJra3dQ" execution="_MNRhsIfKEeqp8c2nJra3dQ"/>
       <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_MNRhsIfKEeqp8c2nJra3dQ" name="BehaviorExecutionSpecification59" covered="_ZdKcsIfFEeqp8c2nJra3dQ" finish="_aTYgwIfKEeqp8c2nJra3dQ" start="_MNSv0IfKEeqp8c2nJra3dQ"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_V2cbYIfKEeqp8c2nJra3dQ" name="Message62SendEvent" covered="_6wweIHHpEeqv_YrGSHGdGQ" message="_V2b0UIfKEeqp8c2nJra3dQ"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_aTX5sIfKEeqp8c2nJra3dQ" name="Message65SendEvent" covered="_ZdKcsIfFEeqp8c2nJra3dQ" message="_aTWrkIfKEeqp8c2nJra3dQ"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_UP-DcHHqEeqv_YrGSHGdGQ" name="Message24ReceiveEvent" covered="_6wweIHHpEeqv_YrGSHGdGQ" message="_UP8OQHHqEeqv_YrGSHGdGQ"/>
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_V2cbYIfKEeqp8c2nJra3dQ" name="Message62SendEvent" covered="_6wweIHHpEeqv_YrGSHGdGQ" message="_V2b0UIfKEeqp8c2nJra3dQ"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_V2dCcIfKEeqp8c2nJra3dQ" name="Message62ReceiveEvent" covered="_ZdKcsIfFEeqp8c2nJra3dQ" message="_V2b0UIfKEeqp8c2nJra3dQ"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_WYOJYHHqEeqv_YrGSHGdGQ" name="Message27SendEvent" covered="_6wweIHHpEeqv_YrGSHGdGQ" message="_WYNiUHHqEeqv_YrGSHGdGQ"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_kQxW8IfKEeqp8c2nJra3dQ" name="Message67SendEvent" covered="_ZdKcsIfFEeqp8c2nJra3dQ" message="_kQuToIfKEeqp8c2nJra3dQ"/>
