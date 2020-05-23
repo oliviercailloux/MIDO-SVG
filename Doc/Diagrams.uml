@@ -34,17 +34,17 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5YW3mEeq7r7ozzGhjkA" name="grade" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Ym3mEeq7r7ozzGhjkA" name="intitule" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Y23mEeq7r7ozzGhjkA" name="point" visibility="private"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgUG3mEeq7r7ozzGhjkA" name="title" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EChar"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgUW3mEeq7r7ozzGhjkA" name="shown" visibility="protected">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgUm3mEeq7r7ozzGhjkA" name="category" visibility="protected" type="_-9Fgim3mEeq7r7ozzGhjkA"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FgU23mEeq7r7ozzGhjkA" name="addAvailableFormation">
@@ -80,7 +80,7 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-9FgkG3mEeq7r7ozzGhjkA" value="*"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgkW3mEeq7r7ozzGhjkA" name="credit" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDouble"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgkm3mEeq7r7ozzGhjkA" name="level" visibility="private" type="_-9E5VW3mEeq7r7ozzGhjkA"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FglG3mEeq7r7ozzGhjkA" name="point" visibility="private"/>
@@ -254,12 +254,12 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhPW3mEeq7r7ozzGhjkA" type="_-9FhR23mEeq7r7ozzGhjkA" direction="return"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhPm3mEeq7r7ozzGhjkA" name="settings"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhP23mEeq7r7ozzGhjkA" name="getPaper">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhP23mEeq7r7ozzGhjkA" name="getPaper" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQG3mEeq7r7ozzGhjkA" name="x">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQW3mEeq7r7ozzGhjkA" name="y">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQm3mEeq7r7ozzGhjkA" name="settings"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQ23mEeq7r7ozzGhjkA" type="_-9FhR23mEeq7r7ozzGhjkA" direction="return"/>
@@ -268,10 +268,10 @@
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_-9FhR23mEeq7r7ozzGhjkA" name="Paper">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhSG3mEeq7r7ozzGhjkA" name="dimXCanvas" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhSW3mEeq7r7ozzGhjkA" name="dimYCanvas" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
         </ownedAttribute>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_-9FhUm3mEeq7r7ozzGhjkA" name="PaperA3">
           <generalization xmi:type="uml:Generalization" xmi:id="_-9FhU23mEeq7r7ozzGhjkA" general="_-9FhR23mEeq7r7ozzGhjkA"/>
@@ -325,6 +325,16 @@
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
           </ownedParameter>
         </ownedOperation>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Association" xmi:id="_9l9g4Jw_Eeq5brtEZYbw5Q" memberEnd="_9l-vApw_Eeq5brtEZYbw5Q _9l_WEJw_Eeq5brtEZYbw5Q">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9l-vAJw_Eeq5brtEZYbw5Q" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9l-vAZw_Eeq5brtEZYbw5Q" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_9l-vApw_Eeq5brtEZYbw5Q" type="_-9FhiW3mEeq7r7ozzGhjkA" association="_9l9g4Jw_Eeq5brtEZYbw5Q">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DGtzsJxAEeq5brtEZYbw5Q" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DGysMJxAEeq5brtEZYbw5Q" value="*"/>
+        </ownedEnd>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_9l_WEJw_Eeq5brtEZYbw5Q" type="_-9Fhkm3mEeq7r7ozzGhjkA" aggregation="composite" association="_9l9g4Jw_Eeq5brtEZYbw5Q"/>
       </nestedClassifier>
     </packagedElement>
   </packagedElement>
@@ -539,8 +549,8 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_RCfqcJziEeq13vwlvqn-1A" name="Message47SendEvent" covered="_ZdKcsIfFEeqp8c2nJra3dQ" message="_RCfDYJziEeq13vwlvqn-1A"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_RCgRgJziEeq13vwlvqn-1A" name="Message47ReceiveEvent" covered="_6wweIHHpEeqv_YrGSHGdGQ" message="_RCfDYJziEeq13vwlvqn-1A"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_JJ5WgJziEeq13vwlvqn-1A" name="Message40SendEvent" covered="_6wweIHHpEeqv_YrGSHGdGQ" message="_JJ4vcJziEeq13vwlvqn-1A"/>
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_JJ59kJziEeq13vwlvqn-1A" name="Message40ReceiveEvent" covered="_xFpqwHHpEeqv_YrGSHGdGQ" message="_JJ4vcJziEeq13vwlvqn-1A"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_j4T54ZziEeq13vwlvqn-1A" name="Message50ReceiveEvent" covered="_ZdKcsIfFEeqp8c2nJra3dQ" message="_j4TS0JziEeq13vwlvqn-1A"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_JJ59kJziEeq13vwlvqn-1A" name="Message40ReceiveEvent" covered="_xFpqwHHpEeqv_YrGSHGdGQ" message="_JJ4vcJziEeq13vwlvqn-1A"/>
       <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_PjcSgJziEeq13vwlvqn-1A" name="ActionExecutionSpecification45Finish" covered="_ZdKcsIfFEeqp8c2nJra3dQ" execution="_PjbrcJziEeq13vwlvqn-1A"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_sld3QJziEeq13vwlvqn-1A" name="Message53SendEvent" covered="_xFpqwHHpEeqv_YrGSHGdGQ" message="_sldQMJziEeq13vwlvqn-1A"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_sld3QZziEeq13vwlvqn-1A" name="Message53ReceiveEvent" covered="_xFpqwHHpEeqv_YrGSHGdGQ" message="_sldQMJziEeq13vwlvqn-1A"/>
@@ -571,22 +581,22 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_skVwwHKvEeqTEN4gHi6gfg" name="drawig_svg" visibility="public">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_ssuQsHKvEeqTEN4gHi6gfg" name="police" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_yVhPwHKwEeqTEN4gHi6gfg" name="lineYUP" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_ybOPIHKwEeqTEN4gHi6gfg" name="lineYDOWN" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_ygES4HKwEeqTEN4gHi6gfg" name="lineCENTER" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_syPC0HKvEeqTEN4gHi6gfg" name="svgNs" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_cWE_IHK_EeqTi6zh0OU6cA" name="uses" type="_azGEEHKsEeqTEN4gHi6gfg" association="_cWBUwHK_EeqTi6zh0OU6cA">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cWFmMHK_EeqTi6zh0OU6cA" value="1"/>
@@ -610,70 +620,70 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_jPVbIHKtEeqTEN4gHi6gfg" name="height" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedAttribute>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_kN3f8HKtEeqTEN4gHi6gfg" name="hiddenAdmission" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
           </ownedAttribute>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_9ddU4HKtEeqTEN4gHi6gfg" name="Settings" visibility="public">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_TdNJsHKuEeqTEN4gHi6gfg" name="lic">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_WwQO0HKuEeqTEN4gHi6gfg" name="master">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZBUSgHKuEeqTEN4gHi6gfg" name="resp">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_QivKYHKzEeqTEN4gHi6gfg" name="admission">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_VS3RgHKzEeqTEN4gHi6gfg" name="subject">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_YSXvkHKzEeqTEN4gHi6gfg" name="teacher">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_cFwhoHKzEeqTEN4gHi6gfg" name="prereq">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_fAks8HKzEeqTEN4gHi6gfg" name="width">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_gwM3gHKzEeqTEN4gHi6gfg" name="height">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_YOZYwIefEeqp8c2nJra3dQ" name="fontSize">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_pAIGUHKzEeqTEN4gHi6gfg" name="Settings" visibility="public">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pAIGUXKzEeqTEN4gHi6gfg" name="lic">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pAIGUnKzEeqTEN4gHi6gfg" name="master">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pAIGU3KzEeqTEN4gHi6gfg" name="resp">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pAIGVHKzEeqTEN4gHi6gfg" name="admission">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pAIGVXKzEeqTEN4gHi6gfg" name="subject">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pAIGVnKzEeqTEN4gHi6gfg" name="teacher">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_pAIGV3KzEeqTEN4gHi6gfg" name="prereq">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EBoolean"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_2NwlQHKzEeqTEN4gHi6gfg" name="format">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_cXdf4IefEeqp8c2nJra3dQ" name="fontSize">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
           </ownedOperation>
         </nestedClassifier>
@@ -687,7 +697,7 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_nf3fYHKxEeqTEN4gHi6gfg" name="myYear">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_U1r4MHKxEeqTEN4gHi6gfg" name="defineObjectsPosition" visibility="public">
@@ -695,10 +705,10 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1cGJsHKxEeqTEN4gHi6gfg" name="canvasX">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_8snxAHKxEeqTEN4gHi6gfg" name="canvasY">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_U7-tcHKxEeqTEN4gHi6gfg" name="CopyOf_Operation1_2" visibility="private">
@@ -706,13 +716,13 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_cHUdUHKyEeqTEN4gHi6gfg" name="myYear">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EString"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_ezS7YHKyEeqTEN4gHi6gfg" name="decalageX">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_hbklMHKyEeqTEN4gHi6gfg" name="decalageY">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_Bc4v0IefEeqp8c2nJra3dQ" name="controlSettings" isStatic="true">
@@ -748,16 +758,6 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
         </ownedEnd>
       </nestedClassifier>
     </packagedElement>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_9l9g4Jw_Eeq5brtEZYbw5Q" memberEnd="_9l-vApw_Eeq5brtEZYbw5Q _9l_WEJw_Eeq5brtEZYbw5Q">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9l-vAJw_Eeq5brtEZYbw5Q" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9l-vAZw_Eeq5brtEZYbw5Q" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_9l-vApw_Eeq5brtEZYbw5Q" type="_-9FhiW3mEeq7r7ozzGhjkA" association="_9l9g4Jw_Eeq5brtEZYbw5Q">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DGtzsJxAEeq5brtEZYbw5Q" value="1"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DGysMJxAEeq5brtEZYbw5Q" value="*"/>
-    </ownedEnd>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_9l_WEJw_Eeq5brtEZYbw5Q" type="_-9Fhkm3mEeq7r7ozzGhjkA" aggregation="composite" association="_9l9g4Jw_Eeq5brtEZYbw5Q"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_pEsKUJxBEeqQTdPOBnHIaA" name="ROFDauphine">
     <packagedElement xmi:type="uml:Class" xmi:id="_yO_9wJxBEeqQTdPOBnHIaA" name="Course">
