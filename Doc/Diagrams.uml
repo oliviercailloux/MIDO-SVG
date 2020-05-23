@@ -13,12 +13,6 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5RG3mEeq7r7ozzGhjkA" name="title" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Rm3mEeq7r7ozzGhjkA" name="posX" visibility="protected">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5R23mEeq7r7ozzGhjkA" name="posY" visibility="protected">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
-        </ownedAttribute>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_-9E5VW3mEeq7r7ozzGhjkA" name="Formation" isAbstract="true">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Vm3mEeq7r7ozzGhjkA" name="teacher" type="_-9FgwG3mEeq7r7ozzGhjkA" association="_-9Fg6W3mEeq7r7ozzGhjkA">
@@ -96,6 +90,10 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgl23mEeq7r7ozzGhjkA" name="title" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aHPpcJzXEeqyu63240XpNg" name="tag" type="_WC4RkJzWEeqyu63240XpNg" association="_aHI7wJzXEeqyu63240XpNg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kGgH4JzXEeqyu63240XpNg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aHQQgZzXEeqyu63240XpNg" value="*"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FgmG3mEeq7r7ozzGhjkA" name="addListOfPrerequisities">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FgmW3mEeq7r7ozzGhjkA" name="s" type="_-9Fgi23mEeq7r7ozzGhjkA"/>
         </ownedOperation>
@@ -124,12 +122,6 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgyG3mEeq7r7ozzGhjkA" name="phone" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgyW3mEeq7r7ozzGhjkA" name="posX" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgym3mEeq7r7ozzGhjkA" name="posY" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgxm3mEeq7r7ozzGhjkA" name="gender" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -189,20 +181,22 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-9FhCG3mEeq7r7ozzGhjkA" value="*"/>
         </ownedEnd>
       </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Association" xmi:id="_aHI7wJzXEeqyu63240XpNg" name="Have" visibility="public" memberEnd="_aHPpcJzXEeqyu63240XpNg _aHQ3kJzXEeqyu63240XpNg">
+        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aHN0QJzXEeqyu63240XpNg" source="org.eclipse.papyrus">
+          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aHObUJzXEeqyu63240XpNg" key="nature" value="UML_Nature"/>
+        </eAnnotations>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_aHQ3kJzXEeqyu63240XpNg" name="subject" type="_-9Fgi23mEeq7r7ozzGhjkA" association="_aHI7wJzXEeqyu63240XpNg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_krcA8JzXEeqyu63240XpNg"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iwq9YJzXEeqyu63240XpNg" value="*"/>
+        </ownedEnd>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_WC4RkJzWEeqyu63240XpNg" name="Tag"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_AGQUQIfEEeq9p4BXwyfr0g" name="Get information" informationSource="_YKmiEIeYEeqlZY9rOCAo-w" informationTarget="_GVDK4IeaEeqlZY9rOCAo-w"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_iT0NwIeYEeqlZY9rOCAo-w" name="View">
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_7jtJ2m3mEeq7r7ozzGhjkA" name="GUI" useCase="_gDfmEG4fEeqT6Y2oaDa2Yg _i1jeAG4fEeqT6Y2oaDa2Yg">
+    <packagedElement xmi:type="uml:Interaction" xmi:id="_7jtJ2m3mEeq7r7ozzGhjkA" name="GUI">
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ223mEeq7r7ozzGhjkA" name="Edit a SVG file">
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtJ3G3mEeq7r7ozzGhjkA" name="ExtensionPoint1"/>
-        <include xmi:type="uml:Include" xmi:id="_UYhzwG4fEeqT6Y2oaDa2Yg" addition="_7jtJ3W3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ3W3mEeq7r7ozzGhjkA" name="User identification login page"/>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ323mEeq7r7ozzGhjkA" name="Generate SVG">
-        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtJ4m3mEeq7r7ozzGhjkA" name="ExtensionPoint2"/>
-        <include xmi:type="uml:Include" xmi:id="_3W73YG4fEeqT6Y2oaDa2Yg" addition="_gDfmEG4fEeqT6Y2oaDa2Yg"/>
-        <include xmi:type="uml:Include" xmi:id="_4HHXIG4fEeqT6Y2oaDa2Yg" addition="_i1jeAG4fEeqT6Y2oaDa2Yg"/>
       </ownedUseCase>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ423mEeq7r7ozzGhjkA" name="Manage tags">
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_xacq0G4fEeqT6Y2oaDa2Yg" name="ExtensionPoint1"/>
@@ -223,12 +217,6 @@
       </ownedUseCase>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ723mEeq7r7ozzGhjkA" name="Add courses to the preferences">
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtJ8G3mEeq7r7ozzGhjkA" name="ExtensionPoint1"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_gDfmEG4fEeqT6Y2oaDa2Yg" name="Fetch tags" subject="_7jtJ2m3mEeq7r7ozzGhjkA">
-        <extend xmi:type="uml:Extend" xmi:id="_xaIhwG4fEeqT6Y2oaDa2Yg" extendedCase="_7jtJ423mEeq7r7ozzGhjkA" extensionLocation="_xacq0G4fEeqT6Y2oaDa2Yg"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_i1jeAG4fEeqT6Y2oaDa2Yg" name="Fetch Preferences" subject="_7jtJ2m3mEeq7r7ozzGhjkA">
-        <extend xmi:type="uml:Extend" xmi:id="_zFU4QG4fEeqT6Y2oaDa2Yg" extendedCase="_7jtJ7W3mEeq7r7ozzGhjkA" extensionLocation="_zFWGYG4fEeqT6Y2oaDa2Yg"/>
       </ownedUseCase>
       <nestedClassifier xmi:type="uml:Actor" xmi:id="_7jtKFW3mEeq7r7ozzGhjkA" name="Final user"/>
       <nestedClassifier xmi:type="uml:Association" xmi:id="_7jtKFm3mEeq7r7ozzGhjkA" memberEnd="_7jtKGW3mEeq7r7ozzGhjkA _7jtKGm3mEeq7r7ozzGhjkA">
@@ -253,6 +241,7 @@
         <ownedEnd xmi:type="uml:Property" xmi:id="_kyLt5G6PEeq7r7ozzGhjkA" name="final user" type="_7jtKFW3mEeq7r7ozzGhjkA" association="_kyLt4G6PEeq7r7ozzGhjkA"/>
       </nestedClassifier>
     </packagedElement>
+    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_AGQUQIfEEeq9p4BXwyfr0g" name="Get information" informationSource="_YKmiEIeYEeqlZY9rOCAo-w" informationTarget="_GVDK4IeaEeqlZY9rOCAo-w"/>
     <packagedElement xmi:type="uml:InformationFlow" xmi:id="_zO-UQIfNEeq9p4BXwyfr0g" name="Collect objects" informationSource="_iT0NwIeYEeqlZY9rOCAo-w" informationTarget="_YKmiEIeYEeqlZY9rOCAo-w _l-jhoG2jEeq7r7ozzGhjkA"/>
     <packagedElement xmi:type="uml:InformationFlow" xmi:id="_mlcLcIfOEeq9p4BXwyfr0g" name="Collect objects" informationSource="_iT0NwIeYEeqlZY9rOCAo-w _l-jhoG2jEeq7r7ozzGhjkA" informationTarget="_wggV8IeYEeqlZY9rOCAo-w"/>
     <packagedElement xmi:type="uml:InformationFlow" xmi:id="_zkaRYIfQEeq9p4BXwyfr0g" name="Call methods to generate SVG" informationSource="_iT0NwIeYEeqlZY9rOCAo-w" informationTarget="_RMo_gIeaEeqlZY9rOCAo-w"/>
