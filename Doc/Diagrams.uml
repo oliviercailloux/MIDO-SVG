@@ -760,44 +760,6 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
       </nestedClassifier>
     </packagedElement>
   </packagedElement>
-  <packagedElement xmi:type="uml:Model" xmi:id="_jLsmEIeaEeqlZY9rOCAo-w" name="Controller">
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_-9FhGW3mEeq7r7ozzGhjkA" name="Controller" useCase="_-9FhJm3mEeq7r7ozzGhjkA _-9FhIW3mEeq7r7ozzGhjkA">
-      <ownedComment xmi:type="uml:Comment" xmi:id="_-9FhGm3mEeq7r7ozzGhjkA" annotatedElement="_-9FhG23mEeq7r7ozzGhjkA">
-        <body>Always valid because initialisation statis user &quot;cocolollipop&quot;&#xD;
-</body>
-      </ownedComment>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhG23mEeq7r7ozzGhjkA" name="User validation"/>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhHG3mEeq7r7ozzGhjkA" name="Fetch tag list"/>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhHm3mEeq7r7ozzGhjkA" name="Lauch the SVG controller">
-        <include xmi:type="uml:Include" xmi:id="_-9FhH23mEeq7r7ozzGhjkA" addition="_-9FhG23mEeq7r7ozzGhjkA"/>
-        <include xmi:type="uml:Include" xmi:id="_-9FhIG3mEeq7r7ozzGhjkA" addition="_-9FhHG3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhIW3mEeq7r7ozzGhjkA" name="Saved the SVG in ressources/images" subject="_-9FhGW3mEeq7r7ozzGhjkA">
-        <include xmi:type="uml:Include" xmi:id="_-9FhIm3mEeq7r7ozzGhjkA" addition="_-9FhI23mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhI23mEeq7r7ozzGhjkA" name="Paint the SVG file">
-        <include xmi:type="uml:Include" xmi:id="_-9FhJG3mEeq7r7ozzGhjkA" addition="_-9FhJm3mEeq7r7ozzGhjkA"/>
-        <include xmi:type="uml:Include" xmi:id="_-9FhJW3mEeq7r7ozzGhjkA" addition="_-9FhHm3mEeq7r7ozzGhjkA"/>
-      </ownedUseCase>
-      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-9FhJm3mEeq7r7ozzGhjkA" name="Initialize SVG" subject="_-9FhGW3mEeq7r7ozzGhjkA"/>
-      <nestedClassifier xmi:type="uml:Component" xmi:id="_-9FhJ23mEeq7r7ozzGhjkA" name="XML Database"/>
-      <nestedClassifier xmi:type="uml:Actor" xmi:id="_-9FhKG3mEeq7r7ozzGhjkA" name="ProgrammerUser"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_-9FhKW3mEeq7r7ozzGhjkA" memberEnd="_-9FhLG3mEeq7r7ozzGhjkA _-9FhLW3mEeq7r7ozzGhjkA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-9FhKm3mEeq7r7ozzGhjkA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-9FhK23mEeq7r7ozzGhjkA" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-9FhLG3mEeq7r7ozzGhjkA" name="programmeruser" type="_-9FhKG3mEeq7r7ozzGhjkA" association="_-9FhKW3mEeq7r7ozzGhjkA"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-9FhLW3mEeq7r7ozzGhjkA" name="saved the svg in ressources/images" type="_-9FhIW3mEeq7r7ozzGhjkA" association="_-9FhKW3mEeq7r7ozzGhjkA"/>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_-9FhLm3mEeq7r7ozzGhjkA" memberEnd="_-9FhMW3mEeq7r7ozzGhjkA _-9FhMm3mEeq7r7ozzGhjkA">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-9FhL23mEeq7r7ozzGhjkA" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-9FhMG3mEeq7r7ozzGhjkA" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-9FhMW3mEeq7r7ozzGhjkA" name="fetch tag list" type="_-9FhHG3mEeq7r7ozzGhjkA" association="_-9FhLm3mEeq7r7ozzGhjkA"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_-9FhMm3mEeq7r7ozzGhjkA" name="xml database" type="_-9FhJ23mEeq7r7ozzGhjkA" association="_-9FhLm3mEeq7r7ozzGhjkA"/>
-      </nestedClassifier>
-    </packagedElement>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_9l9g4Jw_Eeq5brtEZYbw5Q" memberEnd="_9l-vApw_Eeq5brtEZYbw5Q _9l_WEJw_Eeq5brtEZYbw5Q">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9l-vAJw_Eeq5brtEZYbw5Q" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9l-vAZw_Eeq5brtEZYbw5Q" key="nature" value="UML_Nature"/>
