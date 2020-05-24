@@ -31,5 +31,5 @@ Nous continuons à développer les deux axes principaux :
 
 * Etablir les actions de l'itération 3 JAVA pour l'équipe BDD :
 ** Explication des méthodes à implémenter dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/README.adoc[README] 
-** Réalisation d'un diagramme de classe et de sa documentation dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/README.adoc[DocFile]
-* Modifications sur le diagramme https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/Diagrams/MIDO-SVG_General.svg[général].
+** Réalisation d'un diagramme de classe https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/Diagrams/ROFDauphineClassDiagram.svg[ROFDauphineClassDiagram] et de sa documentation dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/README.adoc[DocFile]
+* Modifications sur les diagrammes https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/Diagrams/MIDO-SVG_General.svg[MIDO-SVG_General] et https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/Diagrams/ROFClassDiagram.svg[ROFClassDiagram].
