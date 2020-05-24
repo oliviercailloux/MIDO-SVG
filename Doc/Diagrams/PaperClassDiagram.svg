@@ -51,7 +51,7 @@
                 <path d="M15 104 L248 104 L248 122 L15 122 L15 104 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath10">
-                <path d="M34 104 L244 104 L244 121 L34 121 L34 104 Z"/>
+                <path d="M34 104 L246 104 L246 121 L34 121 L34 104 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath11">
                 <path d="M10 86 L252 86 L252 174 L10 174 L10 86 Z"/>
@@ -81,31 +81,31 @@
                 <path d="M409 289 L511 289 L511 391 L409 391 L409 289 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath20">
-                <path d="M506 10 L506 109 L654 109 L654 10 Z"/>
+                <path d="M506 10 L506 109 L648 109 L648 10 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath21">
-                <path d="M506 12 L656 12 L656 30 L506 30 L506 12 Z"/>
+                <path d="M506 12 L650 12 L650 30 L506 30 L506 12 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath22">
-                <path d="M574 12 L607 12 L607 29 L574 29 L574 12 Z"/>
+                <path d="M571 12 L604 12 L604 29 L571 29 L571 12 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath23">
-                <path d="M511 31 L652 31 L652 49 L511 49 L511 31 Z"/>
+                <path d="M511 31 L646 31 L646 49 L511 49 L511 31 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath24">
-                <path d="M530 31 L652 31 L652 48 L530 48 L530 31 Z"/>
+                <path d="M530 31 L646 31 L646 48 L530 48 L530 31 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath25">
-                <path d="M511 47 L652 47 L652 65 L511 65 L511 47 Z"/>
+                <path d="M511 47 L646 47 L646 65 L511 65 L511 47 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath26">
-                <path d="M530 47 L652 47 L652 64 L530 64 L530 47 Z"/>
+                <path d="M530 47 L646 47 L646 64 L530 64 L530 47 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath27">
-                <path d="M506 29 L656 29 L656 111 L506 111 L506 29 Z"/>
+                <path d="M506 29 L650 29 L650 111 L506 111 L506 29 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath28">
-                <path d="M505 9 L656 9 L656 111 L505 111 L505 9 Z"/>
+                <path d="M505 9 L650 9 L650 111 L505 111 L505 9 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath29">
                 <path d="M250 270 L250 369 L349 369 L349 270 Z"/>
@@ -135,13 +135,13 @@
                 <path d="M-1 -1 L761 -1 L761 401 L-1 401 L-1 -1 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath38">
-                <path d="M539 109 L558 109 L558 123 L539 123 L539 109 Z"/>
+                <path d="M541 109 L560 109 L560 124 L541 124 L541 109 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath39">
                 <path d="M492 109 L508 109 L508 125 L492 125 L492 109 Z"/>
             </clipPath>
             <clipPath clipPathUnits="userSpaceOnUse" id="clipPath40">
-                <path d="M606 109 L624 109 L624 125 L606 125 L606 109 Z"/>
+                <path d="M594 109 L611 109 L611 125 L594 125 L594 109 Z"/>
             </clipPath>
         </defs>
         <g fill="url(#linearGradient1)" font-family="'Segoe UI'" stroke-linejoin="round" stroke="url(#linearGradient1)" stroke-width="0" stroke-miterlimit="0">
@@ -155,8 +155,8 @@
             <line clip-path="url(#clipPath6)" fill="none" x1="10" x2="251" y1="30" y2="30"/>
             <image x="16" y="89" clip-path="url(#clipPath7)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42sVTX0hT&#13;&#10;URz+7p3OCIqkaMLq0R6CCIRMaCMyr9ushkT17Fq9RNk/iJBk5z5s+BAhBQYh6Hyp&#13;&#10;B5W0NufcbCuNFcToIQrxz5g0IsVE5u52d+89HScMYw56CPo9nHN+/L7z8fGd7wD/&#13;&#10;u3TlBgIJ0nmlmljb3GQ2OiCWw/FbmyYxQGG+SzfOE+HXePfkNgLhwc3hiZvUSsK0&#13;&#10;rAKLK0gnwq8w+fA6vF950v/gCnZWVaGxoQ4jC3oy+agdnU/7IVzuIvNRb1ERV5Ri&#13;&#10;aqejXTcASsFxKjRaCbaggtfYtAIKVIbWcO5+DzD1mCtRQJMfxBczHGk1NSCfB3yx&#13;&#10;OGYWF/ElkcLBmhrICnCxswd0y+UigcUVonPqHuK+5kClTofI5zhjVNDr/4RjtUbM&#13;&#10;/kjhQLUBx48cRWhpB2l2uslcZNPYgonjzDDP1TZsqFxeyUHTFPSNxRH1nMez8Rh4&#13;&#10;lcP31RwUlcLjdCAYfPnnK9iEs+joHUBiOYOVjASOee04U4dTHUNw2uqh8TqsrctI&#13;&#10;/FpnuD4IFjtKTCwUM9JxoRW8wnjlFGOn0BiE0xug6vTwDg5Bm+7mtg+S+Ra1t7RA&#13;&#10;zgGSKiNHdyPNVbJ9FyRNRUZWcfhQLb7l9xEkY2JJkMwnGzHq92E1l8XImA8/M2ms&#13;&#10;ScCSlMWwP4h0VsJwwI/TTbbtg5R8+1ysv3SPTE9FCk+VpPvJXqMRHyOsf9/NLagG&#13;&#10;Igh2hFwC91efxOp6Q2G6Q5vF0vj+0/oNRdDxkTDUjqQAAAAASUVORK5CYII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
             <text xml:space="preserve" x="35" y="102" clip-path="url(#clipPath8)" stroke="none"> + getPaper(  in settings: &lt;Undefined...</text>
-            <image x="16" y="105" clip-path="url(#clipPath9)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACM0lEQVR42sVTX0hT&#13;&#10;URz+7p3OCIqkaMLq0R6CCIRMaCMyr9ushkT17Fq9RNk/iJBk5z5s+BAhBQYh6Hyp&#13;&#10;B5W0NufcbCuNFcToIQrxz5g0IsVE5u52d+89HScMYw56CPo9nHN+/L7z8fGd7wD/&#13;&#10;u3TlBgIJ0nmlmljb3GQ2OiCWw/FbmyYxQGG+SzfOE+HXePfkNgLhwc3hiZvUSsK0&#13;&#10;rAKLK0gnwq8w+fA6vF950v/gCnZWVaGxoQ4jC3oy+agdnU/7IVzuIvNRb1ERV5Ri&#13;&#10;aqejXTcASsFxKjRaCbaggtfYtAIKVIbWcO5+DzD1mCtRQJMfxBczHGk1NSCfB3yx&#13;&#10;OGYWF/ElkcLBmhrICnCxswd0y+UigcUVonPqHuK+5kClTofI5zhjVNDr/4RjtUbM&#13;&#10;/kjhQLUBx48cRWhpB2l2uslcZNPYgonjzDDP1TZsqFxeyUHTFPSNxRH1nMez8Rh4&#13;&#10;lcP31RwUlcLjdCAYfPnnK9iEs+joHUBiOYOVjASOee04U4dTHUNw2uqh8TqsrctI&#13;&#10;/FpnuD4IFjtKTCwUM9JxoRW8wnjlFGOn0BiE0xug6vTwDg5Bm+7mtg+S+Ra1t7RA&#13;&#10;zgGSKiNHdyPNVbJ9FyRNRUZWcfhQLb7l9xEkY2JJkMwnGzHq92E1l8XImA8/M2ms&#13;&#10;ScCSlMWwP4h0VsJwwI/TTbbtg5R8+1ysv3SPTE9FCk+VpPvJXqMRHyOsf9/NLagG&#13;&#10;Igh2hFwC91efxOp6Q2G6Q5vF0vj+0/oNRdDxkTDUjqQAAAAASUVORK5CYII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
-            <text xml:space="preserve" x="35" y="118" clip-path="url(#clipPath10)" stroke="none"> + getPaper(  in x: EInt,   in y: EInt,   in ...</text>
+            <image x="16" y="105" clip-path="url(#clipPath9)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB/0lEQVR42mNgGGjA&#13;&#10;jEvCtWHX/3t/BBs8Elob7hxc1IhLHRMyx6Vxx38G2+L/IPbuvVsYDk8uZNixdw1E&#13;&#10;0jr/v0fD3v84XeBev+v/7r2bGfb15DAsvM7UsKAmhYGLnZ3BycKIYeN9toZ9fXkM&#13;&#10;tdMXMLgmdTTcO7gQ7iJGuFNs8v5v6shlYPj/n4GR8S/Dv/+sDECCgYXpH1CWheEP&#13;&#10;w1+g6n8MvhXTGBiOTGLEcMH/RycbV9xibAiwsWD4/ZuBYeuJ8wy3Hj9muPrgGYOs&#13;&#10;hATDrz8MDKG10xj+I2mGu8C9fs//nXs3MbRlJTKI83IyHL9yHmj7X4Y5284ypHma&#13;&#10;Mvxj/s8wuyIKdyDuBAZYW2oCA8iVb979ZPj37w/D/O3nGQ62BTHM2nmCgekvxNIt&#13;&#10;fcoMHw5mobBZQBxPVx+GqjmLGNKCQhkEOZgZGIFhnehtxOBYtRbo5Il40wGKfxiA&#13;&#10;AZkYEsDA9AfosF/PgM77zzCrMgpsGy7AAmfZFvz38/Rk+PAFFNo/GZj+izH8ZfoJ&#13;&#10;MdfYneHI2Z1gGgSQ2fCEZGvvxLBp21aGDz9/MGzcvpXh1bcvDOsrvcByAvbT4Pag&#13;&#10;s+HR+OjQ8kazsLKGo0cOgKPq0X+xhoYkT7Dzbx2fBFHz/C4KW80yH8kLQHCqJxge&#13;&#10;Jh7OgQSdj5EXkMGORkdGQs4HAQB4ENOEUeAyjQAAAABJRU5ErkJggg==" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
+            <text xml:space="preserve" x="35" y="118" clip-path="url(#clipPath10)" stroke="none"> # getPaper(  in x: int,   in y: int,   in set...</text>
             <line clip-path="url(#clipPath11)" fill="none" x1="10" x2="251" y1="87" y2="87"/>
             <image x="16" y="176" clip-path="url(#clipPath12)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABTUlEQVR42mNgGGjA&#13;&#10;CCIKFhz5/+DJJyj3PxAyQiQYkdggmf8IjYoyvAwTEmwYWUCc+48/MUxMswNrBhnC&#13;&#10;CNUB4QEN+c8INhtoHlSMgSF31kGwGrAB//7+Y+BgYwZrOXHjMYOFuhyDk2cBilP3&#13;&#10;7uhnOAmS05CFGPHvP8IAMIOZieHI1QcMdc1rGPatKAaLHdo9EcWvILmm2hAGG20F&#13;&#10;uDgTjMHKzAhWcHh1KZANEbZzzYdjkAUgOZAaFmZGuAFILmAEm24b2s1wfF0ZWOz0&#13;&#10;oakoIWcZ1AVWA7MAYQBQEcgGTxMVBgagAhaoAlO7bLjC80emgTWD1IDs/4ccBv//&#13;&#10;/2NgZmICe9THTBWs4NKxGZAYgMQsWMzXTA0eFf//owWif8NGaKQhSFhUIgckJGUA&#13;&#10;2dC4hhuwtMKLpBQY07kdNRbIBWAXqCgJw00kFoD0DA4AAKzIb179to3dAAAAAElF&#13;&#10;TkSuQmCC" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
             <text xml:space="preserve" x="35" y="189" clip-path="url(#clipPath13)" stroke="none">TypeFormat</text>
@@ -166,15 +166,15 @@
             <image x="429" y="332" clip-path="url(#clipPath17)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR42mNkgIKC&#13;&#10;BUf+P3jyCchiBOL/QMgIYTFCREDg/38GOFCU4WWYkGDDyAITuP/4E8OkNDsGYkHu&#13;&#10;rINgGm7Av7//GNjZmIk2gOHff1QDwBxmJgZSAZoBjJQZwEqRC4BBzEqCC/6hh8H/&#13;&#10;//8YmJmIN+D/fyyB6NewCZwO/qORMIBIIUA2IyOmAUsrvIh2QUzndjBNeqjhiwWY&#13;&#10;qWQbsKTccwC9oKIkTJIXQOqpAgBzFjJ6SnHW0gAAAABJRU5ErkJggg==" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
             <text xml:space="preserve" x="448" y="345" clip-path="url(#clipPath18)" stroke="none">PaperA4</text>
             <rect x="410" y="290" clip-path="url(#clipPath19)" fill="none" width="99" rx="0" ry="0" height="99"/>
-            <rect x="506" y="10" clip-path="url(#clipPath20)" fill="url(#linearGradient3)" width="149" height="100" stroke="none"/>
-            <image x="556" y="13" clip-path="url(#clipPath21)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR42mNkgIKC&#13;&#10;BUf+P3jyCchiBOL/QMgIYTFCREDg/38GOFCU4WWYkGDDyAITuP/4E8OkNDsGYkHu&#13;&#10;rINgGm7Av7//GNjZmIk2gOHff1QDwBxmJgZSAZoBjJQZwEqRC4BBzEqCC/6hh8H/&#13;&#10;//8YmJmIN+D/fyyB6NewCZwO/qORMIBIIUA2IyOmAUsrvIh2QUzndjBNeqjhiwWY&#13;&#10;qWQbsKTccwC9oKIkTJIXQOqpAgBzFjJ6SnHW0gAAAABJRU5ErkJggg==" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
-            <text xml:space="preserve" x="575" y="26" clip-path="url(#clipPath22)" stroke="none">Paper</text>
+            <rect x="506" y="10" clip-path="url(#clipPath20)" fill="url(#linearGradient3)" width="143" height="100" stroke="none"/>
+            <image x="553" y="13" clip-path="url(#clipPath21)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR42mNkgIKC&#13;&#10;BUf+P3jyCchiBOL/QMgIYTFCREDg/38GOFCU4WWYkGDDyAITuP/4E8OkNDsGYkHu&#13;&#10;rINgGm7Av7//GNjZmIk2gOHff1QDwBxmJgZSAZoBjJQZwEqRC4BBzEqCC/6hh8H/&#13;&#10;//8YmJmIN+D/fyyB6NewCZwO/qORMIBIIUA2IyOmAUsrvIh2QUzndjBNeqjhiwWY&#13;&#10;qWQbsKTccwC9oKIkTJIXQOqpAgBzFjJ6SnHW0gAAAABJRU5ErkJggg==" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
+            <text xml:space="preserve" x="572" y="26" clip-path="url(#clipPath22)" stroke="none">Paper</text>
             <image x="512" y="32" clip-path="url(#clipPath23)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA8klEQVR42mNgGAWM&#13;&#10;ICJr1qH/pGqclmYH1ssCIn7/+ccwI8OeaM0ZMw/C2WADfgIN+At0Q8rUfRDR/zC3&#13;&#10;obGBYE62E8Ov339RDfjx6w/DHyjdne2G0+aSqbsZ/gAN/I5uwPefQAP+gWiIhCAL&#13;&#10;Ugj9R9Bgi/5D1KMY8A0o8Qso8e03ROL3f4g+EMEI88Z/hDpkA8DyVpXr/69tCGAI&#13;&#10;rl+P4l8QONoWiDdAIV4A2gwKxJUNgQyMaIEGAqc87PEbAApVt/KVCOciue/KhHCG&#13;&#10;/9feMejGB2BovrxwA8SAqxMjGHFaMSH8P0wxThcQAuaPLtMuLwAATIhxVYxYyT0A&#13;&#10;AAAASUVORK5CYII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
-            <text xml:space="preserve" x="531" y="45" clip-path="url(#clipPath24)" stroke="none"> - dimXCanvas: EInt [1]</text>
+            <text xml:space="preserve" x="531" y="45" clip-path="url(#clipPath24)" stroke="none"> - dimXCanvas: int [1]</text>
             <image x="512" y="48" clip-path="url(#clipPath25)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA8klEQVR42mNgGAWM&#13;&#10;ICJr1qH/pGqclmYH1ssCIn7/+ccwI8OeaM0ZMw/C2WADfgIN+At0Q8rUfRDR/zC3&#13;&#10;obGBYE62E8Ov339RDfjx6w/DHyjdne2G0+aSqbsZ/gAN/I5uwPefQAP+gWiIhCAL&#13;&#10;Ugj9R9Bgi/5D1KMY8A0o8Qso8e03ROL3f4g+EMEI88Z/hDpkA8DyVpXr/69tCGAI&#13;&#10;rl+P4l8QONoWiDdAIV4A2gwKxJUNgQyMaIEGAqc87PEbAApVt/KVCOciue/KhHCG&#13;&#10;/9feMejGB2BovrxwA8SAqxMjGHFaMSH8P0wxThcQAuaPLtMuLwAATIhxVYxYyT0A&#13;&#10;AAAASUVORK5CYII=" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
-            <text xml:space="preserve" x="531" y="61" clip-path="url(#clipPath26)" stroke="none"> - dimYCanvas: EInt [1]</text>
-            <line clip-path="url(#clipPath27)" fill="none" x1="506" x2="655" y1="30" y2="30"/>
-            <rect x="506" y="10" clip-path="url(#clipPath28)" fill="none" width="148" rx="0" ry="0" height="99"/>
+            <text xml:space="preserve" x="531" y="61" clip-path="url(#clipPath26)" stroke="none"> - dimYCanvas: int [1]</text>
+            <line clip-path="url(#clipPath27)" fill="none" x1="506" x2="649" y1="30" y2="30"/>
+            <rect x="506" y="10" clip-path="url(#clipPath28)" fill="none" width="142" rx="0" ry="0" height="99"/>
             <rect x="250" y="270" clip-path="url(#clipPath29)" fill="url(#linearGradient4)" width="100" height="100" stroke="none"/>
             <image x="269" y="312" clip-path="url(#clipPath30)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR42mNkgIKC&#13;&#10;BUf+P3jyCchiBOL/QMgIYTFCREDg/38GOFCU4WWYkGDDyAITuP/4E8OkNDsGYkHu&#13;&#10;rINgGm7Av7//GNjZmIk2gOHff1QDwBxmJgZSAZoBjJQZwEqRC4BBzEqCC/6hh8H/&#13;&#10;//8YmJmIN+D/fyyB6NewCZwO/qORMIBIIUA2IyOmAUsrvIh2QUzndjBNeqjhiwWY&#13;&#10;qWQbsKTccwC9oKIkTJIXQOqpAgBzFjJ6SnHW0gAAAABJRU5ErkJggg==" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
             <text xml:space="preserve" x="288" y="325" clip-path="url(#clipPath31)" stroke="none">PaperA3</text>
@@ -183,15 +183,15 @@
             <image x="661" y="313" clip-path="url(#clipPath34)" width="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAr0lEQVR42mNkgIKC&#13;&#10;BUf+P3jyCchiBOL/QMgIYTFCREDg/38GOFCU4WWYkGDDyAITuP/4E8OkNDsGYkHu&#13;&#10;rINgGm7Av7//GNjZmIk2gOHff1QDwBxmJgZSAZoBjJQZwEqRC4BBzEqCC/6hh8H/&#13;&#10;//8YmJmIN+D/fyyB6NewCZwO/qORMIBIIUA2IyOmAUsrvIh2QUzndjBNeqjhiwWY&#13;&#10;qWQbsKTccwC9oKIkTJIXQOqpAgBzFjJ6SnHW0gAAAABJRU5ErkJggg==" xlink:type="simple" xlink:actuate="onLoad" height="16" preserveAspectRatio="none" xlink:show="embed"/>
             <text xml:space="preserve" x="680" y="326" clip-path="url(#clipPath35)" stroke="none">PaperOther</text>
             <rect x="650" y="271" clip-path="url(#clipPath36)" fill="none" width="99" rx="0" ry="0" height="99"/>
-            <line clip-path="url(#clipPath37)" fill="none" text-rendering="optimizeLegibility" x1="510" x2="550" y1="290" y2="110"/>
-            <polygon fill="white" text-rendering="optimizeLegibility" clip-path="url(#clipPath38)" points=" 550 110 556 121 540 118" stroke="none"/>
-            <polygon text-rendering="optimizeLegibility" fill="none" clip-path="url(#clipPath38)" points=" 550 110 556 121 540 118"/>
+            <line clip-path="url(#clipPath37)" fill="none" text-rendering="optimizeLegibility" x1="510" x2="552" y1="290" y2="110"/>
+            <polygon fill="white" text-rendering="optimizeLegibility" clip-path="url(#clipPath38)" points=" 552 110 558 122 542 118" stroke="none"/>
+            <polygon text-rendering="optimizeLegibility" fill="none" clip-path="url(#clipPath38)" points=" 552 110 558 122 542 118"/>
             <line clip-path="url(#clipPath37)" fill="none" text-rendering="optimizeLegibility" x1="350" x2="506" y1="270" y2="110"/>
             <polygon fill="white" text-rendering="optimizeLegibility" clip-path="url(#clipPath39)" points=" 506 110 505 123 493 112" stroke="none"/>
             <polygon text-rendering="optimizeLegibility" fill="none" clip-path="url(#clipPath39)" points=" 506 110 505 123 493 112"/>
-            <line clip-path="url(#clipPath37)" fill="none" text-rendering="optimizeLegibility" x1="690" x2="610" y1="271" y2="110"/>
-            <polygon fill="white" text-rendering="optimizeLegibility" clip-path="url(#clipPath40)" points=" 610 110 622 115 607 123" stroke="none"/>
-            <polygon text-rendering="optimizeLegibility" fill="none" clip-path="url(#clipPath40)" points=" 610 110 622 115 607 123"/>
+            <line clip-path="url(#clipPath37)" fill="none" text-rendering="optimizeLegibility" x1="690" x2="597" y1="271" y2="110"/>
+            <polygon fill="white" text-rendering="optimizeLegibility" clip-path="url(#clipPath40)" points=" 597 110 609 115 595 123" stroke="none"/>
+            <polygon text-rendering="optimizeLegibility" fill="none" clip-path="url(#clipPath40)" points=" 597 110 609 115 595 123"/>
         </g>
     </g>
 </svg>
