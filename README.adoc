@@ -121,4 +121,29 @@ Objectif à court terme :
 * S'assurer que tous les professeurs soient récupérés grace à la méthode `fetchTeachers`.
 * Rédaction des tests unitaires associés.
 
+=== Equipe 2 : SVG - Camille et Raphaël
+
+Pré-requis : Comprendre le procédé de génération du SVG; Création des settings, récupération des données mais surtout, la création des objets graphiques (`DrawerSVGGen`) et la définition des positions (`ResponsiveSVG`)
+
+Mission : Reprendre les objectifs de l’itération 2, les modifications porterons sur la classe ResponsiveSVG du package `svg_generator`. Implémenter une nouvelle méthode, `controlSettings`, permettant le contrôle de la position des éléments graphiques. Modifier la méthode `defineObjectsPosition` pour que  le calcul des positions se fasse en fonction des listes de cours par formation.
+
+Détail des objectifs :
+
+[square]
+* Dans `defineObjectsPosition`, modifier le calcul de l’OffsetY en utilisant la plus longue liste de cours du niveau dessus (grade inférieur).
+* Dans `defineObjectsPosition`, modifier le calcul de l’OffsetX en utilisant la largeur de la liste de cours de la formation précédente (dans le même grade, à gauche)
+* Supprimer la classe `ControllerSVG` qui n’est pas fonctionnelle
+* La méthode `controlSettings` devra contrôler si un élément graphique sort de la zone d’écriture (Canvas-Marges) et s’il y a chevauchements des éléments graphiques
+* Créer une map ayant pour clé sa formation et pour valeur sa position.
+
+Aide et précisions:
+
+[square]
+* Utiliser le nombre de cours par formation pour calculer la longueur d’une liste de cours
+* Utiliser le plus long intitulé de cours d’une formation pour calculer la largeur de sa liste de cours
+* Les longueurs et largeurs des listes de cours correspondent à un nombre de pixels. Pour déterminer précisément ce nombre de pixels il faudrait également récupérer des éléments graphiques représentant la taille de la police, l’espace entre les lignes, les marges… Une solution intermédiaire consisterait à utiliser des variables de classe pour stocker ces éléments et les utiliser dans le calcul.
+* Vous pouvez partie de la branche dev-BDD2 ou du master
+
+
+
 
