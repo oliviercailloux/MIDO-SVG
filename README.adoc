@@ -142,3 +142,4 @@ Aide et précisions:
 * Utiliser le nombre de cours par formation pour calculer la longueur d’une liste de cours
 * Utiliser le plus long intitulé de cours d’une formation pour calculer la largeur de sa liste de cours
 * Les longueurs et largeurs des listes de cours correspondent à un nombre de pixels. Il faut donc récupérer la hauteur de la police et la longueur du texte grâce au package `java.awt.FontMetrics`, ajouter des décalages absolus, stocker ces éléments en variables de classe et les utiliser dans le calcul des positions. Cliquez https://docs.oracle.com/javase/tutorial/2d/text/measuringtext.html[ici] pour avoir plus d'informations sur la mesure de le police d'écriture.
+* Vous pouvez partir de la branch dev-SVG2 ou de la branche master. Dev-SVG2 propose une évolution conceptuelle mineure en utilisant le grade au lieu de faire une recherche de caractères dans le libellé de la formation et récupère le nombre max de cours  par grade.
