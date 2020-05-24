@@ -103,7 +103,7 @@ Cette méthode prendra en paramètre la position `x` et `y` de la formation d'ap
 * Communication avec le client
 * Organisation générale
 
-== Objectif itération 2 JAVA
+== Objectif itération 3 JAVA
 
 === Equipe 1 : Base de données - Sarra Tajouri et Zhenyi Guo
 
