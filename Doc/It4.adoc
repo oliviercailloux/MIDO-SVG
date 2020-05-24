@@ -10,7 +10,9 @@ Nous continuons à développer les deux axes principaux :
 === Equipe SVG : Binôme Jérémie – Zhenyi
 
 * Mise à jour des diagrammes (de classe et de séquence) en apportant :
-** des corrections: le Gui récupère les données à partir de Database et ajout de l'acteur ResponsiveSVG dans le diagramme de séquence
+** des corrections:
+*** le Gui récupère les données à partir de Database et ajout de l'acteur ResponsiveSVG dans le diagramme de séquence
+*** certains types retour pour les diagrammes de classes sont des JavaPrimitiveTypes
 ** des évolutions: 
 *** ajout de la méthode controlSettings qui s'assure qu'on peut rendre un SVG responsive selon les préférences de l'utilisateur sinon aucun SVG n'est généré afin d'éviter un SVG où les informations se chevauchent. 
 *** L'utilisateur peut désormais choisir la taille de la police qui doit être pris en compte dans ResponsiveSVG
@@ -19,8 +21,9 @@ Nous continuons à développer les deux axes principaux :
 === Equipe Coordinateur : Binôme Camille - Sarra
 
 * Mise à jour du https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/README.adoc[README]
+* Modification de la structure des répertoires et renommage
 * Rédaction https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/it4.adoc[it4]
-* Suppression des diagrammes inutiles.
+* Suppression des diagrammes et documentations inutiles.
 * Revue et corrections de tous les diagrammes.
 
 
@@ -29,3 +32,4 @@ Nous continuons à développer les deux axes principaux :
 * Etablir les actions de l'itération 3 JAVA pour l'équipe BDD :
 ** Explication des méthodes à implémenter dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/README.adoc[README] 
 ** Réalisation d'un diagramme de classe et de sa documentation dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/README.adoc[DocFile]
+* Modifications sur le diagramme https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/Diagrams/MIDO-SVG_General.svg[général].
