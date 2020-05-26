@@ -132,7 +132,6 @@ Détail des objectifs :
 [square]
 * Dans `defineObjectsPosition`, modifier le calcul de l’OffsetY en utilisant la plus longue liste de cours du niveau dessus (grade inférieur).
 * Dans `defineObjectsPosition`, modifier le calcul de l’OffsetX en utilisant la largeur de la liste de cours de la formation précédente (dans le même grade, à gauche)
-* Supprimer la classe `ControllerSVG` qui n’est pas fonctionnelle
 * La méthode `controlSettings` devra contrôler si un élément graphique sort de la zone d’écriture (Canvas-Marges) et s’il y a chevauchements des éléments graphiques
 * Créer une map ayant pour clé sa formation et pour valeur sa position.
 
