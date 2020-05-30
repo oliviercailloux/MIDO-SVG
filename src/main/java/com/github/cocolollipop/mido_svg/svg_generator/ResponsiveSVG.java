@@ -2,8 +2,6 @@ package com.github.cocolollipop.mido_svg.svg_generator;
 
 import java.awt.Canvas;
 import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.font.FontRenderContext;
 import java.util.ArrayList;
 import java.util.List;
 
