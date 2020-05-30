@@ -322,7 +322,7 @@ public class GUISVGGenerator {
 					}
 
 					datas = new DataBase(settings);
-					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
+					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight(), settings.isHiddenSubject());
 					LOGGER.info("Painting.");
 					svg.paint(settings, datas);
 

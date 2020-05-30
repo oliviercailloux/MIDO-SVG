@@ -1,5 +1,10 @@
 package com.github.cocolollipop.mido_svg.svg_generator;
 
+import java.awt.Canvas;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.font.FontRenderContext;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.github.cocolollipop.mido_svg.university.components.Formation;
@@ -10,6 +15,8 @@ import com.github.cocolollipop.mido_svg.university.components.Formation;
  *
  */
 public class ResponsiveSVG {
+
+	private static java.awt.Font Basicfont = new java.awt.Font("TimesRoman", 12, 12);
 
 	/**
 	 * Count the number of formations of a specific level in a list.
@@ -30,6 +37,31 @@ public class ResponsiveSVG {
 		}
 		return nb;
 	}
+	/**
+	 * Count the number max of Subjects in a Formation of myYear
+	 * @param list
+	 * @param myYear
+	 * @return an Integer that represents the number max of Subjects in a Formation of myYear.
+	 */
+	public Integer countMaxSubjects(List<Formation> list, String myYear) {
+		Integer max = -1;
+		for (Formation aFormation : list) {
+			if (aFormation.getFullName().indexOf(myYear) != -1) {
+				if (aFormation.getSubjects().size()>max) {
+					max = aFormation.getSubjects().size();
+				}
+			}
+		}
+		return max;
+	}
+
+	public int calculateHeightOfSubjects(Integer nbOfSubjects) {
+		Canvas c = new Canvas();
+		FontMetrics fm = c.getFontMetrics(Basicfont);
+		int height = fm.getHeight();
+		int heightOfSubjects = (nbOfSubjects+1) * height + nbOfSubjects * 2 * height ;
+		return heightOfSubjects;
+	}
 
 	/**
 	 * Determine the position of each Formation in the 
@@ -42,7 +74,7 @@ public class ResponsiveSVG {
 	 * @param canvasY
 	 * 			  : height of the canvas
 	 */
-	public void defineObjectsPosition(List<Formation> list, int canvasX, int canvasY) {
+	public void defineObjectsPosition(List<Formation> list, int canvasX, int canvasY, boolean hiddenSubjects) {
 
 		/*
 		 * We have to define the initial shift. So we must count the total
@@ -56,20 +88,23 @@ public class ResponsiveSVG {
 		int nbL3 = 0;
 		int nbM1 = 0;
 		int nbM2 = 0;
-		
+		int totalHeightOfSubjects = 0;
+
+		List<Integer> maxSubjects = new ArrayList<>();
+
 		int totalCptY = 0; /* O<=totalCptY<=5 corresponds to the DOM Tree height 
-						    * totalCptY = 5 means we have to draw the formations from 
-					        * level "L1" to "M2" 
-					        */
+		 * totalCptY = 5 means we have to draw the formations from 
+		 * level "L1" to "M2" 
+		 */
 
 		int cptY[] = {0,0,0,0,0};   /* We assume that the indexes correspond to the levels 
-									 * ordered from "L1" to "M2"
-									 * For the moment we just initialize the tab with zeros 
-									 * Afterwards, depending on which levels the user choose to
-									 * draw, each level will have a certain height in the tree
-									 */
-								
-		
+		 * ordered from "L1" to "M2"
+		 * For the moment we just initialize the tab with zeros 
+		 * Afterwards, depending on which levels the user choose to
+		 * draw, each level will have a certain height in the tree
+		 */
+
+
 		// First we count the number of formations of every level
 		nbL1 = countFormations(list, "L1");
 		nbL2 = countFormations(list, "L2");
@@ -91,29 +126,40 @@ public class ResponsiveSVG {
 			totalCptY += 1;     
 			cptY[0] = tempCpt + 1;
 			tempCpt++;
+			maxSubjects.add(countMaxSubjects(list, "L1"));
 		}
 		if (nbL2 != 0) {
 			totalCptY += 1; 
 			cptY[1] = tempCpt + 1;
 			tempCpt++;
+			maxSubjects.add(countMaxSubjects(list, "L2"));
 		}
 		if (nbL3 != 0) {
 			totalCptY += 1; 
 			cptY[2] = tempCpt + 1;
 			tempCpt++;
+			maxSubjects.add(countMaxSubjects(list, "L3"));
 		}
 		if (nbM1 != 0) {
 			totalCptY += 1; 
 			cptY[3] = tempCpt + 1;
 			tempCpt++;
+			maxSubjects.add(countMaxSubjects(list, "M1"));
 		}
 		if (nbM2 != 0) {
 			totalCptY += 1; 
 			cptY[4] = tempCpt + 1;
+			maxSubjects.add(countMaxSubjects(list, "M2"));
 		}
-		
+
 		totalCptY+= 1;
-		
+
+		for (Integer i : maxSubjects) {
+			totalHeightOfSubjects += calculateHeightOfSubjects(i);
+		}
+
+		int additionnalSpace = (int) ((((canvasY - totalHeightOfSubjects) - (canvasY * 0.2)) / totalCptY) );
+
 		/*
 		 * Now we calculate X and Y offset
 		 * First we have to check which levels has been seted 
@@ -126,33 +172,101 @@ public class ResponsiveSVG {
 		 * 		Plus, we added a margin, which is proportional to the canvas to 
 		 * 		make it responsive, so that the SVG would be centered. 
 		 */
+
+		int spaceTaken = 0;
+		int levelActual = 1;
+
 		if (nbL1 != 0) {
 			offsetX = canvasX / (nbL1 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[0] - 1) + (canvasY * 0.1));
+			if (hiddenSubjects) {
+				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[0] - 1) + (canvasY * 0.1));
+			}
+			else {
+				offsetY = (int) (canvasY * 0.1);
+				levelActual++;
+				spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "L1")) + additionnalSpace;
+			}
 			associatePositionX(list, "L1", offsetX, offsetY);
 		}
-		
+
 		if (nbL2 != 0) {
 			offsetX = canvasX / (nbL2 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[1] - 1) + (canvasY * 0.1));
+			if (hiddenSubjects) {
+				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[1] - 1) + (canvasY * 0.1));
+
+			}
+			else {
+				if (levelActual == 1) {
+					offsetY = (int) (canvasY * 0.1);
+					levelActual++;
+					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "L2")) + additionnalSpace;
+				}
+				else {
+					offsetY = spaceTaken;
+					levelActual++;
+					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "L2")) + additionnalSpace;
+				}
+			}
 			associatePositionX(list, "L2", offsetX, offsetY);
 		}
-		
+
 		if (nbL3 != 0) {
 			offsetX = canvasX / (nbL3 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[2] - 1) + (canvasY * 0.1));
+			if (hiddenSubjects) {
+				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[2] - 1) + (canvasY * 0.1));
+			}
+			else {
+				if (levelActual == 1) {
+					offsetY = (int) (canvasY * 0.1);
+					levelActual++;
+					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "L3")) + additionnalSpace;
+				}
+				else {
+					offsetY = spaceTaken;
+					levelActual++;
+					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "L3")) + additionnalSpace;
+				}
+			}
 			associatePositionX(list, "L3", offsetX, offsetY);
 		}
-		
+
 		if (nbM1 != 0) {
 			offsetX = canvasX / (nbM1 + 1);
-			offsetY = (int) ((canvasY / (totalCptY)) * (cptY[3] - 1) + (canvasY * 0.1));
+			if (hiddenSubjects) {
+				offsetY = (int) ((canvasY / (totalCptY)) * (cptY[3] - 1) + (canvasY * 0.1));	
+			}
+			else {
+				if (levelActual == 1) {
+					offsetY = (int) (canvasY * 0.1);
+					levelActual++;
+					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "M1")) + additionnalSpace;
+				}
+				else {
+					offsetY = spaceTaken;
+					levelActual++;
+					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "M1")) + additionnalSpace;
+				}
+			}
 			associatePositionX(list, "M1", offsetX, offsetY);
 		}
-		
+
 		if (nbM2 != 0) {
 			offsetX = canvasX / (nbM2 + 2);
-			offsetY = (int) ((canvasY / (totalCptY)) * (cptY[4] - 1) + (canvasY * 0.1));
+			if (hiddenSubjects) {
+				offsetY = (int) ((canvasY / (totalCptY)) * (cptY[4] - 1) + (canvasY * 0.1));
+			}
+			else {
+				if (levelActual == 1) {
+					offsetY = (int) (canvasY * 0.1);
+					levelActual++;
+					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "M2")) + additionnalSpace;
+				}
+				else {
+					offsetY = spaceTaken;
+					levelActual++;
+					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "M2")) + additionnalSpace;
+				}
+			}
 			associatePositionX(list, "M2", offsetX, offsetY);
 		}
 
