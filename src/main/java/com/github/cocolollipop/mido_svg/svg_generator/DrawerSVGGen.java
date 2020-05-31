@@ -154,12 +154,16 @@ public class DrawerSVGGen {
 			g.setPaint(Color.black);
 			java.awt.Font Basicfont = new java.awt.Font("TimesRoman", 12, 12);
 			g.setFont(Basicfont);
+			controlSettings(l.getPoint().x, l.getPoint().y, settings.getWidth(), settings.getHeight());
 			g.drawString(l.getFullNameWithLink(), l.getPoint().x, l.getPoint().y);
 			// write the name of formation
+			controlSettings(l.getPoint().x -10, l.getPoint().y -20, settings.getWidth(), settings.getHeight());
+			controlSettings(l.getPoint().x -10 + g.getFontMetrics().stringWidth(l.getFullName()) + 20, l.getPoint().y -20 + 25, settings.getWidth(), settings.getHeight());
 			Rectangle t = new Rectangle(l.getPoint().x - 10, l.getPoint().y - 20,
 					g.getFontMetrics().stringWidth(l.getFullName()) + 20, 25); // draw
 			// rectangle
 			g.draw(t);
+			g.draw(new Rectangle(0,0,settings.getWidth(), 744));
 			g.setPaint(new Color(223,242,255));
 			for (Formation l2 : l.getAvailableFormations()) {
 				// draw the lines between the formation and the avalaible
@@ -167,6 +171,8 @@ public class DrawerSVGGen {
 				centerx1 = g.getFontMetrics().stringWidth(l.getFullName()) / 2;
 				centerx2 = g.getFontMetrics().stringWidth(l2.getFullName()) / 2;
 				
+				controlSettings(l.getPoint().x + centerx1, l.getPoint().y + lineYDOWN, settings.getWidth(), settings.getHeight());
+				controlSettings(l2.getPoint().x + centerx2, l2.getPoint().y + lineYUP, settings.getWidth(), settings.getHeight());
 				g.drawLine(l.getPoint().x + centerx1, l.getPoint().y + lineYDOWN, l2.getPoint().x + centerx2,
 						l2.getPoint().y + lineYUP);
 
@@ -197,6 +203,7 @@ public class DrawerSVGGen {
 			for (Formation f : this.datas.getFormations()) {
 				if (f.isShown() == true) {
 					if (f.hasGotATeacher(f) == true) {
+						controlSettings(f.getPoint().x - 5, f.getPoint().y  - g.getFontMetrics().getHeight() - 10, settings.getWidth(), settings.getHeight());
 						g.drawString(f.getTeacher().getFullNameTeacher(),
 								f.getPoint().x - 5,
 								f.getPoint().y  - g.getFontMetrics().getHeight() - 10);
@@ -246,10 +253,12 @@ public class DrawerSVGGen {
 
 				if (f.isShown() == true) {
 					g.setPaint(Color.pink);
+					controlSettings(f.getPoint().x + decX, f.getPoint().y + 18, settings.getWidth(), settings.getHeight());
 					g.drawString("Cours: ", f.getPoint().x + decX, f.getPoint().y + 18);
 					g.setPaint(Color.black);
 					for (Subject s : f.getSubjects()) {
 
+						controlSettings(f.getPoint().x + decX, f.getPoint().y + decY, settings.getWidth(), settings.getHeight());
 						g.drawString(s.getTitle(), f.getPoint().x + decX, f.getPoint().y + decY);
 						s.setPosX(f.getPoint().x + decX);
 						s.setPosY(f.getPoint().y + decY);
@@ -264,6 +273,8 @@ public class DrawerSVGGen {
 							if (settings.isHiddenPrerequisites() == false) {
 								for (Subject p : s2.getListOfPrerequisites()) {
 									g.setPaint(Color.orange);
+									controlSettings(s.getPoint().x + 15, s.getPoint().y - 20, settings.getWidth(), settings.getHeight());
+									controlSettings(p.getPoint().x + 30, p.getPoint().y + 3, settings.getWidth(), settings.getHeight());
 									drawArrow(g, s.getPoint().x + 15, s.getPoint().y - 20, p.getPoint().x + 30,
 											p.getPoint().y + 3);
 								}
@@ -284,12 +295,16 @@ public class DrawerSVGGen {
 
 							java.awt.Font font = new java.awt.Font("TimesRoman", 9, 9);
 							g.setFont(font);
+							controlSettings(s.getPoint().x, s.getPoint().y - 15, settings.getWidth(), settings.getHeight());
 							g.drawString(s.getResponsible().getLastName(), s.getPoint().x, s.getPoint().y - 15);
 
 						}
 					}
 
 				}
+				java.awt.Font font = new java.awt.Font("TimesRoman", 12, 12);
+				g.setFont(font);
+				g.setPaint(Color.black);
 			}
 
 		}
@@ -344,6 +359,7 @@ public class DrawerSVGGen {
 		this.datas.setPaper(settings.getFormat(), settings.getWidth(), settings.getHeight());
 
 		g.setSVGCanvasSize(new Dimension(this.datas.getPaper().getDimXCanvas(), this.datas.getPaper().getDimYCanvas()));
+		controlSettings(this.datas.getDepartment().getX(), this.datas.getDepartment().getY(), settings.getWidth(), settings.getHeight());
 		g.drawString(this.datas.getDepartment().getNomDepartement(), this.datas.getDepartment().getX(),
 				this.datas.getDepartment().getY());
 
@@ -399,5 +415,12 @@ public class DrawerSVGGen {
 		return content = content.replaceAll("unicode=\"<\"", "unicode=\"\"");
 
 	}
+	
+	public void controlSettings(int posX, int posY, int canvaX, int canvaY) throws IllegalStateException {
+		if((posX>canvaX)||(posY>canvaY)) {
+			throw new IllegalStateException("Some elements are not in the format paper");
+		}
+	}
+	
 
 }

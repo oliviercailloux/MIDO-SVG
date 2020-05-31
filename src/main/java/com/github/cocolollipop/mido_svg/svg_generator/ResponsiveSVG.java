@@ -57,7 +57,8 @@ public class ResponsiveSVG {
 		Canvas c = new Canvas();
 		FontMetrics fm = c.getFontMetrics(Basicfont);
 		int height = fm.getHeight();
-		int heightOfSubjects = (nbOfSubjects+1) * height + nbOfSubjects * 2 * height ;
+		// the space between 2 lines is 14 (seen in the code of DrawerSVGGen) and we count the space before "cours"
+		int heightOfSubjects = (nbOfSubjects+1) * height + (nbOfSubjects+2) * 14 ;
 		return heightOfSubjects;
 	}
 
@@ -156,7 +157,20 @@ public class ResponsiveSVG {
 			totalHeightOfSubjects += calculateHeightOfSubjects(i);
 		}
 
-		int additionnalSpace = (int) ((((canvasY - totalHeightOfSubjects) - (canvasY * 0.2)) / totalCptY) );
+		// We assume that the height of the police is 12
+		// height of a rectangle is 25 pixels and the height of the responsible is 12, 
+		//and we have to add this block to additionnal block to prevent space for it
+		
+		int formationBlock = 25+12;
+		
+		int additionnalSpace = (int) (((canvasY - totalHeightOfSubjects - (canvasY * 0.15) - formationBlock * (totalCptY - 1)) / totalCptY) + formationBlock);
+		
+		System.out.println("additionnal space : " + additionnalSpace);
+		System.out.println("canvaY :" + canvasY);
+		
+		if((!hiddenSubjects)&&(additionnalSpace<0)) {
+			throw new IllegalStateException("You cannot show all the subject in this format of paper");
+		}
 
 		/*
 		 * Now we calculate X and Y offset
@@ -218,6 +232,7 @@ public class ResponsiveSVG {
 					offsetY = (int) (canvasY * 0.1);
 					levelActual++;
 					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "L3")) + additionnalSpace;
+					System.out.println("offsetY L3 : " + offsetY);
 				}
 				else {
 					offsetY = spaceTaken;
@@ -243,6 +258,7 @@ public class ResponsiveSVG {
 					offsetY = spaceTaken;
 					levelActual++;
 					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "M1")) + additionnalSpace;
+					System.out.println("offsetY M1 : " + offsetY);
 				}
 			}
 			associatePositionX(list, "M1", offsetX, offsetY);
@@ -263,6 +279,7 @@ public class ResponsiveSVG {
 					offsetY = spaceTaken;
 					levelActual++;
 					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "M2")) + additionnalSpace;
+					System.out.println("offsetY M2 : " + offsetY);
 				}
 			}
 			associatePositionX(list, "M2", offsetX, offsetY);

@@ -157,7 +157,10 @@ public class DataBase {
 		 * XMLMain myTestXMLMain = new XMLMain();
 		 * myTestXMLMain.fillFormationsXML(this.formationsMap);
 		 */
-
+		
+		// L1 MIDO
+		//Licence L1MIDO = new Licence("L1 MIDO", 3, 250, 70);
+		
 		// L3MIAGE
 		Licence L3MIAGE = new Licence("L3 MIAGE", 3, 250, 70);
 		L3MIAGE.setTeacher(teachers.get("Mayag"));
@@ -180,6 +183,7 @@ public class DataBase {
 
 		Master M1MIAGEApp = new Master("M1 MIAGE App", 4, 750, 150);
 		Master M2MIAGEIF = new Master("M2 MIAGE IF", 5, 100, 300);
+		M2MIAGEIF.setTeacher(teachers.get("Pigozzi"));
 		Master M2MIAGEID = new Master("M2 MIAGE ID", 5, 250, 300);
 		Master M2MIAGESTIN = new Master("M2 MIAGE STIN", 5, 400, 300);
 		Master M2MIAGEIFApp = new Master("M2 MIAGE IF App", 5, 600, 300);
@@ -198,6 +202,7 @@ public class DataBase {
 		this.formations.add(M2MIAGEIFApp);
 		this.formations.add(M2MIAGEIDApp);
 		this.formations.add(M2MIAGESTINApp);
+		//this.formations.add(L1MIDO);
 
 		// Available formation
 		L3MIAGE.addAvailableFormation(M1MIAGE);
@@ -208,12 +213,15 @@ public class DataBase {
 		M1MIAGEApp.addAvailableFormation(M2MIAGESTINApp);
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIDApp);
 		M1MIAGEApp.addAvailableFormation(M2MIAGEIFApp);
+		//L1MIDO.addAvailableFormation(L3MIAGE);
 
 		this.formationsMap.put("L3MIAGE", L3MIAGE);
 		this.formationsMap.put("M1MIAGE", M1MIAGE);
 		this.formationsMap.put("L3MIAGEApp", L3MIAGEApp);
 		this.formationsMap.put("M1MIAGEApp", M1MIAGEApp);
-
+		this.formationsMap.put("M2MIAGEIF", M2MIAGEIF);
+		//this.formationsMap.put("L1MIDO", L1MIDO);
+		
 	}
 
 	/**
@@ -230,20 +238,116 @@ public class DataBase {
 		Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
 		Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
 		Subject math = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
+		Subject proba2 = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
+		Subject java2 = new Subject("POO Java", teachers.get("Cailloux"), 3, 500, 85);
+		Subject logique2 = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
+		Subject math2 = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
+		
+		Subject java3 = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
+		Subject logique3 = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
+		Subject math3 = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
+		Subject proba3 = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
+		Subject java4 = new Subject("POO Java", teachers.get("Cailloux"), 3, 500, 85);
+		Subject logique4 = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
+		Subject math4 = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
+		
+		
+		Subject proba5 = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
+		Subject java5 = new Subject("POO Java", teachers.get("Cailloux"), 3, 500, 85);
+		Subject logique5 = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
+		Subject math5 = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
+		Subject math6 = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
+		
+		Subject proba6 = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
+		Subject java6 = new Subject("POO Java", teachers.get("Cailloux"), 3, 500, 85);
+		Subject logique6 = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
+		
 
 		mapSubjects.put("proba", proba);
 		mapSubjects.put("java", java);
 		mapSubjects.put("logique", logique);
+		mapSubjects.put("math",  math);
+		mapSubjects.put("proba2", proba2);
+		mapSubjects.put("java2", java2);
+		mapSubjects.put("logique2", logique2);
+		mapSubjects.put("math2",  math2);
+		mapSubjects.put("java3",  java3);
+		mapSubjects.put("logique3",  logique3);
+		mapSubjects.put("math3",  math3);
+		mapSubjects.put("proba3",  proba3);
+		mapSubjects.put("java4",  java4);
+		mapSubjects.put("logique4",  logique4);
+		mapSubjects.put("math4",  math4);
+		
+		mapSubjects.put("proba5",  proba5);
+		mapSubjects.put("java5",  java5);
+		mapSubjects.put("logique5",  logique5);
+		mapSubjects.put("math5",  math5);
+		mapSubjects.put("math6",  math6);
+		mapSubjects.put("proba6",  proba6);
+		mapSubjects.put("java6",  java6);
+		mapSubjects.put("logique6",  logique6);
+		
 
 		logique.setLevel(formationsMap.get("M1MIAGE"));
 		math.setLevel(formationsMap.get("L3MIAGEApp"));
 		proba.setLevel(formationsMap.get("L3MIAGE"));
 		java.setLevel(formationsMap.get("L3MIAGE"));
-
+		
+		logique2.setLevel(formationsMap.get("L3MIAGE"));
+		math2.setLevel(formationsMap.get("L3MIAGE"));
+		proba2.setLevel(formationsMap.get("L3MIAGE"));
+		java2.setLevel(formationsMap.get("L3MIAGE"));
+		
+		java3.setLevel(formationsMap.get("L3MIAGE"));
+		logique3.setLevel(formationsMap.get("L3MIAGE"));
+		math3.setLevel(formationsMap.get("L3MIAGE"));
+		proba3.setLevel(formationsMap.get("L3MIAGE"));
+		java4.setLevel(formationsMap.get("L3MIAGE"));
+		logique4.setLevel(formationsMap.get("L3MIAGE"));
+		math4.setLevel(formationsMap.get("L3MIAGE"));
+		
+		
+		proba5.setLevel(formationsMap.get("M1MIAGE"));
+		java5.setLevel(formationsMap.get("M1MIAGE"));
+		logique5.setLevel(formationsMap.get("M1MIAGE"));
+		math5.setLevel(formationsMap.get("M1MIAGE"));
+		math6.setLevel(formationsMap.get("M2MIAGEIF"));
+		
+		proba6.setLevel(formationsMap.get("M2MIAGEIF"));
+		java6.setLevel(formationsMap.get("M2MIAGEIF"));
+		logique6.setLevel(formationsMap.get("M2MIAGEIF"));
+		
+		
 		subjects.add(proba);
 		subjects.add(java);
 		subjects.add(logique);
 		subjects.add(math);
+		
+		subjects.add(proba2);
+		subjects.add(java2);
+		subjects.add(logique2);
+		subjects.add(math2);
+		
+		subjects.add(java3);
+		subjects.add(logique3);
+		subjects.add(math3);
+		subjects.add(proba3);
+		subjects.add(java4);
+		subjects.add(logique4);
+		subjects.add(math4);
+		
+		subjects.add(proba5);
+		subjects.add(java5);
+		subjects.add(logique5);
+		
+		subjects.add(math5);
+		subjects.add(math6);
+		
+		subjects.add(proba6);
+		subjects.add(java6);
+		subjects.add(logique6);
+
 
 		// Add prerequisites of each subject
 
