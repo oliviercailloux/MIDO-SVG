@@ -3,9 +3,11 @@ package com.github.cocolollipop.mido_svg.svg_generator;
 import java.awt.Canvas;
 import java.awt.FontMetrics;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.github.cocolollipop.mido_svg.university.components.Formation;
+import com.github.cocolollipop.mido_svg.university.components.Subject;
 
 /**
  * This class adapts the position of objects in order to draw a
@@ -35,6 +37,7 @@ public class ResponsiveSVG {
 		}
 		return nb;
 	}
+
 	/**
 	 * Count the number max of Subjects in a Formation of myYear
 	 * @param list
@@ -62,6 +65,40 @@ public class ResponsiveSVG {
 		return heightOfSubjects;
 	}
 
+	public int giveTheLongestSubjectInPixel(Formation formation) {
+		int longestword = 0;
+		for(Subject subject : formation.getSubjects()) {
+			if (longestword < widthOfTheWordInPixel(subject.getTitle())) {
+				longestword = widthOfTheWordInPixel(subject.getTitle());
+			}
+		}
+		return longestword;
+	}
+
+	public int widthOfTheWordInPixel(String word) {
+		Canvas c = new Canvas();
+		FontMetrics fm = c.getFontMetrics(Basicfont);
+		return fm.stringWidth(word);
+	}
+
+	public int calculateAdditionalSpaceByGrade(String myYear, int canvasX, List<Formation> list) throws IllegalStateException {
+		int spaceTaken = 0;
+		int cpt = 1;
+
+		for (Formation formation : list) {
+			if (formation.getFullName().contains(myYear)) {
+				spaceTaken += giveTheLongestSubjectInPixel(formation) + widthOfTheWordInPixel(formation.getFullName()) + 20;
+				cpt++;
+			}
+		}
+
+		int additionalSpace = (int) ((canvasX - spaceTaken - (0.1 * canvasX)) / cpt);
+		if (additionalSpace < 0) {
+			throw new IllegalStateException("The format paper isn't enought wide.");
+		}
+		return additionalSpace;
+	}
+
 	/**
 	 * Determine the position of each Formation in the 
 	 * Canvas according to the number of formations and their level.
@@ -80,7 +117,6 @@ public class ResponsiveSVG {
 		 * number formations in "list" then calculate Y offset depending on which
 		 * formation are chosen (Only L1 or all ?). Finally we calculate X offset
 		 */
-		int offsetX = 0;
 		int offsetY = 0;
 		int nbL1 = 0;
 		int nbL2 = 0;
@@ -160,14 +196,14 @@ public class ResponsiveSVG {
 		// We assume that the height of the police is 12
 		// height of a rectangle is 25 pixels and the height of the responsible is 12, 
 		//and we have to add this block to additionnal block to prevent space for it
-		
+
 		int formationBlock = 25+12;
-		
+
 		int additionnalSpace = (int) (((canvasY - totalHeightOfSubjects - (canvasY * 0.15) - formationBlock * (totalCptY - 1)) / totalCptY) + formationBlock);
-		
+
 		System.out.println("additionnal space : " + additionnalSpace);
 		System.out.println("canvaY :" + canvasY);
-		
+
 		if((!hiddenSubjects)&&(additionnalSpace<0)) {
 			throw new IllegalStateException("You cannot show all the subject in this format of paper");
 		}
@@ -189,7 +225,6 @@ public class ResponsiveSVG {
 		int levelActual = 1;
 
 		if (nbL1 != 0) {
-			offsetX = canvasX / (nbL1 + 1);
 			if (hiddenSubjects) {
 				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[0] - 1) + (canvasY * 0.1));
 			}
@@ -198,11 +233,10 @@ public class ResponsiveSVG {
 				levelActual++;
 				spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "L1")) + additionnalSpace;
 			}
-			associatePositionX(list, "L1", offsetX, offsetY);
+			associatePositionX(list, "L1", offsetY, canvasX, hiddenSubjects);
 		}
 
 		if (nbL2 != 0) {
-			offsetX = canvasX / (nbL2 + 1);
 			if (hiddenSubjects) {
 				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[1] - 1) + (canvasY * 0.1));
 
@@ -219,11 +253,10 @@ public class ResponsiveSVG {
 					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "L2")) + additionnalSpace;
 				}
 			}
-			associatePositionX(list, "L2", offsetX, offsetY);
+			associatePositionX(list, "L2", offsetY, canvasX, hiddenSubjects);
 		}
 
 		if (nbL3 != 0) {
-			offsetX = canvasX / (nbL3 + 1);
 			if (hiddenSubjects) {
 				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[2] - 1) + (canvasY * 0.1));
 			}
@@ -240,11 +273,10 @@ public class ResponsiveSVG {
 					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "L3")) + additionnalSpace;
 				}
 			}
-			associatePositionX(list, "L3", offsetX, offsetY);
+			associatePositionX(list, "L3", offsetY, canvasX, hiddenSubjects);
 		}
 
 		if (nbM1 != 0) {
-			offsetX = canvasX / (nbM1 + 1);
 			if (hiddenSubjects) {
 				offsetY = (int) ((canvasY / (totalCptY)) * (cptY[3] - 1) + (canvasY * 0.1));	
 			}
@@ -261,11 +293,10 @@ public class ResponsiveSVG {
 					System.out.println("offsetY M1 : " + offsetY);
 				}
 			}
-			associatePositionX(list, "M1", offsetX, offsetY);
+			associatePositionX(list, "M1", offsetY, canvasX, hiddenSubjects);
 		}
 
 		if (nbM2 != 0) {
-			offsetX = canvasX / (nbM2 + 2);
 			if (hiddenSubjects) {
 				offsetY = (int) ((canvasY / (totalCptY)) * (cptY[4] - 1) + (canvasY * 0.1));
 			}
@@ -282,7 +313,7 @@ public class ResponsiveSVG {
 					System.out.println("offsetY M2 : " + offsetY);
 				}
 			}
-			associatePositionX(list, "M2", offsetX, offsetY);
+			associatePositionX(list, "M2", offsetY, canvasX, hiddenSubjects);
 		}
 
 	}
@@ -300,14 +331,39 @@ public class ResponsiveSVG {
 	 * @param offsetY
 	 * 			  the ordinate calculated after shifting and adjusting
 	 */
-	private void associatePositionX(List<Formation> list, String myYear, int offsetX, int offsetY) {
-		int i = 0;
-		for (Formation aFormation : list) {
-			if (aFormation.getFullName().indexOf(myYear) != -1) {
-				aFormation.setPosX((int) (offsetX * i + offsetX * 0.5));
-				aFormation.setPosY(offsetY);
-				i++;
-				System.out.println("associerOK : " + aFormation.getFullName());
+	private void associatePositionX(List<Formation> list, String myYear, int offsetY, int canvasX, boolean isHidden) {
+
+		if (!isHidden) {
+			int additionalSpace = calculateAdditionalSpaceByGrade(myYear, canvasX, list);
+			int spaceTaken = (int) ((0.05 * canvasX) + additionalSpace);
+			for (Formation aFormation : list) {
+				if (aFormation.getFullName().indexOf(myYear) != -1) {
+					aFormation.setPosX(spaceTaken);
+					aFormation.setPosY(offsetY);
+					spaceTaken += additionalSpace + giveTheLongestSubjectInPixel(aFormation) + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
+				}
+			}
+		}
+		else {
+			int additionalSpace = 0;
+			int j = 0;
+			for (Formation aFormation : list) {
+				if (aFormation.getFullName().indexOf(myYear) != -1) {
+					additionalSpace += widthOfTheWordInPixel(aFormation.getFullName()) + 20;
+					j++;
+				}
+			}
+			additionalSpace = (int) ((canvasX - additionalSpace - (canvasX * 0.1)) / (j+1)); 
+			if (additionalSpace < 0) {
+				throw new IllegalStateException("The format paper isn't enough wide");
+			}
+			int spaceTaken = (int) (0.05 * canvasX + additionalSpace);
+			for (Formation aFormation : list) {
+				if (aFormation.getFullName().indexOf(myYear) != -1) {
+					aFormation.setPosX(spaceTaken);
+					aFormation.setPosY(offsetY);
+					spaceTaken += additionalSpace + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
+				}
 			}
 		}
 	}

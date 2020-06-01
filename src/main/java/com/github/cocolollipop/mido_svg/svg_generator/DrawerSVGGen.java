@@ -421,6 +421,4 @@ public class DrawerSVGGen {
 			throw new IllegalStateException("Some elements are not in the format paper");
 		}
 	}
-	
-
 }
