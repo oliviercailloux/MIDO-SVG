@@ -31,5 +31,5 @@ jobs:
         # We don't use a specific action but just a command which will be run on Ubuntu
       - name: Verify maven
         env: 
-          WSDL_ACCESS : WSDL_ACCESS
+          WSDL_ACCESS : ${{ secrets.WSDL_ACCESS }}
         run: mvn -B test --file pom.xml
