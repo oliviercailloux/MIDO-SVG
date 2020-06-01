@@ -248,7 +248,7 @@ public class DataBase {
 		// Add prerequisites of each subject
 
 		logique.addListOfPrerequisites(proba); // It means that logique has
-		// proba as prerequisites
+		                                        // proba as prerequisites
 
 	}
 
@@ -287,7 +287,7 @@ public class DataBase {
 		for (int i = 0; i < this.getFormations().size(); i++) {
 			System.out.println(
 					"Pour l\'annee" + this.getFormations().get(i).getGrade() + this.getFormations().get(i).getFullName()
-					+ " a " + this.getFormations().get(i).getAvailableFormations().size());
+					                + " a " + this.getFormations().get(i).getAvailableFormations().size());
 
 			if (this.getFormations().get(i).getAvailableFormations().size() == 0) {
 				System.out.println("Pas de formation accessible");
