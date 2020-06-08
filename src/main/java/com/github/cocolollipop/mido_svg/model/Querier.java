@@ -1,4 +1,4 @@
-package com.github.cocolollipop.mido_svg.BddQuerries;
+package com.github.cocolollipop.mido_svg.model;
 
 import java.util.List;
 
