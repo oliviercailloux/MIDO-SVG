@@ -416,6 +416,17 @@ public class DrawerSVGGen {
 
 	}
 	
+	/**
+	 * This method aim to control if an element is going to be drawn in the paper format selected. 
+	 * If it is not the case, the method throws an exception.
+	 * 
+	 * @param posX the X axe position of the element that is going to be drawn
+	 * @param posY the Y axe position of the element that is going to be drawn
+	 * @param canvaX the width of the paper format
+	 * @param canvaY the height of the paper format
+	 * @throws IllegalStateException
+	 */
+	
 	public void controlSettings(int posX, int posY, int canvaX, int canvaY) throws IllegalStateException {
 		if((posX>canvaX)||(posY>canvaY)) {
 			throw new IllegalStateException("Some elements are not in the format paper");
