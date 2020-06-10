@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: MIDO-SVG CI
+name: Maven verify
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -27,7 +27,20 @@ jobs:
         uses: actions/setup-java@v1
         with: # We pass an argument to the Github actions "setup-java" (see README of repository setup-java for more information)
           java-version: 11
-        # STEP 3
-        # We don't use a specific action but just a command which will be run on Ubuntu
+          
+      # STEP pre-3-1
+      - run: 'echo "$WSDL" > WSDL_access.txt'
+        shell: bash
+        env:
+          WSDL: ${{secrets.WSDL_ACCESS}}
+          
+      # STEP pre-3-2
+      - run: 'echo "$API" > API_password.txt'
+        shell: bash
+        env:
+          API: ${{secrets.API_PASSWORD}}
+          
+      # STEP 3
+      # We don't use a specific action but just a command which will be run on Ubuntu
       - name: Verify maven
         run: mvn -B test --file pom.xml
