@@ -56,7 +56,7 @@ public class ResponsiveSVG {
 		}
 		return max;
 	}
-	
+
 	/**
 	 * 
 	 * @param nbOfSubjects the number of Subjects of a block 
@@ -71,7 +71,7 @@ public class ResponsiveSVG {
 		int heightOfSubjects = (nbOfSubjects+1) * height + (nbOfSubjects+2) * 14 ;
 		return heightOfSubjects;
 	}
-	
+
 	/**
 	 * 
 	 * @param formation 
@@ -87,7 +87,7 @@ public class ResponsiveSVG {
 		}
 		return longestword;
 	}
-	
+
 	/**
 	 * @param word
 	 * @return the width in pixels of a word
@@ -98,7 +98,7 @@ public class ResponsiveSVG {
 		FontMetrics fm = c.getFontMetrics(Basicfont);
 		return fm.stringWidth(word);
 	}
-	
+
 	public int calculateAdditionalSpaceY(int canvasY, List<Integer> maxSubjects, int totalCptY) {
 		int totalHeightOfSubjects = 0;
 		for (Integer i : maxSubjects) {
@@ -108,14 +108,14 @@ public class ResponsiveSVG {
 		FontMetrics fm = c.getFontMetrics(Basicfont);
 		int heightOfResponsibleName = fm.getHeight();
 		//The height of a rectangle is 25 pixels (seen in the drawerSVGGen class)
-		
+
 		int formationBlock = 25+heightOfResponsibleName;
 
 		int additionalSpace = (int) (((canvasY - totalHeightOfSubjects - (canvasY * 0.15) - formationBlock * (totalCptY - 1)) / totalCptY) + formationBlock);
 
 		return additionalSpace;
 	}
-	
+
 	/**
 	 * This method aim to calculate the space that is available to add between the formations of a same year when drawing.
 	 * 
@@ -168,11 +168,11 @@ public class ResponsiveSVG {
 		int nbL3 = 0;
 		int nbM1 = 0;
 		int nbM2 = 0;
-		
+
 		int additionalSpace=0;
-		
+
 		List<Integer> maxSubjects = new ArrayList<>();
-		
+
 		int spaceTaken = 0;
 		int levelActual = 1;
 
@@ -236,7 +236,7 @@ public class ResponsiveSVG {
 			maxSubjects.add(countMaxSubjects(list, "M2"));
 		}
 		totalCptY+= 1;
-		
+
 		if((!hiddenSubjects)) {
 			additionalSpace=calculateAdditionalSpaceY(canvasY, maxSubjects, totalCptY);
 			if(additionalSpace<0) {
