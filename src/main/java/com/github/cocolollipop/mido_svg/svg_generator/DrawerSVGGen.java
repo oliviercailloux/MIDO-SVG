@@ -39,7 +39,7 @@ public class DrawerSVGGen {
 		BOTH, LICENCE, MASTER
 	}
 
-	public static final String DRAWING_SVG = "./src/main/resources/images/mido-drawing.svg";
+	public static final String DRAWING_SVG = "../mido-drawing.svg";
 
 	private SVGGeneratorContext ctx;
 
@@ -426,9 +426,8 @@ public class DrawerSVGGen {
 	 * @param canvaY the height of the paper format
 	 * @throws IllegalStateException
 	 */
-	
 	public void controlSettings(int posX, int posY, int canvaX, int canvaY) throws IllegalStateException {
-		if((posX>canvaX)||(posY>canvaY)) {
+		if ((posX > canvaX) || (posY > canvaY)) {
 			throw new IllegalStateException("Some elements are not in the format paper");
 		}
 	}
