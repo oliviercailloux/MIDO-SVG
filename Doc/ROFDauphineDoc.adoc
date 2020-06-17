@@ -3,9 +3,9 @@
 image::../Doc/Diagrams/ROFDauphineClassDiagram.svg[ROF Dauphine Class Diagram]
 
 OrgUnit is a table that regroup the major departments in Dauphine University (MIDO, LSO...). Each row of the table contains 
-	* a label under this form `FRUAI0750736TOU******`. This label is the OrgUnitId which is the key that we can use as a predicate for the `Querier` class' methods.
-	* details which is an URL to this row of OrgUnit
-	* content which regroup the OrgUnitId, OrgUnitCode, OrgUnitName, admissionDescription and contact data.
+	** a label under this form `FRUAI0750736TOU******`. This label is the OrgUnitId which is the key that we can use as a predicate for the `Querier` class' methods.
+	** details which is an URL to this row of OrgUnit
+	** content which regroup the OrgUnitId, OrgUnitCode, OrgUnitName, admissionDescription and contact data.
 	
 
 As we can see in the diagram, OrgUnit does not point to any other table. That means there is no link between the MIDO department and the MIDO formations. 
