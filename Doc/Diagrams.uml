@@ -354,18 +354,11 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_GVDK4IeaEeqlZY9rOCAo-w" name="Database">
     <ownedComment xmi:type="uml:Comment" xmi:id="_SGQ6IHEoEeqD4qiy1uAq0g">
-      <body>Querier enables us to retrieve the data from the ROF 
-The data is either Mention, Program, Person, Course or OrgaUnit.
-predicate should be like &quot;mentionId = ****&quot;</body>
+      <body>predicate should be like &quot;mentionId = ****&quot;</body>
     </ownedComment>
     <ownedComment xmi:type="uml:Comment" xmi:id="_aYGikHEqEeqD4qiy1uAq0g">
       <body>QueriesHelper enables us to login into ROF.
 The class Authenticator represents an object that knows how to obtain authentication for a network connection.
-</body>
-    </ownedComment>
-    <ownedComment xmi:type="uml:Comment" xmi:id="_CLPnoHHHEeqADqZe4Qf0-Q">
-      <body>Main method to call QueriesHelper.setDefaultAuthenticator(); to connect&#xD;
-and call DataRecuperator to create objects and lists of objects (Formations, Subjects, Teacher...).&#xD;
 </body>
     </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_2f-4cHEYEeqD4qiy1uAq0g" name="Querier" visibility="public">
@@ -426,16 +419,36 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_1PhYUnEnEeqD4qiy1uAq0g" type="_neDzkHEnEeqD4qiy1uAq0g" direction="return"/>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_MtHjoLCAEeqRdLLMTtwr9g" name="getOrgUnit">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_MtHjobCAEeqRdLLMTtwr9g" name="orgUnitId">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_T8IIALCAEeqRdLLMTtwr9g" type="_4NiYwJxBEeqQTdPOBnHIaA" direction="return"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_0qPkALCAEeqRdLLMTtwr9g" name="getOrgUnits">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_0qPkAbCAEeqRdLLMTtwr9g" name="predicate">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_0qPkArCAEeqRdLLMTtwr9g" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        </ownedParameter>
+      </ownedOperation>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_Y8LT8HEmEeqD4qiy1uAq0g" name="Program"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_XJkG0HEmEeqD4qiy1uAq0g" name="Mention"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_baV_gHEmEeqD4qiy1uAq0g" name="Course"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_neDzkHEnEeqD4qiy1uAq0g" name="Person"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_r1u8AJs4EeqGYc7sBUjHUw" memberEnd="_r10bkJs4EeqGYc7sBUjHUw _r13e4Js4EeqGYc7sBUjHUw">
+      <nestedClassifier xmi:type="uml:Association" xmi:id="_r1u8AJs4EeqGYc7sBUjHUw" name="call" memberEnd="_r10bkJs4EeqGYc7sBUjHUw _r13e4Js4EeqGYc7sBUjHUw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_r1x_UJs4EeqGYc7sBUjHUw" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_r1x_UZs4EeqGYc7sBUjHUw" key="nature" value="UML_Nature"/>
         </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_r10bkJs4EeqGYc7sBUjHUw" name="rofdatabase" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_r1u8AJs4EeqGYc7sBUjHUw"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_r13e4Js4EeqGYc7sBUjHUw" name="querier" type="_2f-4cHEYEeqD4qiy1uAq0g" association="_r1u8AJs4EeqGYc7sBUjHUw"/>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_r10bkJs4EeqGYc7sBUjHUw" name="rofdatabase" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_r1u8AJs4EeqGYc7sBUjHUw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qdQoELB_EeqRdLLMTtwr9g"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qdjjALB_EeqRdLLMTtwr9g" value="*"/>
+        </ownedEnd>
+        <ownedEnd xmi:type="uml:Property" xmi:id="_r13e4Js4EeqGYc7sBUjHUw" name="querier" type="_2f-4cHEYEeqD4qiy1uAq0g" association="_r1u8AJs4EeqGYc7sBUjHUw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vlDBQLB_EeqRdLLMTtwr9g"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vlS44LB_EeqRdLLMTtwr9g" value="*"/>
+        </ownedEnd>
       </nestedClassifier>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_yuwZ0HEpEeqD4qiy1uAq0g" name="QueriesHelper">
@@ -458,7 +471,7 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
       <nestedClassifier xmi:type="uml:Class" xmi:id="_DC59wHEqEeqD4qiy1uAq0g" name="Authenticator"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_ZHuDUHErEeqD4qiy1uAq0g" name="Optional&lt;String>"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_xd91cHErEeqD4qiy1uAq0g" name="PasswordAuthentication"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_03X7oJs4EeqGYc7sBUjHUw" memberEnd="_03ZJwps4EeqGYc7sBUjHUw _03Zw0Js4EeqGYc7sBUjHUw">
+      <nestedClassifier xmi:type="uml:Association" xmi:id="_03X7oJs4EeqGYc7sBUjHUw" name="call" memberEnd="_03ZJwps4EeqGYc7sBUjHUw _03Zw0Js4EeqGYc7sBUjHUw">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_03ZJwJs4EeqGYc7sBUjHUw" source="org.eclipse.papyrus">
           <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_03ZJwZs4EeqGYc7sBUjHUw" key="nature" value="UML_Nature"/>
         </eAnnotations>
@@ -832,6 +845,12 @@ and call DataRecuperator to create objects and lists of objects (Formations, Sub
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_nZFf8JxIEeqQTdPOBnHIaA" name="OrgUnitCode">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_G5lz4LCCEeqRdLLMTtwr9g" name="contactData">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_NbokkLCCEeqRdLLMTtwr9g" name="admissionDescription">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
     </packagedElement>

@@ -70,6 +70,15 @@ In the future, we want to be able to choose the courses by tags.
 
 The `XMLMain` class (in the xml-to-java package) is used to retrieve an XML file and extract the data (name, first name, address, etc.) to store it in a hash table. Afterwards, this hash table will be used to fill the tags. 
 
+== ROF Database
+
+=== ROF  Dauphine Class Diagram 
+
+image::../Doc/Diagrams/ROFDauphineClassDiagram.svg[ROF Dauphine Class Diagram]
+
+This diagram aim to represent the structure of Dauphine's ROF database.
+
+You can refer to https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc/ROFDauphineDoc.adoc[this documentation] in order to better understand it. 
 
 == Database
 
@@ -78,11 +87,13 @@ The `XMLMain` class (in the xml-to-java package) is used to retrieve an XML file
 image::../Doc/Diagrams/ROFClassDiagram.svg[ROF Class Diagram]
 
 This diagram contains the classes that would be useful to retrieve the data directly from ROF. 
-`Querier` Class enables us to get the mentions, programs, courses ... from ROF. 
-`DataRecuperator` class uses `Querier` class to get all the useful informations from ROF and create objects with them.
-`DataRecuperator` also uses the `ObjectTransformer` class to transform the objects retrieved by the `Querier` class (and then create objects from the `University` package).
-`QueriesHelper` is essential to login into ROF. 
-The last class `ROFMain` will be useful to store the data (retrieved with calling `DataRecuperator` and `QueriesHelper` classes) in a file which will be read by the SVG generator. 
+
+First of all, we need the `QueriesHelper` class to login into ROF. This class uses the files API_password.txt and WSDL_access.txt which are at the root of our project. (Be careful to not push this 2 files on GitHub !!)
+
+Secondly, `Querier` class enables us to get the mentions, programs, courses and orgUnit from ROF. These are objects specific to ROF (see the diagram above). 
+However, we need to transform these objects into `University` objects that we use in our project: Licence, Master, Teacher, Subject...
+
+Therefore, in the `RofDatabase` class, after login into ROF and fetching the data from ROF, we create new `University` objects and fill their attributes with contents from ROF.
 
 
 == SVG
