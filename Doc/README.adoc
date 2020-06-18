@@ -78,7 +78,7 @@ image::../Doc/Diagrams/ROFDauphineClassDiagram.svg[ROF Dauphine Class Diagram]
 
 This diagram aim to represent the structure of Dauphine's ROF database.
 
-You can refer to https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc/ROFDauphineDoc.adoc[this documentation] in order to better understand it. 
+You can refer to ../Doc/ROFDauphineDoc.adoc[this documentation] in order to better understand it. 
 
 == Database
 
