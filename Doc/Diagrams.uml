@@ -597,7 +597,7 @@ The class Authenticator represents an object that knows how to obtain authentica
       <message xmi:type="uml:Message" xmi:id="_JJ4vcJziEeq13vwlvqn-1A" name="draw admission, formation, responsable, etc" messageSort="reply" receiveEvent="_JJ59kJziEeq13vwlvqn-1A" sendEvent="_JJ5WgJziEeq13vwlvqn-1A"/>
       <message xmi:type="uml:Message" xmi:id="_NS4lIJziEeq13vwlvqn-1A" name="defineObjectsPosition" receiveEvent="_NS5zQJziEeq13vwlvqn-1A" sendEvent="_NS5MMJziEeq13vwlvqn-1A" signature="_U1r4MHKxEeqTEN4gHi6gfg"/>
       <message xmi:type="uml:Message" xmi:id="_RCfDYJziEeq13vwlvqn-1A" name="associatePositions" messageSort="reply" receiveEvent="_RCgRgJziEeq13vwlvqn-1A" sendEvent="_RCfqcJziEeq13vwlvqn-1A"/>
-      <message xmi:type="uml:Message" xmi:id="_j4TS0JziEeq13vwlvqn-1A" name="controlSettings(settings)" receiveEvent="_j4T54ZziEeq13vwlvqn-1A" sendEvent="_j4T54JziEeq13vwlvqn-1A" signature="_Bc4v0IefEeqp8c2nJra3dQ"/>
+      <message xmi:type="uml:Message" xmi:id="_j4TS0JziEeq13vwlvqn-1A" name="controlSettings(settings)" receiveEvent="_j4T54ZziEeq13vwlvqn-1A" sendEvent="_j4T54JziEeq13vwlvqn-1A"/>
       <message xmi:type="uml:Message" xmi:id="_sldQMJziEeq13vwlvqn-1A" name="file = new File()" messageSort="asynchCall" receiveEvent="_sld3QZziEeq13vwlvqn-1A" sendEvent="_sld3QJziEeq13vwlvqn-1A"/>
       <message xmi:type="uml:Message" xmi:id="_urkoIJziEeq13vwlvqn-1A" name="SVG genered" messageSort="reply" receiveEvent="_urlPMZziEeq13vwlvqn-1A" sendEvent="_urlPMJziEeq13vwlvqn-1A"/>
     </packagedElement>
@@ -644,6 +644,20 @@ The class Authenticator represents an object that knows how to obtain authentica
           <ownedOperation xmi:type="uml:Operation" xmi:id="_ta-_wJ3vEeqNsKLtsbtR3g" name="paint" visibility="public" concurrency="concurrent">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_zu-tYJ3vEeqNsKLtsbtR3g" name="settings" type="_Y-Cm8HKsEeqTEN4gHi6gfg"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_3HT7IJ3vEeqNsKLtsbtR3g" name="datas1" type="_GH9tYHEuEeqD4qiy1uAq0g"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_fw6dcLFsEeqivu2c-Fhp1Q" name="controlSettings" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_0hwPILFsEeqivu2c-Fhp1Q" name="posX">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_2-k24LFsEeqivu2c-Fhp1Q" name="posY">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_5zJQQLFsEeqivu2c-Fhp1Q" name="canvaX">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_78HH4LFsEeqivu2c-Fhp1Q" name="canvaY">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
           </ownedOperation>
         </nestedClassifier>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_Y-Cm8HKsEeqTEN4gHi6gfg" name="Settings">
@@ -719,6 +733,7 @@ The class Authenticator represents an object that knows how to obtain authentica
           </ownedOperation>
         </nestedClassifier>
         <nestedClassifier xmi:type="uml:Class" xmi:id="_azGEEHKsEeqTEN4gHi6gfg" name="ResponsiveSVG" visibility="public">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="_dyRKALFtEeqivu2c-Fhp1Q" name="BasicFont" visibility="private" isStatic="true"/>
           <ownedAttribute xmi:type="uml:Property" xmi:id="_xFFlgIefEeqp8c2nJra3dQ" name="calls" type="_Y-Cm8HKsEeqTEN4gHi6gfg" association="_xFBUEIefEeqp8c2nJra3dQ">
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xFIo0IefEeqp8c2nJra3dQ" value="1"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xFJP4IefEeqp8c2nJra3dQ" value="*"/>
@@ -741,22 +756,88 @@ The class Authenticator represents an object that knows how to obtain authentica
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_8snxAHKxEeqTEN4gHi6gfg" name="canvasY">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_m8ADwLFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+            </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_U7-tcHKxEeqTEN4gHi6gfg" name="CopyOf_Operation1_2" visibility="private">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_VxyeoHKyEeqTEN4gHi6gfg" name="list">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_8ygH4LFtEeqivu2c-Fhp1Q" name="countMaxSubjects" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_LSrz0LFuEeqivu2c-Fhp1Q" name="liste">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_cHUdUHKyEeqTEN4gHi6gfg" name="myYear">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_NdFO0LFuEeqivu2c-Fhp1Q" name="myYear">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ezS7YHKyEeqTEN4gHi6gfg" name="decalageX">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_TcAEULFuEeqivu2c-Fhp1Q" name="max" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_hbklMHKyEeqTEN4gHi6gfg" name="decalageY">
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ZlDGMLFuEeqivu2c-Fhp1Q" name="calculateHeightOfSubjects">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fhTpQLFuEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_k3RoYLFuEeqivu2c-Fhp1Q" name="heightOfSubjects" direction="return">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_Bc4v0IefEeqp8c2nJra3dQ" name="controlSettings" isStatic="true"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_rlIAcLFuEeqivu2c-Fhp1Q" name="giveTheLongestSubjectsInPixel">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_yLbmELFuEeqivu2c-Fhp1Q" name="formation" type="_-9E5VW3mEeq7r7ozzGhjkA"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_382yILFuEeqivu2c-Fhp1Q" name="longestWord" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_6-pIILFuEeqivu2c-Fhp1Q" name="widthOfTheWordInPixel">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_-PP9QLFuEeqivu2c-Fhp1Q" name="word">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_BJ8z0LFvEeqivu2c-Fhp1Q" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_CxA4QLFvEeqivu2c-Fhp1Q" name="calculateAdditionalSpaceY">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_L7SPcLFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_OR0pALFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_QNiHwLFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_SbRxsLFvEeqivu2c-Fhp1Q" name="additionalSpace" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UTCkkLFvEeqivu2c-Fhp1Q" name="calculateAdditionalSpaceByGrade">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YKmE8LFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZvdJ8LFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_bo_ecLFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_e4EpkLFvEeqivu2c-Fhp1Q" name="additionalSpace" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_t-_lYLFvEeqivu2c-Fhp1Q" name="associatePositions">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_wzyBMLFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_ysRz4LFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_0PX-ULFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_4UhOwLFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_9TMIMLFvEeqivu2c-Fhp1Q">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+            </ownedParameter>
+          </ownedOperation>
         </nestedClassifier>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:Association" xmi:id="_cWBUwHK_EeqTi6zh0OU6cA" memberEnd="_cWE_IHK_EeqTi6zh0OU6cA _cWGNQXK_EeqTi6zh0OU6cA">
