@@ -31,7 +31,7 @@ If only in OrgUnit content, there was a list, let's name it refMentions, that co
 		** refProgram 
 To better explain the role of this table, and after a lot of researches in the database, we could schematize it as follows: 
 
- image::../Doc/ProgramScheme.png[Schema Program]
+image::../Doc/ProgramScheme.png[Schema Program]
  
 To conclude, a Program have either its refProgram field empty or its refCourse field empty. We can also say that the courses are stored only at the finest levels of Program. Therefore a program is either a grouping of other programs or a grouping of courses. To be more concrete a program can represent a "parcours", a "semestre", "UE obligatoires", "UE options"... So that makes sense. 
 
