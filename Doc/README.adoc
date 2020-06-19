@@ -1,7 +1,7 @@
 = Diagram Documentation File
 
 == General
-=== MIDO-SVG Diagram
+=== MIDO-SVG Diagram test
 
 image::../Doc/Diagrams/MIDO-SVG_General.svg[MIDO-SVG Diagram]
 

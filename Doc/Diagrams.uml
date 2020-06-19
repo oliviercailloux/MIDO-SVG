@@ -39,7 +39,7 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Ym3mEeq7r7ozzGhjkA" name="intitule" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Y23mEeq7r7ozzGhjkA" name="point" visibility="private"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Y23mEeq7r7ozzGhjkA" name="point" visibility="private" type="_jmgM4LJGEeq2l7_HWlzTeA" isUnique="false"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgUG3mEeq7r7ozzGhjkA" name="title" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
         </ownedAttribute>
@@ -54,8 +54,9 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FgVm3mEeq7r7ozzGhjkA" name="s" type="_-9Fgi23mEeq7r7ozzGhjkA"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FgV23mEeq7r7ozzGhjkA" name="fillsubjetList" concurrency="concurrent">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FgWG3mEeq7r7ozzGhjkA" name="AllSubjects">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FgWG3mEeq7r7ozzGhjkA" name="AllSubjects" type="_-9Fgi23mEeq7r7ozzGhjkA" isUnique="false">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_6CylALJMEeq2l7_HWlzTeA"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6C5SsLJMEeq2l7_HWlzTeA" value="*"/>
           </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9Fgb23mEeq7r7ozzGhjkA" name="hasGotATeacher">
@@ -91,9 +92,10 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgkm3mEeq7r7ozzGhjkA" name="level" visibility="private" type="_-9E5VW3mEeq7r7ozzGhjkA"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FglG3mEeq7r7ozzGhjkA" name="point" visibility="private"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fglm3mEeq7r7ozzGhjkA" name="tags" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FglG3mEeq7r7ozzGhjkA" name="point" visibility="private" type="_jmgM4LJGEeq2l7_HWlzTeA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fglm3mEeq7r7ozzGhjkA" name="tags" visibility="private" type="_-9FhiW3mEeq7r7ozzGhjkA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iLBeoLJMEeq2l7_HWlzTeA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iM6VALJMEeq2l7_HWlzTeA" value="*"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgl23mEeq7r7ozzGhjkA" name="title" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -205,8 +207,9 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_iT0NwIeYEeqlZY9rOCAo-w" name="View">
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_7jtJ2m3mEeq7r7ozzGhjkA" name="GUI">
+    <packagedElement xmi:type="uml:Interaction" xmi:id="_7jtJ2m3mEeq7r7ozzGhjkA" name="GUI" useCase="_5hD3ULJUEeq2l7_HWlzTeA">
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ223mEeq7r7ozzGhjkA" name="Edit a SVG file">
+        <extend xmi:type="uml:Extend" xmi:id="_9yZwsLJUEeq2l7_HWlzTeA" extendedCase="_5hD3ULJUEeq2l7_HWlzTeA" extensionLocation="_9yZwsbJUEeq2l7_HWlzTeA"/>
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtJ3G3mEeq7r7ozzGhjkA" name="ExtensionPoint1"/>
       </ownedUseCase>
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ423mEeq7r7ozzGhjkA" name="Manage tags">
@@ -229,6 +232,9 @@
       <ownedUseCase xmi:type="uml:UseCase" xmi:id="_7jtJ723mEeq7r7ozzGhjkA" name="Add courses to the preferences">
         <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_7jtJ8G3mEeq7r7ozzGhjkA" name="ExtensionPoint1"/>
       </ownedUseCase>
+      <ownedUseCase xmi:type="uml:UseCase" xmi:id="_5hD3ULJUEeq2l7_HWlzTeA" name="Set settings" subject="_7jtJ2m3mEeq7r7ozzGhjkA">
+        <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_9yZwsbJUEeq2l7_HWlzTeA" name="ExtensionPoint1"/>
+      </ownedUseCase>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_juUJUZ3zEeqNsKLtsbtR3g" name="" type="_7jtJ223mEeq7r7ozzGhjkA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_jvIosZ3zEeqNsKLtsbtR3g" name="" type="_7jtJ423mEeq7r7ozzGhjkA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_jvRyoZ3zEeqNsKLtsbtR3g" name="" type="_7jtJ5W3mEeq7r7ozzGhjkA"/>
@@ -236,6 +242,14 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_jv758Z3zEeqNsKLtsbtR3g" name="" type="_7jtJ6W3mEeq7r7ozzGhjkA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_jwPb8Z3zEeqNsKLtsbtR3g" name="" type="_7jtJ7W3mEeq7r7ozzGhjkA"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_jwYl4Z3zEeqNsKLtsbtR3g" name="" type="_7jtJ723mEeq7r7ozzGhjkA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_3cmFMLJUEeq2l7_HWlzTeA" name="" type="_7jtJ223mEeq7r7ozzGhjkA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__vS7MLJUEeq2l7_HWlzTeA" name="" type="_5hD3ULJUEeq2l7_HWlzTeA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_KpibMLJVEeq2l7_HWlzTeA" name="" type="_7jtJ423mEeq7r7ozzGhjkA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LRo9ALJVEeq2l7_HWlzTeA" name="" type="_7jtJ523mEeq7r7ozzGhjkA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_MesmALJVEeq2l7_HWlzTeA" name="" type="_7jtJ5W3mEeq7r7ozzGhjkA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_M86zEbJVEeq2l7_HWlzTeA" name="" type="_7jtJ423mEeq7r7ozzGhjkA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_OXqSwbJVEeq2l7_HWlzTeA" name="" type="_7jtJ523mEeq7r7ozzGhjkA"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_PfMikbJVEeq2l7_HWlzTeA" name="" type="_7jtJ5W3mEeq7r7ozzGhjkA"/>
       <nestedClassifier xmi:type="uml:Actor" xmi:id="_7jtKFW3mEeq7r7ozzGhjkA" name="Final user"/>
       <nestedClassifier xmi:type="uml:Association" xmi:id="_7jtKFm3mEeq7r7ozzGhjkA" memberEnd="_7jtKGW3mEeq7r7ozzGhjkA _7jtKGm3mEeq7r7ozzGhjkA">
         <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7jtKF23mEeq7r7ozzGhjkA" source="org.eclipse.papyrus">
@@ -265,19 +279,32 @@
       <lifeline xmi:type="uml:Lifeline" xmi:id="_jv758J3zEeqNsKLtsbtR3g" name="" represents="_jv758Z3zEeqNsKLtsbtR3g"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_jwPb8J3zEeqNsKLtsbtR3g" name="" represents="_jwPb8Z3zEeqNsKLtsbtR3g"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_jwYl4J3zEeqNsKLtsbtR3g" name="" represents="_jwYl4Z3zEeqNsKLtsbtR3g"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_3btUYLJUEeq2l7_HWlzTeA" name="" represents="_3cmFMLJUEeq2l7_HWlzTeA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="__vSUILJUEeq2l7_HWlzTeA" name="" represents="__vS7MLJUEeq2l7_HWlzTeA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_KphNELJVEeq2l7_HWlzTeA" name="" represents="_KpibMLJVEeq2l7_HWlzTeA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_LRoV8LJVEeq2l7_HWlzTeA" name="" represents="_LRo9ALJVEeq2l7_HWlzTeA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_Mei1ALJVEeq2l7_HWlzTeA" name="" represents="_MesmALJVEeq2l7_HWlzTeA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_M86zELJVEeq2l7_HWlzTeA" name="" represents="_M86zEbJVEeq2l7_HWlzTeA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_OXqSwLJVEeq2l7_HWlzTeA" name="" represents="_OXqSwbJVEeq2l7_HWlzTeA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_PfMikLJVEeq2l7_HWlzTeA" name="" represents="_PfMikbJVEeq2l7_HWlzTeA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:InformationFlow" xmi:id="_AGQUQIfEEeq9p4BXwyfr0g" name="Get information" informationSource="_YKmiEIeYEeqlZY9rOCAo-w" informationTarget="_GVDK4IeaEeqlZY9rOCAo-w"/>
     <packagedElement xmi:type="uml:InformationFlow" xmi:id="_zO-UQIfNEeq9p4BXwyfr0g" name="Collect objects" informationSource="_iT0NwIeYEeqlZY9rOCAo-w" informationTarget="_YKmiEIeYEeqlZY9rOCAo-w _l-jhoG2jEeq7r7ozzGhjkA"/>
-    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_mlcLcIfOEeq9p4BXwyfr0g" name="Collect objects" informationSource="_iT0NwIeYEeqlZY9rOCAo-w _l-jhoG2jEeq7r7ozzGhjkA" informationTarget="_wggV8IeYEeqlZY9rOCAo-w"/>
+    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_mlcLcIfOEeq9p4BXwyfr0g" name="select" informationSource="_iT0NwIeYEeqlZY9rOCAo-w _l-jhoG2jEeq7r7ozzGhjkA" informationTarget="_wggV8IeYEeqlZY9rOCAo-w"/>
     <packagedElement xmi:type="uml:InformationFlow" xmi:id="_zkaRYIfQEeq9p4BXwyfr0g" name="Call methods to generate SVG" informationSource="_iT0NwIeYEeqlZY9rOCAo-w" informationTarget="_RMo_gIeaEeqlZY9rOCAo-w"/>
+    <packagedElement xmi:type="uml:InformationFlow" xmi:id="_yqy4MLJWEeq2l7_HWlzTeA" name="Initialize" informationSource="_iT0NwIeYEeqlZY9rOCAo-w" informationTarget="_GVDK4IeaEeqlZY9rOCAo-w"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_wggV8IeYEeqlZY9rOCAo-w" name="Paper">
     <packagedElement xmi:type="uml:Class" xmi:id="_vd0uAG6LEeq7r7ozzGhjkA" name="Paper_root">
       <nestedClassifier xmi:type="uml:Class" xmi:id="_-9FhOG3mEeq7r7ozzGhjkA" name="FactoryPaper">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhOW3mEeq7r7ozzGhjkA" name="format" visibility="private"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FhOW3mEeq7r7ozzGhjkA" name="format" visibility="private" aggregation="shared">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhPG3mEeq7r7ozzGhjkA" name="getPaper" concurrency="concurrent">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhPW3mEeq7r7ozzGhjkA" type="_-9FhR23mEeq7r7ozzGhjkA" direction="return"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhPm3mEeq7r7ozzGhjkA" name="settings"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhPm3mEeq7r7ozzGhjkA" name="settings">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
+          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FhP23mEeq7r7ozzGhjkA" name="getPaper" visibility="protected">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQG3mEeq7r7ozzGhjkA" name="x">
@@ -286,7 +313,9 @@
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQW3mEeq7r7ozzGhjkA" name="y">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
           </ownedParameter>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQm3mEeq7r7ozzGhjkA" name="settings"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQm3mEeq7r7ozzGhjkA" name="settings">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
+          </ownedParameter>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FhQ23mEeq7r7ozzGhjkA" type="_-9FhR23mEeq7r7ozzGhjkA" direction="return"/>
         </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_-9FhRm3mEeq7r7ozzGhjkA" name="TypeFormat"/>
@@ -1032,5 +1061,15 @@ The class Authenticator represents an object that knows how to obtain authentica
     <packagedElement xmi:type="uml:Class" xmi:id="_IT-aMLIiEeqRdLLMTtwr9g" name="List&lt;Person>"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_MIAsgLIiEeqRdLLMTtwr9g" name="List&lt;Course>"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_5i6c0LIlEeqRdLLMTtwr9g" name="List&lt;OrgUnit>"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Model" xmi:id="_QPwaoLJGEeq2l7_HWlzTeA" name="external objects">
+    <packagedElement xmi:type="uml:Class" xmi:id="_jmgM4LJGEeq2l7_HWlzTeA" name="Point">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Tk8YULJHEeq2l7_HWlzTeA" name="x" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_BbKTALJIEeq2l7_HWlzTeA" name="y">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+    </packagedElement>
   </packagedElement>
 </uml:Model>
