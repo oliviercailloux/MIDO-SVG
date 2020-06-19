@@ -191,6 +191,9 @@
         </ownedEnd>
       </nestedClassifier>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_WC4RkJzWEeqyu63240XpNg" name="Tag"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_jNvVILImEeqRdLLMTtwr9g" name="List&lt;Subject>"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_pz9bMLImEeqRdLLMTtwr9g" name="List&lt;Formation>"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_tqMs8LImEeqRdLLMTtwr9g" name="List&lt;Tag>"/>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_iT0NwIeYEeqlZY9rOCAo-w" name="View">
@@ -362,13 +365,14 @@ The class Authenticator represents an object that knows how to obtain authentica
 </body>
     </ownedComment>
     <packagedElement xmi:type="uml:Class" xmi:id="_2f-4cHEYEeqD4qiy1uAq0g" name="Querier" visibility="public">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_n_q6kHEhEeqD4qiy1uAq0g" name="dataservices" visibility="private"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_n_q6kHEhEeqD4qiy1uAq0g" name="dataservices" visibility="private" type="_PXA0kLIhEeqRdLLMTtwr9g"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_asLj4HEkEeqD4qiy1uAq0g" name="getMentions">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_asLj4XEkEeqD4qiy1uAq0g" name="predicate">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_asLj4nEkEeqD4qiy1uAq0g" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_asLj4nEkEeqD4qiy1uAq0g" type="_Er_m4LIiEeqRdLLMTtwr9g" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yQIvkLIhEeqRdLLMTtwr9g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yQVj4LIhEeqRdLLMTtwr9g" value="*"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_90qJgHEkEeqD4qiy1uAq0g" name="getMention" visibility="package">
@@ -381,9 +385,7 @@ The class Authenticator represents an object that knows how to obtain authentica
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_yjuyYXElEeqD4qiy1uAq0g" name="predicate">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yjuyYnElEeqD4qiy1uAq0g" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yjuyYnElEeqD4qiy1uAq0g" type="_C5iKwLIiEeqRdLLMTtwr9g" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_L5GpwHEnEeqD4qiy1uAq0g" name="getProgram">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_L5GpwXEnEeqD4qiy1uAq0g" name="programId">
@@ -395,8 +397,9 @@ The class Authenticator represents an object that knows how to obtain authentica
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_UqJooXEnEeqD4qiy1uAq0g" name="predicate">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_UqJoonEnEeqD4qiy1uAq0g" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_UqJoonEnEeqD4qiy1uAq0g" type="_MIAsgLIiEeqRdLLMTtwr9g" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aJYyALIhEeqRdLLMTtwr9g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aJjKELIhEeqRdLLMTtwr9g" value="*"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_cEZMoHEnEeqD4qiy1uAq0g" name="getCourse">
@@ -405,12 +408,13 @@ The class Authenticator represents an object that knows how to obtain authentica
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_cEZMonEnEeqD4qiy1uAq0g" type="_baV_gHEmEeqD4qiy1uAq0g" direction="return"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_ieXmcHEnEeqD4qiy1uAq0g" name="getPersons">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ieXmcHEnEeqD4qiy1uAq0g" name="getPersons" concurrency="concurrent">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_ieYNgHEnEeqD4qiy1uAq0g" name="predicate">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_veZHMHEnEeqD4qiy1uAq0g" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_veZHMHEnEeqD4qiy1uAq0g" type="_IT-aMLIiEeqRdLLMTtwr9g" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1Y7FcLIhEeqRdLLMTtwr9g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1ZDoULIhEeqRdLLMTtwr9g" value="*"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_1PhYUHEnEeqD4qiy1uAq0g" name="getPerson">
@@ -429,27 +433,12 @@ The class Authenticator represents an object that knows how to obtain authentica
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_0qPkAbCAEeqRdLLMTtwr9g" name="predicate">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_0qPkArCAEeqRdLLMTtwr9g" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_0qPkArCAEeqRdLLMTtwr9g" type="_5i6c0LIlEeqRdLLMTtwr9g" direction="return"/>
       </ownedOperation>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_Y8LT8HEmEeqD4qiy1uAq0g" name="Program"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_XJkG0HEmEeqD4qiy1uAq0g" name="Mention"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_baV_gHEmEeqD4qiy1uAq0g" name="Course"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_neDzkHEnEeqD4qiy1uAq0g" name="Person"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_r1u8AJs4EeqGYc7sBUjHUw" name="call" memberEnd="_r10bkJs4EeqGYc7sBUjHUw _r13e4Js4EeqGYc7sBUjHUw">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_r1x_UJs4EeqGYc7sBUjHUw" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_r1x_UZs4EeqGYc7sBUjHUw" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_r10bkJs4EeqGYc7sBUjHUw" name="rofdatabase" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_r1u8AJs4EeqGYc7sBUjHUw">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qdQoELB_EeqRdLLMTtwr9g"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qdjjALB_EeqRdLLMTtwr9g" value="*"/>
-        </ownedEnd>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_r13e4Js4EeqGYc7sBUjHUw" name="querier" type="_2f-4cHEYEeqD4qiy1uAq0g" association="_r1u8AJs4EeqGYc7sBUjHUw">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vlDBQLB_EeqRdLLMTtwr9g"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vlS44LB_EeqRdLLMTtwr9g" value="*"/>
-        </ownedEnd>
-      </nestedClassifier>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_yuwZ0HEpEeqD4qiy1uAq0g" name="QueriesHelper">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_7_nhMHEpEeqD4qiy1uAq0g" name="setDefaultAuthenticator"/>
@@ -471,47 +460,50 @@ The class Authenticator represents an object that knows how to obtain authentica
       <nestedClassifier xmi:type="uml:Class" xmi:id="_DC59wHEqEeqD4qiy1uAq0g" name="Authenticator"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_ZHuDUHErEeqD4qiy1uAq0g" name="Optional&lt;String>"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_xd91cHErEeqD4qiy1uAq0g" name="PasswordAuthentication"/>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_03X7oJs4EeqGYc7sBUjHUw" name="call" memberEnd="_03ZJwps4EeqGYc7sBUjHUw _03Zw0Js4EeqGYc7sBUjHUw">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_03ZJwJs4EeqGYc7sBUjHUw" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_03ZJwZs4EeqGYc7sBUjHUw" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_03ZJwps4EeqGYc7sBUjHUw" name="rofdatabase" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_03X7oJs4EeqGYc7sBUjHUw"/>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_03Zw0Js4EeqGYc7sBUjHUw" name="querieshelper" type="_yuwZ0HEpEeqD4qiy1uAq0g" association="_03X7oJs4EeqGYc7sBUjHUw"/>
-      </nestedClassifier>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_GH9tYHEuEeqD4qiy1uAq0g" name="ROFDataBase">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_XpoZoJs5EeqGYc7sBUjHUw" name="department" visibility="private" type="_-9E5Q23mEeq7r7ozzGhjkA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_ykYI0Js5EeqGYc7sBUjHUw" name="formations" visibility="private">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_XpoZoJs5EeqGYc7sBUjHUw" name="department" visibility="private" type="_-9E5Q23mEeq7r7ozzGhjkA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QB1lILIfEeqRdLLMTtwr9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QB4ocLIfEeqRdLLMTtwr9g" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_K79XsJs6EeqGYc7sBUjHUw" name="subjects" visibility="private">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ykYI0Js5EeqGYc7sBUjHUw" name="formations" visibility="private" type="_-9E5VW3mEeq7r7ozzGhjkA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OsXnALIfEeqRdLLMTtwr9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Osb4cLIfEeqRdLLMTtwr9g" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_RjRC4Js6EeqGYc7sBUjHUw" name="tags" visibility="private">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_K79XsJs6EeqGYc7sBUjHUw" name="subjects" visibility="private" type="_-9Fgi23mEeq7r7ozzGhjkA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fm840LIfEeqRdLLMTtwr9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fm_8ILIfEeqRdLLMTtwr9g" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_VRj5kJs6EeqGYc7sBUjHUw" name="teachers" visibility="private">
-        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_RjRC4Js6EeqGYc7sBUjHUw" name="tags" visibility="private" type="_-9FhiW3mEeq7r7ozzGhjkA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c7AP8LIfEeqRdLLMTtwr9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c7DTQLIfEeqRdLLMTtwr9g" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_VRj5kJs6EeqGYc7sBUjHUw" name="teachers" visibility="private" type="_pNpGQLIfEeqRdLLMTtwr9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vbKYcLIfEeqRdLLMTtwr9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vbOp4LIfEeqRdLLMTtwr9g" value="*"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Arc7wJs7EeqGYc7sBUjHUw" name="ROFDataBase.initialize" isStatic="true"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_I-5_sJs7EeqGYc7sBUjHUw" name="fetchTeachers" visibility="private">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tL5WUJs7EeqGYc7sBUjHUw" visibility="public" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
-        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tL5WUJs7EeqGYc7sBUjHUw" visibility="public" type="_pNpGQLIfEeqRdLLMTtwr9g" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_y4JugJs7EeqGYc7sBUjHUw" name="fetchSubjects" visibility="private">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_y4JugZs7EeqGYc7sBUjHUw" visibility="public" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_y4JugZs7EeqGYc7sBUjHUw" visibility="public" type="_jNvVILImEeqRdLLMTtwr9g" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AT_WwLIgEeqRdLLMTtwr9g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AUH5oLIgEeqRdLLMTtwr9g" value="*"/>
         </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_F0S5cLInEeqRdLLMTtwr9g" name="program" type="_wuqzcJxBEeqQTdPOBnHIaA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_L4MVkLInEeqRdLLMTtwr9g" name="mention" type="_2kiaoJxBEeqQTdPOBnHIaA"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_zQf9EJs7EeqGYc7sBUjHUw" name="fetchFormations" visibility="private">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zQf9EZs7EeqGYc7sBUjHUw" visibility="public" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zQf9EZs7EeqGYc7sBUjHUw" visibility="public" type="_pz9bMLImEeqRdLLMTtwr9g" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FuuhILIgEeqRdLLMTtwr9g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Fu1O0LIgEeqRdLLMTtwr9g" value="*"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_ze6MgJs7EeqGYc7sBUjHUw" name="fetchTags" visibility="private">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ze6MgZs7EeqGYc7sBUjHUw" visibility="public" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ze6MgZs7EeqGYc7sBUjHUw" visibility="public" type="_tqMs8LImEeqRdLLMTtwr9g" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Jo7F0LIgEeqRdLLMTtwr9g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JpBMcLIgEeqRdLLMTtwr9g" value="*"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_I8JxMJs8EeqGYc7sBUjHUw" name="fetchDepartement" visibility="protected">
@@ -527,10 +519,39 @@ The class Authenticator represents an object that knows how to obtain authentica
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_xetZ45s8EeqGYc7sBUjHUw" name="teacher" type="_-9FgwG3mEeq7r7ozzGhjkA" direction="return"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_xs-fYJs8EeqGYc7sBUjHUw" name="createFormation" visibility="package">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_xs-fYZs8EeqGYc7sBUjHUw" name="program" type="_Y8LT8HEmEeqD4qiy1uAq0g"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_xs-fYZs8EeqGYc7sBUjHUw" name="mention" type="_XJkG0HEmEeqD4qiy1uAq0g"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_xs-fY5s8EeqGYc7sBUjHUw" name="formation" type="_-9E5VW3mEeq7r7ozzGhjkA" direction="return"/>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_W_QNwLIgEeqRdLLMTtwr9g" name="childProgram">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_W_QNwbIgEeqRdLLMTtwr9g" name="program" type="_wuqzcJxBEeqQTdPOBnHIaA"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_W_QNwrIgEeqRdLLMTtwr9g" type="_C5iKwLIiEeqRdLLMTtwr9g" direction="return">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g4BCoLIgEeqRdLLMTtwr9g" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g4MBwLIgEeqRdLLMTtwr9g" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_pNpGQLIfEeqRdLLMTtwr9g" name="Map&lt;String,teacher>"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_ocC0wLIgEeqRdLLMTtwr9g" name="call to fetch from ROF" visibility="public" memberEnd="_ocHGMLIgEeqRdLLMTtwr9g _ocHtQLIgEeqRdLLMTtwr9g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ocFRALIgEeqRdLLMTtwr9g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ocFRAbIgEeqRdLLMTtwr9g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ocHGMLIgEeqRdLLMTtwr9g" type="_2f-4cHEYEeqD4qiy1uAq0g" association="_ocC0wLIgEeqRdLLMTtwr9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tibfwLIgEeqRdLLMTtwr9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tifxMLIgEeqRdLLMTtwr9g" value="*"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_ocHtQLIgEeqRdLLMTtwr9g" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_ocC0wLIgEeqRdLLMTtwr9g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9POv0LIgEeqRdLLMTtwr9g" name="call to login into ROF" memberEnd="_9PP98rIgEeqRdLLMTtwr9g _9PQlALIgEeqRdLLMTtwr9g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9PP98LIgEeqRdLLMTtwr9g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9PP98bIgEeqRdLLMTtwr9g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_9PP98rIgEeqRdLLMTtwr9g" type="_yuwZ0HEpEeqD4qiy1uAq0g" association="_9POv0LIgEeqRdLLMTtwr9g"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_9PQlALIgEeqRdLLMTtwr9g" type="_GH9tYHEuEeqD4qiy1uAq0g" association="_9POv0LIgEeqRdLLMTtwr9g">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BOfasLIhEeqRdLLMTtwr9g" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BOjFELIhEeqRdLLMTtwr9g" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PXA0kLIhEeqRdLLMTtwr9g" name="EbxDataservices"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_RMo_gIeaEeqlZY9rOCAo-w" name="SVG">
     <packagedElement xmi:type="uml:Interaction" xmi:id="_kysEUHHpEeqv_YrGSHGdGQ" name="SequenceSVG">
@@ -1000,5 +1021,11 @@ The class Authenticator represents an object that knows how to obtain authentica
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_FKRtQ5xIEeqQTdPOBnHIaA" name="program" type="_wuqzcJxBEeqQTdPOBnHIaA" association="_FKRGMJxIEeqQTdPOBnHIaA"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_C5iKwLIiEeqRdLLMTtwr9g" name="List&lt;Program>"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Er_m4LIiEeqRdLLMTtwr9g" name="List&lt;Mention>"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Gj6x0LIiEeqRdLLMTtwr9g" name="List&lt;Subject>"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_IT-aMLIiEeqRdLLMTtwr9g" name="List&lt;Person>"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_MIAsgLIiEeqRdLLMTtwr9g" name="List&lt;Course>"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5i6c0LIlEeqRdLLMTtwr9g" name="List&lt;OrgUnit>"/>
   </packagedElement>
 </uml:Model>
