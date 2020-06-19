@@ -8,14 +8,14 @@ image::../Doc/Diagrams/ROFDauphineClassDiagram.svg[ROF Dauphine Class Diagram]
 * details which is an URL to this row of OrgUnit
 * content which regroup the OrgUnitId, OrgUnitCode, OrgUnitName, admissionDescription and contact data.
 	
-
 As we can see in the diagram, OrgUnit does not point to any other table. That means there is no link between the MIDO department and the MIDO formations. 
 If only in OrgUnit content, there was a list, let's name it refMentions, that contains a reference to all MIDO formations, it would be much easier to fetch all the informations that we need just by recovering the MIDO department key which is ``FRUAI0750736TOU0755233F``.
 
 *Mention* is a table containing all the formations in Dauphine University. Each Mention has this content:
-*mentionId
-*name
-*structure
+[square]
+* mentionId
+* name
+* structure
 ** refCourse : we've noticed that refCourse is always an empty array (regardless of the mention). We concluded that the Courses are stored in the Programs.
 ** refProgram : a list of Program's label. 
 * ... (there's too many attributes, we focus on the most important ones)
@@ -24,6 +24,7 @@ If only in OrgUnit content, there was a list, let's name it refMentions, that co
 ** refPerson : this should normally point to the responsible teacher, but it's also an empty array.
 	
 *Program* is a table containing several programs. Each one point to a list of several other programs. The structure is like below:
+[square]
 * programId
 * programName
 * refMention : it contains the mention's label.
@@ -38,6 +39,7 @@ To conclude, a Program have either its refProgram field empty or its refCourse f
 
 
 *Course* is a table containing all the courses given at Dauphine University. We can find these informations for each course:
+[square]
 * courseId
 * courseName
 * ects
@@ -45,6 +47,7 @@ To conclude, a Program have either its refProgram field empty or its refCourse f
 * managing teacher : contains a reference to the table Person. This reference can be null so we have to deal with it.
 
 *Person* is a table containing informations on all the teachers at Dauphine University.
+[square]
 * personId
 * ident 
 	...
