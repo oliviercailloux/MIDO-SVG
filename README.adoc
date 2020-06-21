@@ -163,3 +163,10 @@ Pour ce faire :
 * Redéfinir les positions des formations en prenant en compte les Settings entrés par l'utilisateur quant à l'affichage des différents niveaux. Ces modifications seront effectuées dans la classe `ResponsiveSVG`, plus particulièrement dans les méthodes `defineObjectsPosition` et `associatePositions`.
 * Ne pas afficher de flèches entre des objects qui ne sont pas affichées (actuellement, il apparait dans le SVG des flèches reliant une formation ou une matière à du vide si on ne fait apparaître qu'un seul niveau). Il faudra effectuer ces modifications dans le classe `DrawerSVGGen`.
 * Clarifier et restructurer le code dans les classes `DrawerSVGGen` et `ResponsiveSVG`.
+
+=== Equipe 3 : SMPO Jérémie Brulé et Zhenyi Guo 
+
+* Support aux binômes de développeurs
+* Création des issues 
+* Vérification de la cohérence du code et création des pull request
+* Supression de la phase d'identification
