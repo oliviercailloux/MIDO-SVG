@@ -46,10 +46,6 @@ To conclude, a Program have either its refProgram field empty or its refCourse f
 
 *Person* is a table containing informations on all the teachers at Dauphine University.
 
-[square]
-* personId
-* ident 
-	...
 
 The informations represented below (in the diagram and the documentation) are not complete. In fact, we didn't represent all the attributes in order to not clutter the diagram and keep this documentation concise  by only representing the informations that we'll use in the context of this project. 
 
