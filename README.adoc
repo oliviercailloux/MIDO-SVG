@@ -153,6 +153,20 @@ Aide et précisions:
 
 == Objectif itération 4 JAVA
 
+=== Equipe 1 : BDD - Sarra et Marcellino
+
+[square]
+* Analyser ROF Database en vue d'adapter le code et pouvoir récupérer les noms des Program, Course... 
+* Récupérer les managingTeacher de chaque cours / formation. 
+* Récupérer toute autre information pertinente pour la génération du SVG (Exemple pré-requis et tags)
+* Récupérer les mentions selon une recherche dans les mentionName (et non pas en mettant les clés en dur): mots clés: Mathématiques, informatique, MIAGE...
+* Rédaction des tests unitaires concernant les nouvelles informations récupérées. 
+
+Précisions:
+
+[square]
+* Les mentions correspondant aux formations de MIDO ne sont plus disponibles sur ROF. Pour les tests, on utilisera alors les mentions présentes à ce jour. Cependant il faut faire en sorte que le code soit le plus général possible et non dépendant des mentions choisies.  
+
 === Equipe 2 : SVG - Camille et Raphaël
 
 Missions : Adapter l'affichage lorsque l'utilisateur séléctionne uniquement Licence ou Master pour afficher le SVG. Clarifier le code afin de le rendre plus clair et d'éviter les redondances, particulièrement présentes dans le code préexistant. Enfin, réaliser des tests unitaires associés aux dernières fonctionnalités ajoutées.
