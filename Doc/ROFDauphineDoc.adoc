@@ -1,4 +1,4 @@
-﻿=== ROF  Dauphine Class Documentation 
+﻿=== ROF  Dauphine Documentation 
 
 image::../Doc/Diagrams/ROFDauphineClassDiagram.svg[ROF Dauphine Class Diagram]
 
@@ -11,19 +11,19 @@ image::../Doc/Diagrams/ROFDauphineClassDiagram.svg[ROF Dauphine Class Diagram]
 As we can see in the diagram, OrgUnit does not point to any other table. That means there is no link between the MIDO department and the MIDO formations. 
 If only in OrgUnit content, there was a list, let's name it refMentions, that contains a reference to all MIDO formations, it would be much easier to fetch all the informations that we need just by recovering the MIDO department key which is ``FRUAI0750736TOU0755233F``.
 
-*Mention* is a table containing all the formations in Dauphine University. Each Mention has this content:
+*Mention* is a table containing all the formations in Dauphine University. In addition to the mentionId, name... each Mention has this content:
+
 [square]
-* mentionId
-* name
 * structure
 ** refCourse : we've noticed that refCourse is always an empty array (regardless of the mention). We concluded that the Courses are stored in the Programs.
 ** refProgram : a list of Program's label. 
-* ... (there's too many attributes, we focus on the most important ones)
 * contacts 
 ** refOrgUnit : this should normally point to the OrgUnit where the mention belongs. Unfortunately, for the examples that we've seen, this field is an empty array. 
 ** refPerson : this should normally point to the responsible teacher, but it's also an empty array.
+
 	
 *Program* is a table containing several programs. Each one point to a list of several other programs. The structure is like below:
+
 [square]
 * programId
 * programName
@@ -39,20 +39,19 @@ To conclude, a Program have either its refProgram field empty or its refCourse f
 
 
 *Course* is a table containing all the courses given at Dauphine University. We can find these informations for each course:
+
 [square]
-* courseId
-* courseName
-* ects
 * searchword : also known as tag
 * managing teacher : contains a reference to the table Person. This reference can be null so we have to deal with it.
 
 *Person* is a table containing informations on all the teachers at Dauphine University.
+
 [square]
 * personId
 * ident 
 	...
 
-The informations represented below are not complete. We chose to represent only the informations that we'll use in the context of this project. 
+The informations represented below (in the diagram and the documentation) are not complete. In fact, we didn't represent all the attributes in order to not clutter the diagram and keep this documentation concise  by only representing the informations that we'll use in the context of this project. 
 
 
 Small tip: In order to read the ROF database content, we use `codebeautify.org/jsonviewer`. By just copy/paste the content into this tool, you'll be able to have a more organized structure in which you can venture more comfortably. 

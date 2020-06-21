@@ -4,9 +4,9 @@
 
 * https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#general[General]
 * https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#database[Database]
+* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#rof-database[ROF Database]
 * https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#svg[SVG]
 * https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#university[University]
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#rof-database[ROF Database]
 * https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#paper[Paper]
 * https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#view[View]
 * https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#xml[XML]
@@ -32,10 +32,21 @@ This diagram contains the classes that would be useful to retrieve the data dire
 
 First of all, we need the `QueriesHelper` class to login into ROF. This class uses the files API_password.txt and WSDL_access.txt which are at the root of our project. (Be careful to not push this 2 files on GitHub !!)
 
-Secondly, `Querier` class enables us to get the mentions, programs, courses and orgUnit from ROF. These are objects specific to ROF (see the diagram above). 
+Secondly, `Querier` class enables us to get the mentions, programs, courses and orgUnit from ROF. These are objects specific to ROF (see the diagram below). 
 However, we need to transform these objects into `University` objects that we use in our project: Licence, Master, Teacher, Subject...
 
 Therefore, in the `RofDatabase` class, after login into ROF and fetching the data from ROF, we create new `University` objects and fill their attributes with contents from ROF.
+
+
+== ROF Database
+
+=== ROF  Dauphine Class Diagram 
+
+image::../Doc/Diagrams/ROFDauphineClassDiagram.svg[ROF Dauphine Class Diagram, 550]
+
+This diagram aim to represent the structure of Dauphine's ROF database.
+
+You can refer to https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/ROFDauphineDoc.adoc[this documentation] in order to better understand it. 
 
 
 == SVG
@@ -70,15 +81,6 @@ This package seems complete and functional to us, so we do not anticipate any ma
 
 PS : We do not proceed to the suppression of Master et Licence and the attribut posX eand posY class, because it needed to draw the SVG file
 
-== ROF Database
-
-=== ROF  Dauphine Class Diagram 
-
-image::../Doc/Diagrams/ROFDauphineClassDiagram.svg[ROF Dauphine Class Diagram, 550]
-
-This diagram aim to represent the structure of Dauphine's ROF database.
-
-You can refer to https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/ROFDauphineDoc.adoc[this documentation] in order to better understand it. 
 
 == Paper
 
