@@ -23,11 +23,12 @@ Nous continuons à développer les deux axes principaux :
 * Mise à jour des diagrammes (de classe et de séquence) en apportant :
 ** des corrections:
 *** mise-à-jour des types des objets pour le diagramme BDD (ROF Class Diagram)
+*** mise-à-jour des associations et attributs en accord avec les classes.
 ** des évolutions: 
 *** documentation de la base de données Dauphine, consultable https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/ROFDauphineDoc.adoc[ici]
 * Etablir les actions de l'itération 3 JAVA pour l'équipe BDD consultable dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/README.adoc[README]
 
-=== Equipe Coordinateur : Binôme Camille - Sarra
+=== Equipe Coordinateur : Binôme Jérémie - Marcellino
 
 * Mise à jour du https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/README.adoc[README]
 * Harmonisation du document https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/README.adoc[README]
