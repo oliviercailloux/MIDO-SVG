@@ -779,17 +779,17 @@ The class Authenticator represents an object that knows how to obtain authentica
             <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xFIo0IefEeqp8c2nJra3dQ" value="1"/>
             <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xFJP4IefEeqp8c2nJra3dQ" value="*"/>
           </ownedAttribute>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_T9H4gHKxEeqTEN4gHi6gfg" name="countFormation">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fG7egHKxEeqTEN4gHi6gfg" name="list">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_T9H4gHKxEeqTEN4gHi6gfg" name="countFormation" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_fG7egHKxEeqTEN4gHi6gfg" name="list" type="_-9E5VW3mEeq7r7ozzGhjkA">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iBQAoLOWEeqqguycx3An0w" value="*"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_nf3fYHKxEeqTEN4gHi6gfg" name="myYear">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_U1r4MHKxEeqTEN4gHi6gfg" name="defineObjectsPosition" visibility="public">
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_yiKvMHKxEeqTEN4gHi6gfg" name="list">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_U1r4MHKxEeqTEN4gHi6gfg" name="defineObjectsPosition" visibility="protected">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_yiKvMHKxEeqTEN4gHi6gfg" name="list" type="_-9E5VW3mEeq7r7ozzGhjkA">
+              <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_6Pz2YLOWEeqqguycx3An0w" value="*"/>
             </ownedParameter>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_1cGJsHKxEeqTEN4gHi6gfg" name="canvasX">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
@@ -801,7 +801,7 @@ The class Authenticator represents an object that knows how to obtain authentica
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_8ygH4LFtEeqivu2c-Fhp1Q" name="countMaxSubjects" visibility="public">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_8ygH4LFtEeqivu2c-Fhp1Q" name="countMaxSubjects" visibility="protected">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_LSrz0LFuEeqivu2c-Fhp1Q" name="liste">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
             </ownedParameter>
