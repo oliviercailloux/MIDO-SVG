@@ -73,101 +73,117 @@
       /></font
     ></defs
     ><g style="font-family:&apos;Serif&apos;;"
-    ><text style="stroke:none;" x="175" xml:space="preserve" y="74"
+    ><text style="stroke:none;" x="243" xml:space="preserve" y="74"
       ><a xlink:href="http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme//#FRUAI0750736TPRPRA3INF" target="_blank">L3 MIAGE</a></text
-      ><rect height="25" style="fill:none;" width="76" x="165" y="54"
-      /><line style="fill:none; stroke:rgb(223,242,255);" x1="203" x2="205" y1="81" y2="240"
-      /><text style="stroke:none;" x="525" xml:space="preserve" y="74"
+      ><rect height="25" style="fill:none;" width="76" x="233" y="54"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><line style="fill:none; stroke:rgb(223,242,255);" x1="271" x2="323" y1="81" y2="263"
+      /><text style="stroke:none;" x="634" xml:space="preserve" y="74"
       ><a xlink:href="http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme//#FRUAI0750736TPRPRA3INFAPP" target="_blank">L3 MIAGE App</a></text
-      ><rect height="25" style="fill:none;" width="100" x="515" y="54"
-      /><line style="fill:none; stroke:rgb(223,242,255);" x1="565" x2="567" y1="81" y2="240"
-      /><text style="stroke:none;" x="175" xml:space="preserve" y="260"
+      ><rect height="25" style="fill:none;" width="100" x="624" y="54"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><line style="fill:none; stroke:rgb(223,242,255);" x1="674" x2="695" y1="81" y2="263"
+      /><text style="stroke:none;" x="293" xml:space="preserve" y="283"
       ><a xlink:href="http://formations.dauphine.fr/offre/fr-FR/fiche/A5STI/programme//#FRUAI0750736TPRPRA4MIAI" target="_blank">M1 MIAGE</a></text
-      ><rect height="25" style="fill:none;" width="80" x="165" y="240"
-      /><line style="fill:none; stroke:rgb(223,242,255);" x1="205" x2="372" y1="267" y2="426"
-      /><line style="fill:none; stroke:rgb(223,242,255);" x1="205" x2="102" y1="267" y2="426"
-      /><line style="fill:none; stroke:rgb(223,242,255);" x1="205" x2="234" y1="267" y2="426"
-      /><text style="stroke:none;" x="525" xml:space="preserve" y="260"
+      ><rect height="25" style="fill:none;" width="80" x="283" y="263"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><line style="fill:none; stroke:rgb(223,242,255);" x1="323" x2="404" y1="290" y2="446"
+      /><line style="fill:none; stroke:rgb(223,242,255);" x1="323" x2="128" y1="290" y2="446"
+      /><line style="fill:none; stroke:rgb(223,242,255);" x1="323" x2="262" y1="290" y2="446"
+      /><text style="stroke:none;" x="653" xml:space="preserve" y="283"
       >M1 MIAGE App</text
-      ><rect height="25" style="fill:none;" width="104" x="515" y="240"
-      /><line style="fill:none; stroke:rgb(223,242,255);" x1="567" x2="777" y1="267" y2="426"
-      /><line style="fill:none; stroke:rgb(223,242,255);" x1="567" x2="639" y1="267" y2="426"
-      /><line style="fill:none; stroke:rgb(223,242,255);" x1="567" x2="507" y1="267" y2="426"
-      /><text style="stroke:none;" x="65" xml:space="preserve" y="446"
+      ><rect height="25" style="fill:none;" width="104" x="643" y="263"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><line style="fill:none; stroke:rgb(223,242,255);" x1="695" x2="881" y1="290" y2="446"
+      /><line style="fill:none; stroke:rgb(223,242,255);" x1="695" x2="715" y1="290" y2="446"
+      /><line style="fill:none; stroke:rgb(223,242,255);" x1="695" x2="557" y1="290" y2="446"
+      /><text style="stroke:none;" x="91" xml:space="preserve" y="466"
       >M2 MIAGE IF</text
-      ><rect height="25" style="fill:none;" width="94" x="55" y="426"
-      /><text style="stroke:none;" x="196" xml:space="preserve" y="446"
+      ><rect height="25" style="fill:none;" width="94" x="81" y="446"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><text style="stroke:none;" x="224" xml:space="preserve" y="466"
       >M2 MIAGE ID</text
-      ><rect height="25" style="fill:none;" width="96" x="186" y="426"
-      /><text style="stroke:none;" x="327" xml:space="preserve" y="446"
+      ><rect height="25" style="fill:none;" width="96" x="214" y="446"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><text style="stroke:none;" x="359" xml:space="preserve" y="466"
       >M2 MIAGE STIN</text
-      ><rect height="25" style="fill:none;" width="110" x="317" y="426"
-      /><text style="stroke:none;" x="458" xml:space="preserve" y="446"
+      ><rect height="25" style="fill:none;" width="110" x="349" y="446"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><text style="stroke:none;" x="508" xml:space="preserve" y="466"
       >M2 MIAGE IF App</text
-      ><rect height="25" style="fill:none;" width="118" x="448" y="426"
-      /><text style="stroke:none;" x="589" xml:space="preserve" y="446"
+      ><rect height="25" style="fill:none;" width="118" x="498" y="446"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><text style="stroke:none;" x="665" xml:space="preserve" y="466"
       >M2 MIAGE ID App</text
-      ><rect height="25" style="fill:none;" width="120" x="579" y="426"
-      /><text style="stroke:none;" x="720" xml:space="preserve" y="446"
+      ><rect height="25" style="fill:none;" width="120" x="655" y="446"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><text style="stroke:none;" x="824" xml:space="preserve" y="466"
       >M2 MIAGE STIN App</text
-      ><rect height="25" style="fill:none;" width="134" x="710" y="426"
-      /><text style="fill:rgb(31,160,85); stroke:none;" x="170" xml:space="preserve" y="52"
+      ><rect height="25" style="fill:none;" width="134" x="814" y="446"
+      /><rect height="744" style="fill:none;" width="1052" x="0" y="0"
+      /><text style="fill:rgb(31,160,85); stroke:none;" x="238" xml:space="preserve" y="52"
       >Mayag Brice </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="520" xml:space="preserve" y="52"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="629" xml:space="preserve" y="52"
       >Pigozzi Gabriella </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="170" xml:space="preserve" y="238"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="288" xml:space="preserve" y="261"
       >Cailloux Olivier </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="520" xml:space="preserve" y="238"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="648" xml:space="preserve" y="261"
       > </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="60" xml:space="preserve" y="424"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="86" xml:space="preserve" y="444"
       > </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="191" xml:space="preserve" y="424"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="219" xml:space="preserve" y="444"
       > </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="322" xml:space="preserve" y="424"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="354" xml:space="preserve" y="444"
       > </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="453" xml:space="preserve" y="424"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="503" xml:space="preserve" y="444"
       > </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="584" xml:space="preserve" y="424"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="660" xml:space="preserve" y="444"
       > </text
-      ><text style="fill:rgb(31,160,85); stroke:none;" x="715" xml:space="preserve" y="424"
+      ><text style="fill:rgb(31,160,85); stroke:none;" x="819" xml:space="preserve" y="444"
       > </text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="243" xml:space="preserve" y="92"
+      ><text style="fill:rgb(255,175,175); stroke:none;" x="311" xml:space="preserve" y="92"
       >Cours: </text
-      ><text style="stroke:none;" x="243" xml:space="preserve" y="114"
+      ><text style="stroke:none;" x="311" xml:space="preserve" y="114"
       >Probabilités et Statistiques</text
-      ><text style="stroke:none;" x="243" xml:space="preserve" y="140"
+      ><text style="stroke:none;" x="311" xml:space="preserve" y="140"
       >POO Java</text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="617" xml:space="preserve" y="92"
+      ><text style="fill:rgb(255,175,175); stroke:none;" x="726" xml:space="preserve" y="92"
       >Cours: </text
-      ><text style="stroke:none;" x="617" xml:space="preserve" y="114"
+      ><text style="stroke:none;" x="726" xml:space="preserve" y="114"
       >Mathematiques</text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="247" xml:space="preserve" y="278"
+      ><text style="fill:rgb(255,175,175); stroke:none;" x="365" xml:space="preserve" y="301"
       >Cours: </text
-      ><text style="stroke:none;" x="247" xml:space="preserve" y="300"
+      ><text style="stroke:none;" x="365" xml:space="preserve" y="323"
       >Logique</text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="621" xml:space="preserve" y="278"
+    ></g
+    ><g style="fill:rgb(255,200,0); font-family:&apos;Serif&apos;; stroke:rgb(255,200,0);" transform="matrix(-0.2052,-0.9787,0.9787,-0.2052,380,303)"
+    ><line style="fill:none;" x1="0" x2="190" y1="0" y2="0"
+      /><polygon points=" 190 0 185 -5 185 5 190 0" style="stroke:none;"
+    /></g
+    ><g style="fill:rgb(255,175,175); font-family:&apos;Serif&apos;; stroke:rgb(255,175,175);"
+    ><text style="stroke:none;" x="749" xml:space="preserve" y="301"
       >Cours: </text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="151" xml:space="preserve" y="464"
+      ><text style="stroke:none;" x="177" xml:space="preserve" y="484"
       >Cours: </text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="284" xml:space="preserve" y="464"
+      ><text style="stroke:none;" x="312" xml:space="preserve" y="484"
       >Cours: </text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="429" xml:space="preserve" y="464"
+      ><text style="stroke:none;" x="461" xml:space="preserve" y="484"
       >Cours: </text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="568" xml:space="preserve" y="464"
+      ><text style="stroke:none;" x="618" xml:space="preserve" y="484"
       >Cours: </text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="701" xml:space="preserve" y="464"
+      ><text style="stroke:none;" x="777" xml:space="preserve" y="484"
       >Cours: </text
-      ><text style="fill:rgb(255,175,175); stroke:none;" x="846" xml:space="preserve" y="464"
+      ><text style="stroke:none;" x="950" xml:space="preserve" y="484"
       >Cours: </text
-      ><text style="fill:red; font-size:9; stroke:none;" x="243" xml:space="preserve" y="99"
+      ><text style="fill:red; font-size:9; stroke:none;" x="311" xml:space="preserve" y="99"
       >Mayag</text
-      ><text style="fill:red; font-size:9; stroke:none;" x="243" xml:space="preserve" y="125"
+      ><text style="fill:red; font-size:9; stroke:none;" x="311" xml:space="preserve" y="125"
       >Cailloux</text
-      ><text style="fill:red; font-size:9; stroke:none;" x="617" xml:space="preserve" y="99"
+      ><text style="fill:red; font-size:9; stroke:none;" x="726" xml:space="preserve" y="99"
       >Pigozzi</text
-      ><text style="fill:red; font-size:9; stroke:none;" x="247" xml:space="preserve" y="285"
+      ><text style="fill:red; font-size:9; stroke:none;" x="365" xml:space="preserve" y="308"
       >Pigozzi</text
-      ><text style="fill:red; font-size:9; stroke:none;" x="500" xml:space="preserve" y="20"
+      ><text style="fill:black; stroke:none;" x="500" xml:space="preserve" y="20"
       >MIDO</text
     ></g
   ></g
