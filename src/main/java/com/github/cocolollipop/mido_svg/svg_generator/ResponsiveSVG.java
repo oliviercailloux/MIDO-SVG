@@ -3,8 +3,10 @@ package com.github.cocolollipop.mido_svg.svg_generator;
 import java.awt.Canvas;
 import java.awt.FontMetrics;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.github.cocolollipop.mido_svg.university.components.Formation;
 import com.github.cocolollipop.mido_svg.university.components.Subject;
@@ -17,21 +19,20 @@ import com.github.cocolollipop.mido_svg.university.components.Subject;
 public class ResponsiveSVG {
 
 	private static java.awt.Font Basicfont = new java.awt.Font("TimesRoman", 12, 12);
+	private static Map<Integer, String> mapOfGrade = new HashMap<>();
+	private static Map<Integer, Integer> numberOfGrade = new HashMap<>();
 
 	/**
 	 * Count the number of formations of a specific level in a list.
 	 *
-	 * @param list
-	 *            is a LinkedList of formations
-	 * @param myYear
-	 *            is a year of study such as "L3" or "M1"
-	 *            
-	 * @return an integer corresponding to the number of formations in "list" of level "myYear"
+	 * @param list is a Collection of formations
+	 * @param myYear is a key in mapOfGrade. 1 representing the first year (L1) and 5 the last year (M2)        
+	 * @return an int corresponding to the number of formations in "list" of level "myYear"
 	 */
-	public int countFormations(List<Formation> list, String myYear) {
+	public int countFormations(Collection<Formation> list, int myYear) {
 		int nb = 0;
 		for (Formation aFormation : list) {
-			if (aFormation.getFullName().indexOf(myYear) != -1) {
+			if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
 				nb++;
 			}
 		}
@@ -41,15 +42,16 @@ public class ResponsiveSVG {
 	/**
 	 * Count the number of Subjects in the Formation of the year myYear which has the most Subjects
 	 * 
-	 * @param list a list of all the formations 
-	 * @param myYear the year for which we want to find the maximum number of subjects (L1, L2...)
+	 * @param list is a Collection of formations
+	 * @param myYear the year for which we want to find the maximum number of subjects.
+	 * 1 representing the first year (L1) and 5 the last year (M2)
 	 * @return an Integer that represents the maximum number of Subjects in a Formation of myYear.
 	 */
-	public Integer countMaxSubjects(List<Formation> list, String myYear) {
-		Integer max = -1;
+	public Integer countMaxSubjects(Collection<Formation> list, int myYear) {
+		Integer max = 0;
 		for (Formation aFormation : list) {
-			if (aFormation.getFullName().indexOf(myYear) != -1) {
-				if (aFormation.getSubjects().size()>max) {
+			if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
+				if (aFormation.getSubjects().size() > max) {
 					max = aFormation.getSubjects().size();
 				}
 			}
@@ -58,26 +60,21 @@ public class ResponsiveSVG {
 	}
 
 	/**
-	 * 
 	 * @param nbOfSubjects the number of Subjects of a block 
 	 * @return the height in pixels of a Subjects block
 	 */
-
-	public int calculateHeightOfSubjects(Integer nbOfSubjects) {
+	public int calculateHeightOfSubjects(int nbOfSubjects) {
 		Canvas c = new Canvas();
 		FontMetrics fm = c.getFontMetrics(Basicfont);
 		int height = fm.getHeight();
-		// the space between 2 lines is 14 (seen in the code of DrawerSVGGen) and we count the space before "cours"
-		int heightOfSubjects = (nbOfSubjects+1) * height + (nbOfSubjects+2) * 14 ;
+		int heightOfSubjects = (nbOfSubjects+1) * height + (nbOfSubjects+2) * DrawerSVGGen.spaceBetweenLignes ;
 		return heightOfSubjects;
 	}
 
 	/**
-	 * 
 	 * @param formation 
 	 * @return the size in pixels of the longest Subject's title of the Formation in argument
 	 */
-
 	public int giveTheLongestSubjectInPixel(Formation formation) {
 		int longestword = 0;
 		for(Subject subject : formation.getSubjects()) {
@@ -92,24 +89,28 @@ public class ResponsiveSVG {
 	 * @param word
 	 * @return the width in pixels of a word
 	 */
-
 	public int widthOfTheWordInPixel(String word) {
 		Canvas c = new Canvas();
 		FontMetrics fm = c.getFontMetrics(Basicfont);
 		return fm.stringWidth(word);
 	}
-
-	public int calculateAdditionalSpaceY(int canvasY, List<Integer> maxSubjects, int totalCptY) {
+	/**
+	 * This method aim to calculate the space that is available to add between the formations of different grade
+	 * 
+	 * @param canvasY
+	 * @param maxSubjects
+	 * @param totalCptY
+	 * @return an int corresponding to the additional space in pixel
+	 */
+	public int calculateAdditionalSpaceY(int canvasY, Collection<Integer> maxSubjects, int totalCptY) {
 		int totalHeightOfSubjects = 0;
 		for (Integer i : maxSubjects) {
-			totalHeightOfSubjects += calculateHeightOfSubjects(i);
+			totalHeightOfSubjects += calculateHeightOfSubjects(i.intValue());
 		}
 		Canvas c = new Canvas();
 		FontMetrics fm = c.getFontMetrics(Basicfont);
 		int heightOfResponsibleName = fm.getHeight();
-		//The height of a rectangle is 25 pixels (seen in the drawerSVGGen class)
-
-		int formationBlock = 25+heightOfResponsibleName;
+		int formationBlock = DrawerSVGGen.heightOfRectangle + heightOfResponsibleName;
 
 		int additionalSpace = (int) (((canvasY - totalHeightOfSubjects - (canvasY * 0.15) - formationBlock * (totalCptY - 1)) / totalCptY) + formationBlock);
 
@@ -119,19 +120,18 @@ public class ResponsiveSVG {
 	/**
 	 * This method aim to calculate the space that is available to add between the formations of a same year when drawing.
 	 * 
-	 * @param myYear the year on which the space is going to be calculate
+	 * @param myYear, key in mapOfGrade of the year on which the space is going to be calculate
 	 * @param canvasX the width of the paper format
-	 * @param list the list of all the Formations
+	 * @param list the Collection of all the Formations
 	 * @return an int corresponding to the space in pixels to add between the formations of a same year
 	 * @throws IllegalStateException
 	 */
-
-	public int calculateAdditionalSpaceByGrade(String myYear, int canvasX, List<Formation> list) throws IllegalStateException {
+	public int calculateAdditionalSpaceByGrade(int myYear, int canvasX, Collection<Formation> list) throws IllegalStateException {
 		int spaceTaken = 0;
 		int cpt = 1;
 
 		for (Formation formation : list) {
-			if (formation.getFullName().contains(myYear)) {
+			if (formation.getFullName().contains(mapOfGrade.get(myYear))) {
 				spaceTaken += giveTheLongestSubjectInPixel(formation) + widthOfTheWordInPixel(formation.getFullName()) + 20;
 				cpt++;
 			}
@@ -148,14 +148,17 @@ public class ResponsiveSVG {
 	 * Determine the position of each Formation in the 
 	 * Canvas according to the number of formations and their level.
 	 *
-	 * @param list
-	 *            : LinkedList of all the formations available in the University
-	 * @param canvasX
-	 *            : width of the canvas
-	 * @param canvasY
-	 * 			  : height of the canvas
+	 * @param list : Collection of all the formations available in the University            
+	 * @param canvasX : width of the canvas          
+	 * @param canvasY : height of the canvas	  
 	 */
-	public void defineObjectsPosition(List<Formation> list, int canvasX, int canvasY, boolean hiddenSubjects) {
+	public void defineObjectsPosition(Collection<Formation> list, int canvasX, int canvasY, boolean hiddenSubjects) {
+
+		mapOfGrade.put(1, "L1");
+		mapOfGrade.put(2, "L2");
+		mapOfGrade.put(3, "L3");
+		mapOfGrade.put(4, "M1");
+		mapOfGrade.put(5, "M2");
 
 		/*
 		 * We have to define the initial shift. So we must count the total
@@ -163,11 +166,6 @@ public class ResponsiveSVG {
 		 * formation are chosen (Only L1 or all ?). Finally we calculate X offset
 		 */
 		int offsetY = 0;
-		int nbL1 = 0;
-		int nbL2 = 0;
-		int nbL3 = 0;
-		int nbM1 = 0;
-		int nbM2 = 0;
 
 		int additionalSpace=0;
 
@@ -176,25 +174,29 @@ public class ResponsiveSVG {
 		int spaceTaken = 0;
 		int levelActual = 1;
 
-		int totalCptY = 0; /* O<=totalCptY<=5 corresponds to the DOM Tree height 
+		/* O<=totalCptY<=5 corresponds to the DOM Tree height 
 		 * totalCptY = 5 means we have to draw the formations from 
 		 * level "L1" to "M2" 
 		 */
+		int totalCptY = 0; 
 
-		int cptY[] = {0,0,0,0,0};   /* We assume that the indexes correspond to the levels 
+		/* We assume that the indexes correspond to the levels 
 		 * ordered from "L1" to "M2"
 		 * For the moment we just initialize the tab with zeros 
 		 * Afterwards, depending on which levels the user choose to
 		 * draw, each level will have a certain height in the tree
 		 */
+		int cptY[] = {0,0,0,0,0};   
 
 
-		// First we count the number of formations of every level
-		nbL1 = countFormations(list, "L1");
-		nbL2 = countFormations(list, "L2");
-		nbL3 = countFormations(list, "L3");
-		nbM1 = countFormations(list, "M1");
-		nbM2 = countFormations(list, "M2");
+		/*
+		 *  First we count the number of formations of every level
+		 */
+		numberOfGrade.put(1,countFormations(list, 1));
+		numberOfGrade.put(2,countFormations(list, 2));
+		numberOfGrade.put(3,countFormations(list, 3));
+		numberOfGrade.put(4,countFormations(list, 4));
+		numberOfGrade.put(5,countFormations(list, 5));
 
 
 		/* We fill cptY
@@ -206,40 +208,21 @@ public class ResponsiveSVG {
 		 * 
 		 */
 		int tempCpt = 0;
-		if (nbL1 != 0) {					
-			totalCptY += 1;     
-			cptY[0] = tempCpt + 1;
-			tempCpt++;
-			maxSubjects.add(countMaxSubjects(list, "L1"));
-		}
-		if (nbL2 != 0) {
-			totalCptY += 1; 
-			cptY[1] = tempCpt + 1;
-			tempCpt++;
-			maxSubjects.add(countMaxSubjects(list, "L2"));
-		}
-		if (nbL3 != 0) {
-			totalCptY += 1; 
-			cptY[2] = tempCpt + 1;
-			tempCpt++;
-			maxSubjects.add(countMaxSubjects(list, "L3"));
-		}
-		if (nbM1 != 0) {
-			totalCptY += 1; 
-			cptY[3] = tempCpt + 1;
-			tempCpt++;
-			maxSubjects.add(countMaxSubjects(list, "M1"));
-		}
-		if (nbM2 != 0) {
-			totalCptY += 1; 
-			cptY[4] = tempCpt + 1;
-			maxSubjects.add(countMaxSubjects(list, "M2"));
-		}
-		totalCptY+= 1;
 
-		if((!hiddenSubjects)) {
-			additionalSpace=calculateAdditionalSpaceY(canvasY, maxSubjects, totalCptY);
-			if(additionalSpace<0) {
+		for (int i = 1; i < 6; i++) {
+			if (numberOfGrade.get(i) != 0) {
+				totalCptY += 1;
+				cptY[i-1] = tempCpt + 1;
+				tempCpt++;
+				maxSubjects.add(countMaxSubjects(list, i));
+			}
+		}
+
+		totalCptY += 1;
+
+		if ((!hiddenSubjects)) {
+			additionalSpace = calculateAdditionalSpaceY(canvasY, maxSubjects, totalCptY);
+			if(additionalSpace < 0) {
 				throw new IllegalStateException("You cannot show all the subject in this format of paper");
 			}
 		}
@@ -253,100 +236,29 @@ public class ResponsiveSVG {
 		 * 		- if the subjects are not going to be drawn, we divide the space depending on the
 		 * 		  number of level drawn
 		 */
+		for (int i = 1; i < 6; i++) {
+			if (numberOfGrade.get(i) != 0) {
 
-		if (nbL1 != 0) {
-			if (hiddenSubjects) {
-				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[0] - 1) + (canvasY * 0.1));
-			}
-			else {
-				offsetY = (int) (canvasY * 0.1);
-				levelActual++;
-				spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "L1")) + additionalSpace;
-			}
-			associatePositions(list, "L1", offsetY, canvasX, hiddenSubjects);
-		}
-
-		if (nbL2 != 0) {
-			if (hiddenSubjects) {
-				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[1] - 1) + (canvasY * 0.1));
-
-			}
-			else {
-				if (levelActual == 1) {
-					offsetY = (int) (canvasY * 0.1);
-					levelActual++;
-					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "L2")) + additionalSpace;
+				if (hiddenSubjects) {
+					offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[i - 1] - 1) + (canvasY * 0.1));
 				}
 				else {
-					offsetY = spaceTaken;
-					levelActual++;
-					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "L2")) + additionalSpace;
+					if (levelActual == 1) {
+						offsetY = (int) (canvasY * 0.1);
+						levelActual++;
+						spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, i).intValue()) + additionalSpace;
+					}
+					else {
+						offsetY = spaceTaken;
+						levelActual++;
+						spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, i).intValue()) + additionalSpace;
+					}
 				}
+				associatePositions(list, i, offsetY, canvasX, hiddenSubjects);
 			}
-			associatePositions(list, "L2", offsetY, canvasX, hiddenSubjects);
 		}
-
-		if (nbL3 != 0) {
-			if (hiddenSubjects) {
-				offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[2] - 1) + (canvasY * 0.1));
-			}
-			else {
-				if (levelActual == 1) {
-					offsetY = (int) (canvasY * 0.1);
-					levelActual++;
-					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "L3")) + additionalSpace;
-					System.out.println("offsetY L3 : " + offsetY);
-				}
-				else {
-					offsetY = spaceTaken;
-					levelActual++;
-					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "L3")) + additionalSpace;
-				}
-			}
-			associatePositions(list, "L3", offsetY, canvasX, hiddenSubjects);
-		}
-
-		if (nbM1 != 0) {
-			if (hiddenSubjects) {
-				offsetY = (int) ((canvasY / (totalCptY)) * (cptY[3] - 1) + (canvasY * 0.1));	
-			}
-			else {
-				if (levelActual == 1) {
-					offsetY = (int) (canvasY * 0.1);
-					levelActual++;
-					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "M1")) + additionalSpace;
-				}
-				else {
-					offsetY = spaceTaken;
-					levelActual++;
-					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "M1")) + additionalSpace;
-					System.out.println("offsetY M1 : " + offsetY);
-				}
-			}
-			associatePositions(list, "M1", offsetY, canvasX, hiddenSubjects);
-		}
-
-		if (nbM2 != 0) {
-			if (hiddenSubjects) {
-				offsetY = (int) ((canvasY / (totalCptY)) * (cptY[4] - 1) + (canvasY * 0.1));
-			}
-			else {
-				if (levelActual == 1) {
-					offsetY = (int) (canvasY * 0.1);
-					levelActual++;
-					spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, "M2")) + additionalSpace;
-				}
-				else {
-					offsetY = spaceTaken;
-					levelActual++;
-					spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, "M2")) + additionalSpace;
-					System.out.println("offsetY M2 : " + offsetY);
-				}
-			}
-			associatePositions(list, "M2", offsetY, canvasX, hiddenSubjects);
-		}
-
 	}
+
 
 	/**
 	 * This method calculate the position X of the Formations of a year depending on the parameters.
@@ -358,13 +270,13 @@ public class ResponsiveSVG {
 	 * @param canvasX
 	 * @param isHidden
 	 */
-	private void associatePositions(List<Formation> list, String myYear, int offsetY, int canvasX, boolean isHidden) {
+	private void associatePositions(Collection<Formation> list, int myYear, int offsetY, int canvasX, boolean isHidden) {
 
 		if (!isHidden) {
 			int additionalSpace = calculateAdditionalSpaceByGrade(myYear, canvasX, list);
 			int spaceTaken = (int) ((0.05 * canvasX) + additionalSpace);
 			for (Formation aFormation : list) {
-				if (aFormation.getFullName().indexOf(myYear) != -1) {
+				if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
 					aFormation.setPosX(spaceTaken);
 					aFormation.setPosY(offsetY);
 					spaceTaken += additionalSpace + giveTheLongestSubjectInPixel(aFormation) + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
@@ -375,7 +287,7 @@ public class ResponsiveSVG {
 			int additionalSpace = 0;
 			int j = 0;
 			for (Formation aFormation : list) {
-				if (aFormation.getFullName().indexOf(myYear) != -1) {
+				if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
 					additionalSpace += widthOfTheWordInPixel(aFormation.getFullName()) + 20;
 					j++;
 				}
@@ -386,7 +298,7 @@ public class ResponsiveSVG {
 			}
 			int spaceTaken = (int) (0.05 * canvasX + additionalSpace);
 			for (Formation aFormation : list) {
-				if (aFormation.getFullName().indexOf(myYear) != -1) {
+				if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
 					aFormation.setPosX(spaceTaken);
 					aFormation.setPosY(offsetY);
 					spaceTaken += additionalSpace + widthOfTheWordInPixel(aFormation.getFullName()) + 20;

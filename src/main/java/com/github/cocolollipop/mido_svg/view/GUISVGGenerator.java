@@ -326,7 +326,7 @@ public class GUISVGGenerator {
 					LOGGER.info("Painting.");
 					svg.paint(settings, datas);
 
-					File file = new File("../mido-drawing.svg");
+					File file = new File(DrawerSVGGen.DRAWING_SVG);
 					file.createNewFile();
 				
 
