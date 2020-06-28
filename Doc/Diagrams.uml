@@ -704,13 +704,15 @@ The class Authenticator represents an object that knows how to obtain authentica
       <ownedComment xmi:type="uml:Comment" xmi:id="_ruVlwLI9Eeqt3YR8-9mEoA">
         <body>User can modify his preferences and click on &quot;Générer le SVG&quot; again</body>
       </ownedComment>
-      <lifeline xmi:type="uml:Lifeline" xmi:id="_vjHhAHHpEeqv_YrGSHGdGQ" name="Final User" coveredBy="_vD-lgLI1Eeqt3YR8-9mEoA _eysEILI8Eeqt3YR8-9mEoA _r7Qc4LI8Eeqt3YR8-9mEoA _E10zILI0Eeqt3YR8-9mEoA"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_vjHhAHHpEeqv_YrGSHGdGQ" name="Final User" coveredBy="_vD-lgLI1Eeqt3YR8-9mEoA _NNaggLPyEeqFyPbn3Ye_4w _NNZSYLPyEeqFyPbn3Ye_4w _eysEILI8Eeqt3YR8-9mEoA _r7Qc4LI8Eeqt3YR8-9mEoA _E10zILI0Eeqt3YR8-9mEoA"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_xFpqwHHpEeqv_YrGSHGdGQ" name="GUI SVG Generator" coveredBy="_vD_MkLI1Eeqt3YR8-9mEoA _5mlBkLI1Eeqt3YR8-9mEoA _EjDEQLI4Eeqt3YR8-9mEoA _XvgAILI6Eeqt3YR8-9mEoA _r7P10LI8Eeqt3YR8-9mEoA _JmLjwLI0Eeqt3YR8-9mEoA _JmKVoLI0Eeqt3YR8-9mEoA"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_3yevIHHpEeqv_YrGSHGdGQ" name="Database" coveredBy="_5mlooLI1Eeqt3YR8-9mEoA _KFEfMLI0Eeqt3YR8-9mEoA _KFD4ILI0Eeqt3YR8-9mEoA _kDHjULI5Eeqt3YR8-9mEoA _4mcLgLI7Eeqt3YR8-9mEoA _KFFGQLI0Eeqt3YR8-9mEoA"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_6wweIHHpEeqv_YrGSHGdGQ" name="DrawerSVGGen" coveredBy="_XvgAIbI6Eeqt3YR8-9mEoA _4ma9YLI7Eeqt3YR8-9mEoA _eyrdELI8Eeqt3YR8-9mEoA _K4x0ELI0Eeqt3YR8-9mEoA _266d0LI7Eeqt3YR8-9mEoA _yRmwYLI7Eeqt3YR8-9mEoA _MiSIgLI0Eeqt3YR8-9mEoA _MiSvkLI0Eeqt3YR8-9mEoA"/>
       <lifeline xmi:type="uml:Lifeline" xmi:id="_ZdKcsIfFEeqp8c2nJra3dQ" name="Responsive SVG" coveredBy="_EjDrULI4Eeqt3YR8-9mEoA _kDG8QLI5Eeqt3YR8-9mEoA _e9tL4LI9Eeqt3YR8-9mEoA _e9qvoLI9Eeqt3YR8-9mEoA"/>
-      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5mlooLI1Eeqt3YR8-9mEoA" name="Message22ReceiveEvent" covered="_3yevIHHpEeqv_YrGSHGdGQ" message="_5mkagLI1Eeqt3YR8-9mEoA"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_vD-lgLI1Eeqt3YR8-9mEoA" name="Message20SendEvent" covered="_vjHhAHHpEeqv_YrGSHGdGQ" message="_vD7iMLI1Eeqt3YR8-9mEoA"/>
+      <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_NNZSYLPyEeqFyPbn3Ye_4w" name="ActionExecutionSpecification44" covered="_vjHhAHHpEeqv_YrGSHGdGQ" finish="_NNaggLPyEeqFyPbn3Ye_4w" start="_vD-lgLI1Eeqt3YR8-9mEoA"/>
+      <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_NNaggLPyEeqFyPbn3Ye_4w" name="ActionExecutionSpecification44Finish" covered="_vjHhAHHpEeqv_YrGSHGdGQ" execution="_NNZSYLPyEeqFyPbn3Ye_4w"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_5mlooLI1Eeqt3YR8-9mEoA" name="Message22ReceiveEvent" covered="_3yevIHHpEeqv_YrGSHGdGQ" message="_5mkagLI1Eeqt3YR8-9mEoA"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_vD_MkLI1Eeqt3YR8-9mEoA" name="Message20ReceiveEvent" covered="_xFpqwHHpEeqv_YrGSHGdGQ" message="_vD7iMLI1Eeqt3YR8-9mEoA"/>
       <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_JmKVoLI0Eeqt3YR8-9mEoA" name="ActionExecutionSpecification9" covered="_xFpqwHHpEeqv_YrGSHGdGQ" finish="_JmLjwLI0Eeqt3YR8-9mEoA" start="_vD_MkLI1Eeqt3YR8-9mEoA"/>
       <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_KFEfMLI0Eeqt3YR8-9mEoA" name="ActionExecutionSpecification12Start" covered="_3yevIHHpEeqv_YrGSHGdGQ" execution="_KFD4ILI0Eeqt3YR8-9mEoA"/>
@@ -952,9 +954,7 @@ The class Authenticator represents an object that knows how to obtain authentica
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_L7SPcLFvEeqivu2c-Fhp1Q" name="canvasY">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_OR0pALFvEeqivu2c-Fhp1Q" name="maxSubjects">
-              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
-            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_OR0pALFvEeqivu2c-Fhp1Q" name="maxSubjects" type="_jNvVILImEeqRdLLMTtwr9g"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_QNiHwLFvEeqivu2c-Fhp1Q" name="totalCptY">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
@@ -962,7 +962,7 @@ The class Authenticator represents an object that knows how to obtain authentica
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
             </ownedParameter>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_UTCkkLFvEeqivu2c-Fhp1Q" name="calculateAdditionalSpaceByGrade">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_UTCkkLFvEeqivu2c-Fhp1Q" name="calculateAdditionalSpaceByGrade" visibility="public">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_YKmE8LFvEeqivu2c-Fhp1Q" name="myYear">
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
             </ownedParameter>
