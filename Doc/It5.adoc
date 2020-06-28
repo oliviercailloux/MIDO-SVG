@@ -1,0 +1,37 @@
+﻿= MIDO - SVG / Itération 5
+
+Dans cette iteration 5, nous avons repris et corrigé toutes les remarques du client. De plus, nous avons précisé les évolutions à effectuer lors de la deuxième itération JAVA.
+Nous continuons à développer les deux axes principaux : 
+
+[square]
+* Evolution BDD, récupération et traitement des données sur reROF
+* Maintenance sur la génération du fichier SVG
+
+=== Equipe SVG : Binôme Camille - Raphaël
+
+* Mise à jour des diagrammes (de classe et de séquence) en apportant :
+** des corrections:
+*** certains types retour pour les diagrammes de classes sont des JavaPrimitiveTypes (SVGClassDiagram)
+*** Modification diagramme GUI pour rendre compte de la possibilité d'un utilisateur à modifier la taille d'une police (GUI Use Case Diagram)
+** des évolutions: 
+*** reconceptualisation du diagramme de séquence dans son ensemble (SequenceSVG)
+* Etablir les actions de l'itération 4 JAVA pour l'équipe SVG consultable dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/README.adoc[README]
+
+
+=== Equipe BDD : Binôme Sarra
+
+* Mise à jour des diagrammes (de classe et de séquence) en apportant :
+** des corrections:
+*** mise-à-jour des types des objets pour le diagramme BDD (ROF Class Diagram)
+*** mise-à-jour des associations et attributs en accord avec les classes.
+** des évolutions: 
+*** documentation de la base de données Dauphine, consultable https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/ROFDauphineDoc.adoc[ici]
+* Etablir les actions de l'itération 3 JAVA pour l'équipe BDD consultable dans le https://github.com/marcellinodour/MIDO-SVG/blob/master/README.adoc[README]
+
+=== Equipe Coordinateur : Binôme Jérémie - Marcellino
+
+* Mise à jour du https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/README.adoc[README]
+* Harmonisation du document https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/README.adoc[README]
+* Reconstruction du diagramme général (MIDO-SVG_General)
+* Rédaction https://github.com/marcellinodour/MIDO-SVG/blob/master/Doc/it5.adoc[it5]
+* Revue et corrections de tous les diagrammes. (UniversityClassDiagram, PaperClassDiagram, ControllerUseCaseDiagram)
