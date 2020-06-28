@@ -20,9 +20,8 @@ public class GUIJUnitTest {
 
 		ResponsiveSVG r = new ResponsiveSVG();
 		DataBase data = new DataBase();
-		int output = r.countFormations(data.getFormations(), "M1");
+		int output = r.countFormations(data.getFormations(), 4);
 		assertEquals(2, output);
-
 	}
 
 }

@@ -1,8 +1,15 @@
 package com.github.cocolollipop.mido_svg.svg_generator;
 
+import java.awt.Canvas;
+import java.awt.FontMetrics;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.github.cocolollipop.mido_svg.university.components.Formation;
+import com.github.cocolollipop.mido_svg.university.components.Subject;
 
 /**
  * This class adapts the position of objects in order to draw a
@@ -11,20 +18,21 @@ import com.github.cocolollipop.mido_svg.university.components.Formation;
  */
 public class ResponsiveSVG {
 
+	private static java.awt.Font Basicfont = new java.awt.Font("TimesRoman", 12, 12);
+	private static Map<Integer, String> mapOfGrade = new HashMap<>();
+	private static Map<Integer, Integer> numberOfGrade = new HashMap<>();
+
 	/**
 	 * Count the number of formations of a specific level in a list.
 	 *
-	 * @param list
-	 *            is a LinkedList of formations
-	 * @param myYear
-	 *            is a year of study such as "L3" or "M1"
-	 *            
-	 * @return an integer corresponding to the number of formations in "list" of level "myYear"
+	 * @param list is a Collection of formations
+	 * @param myYear is a key in mapOfGrade. 1 representing the first year (L1) and 5 the last year (M2)        
+	 * @return an int corresponding to the number of formations in "list" of level "myYear"
 	 */
-	public int countFormations(List<Formation> list, String myYear) {
+	public int countFormations(Collection<Formation> list, int myYear) {
 		int nb = 0;
 		for (Formation aFormation : list) {
-			if (aFormation.getFullName().indexOf(myYear) != -1) {
+			if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
 				nb++;
 			}
 		}
@@ -32,50 +40,163 @@ public class ResponsiveSVG {
 	}
 
 	/**
+	 * Count the number of Subjects in the Formation of the year myYear which has the most Subjects
+	 * 
+	 * @param list is a Collection of formations
+	 * @param myYear the year for which we want to find the maximum number of subjects.
+	 * 1 representing the first year (L1) and 5 the last year (M2)
+	 * @return an int that represents the maximum number of Subjects in a Formation of myYear.
+	 */
+	public int countMaxSubjects(Collection<Formation> list, int myYear) {
+		int max = 0;
+		for (Formation aFormation : list) {
+			if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
+				if (aFormation.getSubjects().size() > max) {
+					max = aFormation.getSubjects().size();
+				}
+			}
+		}
+		return max;
+	}
+
+	/**
+	 * @param nbOfSubjects the number of Subjects of a block 
+	 * @return the height in pixels of a Subjects block
+	 */
+	public int calculateHeightOfSubjects(int nbOfSubjects) {
+		Canvas c = new Canvas();
+		FontMetrics fm = c.getFontMetrics(Basicfont);
+		int height = fm.getHeight();
+		int heightOfSubjects = (nbOfSubjects+1) * height + (nbOfSubjects+2) * DrawerSVGGen.SPACE_BETWEEN_LIGNES ;
+		return heightOfSubjects;
+	}
+
+	/**
+	 * @param formation 
+	 * @return the size in pixels of the longest Subject's title of the Formation in argument
+	 */
+	public int giveTheLongestSubjectInPixel(Formation formation) {
+		int longestword = 0;
+		for(Subject subject : formation.getSubjects()) {
+			if (longestword < widthOfTheWordInPixel(subject.getTitle())) {
+				longestword = widthOfTheWordInPixel(subject.getTitle());
+			}
+		}
+		return longestword;
+	}
+
+	/**
+	 * @param word
+	 * @return the width in pixels of a word
+	 */
+	public int widthOfTheWordInPixel(String word) {
+		Canvas c = new Canvas();
+		FontMetrics fm = c.getFontMetrics(Basicfont);
+		return fm.stringWidth(word);
+	}
+	/**
+	 * This method aim to calculate the space that is available to add between the formations of different grade
+	 * 
+	 * @param canvasY
+	 * @param maxSubjects
+	 * @param totalCptY
+	 * @return an int corresponding to the additional space in pixel
+	 */
+	public int calculateAdditionalSpaceY(int canvasY, Collection<Integer> maxSubjects, int totalCptY) {
+		int totalHeightOfSubjects = 0;
+		for (Integer i : maxSubjects) {
+			totalHeightOfSubjects += calculateHeightOfSubjects(i.intValue());
+		}
+		Canvas c = new Canvas();
+		FontMetrics fm = c.getFontMetrics(Basicfont);
+		int heightOfResponsibleName = fm.getHeight();
+		int formationBlock = DrawerSVGGen.HEIGHT_OF_RECTANGLE + heightOfResponsibleName;
+
+		int additionalSpace = (int) (((canvasY - totalHeightOfSubjects - (canvasY * 0.15) - formationBlock * (totalCptY - 1)) / totalCptY) + formationBlock);
+
+		return additionalSpace;
+	}
+
+	/**
+	 * This method aim to calculate the space that is available to add between the formations of a same year when drawing.
+	 * 
+	 * @param myYear, key in mapOfGrade of the year on which the space is going to be calculate
+	 * @param canvasX the width of the paper format
+	 * @param list the Collection of all the Formations
+	 * @return an int corresponding to the space in pixels to add between the formations of a same year
+	 * @throws IllegalStateException
+	 */
+	public int calculateAdditionalSpaceByGrade(int myYear, int canvasX, Collection<Formation> list) throws IllegalStateException {
+		int spaceTaken = 0;
+		int cpt = 1;
+
+		for (Formation formation : list) {
+			if (formation.getFullName().contains(mapOfGrade.get(myYear))) {
+				spaceTaken += giveTheLongestSubjectInPixel(formation) + widthOfTheWordInPixel(formation.getFullName()) + 20;
+				cpt++;
+			}
+		}
+
+		int additionalSpace = (int) ((canvasX - spaceTaken - (0.1 * canvasX)) / cpt);
+		if (additionalSpace < 0) {
+			throw new IllegalStateException("The format paper isn't enought wide.");
+		}
+		return additionalSpace;
+	}
+
+	/**
 	 * Determine the position of each Formation in the 
 	 * Canvas according to the number of formations and their level.
 	 *
-	 * @param list
-	 *            : LinkedList of all the formations available in the University
-	 * @param canvasX
-	 *            : width of the canvas
-	 * @param canvasY
-	 * 			  : height of the canvas
+	 * @param list : Collection of all the formations available in the University            
+	 * @param canvasX : width of the canvas          
+	 * @param canvasY : height of the canvas	  
 	 */
-	public void defineObjectsPosition(List<Formation> list, int canvasX, int canvasY) {
+	public void defineObjectsPosition(Collection<Formation> list, int canvasX, int canvasY, boolean hiddenSubjects) {
+
+		mapOfGrade.put(1, "L1");
+		mapOfGrade.put(2, "L2");
+		mapOfGrade.put(3, "L3");
+		mapOfGrade.put(4, "M1");
+		mapOfGrade.put(5, "M2");
 
 		/*
 		 * We have to define the initial shift. So we must count the total
 		 * number formations in "list" then calculate Y offset depending on which
 		 * formation are chosen (Only L1 or all ?). Finally we calculate X offset
 		 */
-		int offsetX = 0;
 		int offsetY = 0;
-		int nbL1 = 0;
-		int nbL2 = 0;
-		int nbL3 = 0;
-		int nbM1 = 0;
-		int nbM2 = 0;
-		
-		int totalCptY = 0; /* O<=totalCptY<=5 corresponds to the DOM Tree height 
-						    * totalCptY = 5 means we have to draw the formations from 
-					        * level "L1" to "M2" 
-					        */
 
-		int cptY[] = {0,0,0,0,0};   /* We assume that the indexes correspond to the levels 
-									 * ordered from "L1" to "M2"
-									 * For the moment we just initialize the tab with zeros 
-									 * Afterwards, depending on which levels the user choose to
-									 * draw, each level will have a certain height in the tree
-									 */
-								
-		
-		// First we count the number of formations of every level
-		nbL1 = countFormations(list, "L1");
-		nbL2 = countFormations(list, "L2");
-		nbL3 = countFormations(list, "L3");
-		nbM1 = countFormations(list, "M1");
-		nbM2 = countFormations(list, "M2");
+		int additionalSpace=0;
+
+		List<Integer> maxSubjects = new ArrayList<>();
+
+		int spaceTaken = 0;
+		int levelActual = 1;
+
+		/* O<=totalCptY<=5 corresponds to the DOM Tree height 
+		 * totalCptY = 5 means we have to draw the formations from 
+		 * level "L1" to "M2" 
+		 */
+		int totalCptY = 0; 
+
+		/* We assume that the indexes correspond to the levels 
+		 * ordered from "L1" to "M2"
+		 * For the moment we just initialize the tab with zeros 
+		 * Afterwards, depending on which levels the user choose to
+		 * draw, each level will have a certain height in the tree
+		 */
+		int cptY[] = {0,0,0,0,0};   
+
+
+		/*
+		 *  First we count the number of formations of every level
+		 */
+		numberOfGrade.put(1,countFormations(list, 1));
+		numberOfGrade.put(2,countFormations(list, 2));
+		numberOfGrade.put(3,countFormations(list, 3));
+		numberOfGrade.put(4,countFormations(list, 4));
+		numberOfGrade.put(5,countFormations(list, 5));
 
 
 		/* We fill cptY
@@ -87,98 +208,101 @@ public class ResponsiveSVG {
 		 * 
 		 */
 		int tempCpt = 0;
-		if (nbL1 != 0) {					
-			totalCptY += 1;     
-			cptY[0] = tempCpt + 1;
-			tempCpt++;
-		}
-		if (nbL2 != 0) {
-			totalCptY += 1; 
-			cptY[1] = tempCpt + 1;
-			tempCpt++;
-		}
-		if (nbL3 != 0) {
-			totalCptY += 1; 
-			cptY[2] = tempCpt + 1;
-			tempCpt++;
-		}
-		if (nbM1 != 0) {
-			totalCptY += 1; 
-			cptY[3] = tempCpt + 1;
-			tempCpt++;
-		}
-		if (nbM2 != 0) {
-			totalCptY += 1; 
-			cptY[4] = tempCpt + 1;
-		}
-		
-		totalCptY+= 1;
-		
-		/*
-		 * Now we calculate X and Y offset
-		 * First we have to check which levels has been seted 
-		 * If it has been, then 
-		 * 		- the canvas'width should be evenly distributed 
-		 * 		over the number of formations of that level
-		 * 		- the canvas'height should also be evenly distributed 
-		 * 		over the number of formations of that level and should take 
-		 * 		into account its height like calculated before in cptY.
-		 * 		Plus, we added a margin, which is proportional to the canvas to 
-		 * 		make it responsive, so that the SVG would be centered. 
-		 */
-		if (nbL1 != 0) {
-			offsetX = canvasX / (nbL1 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[0] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "L1", offsetX, offsetY);
-		}
-		
-		if (nbL2 != 0) {
-			offsetX = canvasX / (nbL2 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[1] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "L2", offsetX, offsetY);
-		}
-		
-		if (nbL3 != 0) {
-			offsetX = canvasX / (nbL3 + 1);
-			offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[2] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "L3", offsetX, offsetY);
-		}
-		
-		if (nbM1 != 0) {
-			offsetX = canvasX / (nbM1 + 1);
-			offsetY = (int) ((canvasY / (totalCptY)) * (cptY[3] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "M1", offsetX, offsetY);
-		}
-		
-		if (nbM2 != 0) {
-			offsetX = canvasX / (nbM2 + 2);
-			offsetY = (int) ((canvasY / (totalCptY)) * (cptY[4] - 1) + (canvasY * 0.1));
-			associatePositionX(list, "M2", offsetX, offsetY);
+
+		for (int i = 1; i < 6; i++) {
+			if (numberOfGrade.get(i) != 0) {
+				totalCptY += 1;
+				cptY[i-1] = tempCpt + 1;
+				tempCpt++;
+				maxSubjects.add(countMaxSubjects(list, i));
+			}
 		}
 
+		totalCptY += 1;
+
+		if ((!hiddenSubjects)) {
+			additionalSpace = calculateAdditionalSpaceY(canvasY, maxSubjects, totalCptY);
+			if(additionalSpace < 0) {
+				throw new IllegalStateException("You cannot show all the subject in this format of paper");
+			}
+		}
+
+		/*
+		 * Now we calculate Y offset.
+		 * 
+		 * For each level:
+		 * 		- if the subjects are going to be drawn, the Y offset is calculated depending on 
+		 * 		  the additionalSpace calculated before.
+		 * 		- if the subjects are not going to be drawn, we divide the space depending on the
+		 * 		  number of level drawn
+		 */
+		for (int i = 1; i < 6; i++) {
+			if (numberOfGrade.get(i) != 0) {
+
+				if (hiddenSubjects) {
+					offsetY = (int) ((canvasY / (totalCptY) ) * (cptY[i - 1] - 1) + (canvasY * 0.1));
+				}
+				else {
+					if (levelActual == 1) {
+						offsetY = (int) (canvasY * 0.1);
+						levelActual++;
+						spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, i)) + additionalSpace;
+					}
+					else {
+						offsetY = spaceTaken;
+						levelActual++;
+						spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, i)) + additionalSpace;
+					}
+				}
+				associatePositions(list, i, offsetY, canvasX, hiddenSubjects);
+			}
+		}
 	}
 
+
 	/**
-	 * Associate each formation of the specified level to a certain 
-	 * position according to the coordinates passed in parameter 
-	 *
+	 * This method calculate the position X of the Formations of a year depending on the parameters.
+	 * Then, it set the position X and the position Y of the formations
+	 * 
 	 * @param list
-	 *            is a LinkedList of Formation
-	 * @param myYear
-	 *            is a year of study such as "L3" or "M1"
-	 * @param offsetX
-	 * 			  the abscissa calculated after shifting and adjusting 
+	 * @param myYear 
 	 * @param offsetY
-	 * 			  the ordinate calculated after shifting and adjusting
+	 * @param canvasX
+	 * @param isHidden
 	 */
-	private void associatePositionX(List<Formation> list, String myYear, int offsetX, int offsetY) {
-		int i = 0;
-		for (Formation aFormation : list) {
-			if (aFormation.getFullName().indexOf(myYear) != -1) {
-				aFormation.setPosX((int) (offsetX * i + offsetX * 0.5));
-				aFormation.setPosY(offsetY);
-				i++;
-				System.out.println("associerOK : " + aFormation.getFullName());
+	private void associatePositions(Collection<Formation> list, int myYear, int offsetY, int canvasX, boolean isHidden) {
+
+		if (!isHidden) {
+			int additionalSpace = calculateAdditionalSpaceByGrade(myYear, canvasX, list);
+			int spaceTaken = (int) ((0.05 * canvasX) + additionalSpace);
+			for (Formation aFormation : list) {
+				if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
+					aFormation.setPosX(spaceTaken);
+					aFormation.setPosY(offsetY);
+					spaceTaken += additionalSpace + giveTheLongestSubjectInPixel(aFormation) + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
+				}
+			}
+		}
+		else {
+			int additionalSpace = 0;
+			int j = 0;
+			for (Formation aFormation : list) {
+				if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
+					additionalSpace += widthOfTheWordInPixel(aFormation.getFullName()) + 20;
+					j++;
+				}
+			}
+			additionalSpace = (int) ((canvasX - additionalSpace - (canvasX * 0.1)) / (j+1)); 
+			if (additionalSpace < 0) {
+				throw new IllegalStateException("The format paper isn't enough wide");
+			}
+			int spaceTaken = (int) (0.05 * canvasX + additionalSpace);
+			for (Formation aFormation : list) {
+				if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
+					aFormation.setPosX(spaceTaken);
+					aFormation.setPosY(offsetY);
+					spaceTaken += additionalSpace + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
+				}
 			}
 		}
 	}

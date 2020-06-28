@@ -35,7 +35,7 @@ public class ControllerSVG {
 			datas.setTags(listOfTags);
 			/** We adapt the drawing according to the settings */
 			ResponsiveSVG responsive = new ResponsiveSVG();
-			responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
+			responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight(), settings.isHiddenSubject());
 		} else {
 			System.out.println("Vous n\'êtes pas autorisé à accéder à cette page");
 		}

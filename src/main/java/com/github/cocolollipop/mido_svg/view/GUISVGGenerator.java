@@ -322,11 +322,13 @@ public class GUISVGGenerator {
 					}
 
 					datas = new DataBase(settings);
-					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight());
+					responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(), settings.getHeight(), settings.isHiddenSubject());
 					LOGGER.info("Painting.");
 					svg.paint(settings, datas);
 
-					File file = new File("./src/main/resources/images/mido-drawing.svg");
+					File file = new File(DrawerSVGGen.DRAWING_SVG);
+					file.createNewFile();
+				
 
 					try {
 						java.awt.Desktop.getDesktop().open(file);
