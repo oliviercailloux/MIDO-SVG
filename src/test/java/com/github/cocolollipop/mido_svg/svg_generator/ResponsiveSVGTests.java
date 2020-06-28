@@ -32,26 +32,26 @@ public class ResponsiveSVGTests {
 		assertEquals("L3 MIAGE", formations.get(0).getFullName());
 		assertEquals("M1 MIAGE", formations.get(2).getFullName());
 		assertEquals(243, formations.get(0).getPoint().getX(), 30);
-		assertEquals(634, formations.get(1).getPoint().getX(), 5);
-		assertEquals(293, formations.get(2).getPoint().getX(), 5);
-		assertEquals(653, formations.get(3).getPoint().getX(), 5);
-		assertEquals(91, formations.get(4).getPoint().getX(), 5);
-		assertEquals(224, formations.get(5).getPoint().getX(), 5);
-		assertEquals(359, formations.get(6).getPoint().getX(), 5);
-		assertEquals(508, formations.get(7).getPoint().getX(), 5);
-		assertEquals(665, formations.get(8).getPoint().getX(), 5);
-		assertEquals(824, formations.get(9).getPoint().getX(), 5);
+		assertEquals(634, formations.get(1).getPoint().getX(), 30);
+		assertEquals(293, formations.get(2).getPoint().getX(), 30);
+		assertEquals(653, formations.get(3).getPoint().getX(), 30);
+		assertEquals(91, formations.get(4).getPoint().getX(), 30);
+		assertEquals(224, formations.get(5).getPoint().getX(), 30);
+		assertEquals(359, formations.get(6).getPoint().getX(), 30);
+		assertEquals(508, formations.get(7).getPoint().getX(), 30);
+		assertEquals(665, formations.get(8).getPoint().getX(), 30);
+		assertEquals(824, formations.get(9).getPoint().getX(), 30);
 		
-		assertEquals(74, formations.get(0).getPoint().getY(), 5);
-		assertEquals(74, formations.get(1).getPoint().getY(), 5);
-		assertEquals(283, formations.get(2).getPoint().getY(), 5);
-		assertEquals(283, formations.get(3).getPoint().getY(), 5);
-		assertEquals(466, formations.get(4).getPoint().getY(), 5);
-		assertEquals(466, formations.get(5).getPoint().getY(), 5);
-		assertEquals(466, formations.get(6).getPoint().getY(), 5);
-		assertEquals(466, formations.get(7).getPoint().getY(), 5);
-		assertEquals(466, formations.get(8).getPoint().getY(), 5);
-		assertEquals(466, formations.get(9).getPoint().getY(), 5);
+		assertEquals(74, formations.get(0).getPoint().getY(), 30);
+		assertEquals(74, formations.get(1).getPoint().getY(), 30);
+		assertEquals(283, formations.get(2).getPoint().getY(), 30);
+		assertEquals(283, formations.get(3).getPoint().getY(), 30);
+		assertEquals(466, formations.get(4).getPoint().getY(), 30);
+		assertEquals(466, formations.get(5).getPoint().getY(), 30);
+		assertEquals(466, formations.get(6).getPoint().getY(), 30);
+		assertEquals(466, formations.get(7).getPoint().getY(), 30);
+		assertEquals(466, formations.get(8).getPoint().getY(), 30);
+		assertEquals(466, formations.get(9).getPoint().getY(), 30);
 	}
 
 	/**
@@ -72,23 +72,23 @@ public class ResponsiveSVGTests {
 		ResponsiveSVG responsive = new ResponsiveSVG();
 		responsive.defineObjectsPosition(formations, settings.getWidth(), settings.getHeight(), settings.isHiddenSubject(), settings.isHiddenLicence(), settings.isHiddenMaster());
 
-		assertEquals(293, formations.get(2).getPoint().getX(), 10);
-		assertEquals(653, formations.get(3).getPoint().getX(), 10);
-		assertEquals(91, formations.get(4).getPoint().getX(), 10);
-		assertEquals(224, formations.get(5).getPoint().getX(), 10);
-		assertEquals(359, formations.get(6).getPoint().getX(), 10);
-		assertEquals(508, formations.get(7).getPoint().getX(), 10);
-		assertEquals(665, formations.get(8).getPoint().getX(), 10);
-		assertEquals(824, formations.get(9).getPoint().getX(), 10);
+		assertEquals(293, formations.get(2).getPoint().getX(), 30);
+		assertEquals(653, formations.get(3).getPoint().getX(), 30);
+		assertEquals(91, formations.get(4).getPoint().getX(), 30);
+		assertEquals(224, formations.get(5).getPoint().getX(), 30);
+		assertEquals(359, formations.get(6).getPoint().getX(), 30);
+		assertEquals(508, formations.get(7).getPoint().getX(), 30);
+		assertEquals(665, formations.get(8).getPoint().getX(), 30);
+		assertEquals(824, formations.get(9).getPoint().getX(), 30);
 		
-		assertEquals(74, formations.get(2).getPoint().getY(), 10);
-		assertEquals(74, formations.get(3).getPoint().getY(), 10);
-		assertEquals(327, formations.get(4).getPoint().getY(), 10);
-		assertEquals(327, formations.get(5).getPoint().getY(), 10);
-		assertEquals(327, formations.get(6).getPoint().getY(), 10);
-		assertEquals(327, formations.get(7).getPoint().getY(), 10);
-		assertEquals(327, formations.get(8).getPoint().getY(), 10);
-		assertEquals(327, formations.get(9).getPoint().getY(), 10);
+		assertEquals(74, formations.get(2).getPoint().getY(), 30);
+		assertEquals(74, formations.get(3).getPoint().getY(), 30);
+		assertEquals(327, formations.get(4).getPoint().getY(), 30);
+		assertEquals(327, formations.get(5).getPoint().getY(), 30);
+		assertEquals(327, formations.get(6).getPoint().getY(), 30);
+		assertEquals(327, formations.get(7).getPoint().getY(), 30);
+		assertEquals(327, formations.get(8).getPoint().getY(), 30);
+		assertEquals(327, formations.get(9).getPoint().getY(), 30);
 	}
 
 	/**
@@ -109,11 +109,11 @@ public class ResponsiveSVGTests {
 		ResponsiveSVG responsive = new ResponsiveSVG();
 		responsive.defineObjectsPosition(formations, settings.getWidth(), settings.getHeight(), settings.isHiddenSubject(), settings.isHiddenLicence(), settings.isHiddenMaster());
 
-		assertEquals(308, formations.get(0).getPoint().getX(), 5);
-		assertEquals(640, formations.get(1).getPoint().getX(), 5);
+		assertEquals(308, formations.get(0).getPoint().getX(), 30);
+		assertEquals(640, formations.get(1).getPoint().getX(), 30);
 		
-		assertEquals(74, formations.get(0).getPoint().getY(), 5);
-		assertEquals(74, formations.get(1).getPoint().getY(), 5);
+		assertEquals(74, formations.get(0).getPoint().getY(), 30);
+		assertEquals(74, formations.get(1).getPoint().getY(), 30);
 	}
 
 	/**
@@ -135,26 +135,26 @@ public class ResponsiveSVGTests {
 		responsive.defineObjectsPosition(formations, settings.getWidth(), settings.getHeight(), settings.isHiddenSubject(), settings.isHiddenLicence(), settings.isHiddenMaster());
 
 
-		assertEquals(308, formations.get(0).getPoint().getX(), 10);
-		assertEquals(640, formations.get(1).getPoint().getX(), 10);
-		assertEquals(306, formations.get(2).getPoint().getX(), 10);
-		assertEquals(640, formations.get(3).getPoint().getX(), 10);
-		assertEquals(91, formations.get(4).getPoint().getX(), 10);
-		assertEquals(224, formations.get(5).getPoint().getX(), 10);
-		assertEquals(359, formations.get(6).getPoint().getX(), 10);
-		assertEquals(508, formations.get(7).getPoint().getX(), 10);
-		assertEquals(665, formations.get(8).getPoint().getX(), 10);
-		assertEquals(824, formations.get(9).getPoint().getX(), 10);
+		assertEquals(308, formations.get(0).getPoint().getX(), 30);
+		assertEquals(640, formations.get(1).getPoint().getX(), 30);
+		assertEquals(306, formations.get(2).getPoint().getX(), 30);
+		assertEquals(640, formations.get(3).getPoint().getX(), 30);
+		assertEquals(91, formations.get(4).getPoint().getX(), 30);
+		assertEquals(224, formations.get(5).getPoint().getX(), 30);
+		assertEquals(359, formations.get(6).getPoint().getX(), 30);
+		assertEquals(508, formations.get(7).getPoint().getX(), 30);
+		assertEquals(665, formations.get(8).getPoint().getX(), 30);
+		assertEquals(824, formations.get(9).getPoint().getX(), 30);
 		
-		assertEquals(74, formations.get(0).getPoint().getY(), 10);
-		assertEquals(74, formations.get(1).getPoint().getY(), 10);
-		assertEquals(260, formations.get(2).getPoint().getY(), 10);
-		assertEquals(260, formations.get(3).getPoint().getY(), 10);
-		assertEquals(446, formations.get(4).getPoint().getY(), 10);
-		assertEquals(446, formations.get(5).getPoint().getY(), 10);
-		assertEquals(446, formations.get(6).getPoint().getY(), 10);
-		assertEquals(446, formations.get(7).getPoint().getY(), 10);
-		assertEquals(446, formations.get(8).getPoint().getY(), 10);
-		assertEquals(446, formations.get(9).getPoint().getY(), 10);
+		assertEquals(74, formations.get(0).getPoint().getY(), 30);
+		assertEquals(74, formations.get(1).getPoint().getY(), 30);
+		assertEquals(260, formations.get(2).getPoint().getY(), 30);
+		assertEquals(260, formations.get(3).getPoint().getY(), 30);
+		assertEquals(446, formations.get(4).getPoint().getY(), 30);
+		assertEquals(446, formations.get(5).getPoint().getY(), 30);
+		assertEquals(446, formations.get(6).getPoint().getY(), 30);
+		assertEquals(446, formations.get(7).getPoint().getY(), 30);
+		assertEquals(446, formations.get(8).getPoint().getY(), 30);
+		assertEquals(446, formations.get(9).getPoint().getY(), 30);
 	}
 }
