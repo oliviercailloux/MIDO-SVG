@@ -274,7 +274,6 @@ public class ResponsiveSVG {
 						spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, i).intValue()) + additionalSpace;
 					}
 				}
-				System.out.println("Y" + offsetY);
 				associatePositions(list, i, offsetY, canvasX, hiddenSubjects);
 			}
 		}
@@ -298,7 +297,6 @@ public class ResponsiveSVG {
 			int spaceTaken = (int) ((0.05 * canvasX) + additionalSpace);
 			for (Formation aFormation : list) {
 				if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
-					System.out.println("X" + spaceTaken);
 					aFormation.setPosX(spaceTaken);
 					aFormation.setPosY(offsetY);
 					spaceTaken += additionalSpace + giveTheLongestSubjectInPixel(aFormation) + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
@@ -321,7 +319,6 @@ public class ResponsiveSVG {
 			int spaceTaken = (int) (0.05 * canvasX + additionalSpace);
 			for (Formation aFormation : list) {
 				if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
-					System.out.println("X" + spaceTaken);
 					aFormation.setPosX(spaceTaken);
 					aFormation.setPosY(offsetY);
 					spaceTaken += additionalSpace + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
