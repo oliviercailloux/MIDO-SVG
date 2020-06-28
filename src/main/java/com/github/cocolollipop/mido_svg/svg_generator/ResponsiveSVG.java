@@ -45,10 +45,10 @@ public class ResponsiveSVG {
 	 * @param list is a Collection of formations
 	 * @param myYear the year for which we want to find the maximum number of subjects.
 	 * 1 representing the first year (L1) and 5 the last year (M2)
-	 * @return an Integer that represents the maximum number of Subjects in a Formation of myYear.
+	 * @return an int that represents the maximum number of Subjects in a Formation of myYear.
 	 */
-	public Integer countMaxSubjects(Collection<Formation> list, int myYear) {
-		Integer max = 0;
+	public int countMaxSubjects(Collection<Formation> list, int myYear) {
+		int max = 0;
 		for (Formation aFormation : list) {
 			if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
 				if (aFormation.getSubjects().size() > max) {
@@ -67,7 +67,7 @@ public class ResponsiveSVG {
 		Canvas c = new Canvas();
 		FontMetrics fm = c.getFontMetrics(Basicfont);
 		int height = fm.getHeight();
-		int heightOfSubjects = (nbOfSubjects+1) * height + (nbOfSubjects+2) * DrawerSVGGen.spaceBetweenLignes ;
+		int heightOfSubjects = (nbOfSubjects+1) * height + (nbOfSubjects+2) * DrawerSVGGen.SPACE_BETWEEN_LIGNES ;
 		return heightOfSubjects;
 	}
 
@@ -110,7 +110,7 @@ public class ResponsiveSVG {
 		Canvas c = new Canvas();
 		FontMetrics fm = c.getFontMetrics(Basicfont);
 		int heightOfResponsibleName = fm.getHeight();
-		int formationBlock = DrawerSVGGen.heightOfRectangle + heightOfResponsibleName;
+		int formationBlock = DrawerSVGGen.HEIGHT_OF_RECTANGLE + heightOfResponsibleName;
 
 		int additionalSpace = (int) (((canvasY - totalHeightOfSubjects - (canvasY * 0.15) - formationBlock * (totalCptY - 1)) / totalCptY) + formationBlock);
 
@@ -246,12 +246,12 @@ public class ResponsiveSVG {
 					if (levelActual == 1) {
 						offsetY = (int) (canvasY * 0.1);
 						levelActual++;
-						spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, i).intValue()) + additionalSpace;
+						spaceTaken += offsetY + calculateHeightOfSubjects(countMaxSubjects(list, i)) + additionalSpace;
 					}
 					else {
 						offsetY = spaceTaken;
 						levelActual++;
-						spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, i).intValue()) + additionalSpace;
+						spaceTaken += calculateHeightOfSubjects(countMaxSubjects(list, i)) + additionalSpace;
 					}
 				}
 				associatePositions(list, i, offsetY, canvasX, hiddenSubjects);

@@ -65,9 +65,9 @@ public class DrawerSVGGen {
 
 	private String svgNS;
 	
-	protected final static int spaceBetweenLignes = 14;
+	static public final int SPACE_BETWEEN_LIGNES = 14;
 	
-	protected final static int heightOfRectangle = 25;
+	static public final int HEIGHT_OF_RECTANGLE = 25;
 
 	/**
 	 * This method shows the Admission of a "formation" only if it's SHOWN in
@@ -162,9 +162,9 @@ public class DrawerSVGGen {
 			g.drawString(l.getFullNameWithLink(), l.getPoint().x, l.getPoint().y);
 			// write the name of formation
 			controlSettings(l.getPoint().x -10, l.getPoint().y -20, settings.getWidth(), settings.getHeight());
-			controlSettings(l.getPoint().x -10 + g.getFontMetrics().stringWidth(l.getFullName()) + 20, l.getPoint().y -20 + heightOfRectangle, settings.getWidth(), settings.getHeight());
+			controlSettings(l.getPoint().x -10 + g.getFontMetrics().stringWidth(l.getFullName()) + 20, l.getPoint().y -20 + HEIGHT_OF_RECTANGLE, settings.getWidth(), settings.getHeight());
 			Rectangle t = new Rectangle(l.getPoint().x - 10, l.getPoint().y - 20,
-					g.getFontMetrics().stringWidth(l.getFullName()) + 20, heightOfRectangle); // draw
+					g.getFontMetrics().stringWidth(l.getFullName()) + 20, HEIGHT_OF_RECTANGLE); // draw
 			// rectangle
 			g.draw(t);
 			g.draw(new Rectangle(0,0,settings.getWidth(), 744));
@@ -270,7 +270,7 @@ public class DrawerSVGGen {
 						/* We increment the vertical offset so that the next course will be 
 						 * written below.
 						*/
-						decY += g.getFontMetrics().getHeight() + spaceBetweenLignes;
+						decY += g.getFontMetrics().getHeight() + SPACE_BETWEEN_LIGNES;
 						
 						// DRAW PREREQUISITES LINES
 						for (Subject s2 : f.getSubjects()) {
