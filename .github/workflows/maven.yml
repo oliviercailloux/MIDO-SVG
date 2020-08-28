@@ -29,10 +29,10 @@ jobs:
           java-version: 11
           
       # STEP pre-3-1
-      - run: 'echo "$WSDL" > WSDL_access.txt'
+      - run: 'echo "$WSDL" > WSDL_login.txt'
         shell: bash
         env:
-          WSDL: ${{secrets.WSDL_ACCESS}}
+          WSDL: ${{secrets.WSDL_LOGIN}}
           
       # STEP pre-3-2
       - run: 'echo "$API" > API_password.txt'
