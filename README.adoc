@@ -1,11 +1,17 @@
 = MIDO SVG
- 
-A Java project developed during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in http://www.mido.dauphine.fr/[MIDO] L3 Apprentissage).
- 
-The code is hereby published under the MIT License, with their permission.
- 
-Here below, a part of the “Rapport” written by the students who coded on the project.
- 
+:gitHubUserName: oliviercailloux
+:groupId: io.github.{gitHubUserName}
+:artifactId: mido-svg
+:repository: MIDO-SVG
+
+image:https://github.com/{gitHubUserName}/{repository}/workflows/Maven%20CI/badge.svg["Build Status", link="https://github.com/{gitHubUserName}/{repository}/actions"]
+
+A Java project developed by students during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in https://dauphine.psl.eu/formations/licences/informatique-des-organisations/l3-methodes-informatiques-appliquees-pour-la-gestion-des-entreprises[L3 MIAGE Alternance]).
+
+The code is hereby published under the MIT License, with the permission of the contributors.
+
+The project documentation is link:Doc/README.adoc[here].
+
 == Objectif du projet
  
 L’objectif premier de ce projet est de créer une bibliothèque qui permet à un utilisateur de créer un dessin (au format SVG) représentant au moyen d’un arbre, les formations offertes dans le département MIDO. Il est aussi possible d’afficher les détails des formations, les enseignants, etc. L’idée est de généraliser et dynamiser la bibliothèque afin qu’elle puisse être utilisée à une plus grande échelle, ce en récupérant les informations sur le site de l’université.
@@ -20,167 +26,3 @@ Après avoir pris connaissance de l’existant, nous nous sommes aperçus que le
 * L’esthétique GUI, aujourd’hui les différents formulaires sont incomplets et non responsive.
 * Fichier tags, à ce jour la gestion des tags est static.
 * La liste des utilisateurs habilités, dans notre application, nous constatons que seuls un certain nombre d’user est habilité à utiliser l’application. (ocailloux, ikram, cocolollipop, romain, jules)
-
-
-== Objectif itération 1 JAVA
-
-=== Equipe 1 : Base de données - Camille et Jérémie
-
-Pré-requis : Après avoir pris contact avec la DSI, prendre connaissance de la structure des données fournis via API-ROF.
-
-Pour action : En s'aidant du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO], voir les classes utiles à la récupération des données.
-Objectif principal : Création d'une package `ROFBDD` permettant de récupérer les données reROF et mettre sous la forme structurelle du package `University` adaptée au traitement SVG.
-
-Objectif à court terme : Création d'un package `ROFBDD` avec 3 classes :
-
-[square]
-* `Queries`, classe permettant de récupérer les données reROF (issue du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO])
-* `QueriesHelper.java`, classe permettant d'établir un accès aux données reROF(issue du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO])
-* `ROFDataBase`, classe `main` permettant de lancer la procédure, en appelant la procédure de connexion `QueriesHelper.setDefaultAuthenticator()` ainsi qu'une liste de `Courses` s'apparentant à l'objet `Subject` du package `University`
-
-Aide : Voir avec le professeur pour l'exécution du projet https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO] afin de voir le fonctionnement. (Problème m2e)
-
-=== Equipe 2 : SVG - Marcellino et Sarra
-
-Pré-requis : Comprendre la structure d’un fichier SVG et comment elle est générée dans l’application.
-
-Pour action : En se basant sur le jeu de test saisie “en dur”, sur l’image SVG généré à ce jour, les données sont tous superposés. Trouver une solution pour les faire apparaître un en dessous de l’autre.
-Objectif principal : Génération du fichier `SVG` responsive. A ce jour, le paramétrage de chaque données saisie "en dur" admettent un emplacement déterministe.
-
-Objectif à court terme : Actuellement, dû au codage "en dur" des positions des différents éléments d'un graphe MIDO, si nous voulons générer un graphe que de master 2, ces formations seront tout en bas de la page, peut importe la taille `Settings` determiné par l'utilisateur. Cependant, des classes ont été codé dans l'objectif de générer un fichier `SVG` responsive (dans notre cas, si l'utilisateur à choisi de faire apparaître que les masters 2, les formations devront être placées en première ligne en haut du graphe).
-
-[square]
-
-* `mido_svg.view.GUISVGGenerator`, particulièrement la méthode `btnPush.addSelectionListener` qui a pour fonction de générer le fichier au clic du button "Générer SVG" et qui se réfère à la méthode `paint`.
-* `svg_generator.DrawerSVGGen`, particulièrement la méthode `drawFormation` appelé dans la méthode `paint`, ajouter la fonction `defineObjectsPosition`
-* `svg_generator.ResponsiveSVG`, particulièrement la méthode `defineObjectsPosition` qui ne semble pas marcher.
-
-=== Equipe 3 : SPMO Raphaël et Zhenyi
-
-* Support aux binômes de développeurs
-* Vérification de la cohérence du code et création des pull request
-* Communication avec le client
-* Organisation générale
-
-== Objectif itération 2 JAVA
-
-=== Equipe 1 : Base de données - Marcellino Dour et Raphaël Pardini
-
-Pré-requis : comprendre la structure des données fournies via API-ROF et comprendre le fonctionnement des méthodes de la classe `Querier`.
-
-Objectif principal : Modification du package `model` pour qu'il permette de récupérer les données reROF et mettre sous la forme structurelle du package `University` adaptée au traitement SVG.
-
-Objectif à court terme : Compléter la classe `DataRecuperator` avec 2 méthodes :
-
-[square]
-* `getProgramID`, méthode permettant de récupérer tous les programID rattachés à une formation. Cette méthode prendra l'ID d'une formation en paramètre et renverra une liste des ID des programmes qui lui sont rattachés. Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.
-* `getFormations`, méthode permettant de récupérer toutes les formations disponibles du département MIDO. Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.Cette méthode devra aller chercher les données dont elle a besoin dans la base de données reROF. Elle pourra s'appuyer sur les méthodes disponibles dans la classe Querier.
-* Il sera peut-être nécessaire de créer des méthodes supplémentaires afin de faire fonctionner de manière convenable les méthodes précédentes.
-
-=== Equipe 2 : SVG - Jérémie Brulé et Zhenyi Guo 
-
-Pré-requis : comprendre la procédure de création d'un fichier SVG et particulièrement sur la méthode `defineObjectsPosition` de la classe `svg_generator.ResponsiveSVG`.
-
-Objectif principal : Modifier la classe `svg_generator.ResponsiveSVG` et ajouter une étape de contrôle avant la génération du graphe (évitant les superpositions des éléments) à travers la méthode `controlSettings`.
-
-Objectif à court terme : Revoir intégralement l'algorithme de calcul des positions x et y de chaque formation de la méthode `defineObjectsPosition`. Pour ce faire, voici les modifications à apporter dans la méthode:
-
-[square]
-* avec le `Setting` rentré en paramètre dans la méthode, redéfinir un nouveaux champ de calcul (enlever 5% en bas, gauche et droite et 10% en haut, et donc créer de nouvelles variables locales). Car aujourd'hui les marges sont calculés a chaque itération de boucle, engendrant ainsi des pertes d'espace. Ainsi à chaque itération de la boucle, on peut commencer à `int = 0`
-
-image::./Doc/svgmargins.jpg[margins, 602, 416,role="right"]
-
-* la methode de calcul des positions `x` à ne pas toucher, car cela semble bon. Mais algorithme des positions `y` à revoir. De part le changement des cours (maintenant _en liste vertical_) rendre le découpage horizontal non plus en nombre de _niveau de formation_ mais en fonction du nombre de cours. Pour ce faire, faire une boucle qui balaye chaque formation sur chaque niveau et récupérer le nombre de cours (suggestion : `maxNumberOfCourse`) et l'intitulé le plus long d'un cours (suggestion : une liste de `maxLengthOfCourse`). Ce qui nous permettra de determiner la position `y` du niveau du dessous avec `maxNumberOfCourse` mais aussi faire un contrôle de chevauchement plus tard.
-
-Pour aller plus loin : Si tout est terminé, créer une nouvelle méthode (suggestion : `controlSettings`) dans la classe `svg_generator.ResponsiveSVG` qui permet, avant chaque paramétrage d'un point d'une formation, le contrôle du chevauchement (exemple s'assurer que la position x de la formation d'après `new_x > maxNumberOfCourse (de la formation précédente) && new_x < setting.length`)
-Cette méthode prendra en paramètre la position `x` et `y` de la formation d'après, `maxNumberOfCourse` du niveau du dessus et `maxLengthOfCourse` de la formation précédente et renvoi un `true` si tout est ok.
-
-=== Equipe 3 : SMPO Camille Langlois et Sarra Tajouri 
-
-* Support aux binômes de développeurs
-* Création des issues 
-* Vérification de la cohérence du code et création des pull request
-* Communication avec le client
-* Organisation générale
-
-== Objectif itération 3 JAVA
-
-=== Equipe 1 : Base de données - Sarra Tajouri et Zhenyi Guo
-
-Pré-requis : comprendre la structure des données fournies via API-ROF (identifier la récuperation du département MIDO)  et comprendre le fonctionnement des méthodes de la classe `ROFDatabase`. Et particulièrement le protocole `initialize` -> les méthodes fetch -> les méthodes create.
-
-Objectif principal : Modification du package `model` pour qu'il permette de récupérer les données reROF et mettre sous la forme structurelle du package `University` adaptée au traitement SVG.
-
-Objectif à court terme : 
-
-[square]
-* Suppression de l'attribut `Users` + les methodes associées
-* Créer la méthode `createFormation` afin de transformer un `Program` en une `Formation`.
-* Compléter la méthodes `fetchFormations` afin de récuperer toutes les formations du département MIDO et non pas juste le M1 MIAGE App.
-* Modifier la méthode `fetchSubjects` afin de récupérer tous les cours en fonction des formations récupérées avec la méthode `fetchFormations`.
-* S'assurer que tous les professeurs soient récupérés grace à la méthode `fetchTeachers`.
-* Rédaction des tests unitaires associés.
-
-=== Equipe 2 : SVG - Camille et Raphaël
-
-Pré-requis : Comprendre le procédé de génération du SVG; Création des settings, récupération des données mais surtout, la création des objets graphiques (`DrawerSVGGen`) et la définition des positions (`ResponsiveSVG`)
-
-Mission : Reprendre les objectifs de l’itération 2, les modifications porterons sur la classe ResponsiveSVG du package `svg_generator`. Implémenter une nouvelle méthode, `controlSettings`, permettant le contrôle de la position des éléments graphiques. Modifier la méthode `defineObjectsPosition` pour que  le calcul des positions se fasse en fonction des listes de cours par formation.
-
-Détail des objectifs :
-
-[square]
-* Dans `defineObjectsPosition`, modifier le calcul de l’OffsetY en utilisant la plus longue liste de cours du niveau dessus (grade inférieur).
-* Dans `defineObjectsPosition`, modifier le calcul de l’OffsetX en utilisant la largeur de la liste de cours de la formation précédente (dans le même grade, à gauche)
-* La méthode `controlSettings` devra contrôler si un élément graphique sort de la zone d’écriture (Canvas-Marges) et s’il y a chevauchements des éléments graphiques
-* Créer une map ayant pour clé sa formation et pour valeur sa position.
-
-Aide et précisions:
-
-[square]
-* Utiliser le nombre de cours par formation pour calculer la longueur d’une liste de cours
-* Utiliser le plus long intitulé de cours d’une formation pour calculer la largeur de sa liste de cours
-* Les longueurs et largeurs des listes de cours correspondent à un nombre de pixels. Il faut donc récupérer la hauteur de la police et la longueur du texte grâce au package `java.awt.FontMetrics`, ajouter des décalages absolus, stocker ces éléments en variables de classe et les utiliser dans le calcul des positions. Cliquez https://docs.oracle.com/javase/tutorial/2d/text/measuringtext.html[ici] pour avoir plus d'informations sur la mesure de le police d'écriture.
-* Vous pouvez partir de la branch dev-SVG2 ou de la branche master. Dev-SVG2 propose une évolution conceptuelle mineure en utilisant le grade au lieu de faire une recherche de caractères dans le libellé de la formation et récupère le nombre max de cours  par grade.
-
-=== Equipe 3 : SMPO Jérémie Brulé et Marcellino Dour 
-
-* Support aux binômes de développeurs
-* Création des issues 
-* Vérification de la cohérence du code et création des pull request
-* Evol for compile sur master
-* Mise-en-place du workflow
-
-== Objectif itération 4 JAVA
-
-=== Equipe 1 : BDD - Sarra et Marcellino
-
-[square]
-* Analyser ROF Database en vue d'adapter le code et pouvoir récupérer les noms des Program, Course... 
-* Récupérer les managingTeacher de chaque cours / formation. 
-* Récupérer toute autre information pertinente pour la génération du SVG (Exemple pré-requis et tags)
-* Récupérer les mentions selon une recherche dans les mentionName (et non pas en mettant les clés en dur): mots clés: Mathématiques, informatique, MIAGE...
-* Rédaction des tests unitaires concernant les nouvelles informations récupérées. 
-
-Précisions:
-
-[square]
-* Les mentions correspondant aux formations de MIDO ne sont plus disponibles sur ROF. Pour les tests, on utilisera alors les mentions présentes à ce jour. Cependant il faut faire en sorte que le code soit le plus général possible et non dépendant des mentions choisies.  
-
-=== Equipe 2 : SVG - Camille et Raphaël
-
-Missions : Adapter l'affichage lorsque l'utilisateur séléctionne uniquement Licence ou Master pour afficher le SVG. Clarifier le code afin de le rendre plus clair et d'éviter les redondances, particulièrement présentes dans le code préexistant. Enfin, réaliser des tests unitaires associés aux dernières fonctionnalités ajoutées.
-
-Pour ce faire :
-
-[square]
-* Redéfinir les positions des formations en prenant en compte les Settings entrés par l'utilisateur quant à l'affichage des différents niveaux. Ces modifications seront effectuées dans la classe `ResponsiveSVG`, plus particulièrement dans les méthodes `defineObjectsPosition` et `associatePositions`.
-* Ne pas afficher de flèches entre des objects qui ne sont pas affichées (actuellement, il apparait dans le SVG des flèches reliant une formation ou une matière à du vide si on ne fait apparaître qu'un seul niveau). Il faudra effectuer ces modifications dans le classe `DrawerSVGGen`.
-* Clarifier et restructurer le code dans les classes `DrawerSVGGen` et `ResponsiveSVG`.
-
-=== Equipe 3 : SMPO Jérémie Brulé et Zhenyi Guo 
-
-* Support aux binômes de développeurs
-* Création des issues 
-* Vérification de la cohérence du code et création des pull request
-* Supression de la phase d'identification
