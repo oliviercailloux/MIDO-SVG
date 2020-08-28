@@ -4,7 +4,7 @@
 :artifactId: mido-svg
 :repository: MIDO-SVG
 
-image:https://github.com/{gitHubUserName}/{repository}/workflows/Maven%20CI/badge.svg["Build Status", link="https://github.com/{gitHubUserName}/{repository}/actions"]
+image:https://github.com/{gitHubUserName}/{repository}/workflows/Maven%20verify/badge.svg["Build Status", link="https://github.com/{gitHubUserName}/{repository}/actions"]
 
 A Java project developed by students during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in https://dauphine.psl.eu/formations/licences/informatique-des-organisations/l3-methodes-informatiques-appliquees-pour-la-gestion-des-entreprises[L3 MIAGE Alternance]).
 
