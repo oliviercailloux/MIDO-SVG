@@ -1,4 +1,4 @@
-package com.github.cocolollipop.mido_svg.svg_generator;
+package io.github.oliviercailloux.mido_svg.svg_generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

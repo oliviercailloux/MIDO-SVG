@@ -1,4 +1,4 @@
-package com.github.cocolollipop.mido_svg.svg_generator;
+package io.github.oliviercailloux.mido_svg.svg_generator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
