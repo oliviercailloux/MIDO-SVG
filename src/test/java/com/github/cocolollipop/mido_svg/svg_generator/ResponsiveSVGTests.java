@@ -3,8 +3,10 @@ package com.github.cocolollipop.mido_svg.svg_generator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import com.github.cocolollipop.mido_svg.database.DataBase;
-import com.github.cocolollipop.mido_svg.university.components.Formation;
+import io.github.oliviercailloux.mido_svg.database.DataBase;
+import io.github.oliviercailloux.mido_svg.svg_generator.ResponsiveSVG;
+import io.github.oliviercailloux.mido_svg.svg_generator.Settings;
+import io.github.oliviercailloux.mido_svg.university.components.Formation;
 
 import java.awt.Point;
 import java.util.List;

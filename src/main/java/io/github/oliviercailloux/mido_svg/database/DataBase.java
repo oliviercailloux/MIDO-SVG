@@ -1,4 +1,4 @@
-package com.github.cocolollipop.mido_svg.svg_generator;
+package io.github.oliviercailloux.mido_svg.database;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ import io.github.oliviercailloux.mido_svg.xml.jaxb.model.Tag;
  *
  */
 
-public class TestsDatabase {
+public class DataBase {
 
 	private Department department;
 
@@ -45,7 +45,7 @@ public class TestsDatabase {
 
 	private List<String> users;
 
-	public TestsDatabase() {
+	public DataBase() {
 		// default settings
 		this.settings = new Settings(true, true, true, true, true, true, true, "A4");
 		this.teachers = new HashMap<>();
@@ -68,7 +68,7 @@ public class TestsDatabase {
 
 	}
 
-	public TestsDatabase(Settings settings) {
+	public DataBase(Settings settings) {
 		this.teachers = new HashMap<>();
 		initTeachers();
 		this.formationsMap = new HashMap<>();
@@ -245,7 +245,7 @@ public class TestsDatabase {
 		// Add prerequisites of each subject
 
 		logique.addListOfPrerequisites(proba); // It means that logique has
-		// proba as prerequisites
+												// proba as prerequisites
 
 	}
 
@@ -284,7 +284,7 @@ public class TestsDatabase {
 		for (int i = 0; i < this.getFormations().size(); i++) {
 			System.out.println(
 					"Pour l\'annee" + this.getFormations().get(i).getGrade() + this.getFormations().get(i).getFullName()
-					+ " a " + this.getFormations().get(i).getAvailableFormations().size());
+							+ " a " + this.getFormations().get(i).getAvailableFormations().size());
 
 			if (this.getFormations().get(i).getAvailableFormations().size() == 0) {
 				System.out.println("Pas de formation accessible");
@@ -371,4 +371,3 @@ public class TestsDatabase {
 	}
 
 }
-
