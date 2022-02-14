@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.Display;
 /**
  * Utility class for managing OS resources associated with SWT controls such as colors, fonts, images, etc.
  * <p>
- * !!! IMPORTANT !!! Application code must explicitly invoke the <code>dispose()</code> method to release the
+ * !!! IMPORTANT !!! Application code must explicitly invoke the {@code dispose()} method to release the
  * operating system resources managed by cached objects when those objects and OS resources are no longer
  * needed (e.g. on application shutdown)
  * <p>
@@ -151,7 +151,7 @@ public class SWTResourceManager {
 	 * @param clazz
 	 *            the {@link Class} relative to which to find the image
 	 * @param path
-	 *            the path to the image file, if starts with <code>'/'</code>
+	 *            the path to the image file, if starts with {@code '/'}
 	 * @return the {@link Image} stored in the file at the specified path
 	 */
 	public static Image getImage(Class<?> clazz, String path) {

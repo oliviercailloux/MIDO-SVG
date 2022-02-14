@@ -1,16 +1,9 @@
-= Diagram Documentation File
+= Documentation
 
-== Table of contents
+See: link:TODO.adoc[TODO’s].
 
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#general[General]
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#database[Database]
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#rof-database[ROF Database]
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#svg[SVG]
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#university[University]
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#paper[Paper]
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#view[View]
-* https://github.com/marcellinodour/MIDO-SVG/tree/master/Doc#xml[XML]
-
+== Original description (to be translated and adapted)
+Le département MIDO propose plusieurs parcours, contenant pour certains des cours à option, avec des passerelles entre certains parcours. Il est difficile pour un enseignant extérieur (ou débutant) de se repérer dans l’offre de cours et de voir comment son cours s’articule avec les cours existants. Une manière de pallier ce problème consiste à représenter graphiquement l’offre de cours et les relations entre les cours. Cependant, de tels dessins requièrent du temps pour être bien faits, et deviennent rapidement obsolète. Ce projet vise à génération automatique de diagrammes au format SVG représentant des organigramme des cours et autres informations liées.
 
 == General
 === MIDO-SVG Diagram test

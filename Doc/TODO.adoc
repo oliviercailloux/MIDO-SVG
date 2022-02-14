@@ -1,0 +1,50 @@
+= TODO
+
+The current program is able to draw an SVG, but does not get its data from Dauphine’s databases. Its design is also quite brittle, so we’ll need to start with robustifying this.
+
+* Get rid of JUnit 4 (or document the obstacles thereof)
+* Replace classes `Querier`, `QueriesHelper` and `XmlUtils` by a suitable library (ask me for the reference) for accessing ROF (Référentiel des Offres de Formation), Dauphine (you should first obtain access from DSI, Direction des Systèmes d’Information)
+* Move the Papyrus specific files to `Doc/Papyrus/`, export the diagrams to SVG, move them to `Doc/Papyrus/Diagrams/`, remove the files that are not referenced (or reference them if they are useful)
+* Rename package `io.github.oliviercailloux.mido_svg.university.components` to `io.github.oliviercailloux.mido_svg.old.university.components`.
+* Design and create a new `Teacher` class that uses fields similar to the current `Teacher` class, but that is immutable.
+* Design and create a new `Course` class that uses fields similar to the current `Subject` class, but that is immutable. It doesn’t have the `Tag`, `Formation` and `point` fields.
+* Design and create a new `UniversityProgram` class that represents a set of courses, such as the ones found https://dauphine.psl.eu/en/training/masters-degrees/computer-science/masters-degree-in-business-informatics-miage-year-1/program[here]. Get inspiration from the current `Formation` class. (Immutable as well.)
+* Design and create a new `ProgramQuerier` class with a method `getTeacher` that mimics the one of the `Querier` in the library (see above), and returns a `Teacher` instance.
+* Add a method `getCourse()`
+* Add a method `getUniversityProgram()`, which retrieves all the related courses
+* Use Apache Batik’s SVG DOM API to create an SVG that displays a simple course
+* Design a way of parameterizing this drawing in view of further generalization (to be discussed)
+* You drawing class should be able to draw a whole university program instance
+
+== Older requirements (to be translated and adapted)
+* On peut afficher, en ligne de commande, la liste des cours de la L3 MIAGE alternance récupérée à partir de ROF (voir `Querier` et  https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO]). Simplifier `Subject` pour ce faire (sans les informations de position graphique), ou créer une classe `Course`. 
+* Généraliser pour permettre l’affichage de la M1 MIAGE alternance, ou autre formation de MIDO. Simplifier `Formation` ou créer `Training` pour ce faire, une instance contenant une seule année (par exemple la L3).
+* Un cours a une URL qui envoie vers le programme sur le site de Dauphine
+* Pouvoir récupérer et afficher les formations, de L3 à M2 alternance, depuis la ligne de commande, selon les options précisées parmi L3, M1, M2.
+* Une formation a une URL (https://dauphine.psl.eu/formations/licences/informatique-des-organisations/l3-methodes-informatiques-appliquees-pour-la-gestion-des-entreprises/formation par exemple) et un entier indiquant le niveau d’étude (de BAC+1 à BAC+5)
+* Concevoir une classe `Positioner` qui reçoit une taille de police et un ensemble de formations, et calcule pour chaque cours la taille (longueur et largeur, entiers) requise pour afficher le cours, et pour chaque formation, la taille requise pour afficher la formation (selon les tailles des cours). Étudier pour ce faire la logique mise en place dans le package `svg_generator`.
+* `Positioner` doit pouvoir renvoyer la position absolue d’un cours ou d’une formation, en imaginant qu’on les empile (cf. dessins existants et https://github.com/oliviercailloux/projets/blob/master/MIDO%20SVG/MIDO.svg[dessin] à la main).
+* Simplifier les classes de dessin actuelles pour leur faire dessiner à partir d’un `Positioner`. Voir aussi application https://github.com/oliviercailloux/Test-SVG[`Test SVG`] et `2D Library`.
+* Ajouter les responsables, les enseignants, etc.
+* Une classe `DiagramPreferences` qui représente les préférences d’un utilisateur concernant ce que le dessin doit montrer : filière (license, master, ou les deux) ; responsables ? ; enseignants ? ; prérequis ? (des booléens).
+* Donner au `Positioner` des options indiquant si on veut les responsables, les enseignants, etc. (cf. point ci-dessus).
+* Calcul automatique de l’espace entre les cours et formation pour centrer le dessin sur une taille donnée ; calcul automatique de la police (partant d’une taille donnée et en réduisant si nécessaire) pour que toutes les informations tiennent sur un canevas donné
+* Pouvoir lire et écrire les préférences de l’utilisateur (`DiagramPreferences`) au format Json.
+* Inclure un fichier `config.json` avec des préférences par défaut pour l’utilisateur (`DiagramPreferences`).
+* Généraliser à d’autres départements (LSO, …)
+* GUI pour éditer ses préférences d’affichage : le programme lit le fichier au démarrage, permet la modification, et écrit dans le fichier
+* GUI pour générer le dessin à partir de ses préférences : on édite ses préférences et ça re-génère automatiquement un dessin
+* Étudier la possibilité d’inclure une information de pré-requis entre cours
+* Un serveur web qui renvoie un diagramme à la demande
+* Génération de diagramme en PNG ou autre
+
+== Evolution Prévue (objectif à long terme)
+
+Après avoir pris connaissance de l’existant, nous nous sommes aperçus que les évolutions à concevoir se portent essentiellement sur :
+
+[square]
+* La récupérationd de la base de données Dauphine
+* La génération d'un fichier SVG fonctionnel
+* L’esthétique GUI, aujourd’hui les différents formulaires sont incomplets et non responsive.
+* Fichier tags, à ce jour la gestion des tags est static.
+* La liste des utilisateurs habilités, dans notre application, nous constatons que seuls un certain nombre d’user est habilité à utiliser l’application. (ocailloux, ikram, cocolollipop, romain, jules)
