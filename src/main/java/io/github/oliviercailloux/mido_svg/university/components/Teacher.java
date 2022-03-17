@@ -5,101 +5,100 @@ package io.github.oliviercailloux.mido_svg.university.components;
  */
 public class Teacher {
 
-	private String address;
+  private String address;
 
-	private String firstName;
+  private String firstName;
 
-	private String gender;
+  private String gender;
 
-	private String lastName;
+  private String lastName;
 
-	private String phone;
+  private String phone;
 
-	private int posX;
+  private int posX;
 
-	private int posY;
+  private int posY;
 
-	public Teacher() {
-		this.lastName = "";
-		this.firstName = "";
-		this.posX = 0;
-		this.posY = 0;
+  public Teacher() {
+    this.lastName = "";
+    this.firstName = "";
+    this.posX = 0;
+    this.posY = 0;
 
-	}
+  }
 
-	public Teacher(String lname, String fname, int x, int y) {
-		this.lastName = lname;
-		this.firstName = fname;
-		this.posX = x;
-		this.posY = y;
+  public Teacher(String lname, String fname, int x, int y) {
+    this.lastName = lname;
+    this.firstName = fname;
+    this.posX = x;
+    this.posY = y;
 
-	}
+  }
 
-	public String getAddress() {
-		return address;
-	}
+  public String getAddress() {
+    return address;
+  }
 
-	public String getFirstName() {
-		return firstName;
-	}
+  public String getFirstName() {
+    return firstName;
+  }
 
-	/**
-	 * Returns the full name (LastName + FirstName) of a teacher
-	 * 
-	 */
-	public String getFullNameTeacher() {
-		return lastName + " " + firstName;
-	}
+  /**
+   * Returns the full name (LastName + FirstName) of a teacher
+   * 
+   */
+  public String getFullNameTeacher() {
+    return lastName + " " + firstName;
+  }
 
-	public String getGender() {
-		return gender;
-	}
+  public String getGender() {
+    return gender;
+  }
 
-	/*
-	 * Getters And Setters
-	 */
-	public String getLastName() {
-		return lastName;
-	}
+  /*
+   * Getters And Setters
+   */
+  public String getLastName() {
+    return lastName;
+  }
 
-	public String getPhone() {
-		return phone;
-	}
+  public String getPhone() {
+    return phone;
+  }
 
-	public int getPosX() {
-		return posX;
-	}
+  public int getPosX() {
+    return posX;
+  }
 
-	public int getPosY() {
-		return posY;
-	}
+  public int getPosY() {
+    return posY;
+  }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
-	public void setFirstName(String firstNameTeacher) {
-		this.firstName = firstNameTeacher;
-	}
+  public void setFirstName(String firstNameTeacher) {
+    this.firstName = firstNameTeacher;
+  }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
 
-	public void setLastName(String lastNameTeacher) {
-		this.lastName = lastNameTeacher;
-	}
+  public void setLastName(String lastNameTeacher) {
+    this.lastName = lastNameTeacher;
+  }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
+  public void setPosX(int posX) {
+    this.posX = posX;
+  }
 
-	public void setPosY(int posY) {
-		this.posY = posY;
-	}
-
+  public void setPosY(int posY) {
+    this.posY = posY;
+  }
 }

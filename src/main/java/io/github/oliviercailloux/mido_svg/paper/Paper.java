@@ -6,35 +6,35 @@ package io.github.oliviercailloux.mido_svg.paper;
  */
 public class Paper {
 
-	private int dimXCanvas;
+  private int dimXCanvas;
 
-	private int dimYCanvas;
+  private int dimYCanvas;
 
-	public Paper() {
-		this.dimYCanvas = 0;
-		this.dimXCanvas = 0;
+  public Paper() {
+    this.dimYCanvas = 0;
+    this.dimXCanvas = 0;
 
-	}
+  }
 
-	public Paper(int x, int y) {
-		this.setDimXCanvas(x);
-		this.setDimYCanvas(y);
+  public Paper(int x, int y) {
+    this.setDimXCanvas(x);
+    this.setDimYCanvas(y);
 
-	}
+  }
 
-	public int getDimXCanvas() {
-		return dimXCanvas;
-	}
+  public int getDimXCanvas() {
+    return dimXCanvas;
+  }
 
-	public int getDimYCanvas() {
-		return dimYCanvas;
-	}
+  public int getDimYCanvas() {
+    return dimYCanvas;
+  }
 
-	public void setDimXCanvas(int dimXCanvas) {
-		this.dimXCanvas = dimXCanvas;
-	}
+  public void setDimXCanvas(int dimXCanvas) {
+    this.dimXCanvas = dimXCanvas;
+  }
 
-	public void setDimYCanvas(int dimYCanvas) {
-		this.dimYCanvas = dimYCanvas;
-	}
+  public void setDimYCanvas(int dimYCanvas) {
+    this.dimYCanvas = dimYCanvas;
+  }
 }
