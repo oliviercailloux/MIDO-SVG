@@ -2,9 +2,15 @@
 
 The current program is able to draw an SVG, but does not get its data from Dauphine’s databases. Its design is also quite brittle, so we’ll need to start with robustifying this.
 
+* Add a Use case into your model: `Draw SVG`, connected to a `Command line user` actor, into a `System` subject.
+* Export it as SVG (see below), integrate it at the start of your main documentation, explain briefly that this will be our main focus: using (as a start) fake data, we will make sure that we are able to programatically draw an SVG from the command line.
+* Add a UC: `Fake data`, connected to a `Main` actor, into a `Data` subject. Add a Use relationship from `Draw SVG` to this one. Export it, integrate it and explain that we will need this for our main UC: it simply produces a set of fake data for use by the exporter. Explain that there is already something that does this (refer to the correct mechanism) but that we will need to improve it to be able to extend it afterwards.
+* Move the Papyrus model file to `Doc/Papyrus/Model.di` (for consistency with other projects in this course), and related ones similarly
+* Move the diagrams into the `Doc/Papyrus/Diagrams` folder; transform them all to https://github.com/oliviercailloux/UML/blob/main/Papyrus/Various.adoc#graphics-format[SVG]`, remove those that are not used, check that they are up-to-date
 * Get rid of JUnit 4 (or document the obstacles thereof)
+* Get rid of commons-io (or document the obstacles thereof)
+* Replace the `javax…` dependencies
 * Replace classes `Querier`, `QueriesHelper` and `XmlUtils` by a suitable library (ask me for the reference) for accessing ROF (Référentiel des Offres de Formation), Dauphine (you should first obtain access from DSI, Direction des Systèmes d’Information)
-* Move the Papyrus specific files to `Doc/Papyrus/`, export the diagrams to SVG, move them to `Doc/Papyrus/Diagrams/`, remove the files that are not referenced (or reference them if they are useful)
 * Rename package `io.github.oliviercailloux.mido_svg.university.components` to `io.github.oliviercailloux.mido_svg.old.university.components`.
 * Design and create a new `Teacher` class that uses fields similar to the current `Teacher` class, but that is immutable.
 * Design and create a new `Course` class that uses fields similar to the current `Subject` class, but that is immutable. It doesn’t have the `Tag`, `Formation` and `point` fields.
