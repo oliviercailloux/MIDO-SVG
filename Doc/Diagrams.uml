@@ -1190,4 +1190,27 @@ The class Authenticator represents an object that knows how to obtain authentica
     <ownedEnd xmi:type="uml:Property" xmi:id="_qmSE8LQVEey5l6OCFhrmew" name="draw svg" type="_mthDoLQVEey5l6OCFhrmew" association="_qmQ20LQVEey5l6OCFhrmew"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_qmSE8bQVEey5l6OCFhrmew" name="command line user" type="_ih5-0LQVEey5l6OCFhrmew" association="_qmQ20LQVEey5l6OCFhrmew"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_niUjsLQgEey5l6OCFhrmew" name="Command line user"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_vq_T8LQgEey5l6OCFhrmew" name="System" useCase="_wst2sLQgEey5l6OCFhrmew">
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_wst2sLQgEey5l6OCFhrmew" name="Draw SVG" subject="_vq_T8LQgEey5l6OCFhrmew"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_zB4-ULQgEey5l6OCFhrmew" memberEnd="_zB6McbQgEey5l6OCFhrmew _zB6McrQgEey5l6OCFhrmew">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zB5lYLQgEey5l6OCFhrmew" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zB6McLQgEey5l6OCFhrmew" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_zB6McbQgEey5l6OCFhrmew" name="draw svg" type="_wst2sLQgEey5l6OCFhrmew" association="_zB4-ULQgEey5l6OCFhrmew"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_zB6McrQgEey5l6OCFhrmew" name="command line user" type="_niUjsLQgEey5l6OCFhrmew" association="_zB4-ULQgEey5l6OCFhrmew"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_0B5CwLQgEey5l6OCFhrmew" name="Main"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_84JRwLQgEey5l6OCFhrmew" name="Data" useCase="_-GJ9ALQgEey5l6OCFhrmew">
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_-GJ9ALQgEey5l6OCFhrmew" name="Fake data" subject="_84JRwLQgEey5l6OCFhrmew"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_AYDuMLQhEey5l6OCFhrmew" memberEnd="_AYEVQrQhEey5l6OCFhrmew _AYEVQ7QhEey5l6OCFhrmew">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_AYEVQLQhEey5l6OCFhrmew" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_AYEVQbQhEey5l6OCFhrmew" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_AYEVQrQhEey5l6OCFhrmew" name="fake data" type="_-GJ9ALQgEey5l6OCFhrmew" association="_AYDuMLQhEey5l6OCFhrmew"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_AYEVQ7QhEey5l6OCFhrmew" name="main" type="_0B5CwLQgEey5l6OCFhrmew" association="_AYDuMLQhEey5l6OCFhrmew"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_CNdJkLQhEey5l6OCFhrmew" client="_wst2sLQgEey5l6OCFhrmew" supplier="_-GJ9ALQgEey5l6OCFhrmew"/>
 </uml:Model>
