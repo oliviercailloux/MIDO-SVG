@@ -15,3 +15,4 @@ See the https://github.com/oliviercailloux/{repository}/blob/master/Doc/README.a
 == Original description (to be translated)
 L’objectif premier de ce projet est de créer une bibliothèque qui permet à un utilisateur de créer un dessin (au format SVG) représentant au moyen d’un arbre, les formations offertes dans le département MIDO. Il est aussi possible d’afficher les détails des formations, les enseignants, etc. L’idée est de généraliser et dynamiser la bibliothèque afin qu’elle puisse être utilisée à une plus grande échelle, ce en récupérant les informations sur le site de l’université.
 
+Our main focus will be to use Fake Data as a start. We will make sure that we are able to programatically an SVG from the command line.
