@@ -18,9 +18,9 @@ L’objectif premier de ce projet est de créer une bibliothèque qui permet à 
 == The focus of our part
 Our main focus will be to use Fake Data as a start. We will make sure that we are able to programatically an SVG from the command line.
 
-image::./Doc/Diagrams/MIDO_SVG.SVG[MIDO_SVG Diagram, 700]
+image::./Doc/Papyrus/Diagrams/MIDO_SVG.SVG[MIDO_SVG Diagram, 700]
 
 == Where does data come from 
 It simply produces a set of fake data for use by the exporter. Currently, the program uses fake data but we will extend it to be able to take data from Dauphine DataBase. The request is done thanks to Dauphine API.
 
-image::./Doc/Diagrams/MIDO_SVG_Extends.SVG[MIDO_SVG_Extends Diagram, 700]
+image::./Doc/Papyrus/Diagrams/MIDO_SVG_Extends.SVG[MIDO_SVG_Extends Diagram, 700]
