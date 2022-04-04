@@ -1179,4 +1179,15 @@ The class Authenticator represents an object that knows how to obtain authentica
     <packagedElement xmi:type="uml:Class" xmi:id="_pQLr4LPrEeq6VNuZebMdVQ" name="Graphics"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Dependency" xmi:id="_ofj5ULPBEeqMENHMhXFJpw" name="Get paper size" client="_l-jhoG2jEeq7r7ozzGhjkA" supplier="_wggV8IeYEeqlZY9rOCAo-w"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_ih5-0LQVEey5l6OCFhrmew" name="command line user"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_ldsagLQVEey5l6OCFhrmew" name="System" useCase="_mthDoLQVEey5l6OCFhrmew">
+    <ownedUseCase xmi:type="uml:UseCase" xmi:id="_mthDoLQVEey5l6OCFhrmew" name="Draw SVG" subject="_ldsagLQVEey5l6OCFhrmew"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_qmQ20LQVEey5l6OCFhrmew" memberEnd="_qmSE8LQVEey5l6OCFhrmew _qmSE8bQVEey5l6OCFhrmew">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_qmRd4LQVEey5l6OCFhrmew" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_qmRd4bQVEey5l6OCFhrmew" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_qmSE8LQVEey5l6OCFhrmew" name="draw svg" type="_mthDoLQVEey5l6OCFhrmew" association="_qmQ20LQVEey5l6OCFhrmew"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_qmSE8bQVEey5l6OCFhrmew" name="command line user" type="_ih5-0LQVEey5l6OCFhrmew" association="_qmQ20LQVEey5l6OCFhrmew"/>
+  </packagedElement>
 </uml:Model>
