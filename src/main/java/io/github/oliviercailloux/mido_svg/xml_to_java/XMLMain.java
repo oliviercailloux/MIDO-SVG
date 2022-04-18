@@ -14,7 +14,6 @@ import java.util.Map.Entry;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import junit.framework.TestCase;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -28,7 +27,7 @@ import org.xml.sax.SAXException;
  * @author Romano
  *
  */
-public class XMLMain extends TestCase {
+public class XMLMain {
   public static void main(final String[] args)
       throws ParserConfigurationException, SAXException, IOException {
     // some tests
@@ -248,7 +247,11 @@ public class XMLMain extends TestCase {
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
     Document document = dBuilder.parse(myXML.openStream());
-    assertNotNull(document);
-    assertTrue(document.getFirstChild().getNodeName() == "CDM");
+    if (document == null) {
+    	throw new SAXException("Document null");
+    }
+    if (document.getFirstChild().getNodeName() != "CDM") {
+    	throw new SAXException("Wrong child node name");
+    }
   }
 }
