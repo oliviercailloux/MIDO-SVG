@@ -48,6 +48,19 @@ public final class UniversityProgram {
 		    this.shown = shown;
 
 		  }
+		  
+		  public UniversityProgram(String intitule, String name, int grade, 
+				   String admisssion, boolean shown) {
+		    this.intitule = intitule;
+		    this.fullName = name;
+		    this.grade = grade;
+		    this.courses = new Set<Course>();
+		    this.availableUniversityProgram = new Set<Course>();
+		    this.admisssion = admisssion;
+		    this.teacher = new Teacher();
+		    this.shown = shown;
+
+		  }
 
 		  public void addavailableUniversityProgram(UniversityProgram universityProgram) {
 		    this.availableUniversityProgram.add(universityProgram);
@@ -73,7 +86,7 @@ public final class UniversityProgram {
 		   * @param AllSubjects
 		   */
 
-		  public void fillsubjectList(Set<Course> AllSubjects) {
+		  public void fillCourseList(Set<Course> AllSubjects) {
 		    for (Course c : AllSubjects) {
 		      if (c.getLevel().getFullName() == this.getFullName()) {
 		        this.addCourseToList(c);
