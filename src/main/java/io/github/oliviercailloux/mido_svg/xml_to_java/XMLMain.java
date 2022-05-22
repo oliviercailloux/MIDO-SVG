@@ -250,7 +250,7 @@ public class XMLMain {
     if (document == null) {
     	throw new SAXException("Document null");
     }
-    if (document.getFirstChild().getNodeName() != "CDM") {
+    if (document.getFirstChild().getNodeName().equals("CDM") == false) {
     	throw new SAXException("Wrong child node name");
     }
   }
