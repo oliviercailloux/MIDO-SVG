@@ -26,10 +26,8 @@ public final class Course {
 		this.listOfPrerequisites = new ArrayList<>();
 	}
 	
-	public Course(String title, Teacher responsible, int credit, List<Course> list) {
-		this.credit = credit;
-		this.title = title;
-		this.responsible = responsible;
+	public Course(String title, Teacher responsible, double courseCredit, List<Course> list) {
+		this(title, courseCredit, responsible);
 		this.listOfPrerequisites = list;
 	}
 	
