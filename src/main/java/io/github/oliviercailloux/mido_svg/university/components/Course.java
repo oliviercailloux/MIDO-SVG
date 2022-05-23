@@ -10,32 +10,27 @@ import java.util.List;
  */
 public final class Course {
 
-	private double credit; // Number of credits of the course
-	private List<Course> listOfPrerequisites; // The courses needed to attend to the course
-	private Teacher responsible; // The teacher who is responsible of the course
-	private String title; // The title name of the course
+	/** Number of credits of the course */
+	private double credit;
+	/** The courses needed to attend to the course */
+	private List<Course> listOfPrerequisites; 
+	/** The teacher who is responsible of the course */
+	private Teacher responsible; 
+	/** The title name of the course */
+	private String title;
 	
-	public Course(String title, double courseCredit) {
-		this.responsible = new Teacher();
+	public Course(String title, double courseCredit, Teacher responsible) {
+		this.responsible = responsible;
 		this.title = title;
 		this.credit = courseCredit;
 		this.listOfPrerequisites = new ArrayList<>();
 	}
 	
-	public Course(String title, Teacher responsible, int credit) {
+	public Course(String title, Teacher responsible, int credit, List<Course> list) {
 		this.credit = credit;
 		this.title = title;
 		this.responsible = responsible;
-		this.listOfPrerequisites = new ArrayList<>();
-	}
-
-	/**
-	   * This subroutine is used to add a course in the list of prerequisites 
-	   *
-	   * @param course
-	*/
-	public void addListOfPrerequisites(Course course) {
-	    this.listOfPrerequisites.add(course);
+		this.listOfPrerequisites = list;
 	}
 	
 	/**
