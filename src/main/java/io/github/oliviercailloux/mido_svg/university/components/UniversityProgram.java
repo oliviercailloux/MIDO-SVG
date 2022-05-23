@@ -34,7 +34,6 @@ public final class UniversityProgram {
 
 		  protected Category category;
 
-		  protected boolean shown;
 
 		  public UniversityProgram(String intitule, String name, int grade, Set<Course> courses, 
 				  Set<UniversityProgram> availableUniversityProgram, String admisssion, Teacher teacher, boolean shown) {
@@ -45,54 +44,9 @@ public final class UniversityProgram {
 		    this.availableUniversityProgram = availableUniversityProgram;
 		    this.admisssion = admisssion;
 		    this.teacher = teacher;
-		    this.shown = shown;
 
 		  }
 		  
-		  public UniversityProgram(String intitule, String name, int grade, 
-				   String admisssion, boolean shown) {
-		    this.intitule = intitule;
-		    this.fullName = name;
-		    this.grade = grade;
-		    this.courses = new Set<Course>();
-		    this.availableUniversityProgram = new Set<Course>();
-		    this.admisssion = admisssion;
-		    this.teacher = new Teacher();
-		    this.shown = shown;
-
-		  }
-
-		  public void addavailableUniversityProgram(UniversityProgram universityProgram) {
-		    this.availableUniversityProgram.add(universityProgram);
-		  }
-		  
-		  public void deleteavailableUniversityProgram(UniversityProgram universityProgram) {
-			    this.availableUniversityProgram.remove(universityProgram);
-			  }
-
-
-		  public void addCourseToList(Course c) {
-			  	this.courses.add(c);
-		  }
-		  
-		  public void deleteCourseToList(Course c) {
-			    this.courses.remove(c);
-		  }
-
-		  /**
-		   * This function fills the courses list of a formation with subjects
-		   *
-		   *
-		   * @param AllSubjects
-		   */
-
-		  public void fillCourseList(Set<Course> AllSubjects) {
-		    for (Course c : AllSubjects) {
-		      if (c.getLevel().getFullName() == this.getFullName()) {
-		        this.addCourseToList(c);
-		      }
-		    }
-		  }
 
 		  public String getAdmisssion() {
 		    return admisssion;
@@ -103,7 +57,6 @@ public final class UniversityProgram {
 		  }
 
 		  public Enum<?> getCategory() {
-		    // TODO Auto-generated method stub
 		    return this.category;
 		  }
 
@@ -142,15 +95,4 @@ public final class UniversityProgram {
 		   * @return true or false
 		   */
 
-		  public boolean hasGotATeacher(UniversityProgram UP) {
-		    if (UP.getTeacher().getFirstName() == null && UP.getTeacher().getLastName() == null) {
-		      return false;
-		    }
-		    return true;
-
-		  }
-
-		  public boolean isShown() {
-		    return shown;
-		  }
 }
