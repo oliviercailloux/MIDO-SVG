@@ -10,26 +10,26 @@ public final class UniversityProgram {
 		    LICENCE, MASTER
 		  }
 
-		  // Application type (for example: selection based on student records )
+	 /** Application type (for example: selection based on student records ) */
 		  private String admisssion;
 
-		  // List of University program you could apply for after the current year
+		  /** List of University program you could apply for after the current year */
 		  private Set<UniversityProgram> availableUniversityProgram;
 
 		  private String fullName;
 
-		  // this name corresponds to the name with a link ref to the program
+		 /** this name corresponds to the name with a link ref to the program*/
 		  private String fullNameWithLink;
 
-		  // grade is corresponding to the year
+		  /** grade is corresponding to the year*/
 		  private int grade;
 
 		  private String intitule;
-
-		  // list of courses that contain each formation
+		  
+		  /** list of courses that contain each formation*/
 		  private Set<Course> courses;
 
-		  // the main responsible of the University Program
+		  /** the main responsible of the University Program*/
 		  private Teacher teacher;
 
 		  protected Category category;
@@ -86,13 +86,5 @@ public final class UniversityProgram {
 		  public Teacher getTeacher() {
 		    return teacher;
 		  }
-
-		  /**
-		   * hasGotATeachert see if a "formation" has got a teacher (the firstname/lastname aren't null) or
-		   * not
-		   *
-		   * @param f
-		   * @return true or false
-		   */
 
 }
