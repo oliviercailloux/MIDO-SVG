@@ -56,4 +56,3 @@ public class ControllerSVG {
     test.paint(settings, datas);
   }
 }
-

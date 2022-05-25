@@ -6,7 +6,7 @@ import java.util.Set;
 
 public final class UniversityProgram {
 	
-	 protected enum Category {
+	 public enum Category {
 		    LICENCE, MASTER
 		  }
 
@@ -30,21 +30,21 @@ public final class UniversityProgram {
 		  private Set<Course> courses;
 
 		  /** the main responsible of the University Program*/
-		  private Teacher teacher;
+		  private Teacher responsibleTeacher;
 
-		  protected Category category;
+		  public Category category;
 
 
 		  public UniversityProgram(String intitule, String name, int grade, Set<Course> courses, 
-				  Set<UniversityProgram> availableUniversityProgram, String admisssion, Teacher teacher, boolean shown) {
+				  Set<UniversityProgram> availableUniversityProgram, String admisssion, Teacher teacher,String NameWithLink) {
 		    this.intitule = intitule;
 		    this.fullName = name;
 		    this.grade = grade;
 		    this.courses = courses;
 		    this.availableUniversityProgram = availableUniversityProgram;
 		    this.admisssion = admisssion;
-		    this.teacher = teacher;
-
+		    this.responsibleTeacher = teacher;
+		    this.fullNameWithLink = NameWithLink;
 		  }
 		  
 
@@ -56,8 +56,8 @@ public final class UniversityProgram {
 		    return availableUniversityProgram;
 		  }
 
-		  public Enum<?> getCategory() {
-		    return this.category;
+		  public Category getCategory() {
+		    return category;
 		  }
 
 		  public String getFullName() {
@@ -65,18 +65,18 @@ public final class UniversityProgram {
 		  }
 
 		  public String getFullNameWithLink() {
-		    if (this.fullNameWithLink == null) {
-		      return this.fullName;
+		    if (fullNameWithLink == null) {
+		      return fullName;
 		    }
-		    return this.fullNameWithLink;
+		    return fullNameWithLink;
 		  }
 
 		  public int getGrade() {
-		    return this.grade;
+		    return grade;
 		  }
 
 		  public String getIntitule() {
-		    return this.intitule;
+		    return intitule;
 		  }
 
 		  public Set<Course> getCourses() {
@@ -84,7 +84,7 @@ public final class UniversityProgram {
 		  }
 
 		  public Teacher getTeacher() {
-		    return teacher;
+		    return responsibleTeacher;
 		  }
 
 }
