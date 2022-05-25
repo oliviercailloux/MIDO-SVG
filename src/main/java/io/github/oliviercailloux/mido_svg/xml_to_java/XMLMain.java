@@ -1,10 +1,10 @@
 package io.github.oliviercailloux.mido_svg.xml_to_java;
 
-import io.github.oliviercailloux.mido_svg.university.components.Formation;
-import io.github.oliviercailloux.mido_svg.university.components.Licence;
-import io.github.oliviercailloux.mido_svg.university.components.Master;
-import io.github.oliviercailloux.mido_svg.university.components.Subject;
-import io.github.oliviercailloux.mido_svg.university.components.Teacher;
+import io.github.oliviercailloux.mido_svg.old.university.components.Formation;
+import io.github.oliviercailloux.mido_svg.old.university.components.Licence;
+import io.github.oliviercailloux.mido_svg.old.university.components.Master;
+import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
+import io.github.oliviercailloux.mido_svg.old.university.components.Teacher;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;

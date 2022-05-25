@@ -1,8 +1,8 @@
 package io.github.oliviercailloux.mido_svg.svg_generator;
 
 import io.github.oliviercailloux.mido_svg.database.DataBase;
-import io.github.oliviercailloux.mido_svg.university.components.Formation;
-import io.github.oliviercailloux.mido_svg.university.components.Subject;
+import io.github.oliviercailloux.mido_svg.old.university.components.Formation;
+import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

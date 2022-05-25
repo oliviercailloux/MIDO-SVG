@@ -1,6 +1,6 @@
 package io.github.oliviercailloux.mido_svg.university.components;
 
-import io.github.oliviercailloux.mido_svg.university.components.Course.Category;
+import io.github.oliviercailloux.mido_svg.old.university.components.Teacher;
 import java.util.Set;
 
 
@@ -36,7 +36,8 @@ public final class UniversityProgram {
 
 
 		  public UniversityProgram(String intitule, String name, int grade, Set<Course> courses, 
-				  Set<UniversityProgram> availableUniversityProgram, String admisssion, Teacher teacher,String NameWithLink) {
+				  Set<UniversityProgram> availableUniversityProgram, String admisssion,
+				  Teacher teacher,String NameWithLink) {
 		    this.intitule = intitule;
 		    this.fullName = name;
 		    this.grade = grade;

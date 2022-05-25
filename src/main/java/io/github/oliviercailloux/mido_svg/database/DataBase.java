@@ -1,14 +1,14 @@
 package io.github.oliviercailloux.mido_svg.database;
 
+import io.github.oliviercailloux.mido_svg.old.university.components.Department;
+import io.github.oliviercailloux.mido_svg.old.university.components.Formation;
+import io.github.oliviercailloux.mido_svg.old.university.components.Licence;
+import io.github.oliviercailloux.mido_svg.old.university.components.Master;
+import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
+import io.github.oliviercailloux.mido_svg.old.university.components.Teacher;
 import io.github.oliviercailloux.mido_svg.paper.FactoryPaper;
 import io.github.oliviercailloux.mido_svg.paper.Paper;
 import io.github.oliviercailloux.mido_svg.svg_generator.Settings;
-import io.github.oliviercailloux.mido_svg.university.components.Department;
-import io.github.oliviercailloux.mido_svg.university.components.Formation;
-import io.github.oliviercailloux.mido_svg.university.components.Licence;
-import io.github.oliviercailloux.mido_svg.university.components.Master;
-import io.github.oliviercailloux.mido_svg.university.components.Subject;
-import io.github.oliviercailloux.mido_svg.university.components.Teacher;
 import io.github.oliviercailloux.mido_svg.xml.jaxb.model.Tag;
 import java.util.ArrayList;
 import java.util.HashMap;

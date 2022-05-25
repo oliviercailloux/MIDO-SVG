@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.mido_svg.university.components;
+package io.github.oliviercailloux.mido_svg.old.university.components;
 
 /**
  * A Master is a french degree, equivalent to Master's degree.
