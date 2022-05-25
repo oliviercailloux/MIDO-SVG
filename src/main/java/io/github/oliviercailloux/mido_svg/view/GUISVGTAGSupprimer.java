@@ -35,7 +35,7 @@ public class GUISVGTAGSupprimer {
 
   private List listTags;
 
-  private Map<String, io.github.oliviercailloux.mido_svg.university.components.Subject> map =
+  private Map<String, io.github.oliviercailloux.mido_svg.old.university.components.Subject> map =
       data.getSubjects();
 
   private Set<Tag> tags;
@@ -44,7 +44,7 @@ public class GUISVGTAGSupprimer {
 
   protected Shell shlSupprimerTag;
 
-  public Map<String, io.github.oliviercailloux.mido_svg.university.components.Subject> getMap() {
+  public Map<String, io.github.oliviercailloux.mido_svg.old.university.components.Subject> getMap() {
     return map;
   }
 
@@ -74,7 +74,7 @@ public class GUISVGTAGSupprimer {
   }
 
   public void
-      setMap(Map<String, io.github.oliviercailloux.mido_svg.university.components.Subject> map) {
+      setMap(Map<String, io.github.oliviercailloux.mido_svg.old.university.components.Subject> map) {
     this.map = map;
   }
 

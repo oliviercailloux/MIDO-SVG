@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.mido_svg.university.components;
+package io.github.oliviercailloux.mido_svg.old.university.components;
 
 /**
  * A licence is a french degree, equivalent to Bachelor's degree.

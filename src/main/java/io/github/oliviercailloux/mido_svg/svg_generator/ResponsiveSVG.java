@@ -1,7 +1,7 @@
 package io.github.oliviercailloux.mido_svg.svg_generator;
 
-import io.github.oliviercailloux.mido_svg.university.components.Formation;
-import io.github.oliviercailloux.mido_svg.university.components.Subject;
+import io.github.oliviercailloux.mido_svg.old.university.components.Formation;
+import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
 import java.awt.Canvas;
 import java.awt.FontMetrics;
 import java.util.ArrayList;

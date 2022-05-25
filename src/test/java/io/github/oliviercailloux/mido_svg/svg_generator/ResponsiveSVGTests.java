@@ -2,7 +2,7 @@ package io.github.oliviercailloux.mido_svg.svg_generator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import io.github.oliviercailloux.mido_svg.university.components.Formation;
+import io.github.oliviercailloux.mido_svg.old.university.components.Formation;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
