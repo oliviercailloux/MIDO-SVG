@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.mido_svg.university.components;
+package io.github.oliviercailloux.mido_svg.old.university.components;
 
 import java.util.ArrayList;
 

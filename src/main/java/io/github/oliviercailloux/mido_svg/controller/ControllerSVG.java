@@ -1,10 +1,10 @@
 package io.github.oliviercailloux.mido_svg.controller;
 
 import io.github.oliviercailloux.mido_svg.database.DataBase;
+import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
 import io.github.oliviercailloux.mido_svg.svg_generator.DrawerSVGGen;
 import io.github.oliviercailloux.mido_svg.svg_generator.ResponsiveSVG;
 import io.github.oliviercailloux.mido_svg.svg_generator.Settings;
-import io.github.oliviercailloux.mido_svg.university.components.Subject;
 import io.github.oliviercailloux.mido_svg.xml.jaxb.model.Tag;
 import java.util.List;
 import java.util.Map;

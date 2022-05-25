@@ -1,4 +1,4 @@
-package io.github.oliviercailloux.mido_svg.university.components;
+package io.github.oliviercailloux.mido_svg.old.university.components;
 
 import io.github.oliviercailloux.mido_svg.xml.jaxb.model.Tag;
 import java.awt.Point;
