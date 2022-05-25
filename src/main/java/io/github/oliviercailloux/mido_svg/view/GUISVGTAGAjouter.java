@@ -42,7 +42,7 @@ public class GUISVGTAGAjouter {
 
   private List listTags;
 
-  private Map<String, io.github.oliviercailloux.mido_svg.university.components.Subject> map =
+  private Map<String, io.github.oliviercailloux.mido_svg.old.university.components.Subject> map =
       data.getSubjects();
 
   private String selectedSubject;
