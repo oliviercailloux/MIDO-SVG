@@ -1,7 +1,7 @@
 package io.github.oliviercailloux.mido_svg.controller;
 
 import io.github.oliviercailloux.mido_svg.database.DataBase;
-import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
+import io.github.oliviercailloux.mido_svg.university.components.Course;
 import io.github.oliviercailloux.mido_svg.svg_generator.DrawerSVGGen;
 import io.github.oliviercailloux.mido_svg.svg_generator.ResponsiveSVG;
 import io.github.oliviercailloux.mido_svg.svg_generator.Settings;
@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  * Main Controller
- *
+ * A revoir car certaines methodes appelees n'existent plus desormais : Binome Java
  */
 public class ControllerSVG {
 
@@ -31,7 +31,7 @@ public class ControllerSVG {
       jaxb.createTagsFileXML(username);
       List<Tag> listOfTags = jaxb.readTagsFileXML(username);
       /** we add the tags **/
-      datas.setTags(listOfTags);
+      //datas.setTags(listOfTags);
       /** We adapt the drawing according to the settings */
       ResponsiveSVG responsive = new ResponsiveSVG();
       responsive.defineObjectsPosition(datas.getFormations(), settings.getWidth(),
@@ -41,16 +41,16 @@ public class ControllerSVG {
       System.out.println("Vous n\'êtes pas autorisé à accéder à cette page");
     }
     /** Just to print results **/
-    Map<String, Subject> map = datas.getSubjects();
+    Map<String, Course> map = datas.getSubjects();
     for (String name : map.keySet()) {
 
       String key = name.toString();
       String value = map.get(name).getTitle();
       System.out.println("Liste de tags pour " + key + " :" + value);
-      Set<Tag> tags = map.get(name).getTags();
-      for (Tag tag : tags) {
+      //Set<Tag> tags = map.get(name).getTags();
+      /*for (Tag tag : tags) {
         System.out.println(tag.getName());
-      }
+      }*/
     }
     /** We paint the result */
     test.paint(settings, datas);
