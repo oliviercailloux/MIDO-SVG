@@ -1,9 +1,9 @@
 package io.github.oliviercailloux.mido_svg.xml_to_java;
 
-import io.github.oliviercailloux.mido_svg.old.university.components.Formation;
+import io.github.oliviercailloux.mido_svg.university.components.UniversityProgram;
 import io.github.oliviercailloux.mido_svg.old.university.components.Licence;
 import io.github.oliviercailloux.mido_svg.old.university.components.Master;
-import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
+import io.github.oliviercailloux.mido_svg.university.components.Course;
 import io.github.oliviercailloux.mido_svg.old.university.components.Teacher;
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +26,7 @@ import org.xml.sax.SAXException;
  *
  * @author Romano
  *
+ * A revoir car certaines methodes appelees n'existent plus desormais : Binome Java
  */
 public class XMLMain {
   public static void main(final String[] args)
@@ -55,9 +56,11 @@ public class XMLMain {
    * fillFormationsXML is a method to create Formations thanks to myXMLDocument and fill the HashMap
    * with these data
    *
+   * A revoir car certaines methodes appelees n'existent plus desormais : Binome Java
    * @param mapFormations
    */
-  public void fillFormationsXML(Map<String, Formation> mapFormations) {
+  /*
+  public void fillFormationsXML(Map<String, UniversityProgram> mapFormations) {
 
     final Element racine = this.myXMLDocument.getDocumentElement();
 
@@ -109,6 +112,7 @@ public class XMLMain {
       }
     }
   }
+  */
 
   /**
    * fillSubjectsXML is a procedure to create and fill Subjects (Coursename and ECTS)
@@ -118,7 +122,7 @@ public class XMLMain {
    * @param mapSubjects
    * @param document
    */
-  public void fillSubjectsXML(Map<String, Subject> mapSubjects) {
+  public void fillSubjectsXML(Map<String, Course> mapSubjects) {
 
     final Element racine = this.myXMLDocument.getDocumentElement();
     final NodeList racineNoeuds = racine.getChildNodes();
@@ -155,7 +159,7 @@ public class XMLMain {
           }
 
           // we create a new subject
-          Subject sub = new Subject(courseTitle, courseCredit);
+          Course sub = new Course(courseTitle, courseCredit, new Teacher());
           mapSubjects.put(sub.getTitle(), sub);
         }
       }
