@@ -1,7 +1,7 @@
 package io.github.oliviercailloux.mido_svg.svg_generator;
 
-import io.github.oliviercailloux.mido_svg.university.components.UniversityProgram;
-import io.github.oliviercailloux.mido_svg.university.components.Course;
+import io.github.oliviercailloux.mido_svg.old.university.components.Formation;
+import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
 import java.awt.Canvas;
 import java.awt.FontMetrics;
 import java.util.ArrayList;
@@ -29,9 +29,9 @@ public class ResponsiveSVG {
    *        (M2)
    * @return an int corresponding to the number of formations in "list" of level "myYear"
    */
-  public int countFormations(Collection<UniversityProgram> list, int myYear) {
+  public int countFormations(Collection<Formation> list, int myYear) {
     int nb = 0;
-    for (UniversityProgram aFormation : list) {
+    for (Formation aFormation : list) {
       if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
         nb++;
       }
@@ -47,12 +47,12 @@ public class ResponsiveSVG {
    *        the first year (L1) and 5 the last year (M2)
    * @return an int that represents the maximum number of Subjects in a Formation of myYear.
    */
-  public int countMaxSubjects(Collection<UniversityProgram> list, int myYear) {
+  public int countMaxSubjects(Collection<Formation> list, int myYear) {
     int max = 0;
-    for (UniversityProgram aFormation : list) {
+    for (Formation aFormation : list) {
       if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
-        if (aFormation.getCourses().size() > max) {
-          max = aFormation.getCourses().size();
+        if (aFormation.getSubjects().size() > max) {
+          max = aFormation.getSubjects().size();
         }
       }
     }
@@ -76,9 +76,9 @@ public class ResponsiveSVG {
    * @param formation
    * @return the size in pixels of the longest Subject's title of the Formation in argument
    */
-  public int giveTheLongestSubjectInPixel(UniversityProgram formation) {
+  public int giveTheLongestSubjectInPixel(Formation formation) {
     int longestword = 0;
-    for (Course subject : formation.getCourses()) {
+    for (Subject subject : formation.getSubjects()) {
       if (longestword < widthOfTheWordInPixel(subject.getTitle())) {
         longestword = widthOfTheWordInPixel(subject.getTitle());
       }
@@ -133,12 +133,12 @@ public class ResponsiveSVG {
    *         year
    * @throws IllegalStateException
    */
-  public int calculateAdditionalSpaceByGrade(int myYear, int canvasX, Collection<UniversityProgram> list)
+  public int calculateAdditionalSpaceByGrade(int myYear, int canvasX, Collection<Formation> list)
       throws IllegalStateException {
     int spaceTaken = 0;
     int cpt = 1;
 
-    for (UniversityProgram formation : list) {
+    for (Formation formation : list) {
       if (formation.getFullName().contains(mapOfGrade.get(myYear))) {
         spaceTaken += giveTheLongestSubjectInPixel(formation)
             + widthOfTheWordInPixel(formation.getFullName()) + 20;
@@ -161,15 +161,15 @@ public class ResponsiveSVG {
    * @param canvasX : width of the canvas
    * @param canvasY : height of the canvas
    */
-  public void defineObjectsPosition(Collection<UniversityProgram> initialList, int canvasX, int canvasY,
+  public void defineObjectsPosition(Collection<Formation> initialList, int canvasX, int canvasY,
       boolean hiddenSubjects, boolean hiddenLicence, boolean hiddenMaster) {
 
     /*
      * We create a list with all the formation that will be drawn on the svg
      */
-    List<UniversityProgram> list = new ArrayList<>();
+    List<Formation> list = new ArrayList<>();
     if (!hiddenLicence) {
-      for (UniversityProgram f : initialList) {
+      for (Formation f : initialList) {
         if ((f.getFullName().indexOf("L1") != -1) || (f.getFullName().indexOf("L2") != -1)
             || (f.getFullName().indexOf("L3") != -1)) {
           list.add(f);
@@ -177,7 +177,7 @@ public class ResponsiveSVG {
       }
     }
     if (!hiddenMaster) {
-      for (UniversityProgram f : initialList) {
+      for (Formation f : initialList) {
         if ((f.getFullName().indexOf("M1") != -1) || (f.getFullName().indexOf("M2") != -1)) {
           list.add(f);
         }
@@ -285,7 +285,6 @@ public class ResponsiveSVG {
   /**
    * This method calculate the position X of the Formations of a year depending on the parameters.
    * Then, it set the position X and the position Y of the formations
-   * A revoir car certaines methodes appelees n'existent plus desormais : Binome Java
    * 
    * @param list
    * @param myYear
@@ -293,16 +292,16 @@ public class ResponsiveSVG {
    * @param canvasX
    * @param isHidden
    */
-  private void associatePositions(Collection<UniversityProgram> list, int myYear, int offsetY, int canvasX,
+  private void associatePositions(Collection<Formation> list, int myYear, int offsetY, int canvasX,
       boolean isHidden) {
 
     if (!isHidden) {
       int additionalSpace = calculateAdditionalSpaceByGrade(myYear, canvasX, list);
       int spaceTaken = (int) ((0.05 * canvasX) + additionalSpace);
-      for (UniversityProgram aFormation : list) {
+      for (Formation aFormation : list) {
         if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
-          //aFormation.setPosX(spaceTaken);
-          //aFormation.setPosY(offsetY);
+          aFormation.setPosX(spaceTaken);
+          aFormation.setPosY(offsetY);
           spaceTaken += additionalSpace + giveTheLongestSubjectInPixel(aFormation)
               + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
         }
@@ -310,7 +309,7 @@ public class ResponsiveSVG {
     } else {
       int additionalSpace = 0;
       int j = 0;
-      for (UniversityProgram aFormation : list) {
+      for (Formation aFormation : list) {
         if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
           additionalSpace += widthOfTheWordInPixel(aFormation.getFullName()) + 20;
           j++;
@@ -321,10 +320,10 @@ public class ResponsiveSVG {
         throw new IllegalStateException("The format paper isn't enough wide");
       }
       int spaceTaken = (int) (0.05 * canvasX + additionalSpace);
-      for (UniversityProgram aFormation : list) {
+      for (Formation aFormation : list) {
         if (aFormation.getFullName().indexOf(mapOfGrade.get(myYear)) != -1) {
-          //aFormation.setPosX(spaceTaken);
-          //aFormation.setPosY(offsetY);
+          aFormation.setPosX(spaceTaken);
+          aFormation.setPosY(offsetY);
           spaceTaken += additionalSpace + widthOfTheWordInPixel(aFormation.getFullName()) + 20;
         }
       }

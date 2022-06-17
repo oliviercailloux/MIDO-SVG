@@ -1,10 +1,10 @@
 package io.github.oliviercailloux.mido_svg.database;
 
 import io.github.oliviercailloux.mido_svg.old.university.components.Department;
-import io.github.oliviercailloux.mido_svg.university.components.UniversityProgram;
+import io.github.oliviercailloux.mido_svg.old.university.components.Formation;
 import io.github.oliviercailloux.mido_svg.old.university.components.Licence;
 import io.github.oliviercailloux.mido_svg.old.university.components.Master;
-import io.github.oliviercailloux.mido_svg.university.components.Course;
+import io.github.oliviercailloux.mido_svg.old.university.components.Subject;
 import io.github.oliviercailloux.mido_svg.old.university.components.Teacher;
 import io.github.oliviercailloux.mido_svg.paper.FactoryPaper;
 import io.github.oliviercailloux.mido_svg.paper.Paper;
@@ -19,25 +19,24 @@ import java.util.Set;
 
 /**
  * This class is the current database of the application
- * La classe est a revoir par le binome Java afin d'avoir de bonnes données de test, mais le travail
- * de mise à jour des references a été fait par le binome UML
+ *
  */
 
 public class DataBase {
 
   private Department department;
 
-  private List<UniversityProgram> formations;
+  private List<Formation> formations;
 
-  private Map<String, UniversityProgram> formationsMap;
+  private Map<String, Formation> formationsMap;
 
-  private Map<String, Course> mapSubjects; // used for tags
+  private Map<String, Subject> mapSubjects; // used for tags
 
   private Paper paper;
 
   private Settings settings;
 
-  private List<Course> subjects;
+  private List<Subject> subjects;
 
   private List<String> tags;
 
@@ -61,10 +60,10 @@ public class DataBase {
       e.printStackTrace();
     }
     initUsers();
-    //initSubjects();
+    initSubjects();
     setPaper(FactoryPaper.TypeFormat.A4, 0, 0);
     initDepartment();
-    //FillSubjectListInFormation();
+    FillSubjectListInFormation();
 
   }
 
@@ -82,16 +81,27 @@ public class DataBase {
       e.printStackTrace();
     }
     initUsers();
-    //initSubjects();
+    initSubjects();
     this.settings = settings;
     setPaper(this.settings.getFormat(), this.settings.getWidth(), this.settings.getHeight());
     initDepartment();
-    //FillSubjectListInFormation();
+    FillSubjectListInFormation();
 
   }
 
-  
-  // Suppression de cette méthode car UniversityProgram est immuable désormais
+  /**
+   * This function fills the subjects list of each formation with subjects assigned to this
+   * formation
+   *
+   */
+  public void FillSubjectListInFormation() {
+
+    (formationsMap.get("M1MIAGE")).fillsubjectList(subjects);
+    (formationsMap.get("L3MIAGEApp")).fillsubjectList(subjects);
+    (formationsMap.get("M1MIAGEApp")).fillsubjectList(subjects);
+    (formationsMap.get("L3MIAGE")).fillsubjectList(subjects);
+
+  }
 
   // LOGGERS
   // public static final Logger LOGGER =
@@ -101,7 +111,7 @@ public class DataBase {
     return department;
   }
 
-  public List<UniversityProgram> getFormations() {
+  public List<Formation> getFormations() {
     return formations;
   }
 
@@ -109,7 +119,7 @@ public class DataBase {
     return paper;
   }
 
-  public Map<String, Course> getSubjects() {
+  public Map<String, Subject> getSubjects() {
     return mapSubjects;
   }
 
@@ -173,8 +183,16 @@ public class DataBase {
 
     // List of formations
     this.formations = new LinkedList<>();
-    // Suppression des ajouts car UniversityProgram est immuable désormais
-    // A remplacer par différents appels de constructeurs, travail pour le binôme Java
+    this.formations.add(L3MIAGE);
+    this.formations.add(L3MIAGEApp);
+    this.formations.add(M1MIAGE);
+    this.formations.add(M1MIAGEApp);
+    this.formations.add(M2MIAGEIF);
+    this.formations.add(M2MIAGEID);
+    this.formations.add(M2MIAGESTIN);
+    this.formations.add(M2MIAGEIFApp);
+    this.formations.add(M2MIAGEIDApp);
+    this.formations.add(M2MIAGESTINApp);
 
     // Available formation
     L3MIAGE.addAvailableFormation(M1MIAGE);
@@ -186,15 +204,16 @@ public class DataBase {
     M1MIAGEApp.addAvailableFormation(M2MIAGEIDApp);
     M1MIAGEApp.addAvailableFormation(M2MIAGEIFApp);
 
-    // Suppressions pour la même raison que ci-dessus
+    this.formationsMap.put("L3MIAGE", L3MIAGE);
+    this.formationsMap.put("M1MIAGE", M1MIAGE);
+    this.formationsMap.put("L3MIAGEApp", L3MIAGEApp);
+    this.formationsMap.put("M1MIAGEApp", M1MIAGEApp);
 
   }
 
   /**
    * Initialize subjects
-   * Ajout de données de tests corrects à faire par le binome Java
    */
-  /*
   public void initSubjects() {
     this.mapSubjects = new HashMap<>();
 
@@ -202,11 +221,10 @@ public class DataBase {
     // XMLMain myTestXMLMain = new XMLMain();
     // myTestXMLMain.fillSubjectsXML(this.mapSubjects);
 
-    
-    Course proba = new Course("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
-    Course java = new Course("POO Java", teachers.get("Cailloux"), 3, 350, 85);
-    Course logique = new Course"Logique", teachers.get("Pigozzi"), 3, 350, 70);
-    Course math = new Course("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
+    Subject proba = new Subject("Probabilités et Statistiques", teachers.get("Mayag"), 3, 350, 70);
+    Subject java = new Subject("POO Java", teachers.get("Cailloux"), 3, 350, 85);
+    Subject logique = new Subject("Logique", teachers.get("Pigozzi"), 3, 350, 70);
+    Subject math = new Subject("Mathematiques", teachers.get("Pigozzi"), 3, 0, 0);
 
     mapSubjects.put("proba", proba);
     mapSubjects.put("java", java);
@@ -228,7 +246,7 @@ public class DataBase {
                                            // proba as prerequisites
 
   }
-  */
+
   /**
    * Initialize teachers
    */
@@ -264,16 +282,15 @@ public class DataBase {
     for (int i = 0; i < this.getFormations().size(); i++) {
       System.out.println("Pour l\'annee" + this.getFormations().get(i).getGrade()
           + this.getFormations().get(i).getFullName() + " a "
-          + this.getFormations().get(i).getAvailableUniversityProgram().size());
+          + this.getFormations().get(i).getAvailableFormations().size());
 
-      if (this.getFormations().get(i).getAvailableUniversityProgram().size() == 0) {
+      if (this.getFormations().get(i).getAvailableFormations().size() == 0) {
         System.out.println("Pas de formation accessible");
         // Logger.info("Pas de formation accessible");
       }
-      for (int j = 0; j < this.getFormations().get(i).getAvailableUniversityProgram().size(); j++) {
-        //System.out.println("Les formations accessibles sont:"
-            //+ this.getFormations().get(i).getAvailableUniversityProgram().get(j).getFullName());
-    	// Erreur a rectifier par le binome java
+      for (int j = 0; j < this.getFormations().get(i).getAvailableFormations().size(); j++) {
+        System.out.println("Les formations accessibles sont:"
+            + this.getFormations().get(i).getAvailableFormations().get(j).getFullName());
       }
     }
   }
@@ -285,7 +302,7 @@ public class DataBase {
     this.department = department;
   }
 
-  public void setFormations(List<UniversityProgram> formations) {
+  public void setFormations(List<Formation> formations) {
     if (this.formations == null) {
       this.formations = new LinkedList<>();
     }
@@ -312,7 +329,7 @@ public class DataBase {
 
   }
 
-  public void setSubjects(Map<String, Course> subjects) {
+  public void setSubjects(Map<String, Subject> subjects) {
     if (this.mapSubjects == null) {
       this.mapSubjects = new HashMap<>();
     }
@@ -322,10 +339,8 @@ public class DataBase {
   /**
    * Store tags into the mapSubjects
    *
-   * @param listOfTag
-   * Methode à remplacer par le binome Java car la classe Course est immuable donc plus de methode addTag
+   * @param listOfTags
    */
-  /*
   public void setTags(List<Tag> listOfTags) {
     for (Tag tag : listOfTags) {
       Set<String> sujets = tag.getSubjects();
@@ -335,7 +350,7 @@ public class DataBase {
     }
 
   }
- */
+
   public void setTeachers(Map<String, Teacher> teachers) {
     if (this.teachers == null) {
       this.teachers = new HashMap<>();
