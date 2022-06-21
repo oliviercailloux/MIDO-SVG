@@ -3,56 +3,58 @@ package io.github.oliviercailloux.mido_svg.university.components;
 /**
  * This class corresponds to the teacher's details
  */
-public class Teacher {
+public final class Teacher {
 
-	private String address;
+  private String address;
 
-	private String firstName;
+  private String firstName;
 
-	private String lastName;
+  private String lastName;
 
-	private String gender;
+  private String gender;
 
-	private String phone;
+  private String phone;
 
-	public Teacher(String firstName, String lastName, String gender, String address, String phone) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.gender = gender;
-		this.address = address;
-		this.phone = phone;
-	}
+  public Teacher(String firstName, String lastName, String gender, String address, String phone){
+this.firstName = firstName;
+    this.lastName = lastName;
+    this.gender = gender;
+    this.address = address;
+    this.phone = phone;
 
-	/*
-	 * Getters
-	 */
+  }
 
-	public String getAddress() {
-		return address;
-	}
+  /*
+   * Getters
+   */
 
-	public String getFirstName() {
-		return firstName;
-	}
+  public String getAddress() {
+    return address;
+  }
 
-	public String getLastName() {
-		return lastName;
-	}
+  public String getFirstName() {
+    return firstName;
+  }
 
-	/**
-	 * Returns the full name (LastName + FirstName) of a teacher
-	 * 
-	 */
-	public String getFullNameTeacher() {
-		return lastName + " " + firstName;
-	}
+  public String getLastName() {
+	    return lastName;
+  }
 
-	public String getGender() {
-		return gender;
-	}
+  /**
+   * Returns the full name (LastName + FirstName) of a teacher
+   * 
+   */
+  public String getFullNameTeacher() {
+    return lastName + " " + firstName;
+  }
 
-	public String getPhone() {
-		return phone;
-	}
+  public String getGender() {
+    return gender;
+  }
+
+
+  public String getPhone() {
+    return phone;
+  }
 
 }
