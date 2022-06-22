@@ -13,7 +13,7 @@ The code is hereby published under the https://github.com/oliviercailloux/{repos
 See the https://github.com/oliviercailloux/{repository}/blob/master/Doc/README.adoc[doc].
 
 == Original description (to be translated)
-L’objectif premier de ce projet est de créer une bibliothèque qui permet à un utilisateur de créer un dessin (au format SVG) représentant au moyen d’un arbre, les formations offertes dans le département MIDO. Il est aussi possible d’afficher les détails des formations, les enseignants, etc. L’idée est de généraliser et dynamiser la bibliothèque afin qu’elle puisse être utilisée à une plus grande échelle, ce en récupérant les informations sur le site de l’université.
+The primary objective of this project is to create a library that allows a user to create a drawing (in SVG format) representing, by means of a tree, university programs offered in the MIDO department. It is also possible to display the details of the programs, the teachers, etc. The idea is to generalize and energize the library so that it can be used on a larger scale, by retrieving information from the university website.
 
 == The focus of our part
 Our main focus will be to use Fake Data as a start. We will make sure that we are able to programatically an SVG from the command line.
@@ -24,3 +24,14 @@ image::./Doc/Papyrus/Diagrams/MIDO_SVG.SVG[MIDO_SVG Diagram, 700]
 It simply produces a set of fake data for use by the exporter. Currently, the program uses fake data but we will extend it to be able to take data from Dauphine DataBase. The request is done thanks to Dauphine API.
 
 image::./Doc/Papyrus/Diagrams/MIDO_SVG_Extends.SVG[MIDO_SVG_Extends Diagram, 700]
+
+== How to fix ebx import error on Eclipse
+To fix the issue, you need to get logins (username and password) from the IT service of Dauphine to connect to : https://rof.api.dauphine.fr/ebx-dataservices/tables/pvRefRof/RefRof?WSDL
+
+When you have them, you have to create a WSDL_login.txt file in the project folder, with this format : https://username:password@*
+
+Use the command line "mvn package" in your terminal to build the project, and get the library in the target folder.
+
+Finally, in this folder, in generated-sources, right-click on "wsimport" > Build Path > Use as source folder.
+
+Refresh the project, and it should be fixed.
