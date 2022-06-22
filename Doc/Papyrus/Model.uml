@@ -14,7 +14,7 @@
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
       </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_-9E5VW3mEeq7r7ozzGhjkA" name="Formation" isAbstract="true">
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_-9E5VW3mEeq7r7ozzGhjkA" name="UniversityProgram" isAbstract="true">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Vm3mEeq7r7ozzGhjkA" name="teacher" type="_-9FgwG3mEeq7r7ozzGhjkA" association="_-9Fg6W3mEeq7r7ozzGhjkA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-9E5V23mEeq7r7ozzGhjkA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-9E5WG3mEeq7r7ozzGhjkA" value="*"/>
@@ -39,15 +39,17 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Ym3mEeq7r7ozzGhjkA" name="intitule" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Y23mEeq7r7ozzGhjkA" name="point" visibility="private" type="_jmgM4LJGEeq2l7_HWlzTeA" isUnique="false"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgUG3mEeq7r7ozzGhjkA" name="title" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgUW3mEeq7r7ozzGhjkA" name="shown" visibility="protected">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9E5Y23mEeq7r7ozzGhjkA" name="responsibleTeacher" visibility="private" type="_-9FgwG3mEeq7r7ozzGhjkA" isUnique="false"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgUG3mEeq7r7ozzGhjkA" name="availableUniversityProgram" visibility="private" type="_-9E5VW3mEeq7r7ozzGhjkA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2MCQUO_PEey4yuKXbZLsIA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2MRg4O_PEey4yuKXbZLsIA" value="*"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgUm3mEeq7r7ozzGhjkA" name="category" visibility="protected">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_7t59cO_PEey4yuKXbZLsIA" name="courses" visibility="private" type="_-9Fgi23mEeq7r7ozzGhjkA" isUnique="false">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CRWcUO_QEey4yuKXbZLsIA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CRlF0O_QEey4yuKXbZLsIA" value="*"/>
         </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FgU23mEeq7r7ozzGhjkA" name="addAvailableFormation">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FgVG3mEeq7r7ozzGhjkA" name="formation" type="_-9E5VW3mEeq7r7ozzGhjkA"/>
@@ -82,7 +84,7 @@
         </ownedOperation>
         <nestedClassifier xmi:type="uml:Enumeration" xmi:id="_-9Fgim3mEeq7r7ozzGhjkA" name="Category" visibility="protected"/>
       </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_-9Fgi23mEeq7r7ozzGhjkA" name="Subject">
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_-9Fgi23mEeq7r7ozzGhjkA" name="Course">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgjG3mEeq7r7ozzGhjkA" name="formation" type="_-9E5VW3mEeq7r7ozzGhjkA" association="_-9Fg7W3mEeq7r7ozzGhjkA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_-9FgjW3mEeq7r7ozzGhjkA"/>
         </ownedAttribute>
@@ -93,25 +95,16 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FgkW3mEeq7r7ozzGhjkA" name="credit" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgkm3mEeq7r7ozzGhjkA" name="level" visibility="private" type="_-9E5VW3mEeq7r7ozzGhjkA"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FglG3mEeq7r7ozzGhjkA" name="point" visibility="private" type="_jmgM4LJGEeq2l7_HWlzTeA"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fglm3mEeq7r7ozzGhjkA" name="tags" visibility="private" type="_-9FhiW3mEeq7r7ozzGhjkA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgkm3mEeq7r7ozzGhjkA" name="listOfPrerequisites" visibility="private" type="_-9Fgi23mEeq7r7ozzGhjkA">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EmCRMO_PEey4yuKXbZLsIA"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EmVzMO_PEey4yuKXbZLsIA" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9FglG3mEeq7r7ozzGhjkA" name="responsible" visibility="private" type="_-9FgwG3mEeq7r7ozzGhjkA"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fglm3mEeq7r7ozzGhjkA" name="title" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iLBeoLJMEeq2l7_HWlzTeA"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iM6VALJMEeq2l7_HWlzTeA" value="*"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-9Fgl23mEeq7r7ozzGhjkA" name="title" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_aHPpcJzXEeqyu63240XpNg" name="tag" type="_WC4RkJzWEeqyu63240XpNg" association="_aHI7wJzXEeqyu63240XpNg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kGgH4JzXEeqyu63240XpNg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aHQQgZzXEeqyu63240XpNg" value="*"/>
-        </ownedAttribute>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9FgmG3mEeq7r7ozzGhjkA" name="addListOfPrerequisities">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9FgmW3mEeq7r7ozzGhjkA" name="s" type="_-9Fgi23mEeq7r7ozzGhjkA"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_-9Fgmm3mEeq7r7ozzGhjkA" name="addTag">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9Fgm23mEeq7r7ozzGhjkA" name="tag" type="_-9FhiW3mEeq7r7ozzGhjkA"/>
-        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_-9Fgqm3mEeq7r7ozzGhjkA" name="hasPrerequisities">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_-9Fgq23mEeq7r7ozzGhjkA" direction="return">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
@@ -193,16 +186,6 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_-9FhCG3mEeq7r7ozzGhjkA" value="*"/>
         </ownedEnd>
       </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Association" xmi:id="_aHI7wJzXEeqyu63240XpNg" name="Have" visibility="public" memberEnd="_aHPpcJzXEeqyu63240XpNg _aHQ3kJzXEeqyu63240XpNg">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_aHN0QJzXEeqyu63240XpNg" source="org.eclipse.papyrus">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_aHObUJzXEeqyu63240XpNg" key="nature" value="UML_Nature"/>
-        </eAnnotations>
-        <ownedEnd xmi:type="uml:Property" xmi:id="_aHQ3kJzXEeqyu63240XpNg" name="subject" type="_-9Fgi23mEeq7r7ozzGhjkA" association="_aHI7wJzXEeqyu63240XpNg">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_krcA8JzXEeqyu63240XpNg"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iwq9YJzXEeqyu63240XpNg" value="*"/>
-        </ownedEnd>
-      </nestedClassifier>
-      <nestedClassifier xmi:type="uml:Class" xmi:id="_WC4RkJzWEeqyu63240XpNg" name="Tag"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_jNvVILImEeqRdLLMTtwr9g" name="List&lt;Subject>"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_pz9bMLImEeqRdLLMTtwr9g" name="List&lt;Formation>"/>
       <nestedClassifier xmi:type="uml:Class" xmi:id="_tqMs8LImEeqRdLLMTtwr9g" name="List&lt;Tag>"/>
@@ -1213,4 +1196,10 @@ The class Authenticator represents an object that knows how to obtain authentica
     <ownedEnd xmi:type="uml:Property" xmi:id="_AYEVQ7QhEey5l6OCFhrmew" name="main" type="_0B5CwLQgEey5l6OCFhrmew" association="_AYDuMLQhEey5l6OCFhrmew"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_CNdJkLQhEey5l6OCFhrmew" client="_wst2sLQgEey5l6OCFhrmew" supplier="_-GJ9ALQgEey5l6OCFhrmew"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fv2MkO_OEey4yuKXbZLsIA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fv7sIO_OEey4yuKXbZLsIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
 </uml:Model>
