@@ -28,9 +28,9 @@ image::./Doc/Papyrus/Diagrams/MIDO_SVG_Extends.SVG[MIDO_SVG_Extends Diagram, 700
 == How to fix ebx import error on Eclipse
 To fix the issue, you need to get logins (username and password) from the IT service of Dauphine to connect to : https://rof.api.dauphine.fr/ebx-dataservices/tables/pvRefRof/RefRof?WSDL
 
-When you have them, you have to create a 'WSDL_login.txt' file in the project folder, with this format : https://username:password@*
+When you have them, you have to create a `WSDL_login.txt` file in the project folder, with this format : https://username:password@*
 
-Use the command line 'mvn package' in your terminal to build the project, and get the library in the target folder.
+Use the command line `mvn package` in your terminal to build the project, and get the library in the target folder.
 
 Finally, in this folder, in generated-sources, right-click on **wsimport > Build Path > Use as source folder**
 
