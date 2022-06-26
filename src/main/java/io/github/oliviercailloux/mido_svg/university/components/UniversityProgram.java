@@ -4,7 +4,7 @@ import io.github.oliviercailloux.mido_svg.old.university.components.Teacher;
 import java.util.Set;
 
 
-public final class UniversityProgram {
+public class UniversityProgram {
 	
 	 public enum Category {
 		    LICENCE, MASTER
