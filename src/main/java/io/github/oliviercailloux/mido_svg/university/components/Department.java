@@ -9,16 +9,15 @@ import java.util.ArrayList;
  */
 public class Department {
 	
-	// name of the department (for example: "MIDO", "LSO" etc.)
+	/**
+	 * name of the department (for example: "MIDO", "LSO" etc.)
+	 */
 	private String title;
 	
-	// list of the formations
+	/**
+	 * list of the formations
+	 */
 	private ArrayList<UniversityProgram> listOfUniversityPrograms;
-	
-	public Department() {
-		this.title = "";
-		this.listOfUniversityPrograms = new ArrayList<>();
-	}
 	
 	public Department(String titre) {
 		this.title = titre;
