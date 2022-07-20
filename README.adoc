@@ -8,9 +8,9 @@ image:https://github.com/{gitHubUserName}/{repository}/workflows/Maven%20verify/
 
 A Java project developed by students during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in https://dauphine.psl.eu/en/training/bachelors-degrees/organizational-computer-science/bachelors3-business-informatics/program[MIAGE L3 Alternance]).
 
-The code is hereby published under the https://github.com/oliviercailloux/{repository}/blob/master/LICENSE[MIT License], with their permission.
+The code is hereby published under the https://github.com/oliviercailloux/{repository}/blob/main/LICENSE[MIT License], with their permission.
 
-See the https://github.com/oliviercailloux/{repository}/blob/master/Doc/README.adoc[doc].
+See the https://github.com/oliviercailloux/{repository}/blob/main/Doc/README.adoc[doc].
 
 == Original description
 The primary objective of this project is to create a library that allows a user to create a drawing (in SVG format) representing, by means of a tree, university programs offered in the MIDO department. It is also possible to display the details of the programs, the teachers, etc. The idea is to generalize and energize the library so that it can be used on a larger scale, by retrieving information from the university website.
